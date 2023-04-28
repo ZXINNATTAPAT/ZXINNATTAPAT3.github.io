@@ -155,6 +155,71 @@
   .iconef i:hover {
     font-size: 30px;
   }
+  @media screen and (max-width: 767px) {
+    .borderef {
+      position: relative;
+      height: 242px;
+      width: 160px;
+      background: transparent;
+      border-radius: 15px;
+      border: 2px solid #fff;
+      opacity: 0;
+      transition: 1.5s ease;
+    }
+    .borderef:hover {
+      opacity: 1;
+    }
+    .cardef {
+      height: 279px;
+      width: 200px;
+      background: #808080;
+      margin: 30px;
+      border-radius: 20px;
+      transition: .8s ease;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .card0ef {
+      background: url("./Photo/20230220_005806.jpg") center center no-repeat;
+      background-size: 200px;
+    }
+    .card0ef:hover {
+      background: url("./Photo/20230220_005806.jpg") left center no-repeat;
+      background-size: 280px;
+    }
+    .h2ef {
+      position: absolute;
+      bottom: 142.5px;
+      left: 25px;
+      width: 15px;
+      color:#fff;
+      font-size: 15px;
+      line-height: 1;
+      text-shadow: 0 0 10px rgba(0, 0, 0, .5);
+    }
+    .iconef {
+      position: absolute;
+      fill: #fff;
+      color: #fff;
+      height: 100px;
+      bottom: 30px;
+      width: 70px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+    }
+    .iconef i {
+      font-size: 20px;
+      transition: .2s ease;
+    }
+    .iconef i:hover {
+      font-size: 30px;
+    }
+  }
 
   
   .cssbac2{
