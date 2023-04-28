@@ -1,0 +1,157 @@
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+.button2 {
+  padding: 10px 20px;
+  text-transform: uppercase;
+  border-radius: 8px;
+  font-size: 17px;
+  font-weight: 500;
+  color: #ffffff80;
+  text-shadow: none;
+  background: transparent;
+  box-shadow: transparent;
+  border: 1px solid #ffffff80;
+  transition: 0.5s ease;
+  user-select: none;
+}
+
+#btn2:hover,:focus {
+  color: #ffffff;
+  background: #2B442B;
+  border: 1px solid #2B442B;
+  text-shadow: 0 0 5px #ffffff,
+              0 0 10px #ffffff,
+              0 0 20px #ffffff;
+  box-shadow: 0 0 5px #2B442B,
+              0 0 20px #2B442B,
+              0 0 50px #2B442B,
+              0 0 100px #2B442B;
+}
+.cs1{
+    background-color:black;
+    color: #000;
+}
+.cssbac{
+  background-image: linear-gradient( #09203f 0%, #537895 100%);
+  size: cover;
+}
+.x{
+    color: cornflowerblue;
+}
+
+.xx{
+    color: #fff;
+}
+.blockline {
+  height: 2.5vh;
+  background-color: grey;
+}
+
+.block1 {
+  height: 100vh;
+  background-image: url('./Photo/gilles-lambert-mSK5nNsAsLY-unsplash.jpg');
+  background-size: cover;
+}
+
+.block3 {
+  height: 75vh;
+  background-color: #0B0D0C;
+  background-size: cover;
+}
+
+.block4 {
+  height: 30vh;
+  background-color: #232427;
+}
+.a1{
+  background-image: url('./Photo/a1.png');
+  background-size: cover ;
+  width: auto;
+  height: 450px;
+  margin: 30px;
+ 
+}
+.centerpage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.container1{
+  box-sizing: border-box;
+}
+
+.borderef {
+    position: relative;
+    height: 342px;
+    width: 260px;
+    background: transparent;
+    border-radius: 15px;
+    border: 2px solid #fff;
+    opacity: 0;
+    transition: 1.5s ease;
+  }
+  .borderef:hover {
+    opacity: 1;
+  }
+  .cardef {
+    height: 379px;
+    width: 300px;
+    background: #808080;
+    margin: 30px;
+    border-radius: 20px;
+    transition: .8s ease;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .card0ef {
+    background: url("./Photo/20230220_005806.jpg") center center no-repeat;
+    background-size: 300px;
+  }
+  .card0ef:hover {
+    background: url("./Photo/20230220_005806.jpg") left center no-repeat;
+    background-size: 480px;
+  }
+  .h2ef {
+    position: absolute;
+    bottom: 142.5px;
+    left: 25px;
+    width: 15px;
+    color:#fff;
+    font-size: 30px;
+    line-height: 1;
+    text-shadow: 0 0 10px rgba(0, 0, 0, .5);
+  }
+  .iconef {
+    position: absolute;
+    fill: #fff;
+    color: #fff;
+    height: 100px;
+    bottom: 30px;
+    width: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .iconef i {
+    font-size: 20px;
+    transition: .2s ease;
+  }
+  .iconef i:hover {
+    font-size: 30px;
+  }
+  .cssbac2{
+    background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(100,43,115,1) 0%, rgba(4,0,4,1) 90% );
+  }
+
+  /* Navcss */
+ 
+
+ 
+  
