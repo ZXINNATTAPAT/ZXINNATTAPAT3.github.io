@@ -3,7 +3,7 @@
   scroll-behavior: smooth;
 }
 
-.button2 {
+/* .button2 {
   padding: 10px 20px;
   text-transform: uppercase;
   border-radius: 8px;
@@ -35,7 +35,7 @@
     font-size: 3vw;
     
   }
-}
+} */
 .cs1{
     background-color:black;
     color: #000;
@@ -57,9 +57,9 @@
 }
 
 .block1 {
-  height: 120vh;
   background-image: url('./Photo/gilles-lambert-mSK5nNsAsLY-unsplash.jpg');
   background-size: cover;
+  
 }
 
 .block3 {
