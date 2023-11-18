@@ -2,7 +2,6 @@
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
-
 /* .button2 {
   padding: 10px 20px;
   text-transform: uppercase;
@@ -45,9 +44,8 @@
   size: cover;
 }
 .x{
-    color: cornflowerblue;
+    color: rgb(118, 161, 241);
 }
-
 .xx{
     color: #fff;
 }
@@ -55,11 +53,19 @@
   height: 2.5vh;
   background-color: #232427;
 }
-
+sh-x{
+  box-shadow: 8.0px 16.0px 16.0px hsl(0deg 0% 0% / 0.25);
+}
 .block1 {
   background-image: url('./Photo/gilles-lambert-mSK5nNsAsLY-unsplash.jpg');
   background-size: cover;
-  
+  height: 70vh;
+}
+.block11{
+  margin-top: 15.5vh;
+}
+.brx{
+  margin-top: 3vh;
 }
 
 .block3 {
@@ -72,8 +78,6 @@
   height: 30vh;
   background-color: #232427;
 }
-
-
 .a1{
   background-image: url('./Photo/a1.png');
   background-size: cover ;
@@ -119,11 +123,11 @@
     align-items: center;
   }
   .card0ef {
-    background: url("./Photo/20230220_005806.jpg") center center no-repeat;
+    background: url("./Photo/371488979_690728899700823_6830333154561649852_n.jpg") center center no-repeat;
     background-size: 300px;
   }
   .card0ef:hover {
-    background: url("./Photo/20230220_005806.jpg") left center no-repeat;
+    background: url("./Photo/371488979_690728899700823_6830333154561649852_n.jpg") left center no-repeat;
     background-size: 480px;
   }
   .h2ef {
@@ -156,6 +160,16 @@
     font-size: 30px;
   }
   @media screen and (max-width: 767px) {
+    .block1{
+      height: 100vh;
+    }
+    .block11{
+      height: auto;
+    }
+    .brx{
+      margin-top: 0vh;
+    }
+
     .borderef {
       position: relative;
       height: 242px;
@@ -183,11 +197,11 @@
       align-items: center;
     }
     .card0ef {
-      background: url("./Photo/20230220_005806.jpg") center center no-repeat;
+      background: url("./Photo/371488979_690728899700823_6830333154561649852_n.jpg") center center no-repeat;
       background-size: 200px;
     }
     .card0ef:hover {
-      background: url("./Photo/20230220_005806.jpg") left center no-repeat;
+      background: url("./Photo/371488979_690728899700823_6830333154561649852_n.jpg") left center no-repeat;
       background-size: 280px;
     }
     .h2ef {
