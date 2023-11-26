@@ -66,16 +66,16 @@ sh-x2{
   font-family: 'Noto Sans Thai Looped', sans-serif;
 }
 .block1 {
-  background-image: url('./Photo/gilles-lambert-mSK5nNsAsLY-unsplash.jpg');
+  background-image: url('../Photo/gilles-lambert-mSK5nNsAsLY-unsplash.jpg');
   background-size: cover;
-  height: 70vh;
+  height: 100vh;
 }
 .block11{
-  margin-top: 15.5vh;
+  margin-top: 25.5vh;
 }
-.brx{
+/* .brx{
   margin-top: 3vh;
-}
+} */
 
 .block3 {
   height: 90vh;
@@ -132,11 +132,11 @@ sh-x2{
     align-items: center;
   }
   .card0ef {
-    background: url("./Photo/371488979_690728899700823_6830333154561649852_n.jpg") center center no-repeat;
+    background: url("../Photo/371488979_690728899700823_6830333154561649852_n.jpg") center center no-repeat;
     background-size: 300px;
   }
   .card0ef:hover {
-    background: url("./Photo/371488979_690728899700823_6830333154561649852_n.jpg") left center no-repeat;
+    background: url("../Photo/371488979_690728899700823_6830333154561649852_n.jpg") left center no-repeat;
     background-size: 480px;
   }
   .h2ef {
@@ -173,6 +173,7 @@ sh-x2{
       height: 100vh;
     }
     .block11{
+      margin-top: 20vh;
       height: auto;
     }
     .brx{
@@ -206,11 +207,11 @@ sh-x2{
       align-items: center;
     }
     .card0ef {
-      background: url("./Photo/371488979_690728899700823_6830333154561649852_n.jpg") center center no-repeat;
+      background: url("../Photo/371488979_690728899700823_6830333154561649852_n.jpg") center center no-repeat;
       background-size: 200px;
     }
     .card0ef:hover {
-      background: url("./Photo/371488979_690728899700823_6830333154561649852_n.jpg") left center no-repeat;
+      background: url("../Photo/371488979_690728899700823_6830333154561649852_n.jpg") left center no-repeat;
       background-size: 280px;
     }
     .h2ef {
