@@ -43,12 +43,6 @@
   background-image: linear-gradient( #09203f 0%, #537895 100%);
   size: cover;
 }
-.x{
-    color: rgb(118, 161, 241);
-}
-.xx{
-    color: #fff;
-}
 .blockline {
   height: 2.5vh;
   background-color: #232427;
@@ -70,8 +64,9 @@ sh-x2{
   background-size: cover;
   height: 100vh;
 }
+
 .block11{
-  margin-top: 25.5vh;
+  margin-top: 20.5vh;
 }
 /* .brx{
   margin-top: 3vh;
@@ -173,7 +168,7 @@ sh-x2{
       height: 100vh;
     }
     .block11{
-      margin-top: 20vh;
+      margin-top: 10vh;
       height: auto;
     }
     .brx{
@@ -244,8 +239,6 @@ sh-x2{
       font-size: 30px;
     }
   }
-
-  
   .cssbac2{
     background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(100,43,115,1) 0%, rgba(4,0,4,1) 90% );
   }
