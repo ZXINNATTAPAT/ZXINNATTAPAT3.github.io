@@ -168,7 +168,38 @@ sh-x2{
   .iconef i:hover {
     font-size: 30px;
   }
+  .magicpattern { 
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: repeat;
+    background-image: url("data:image/svg+xml;utf8,%3Csvg viewBox=%220 0 1000 1000%22 xmlns=%22http:%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cdefs%3E%3CclipPath id=%22a%22%3E%3Cpath fill=%22currentColor%22 d=%22M790 641.5Q664 783 460 852.5T130.5 711Q5 500 156 333t361-196.5q210-29.5 304.5 167t-31.5 338Z%22%2F%3E%3C%2FclipPath%3E%3C%2Fdefs%3E%3Cg clip-path=%22url(%23a)%22%3E%3Cpath fill=%22%23fff%22 d=%22M790 641.5Q664 783 460 852.5T130.5 711Q5 500 156 333t361-196.5q210-29.5 304.5 167t-31.5 338Z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+  }
+  .blobs-main{
+    background-image:url("../Photo/blobanimation.svg") ;
+   
+    background-repeat: no-repeat; /* Prevent background image from repeating */
+    
+    width: 10%;
+    height: 100%;
+    display: flex;
+    object-fit: contain;
+    /* Add some padding or spacing if needed */
+    /* padding: 220px; */
+    /* Add a semi-transparent overlay for better readability of content */
+    
+  }
+  @media screen and (max-width: 1000px) {
+    .emoji-main{
+      display: none;
+    }
+  }
+
   @media screen and (max-width: 767px) {
+    .emoji-main{
+      display: none;
+    }
     .block1{
       height: 100vh;
     }
