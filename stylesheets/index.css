@@ -199,22 +199,23 @@ sh-x2{
     /* Add a semi-transparent overlay for better readability of content */
     
   }
-  @media screen and (max-width: 1000px) {
+  /* @media screen and (max-width: 1000px) {
     .emoji-main{
       display: none;
     }
     .wave{
       display: none;
     }
-  }
+  } */
 
   @media screen and (max-width: 767px) {
-    .wave{
+    /* .wave{
       display: none;
-    }
+    } */
     .emoji-main{
       display: none;
     }
+    
     .block1{
       height: 100vh;
     }
