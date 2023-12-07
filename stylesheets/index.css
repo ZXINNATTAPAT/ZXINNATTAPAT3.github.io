@@ -193,9 +193,9 @@ sh-x2{
   } */
 
   @media screen and (max-width: 767px) {
-    .wave{
+    /* .wave{
       display: none;
-    }
+    } */
     .emoji-main{
       display: none;
     }
