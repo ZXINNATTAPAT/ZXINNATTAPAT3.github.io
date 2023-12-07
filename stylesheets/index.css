@@ -56,6 +56,10 @@ sh-x2{
   background-size: cover;
   height: 100vh;
 }
+.bg-main {
+  background-image: url('../Photo/gilles-lambert-msk5nnsasly-unsplash.avif');
+  background-size: cover;
+}
 .block11{
   margin-top: 25.5vh;
 }
