@@ -773,6 +773,29 @@
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
+            <script>
+              // ตรวจสอบการรองรับ AVIF
+              function supportsAvif() {
+                var img = new Image();
+                img.src = "data:image/avif;base64,AAAAFGZ0eXBpc29tAAACAGlzb21pc28yYXZpZnk9Imh0dHBzOi8vYXR..."; // ใส่ข้อมูล base64 จากไฟล์ AVIF
+                return img.complete && img.height > 0;
+              }
+            
+              // ลูปทุกรูปภาพที่ต้องการ
+              var images = document.querySelectorAll('.img-fluid');
+            
+              images.forEach(function(image) {
+                var avifSource = image.getAttribute('data-src');
+                if (supportsAvif()) {
+                  // ระบบรองรับ AVIF ให้ใช้ .avif
+                  image.src = avifSource;
+                } else {
+                  // ระบบไม่รองรับ AVIF ให้ใช้ .jpg หรือ .png หรือรูปภาพที่ระบบรองรับ
+                  image.src = avifSource.replace('.avif', '.jpeg'); // แก้นามสกุลตามที่เหมาะสม
+                }
+              });
+            </script>
+
 </body>
 
 </html>  
