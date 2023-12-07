@@ -7,51 +7,6 @@
   box-shadow: 2px 7px 20px 10px rgba(255, 255, 255, 0.115);
   backdrop-filter: blur(3.25px);
 }
-/* .button2 {
-  padding: 10px 20px;
-  text-transform: uppercase;
-  border-radius: 8px;
-  font-size: 17px;
-  font-weight: 500;
-  color: #ffffff80;
-  text-shadow: none;
-  background: transparent;
-  box-shadow: transparent;
-  border: 1px solid #ffffff80;
-  transition: 0.5s ease;
-  user-select: none;
-}
-
-#btn2:hover,:focus {
-  color: #ffffff;
-  background: #2B442B;
-  border: 1px solid #2B442B;
-  text-shadow: 0 0 5px #ffffff,
-              0 0 10px #ffffff,
-              0 0 20px #ffffff;
-  box-shadow: 0 0 5px #2B442B,
-              0 0 20px #2B442B,
-              0 0 50px #2B442B,
-              0 0 100px #2B442B;
-}
-@media only screen and (max-width: 600px) {
-  .button2 {
-    font-size: 3vw;
-    
-  }
-} */
-.cs1{
-    background-color:black;
-    color: #000;
-}
-.cssbac{
-  background-image: linear-gradient( #09203f 0%, #537895 100%);
-  size: cover;
-}
-.blockline {
-  height: 2.5vh;
-  background-color: #232427;
-}
 sh-x{
   box-shadow: 2px 7px 20px 10px rgba(17, 17, 17, 1);
   /* box-shadow: 2px 7px 20px 11px rgba(255, 255, 255, 0.51); */
@@ -59,26 +14,14 @@ sh-x{
 sh-x2{
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
-.fogoo{
-  font-family: 'Kenia', sans-serif;
-  font-family: 'Libre Bodoni', serif;
-  font-family: 'Noto Sans Thai', sans-serif;
-  font-family: 'Noto Sans Thai Looped', sans-serif;
-}
 .block1 {
   background-image: url('../Photo/gilles-lambert-mSK5nNsAsLY-unsplash.jpg');
   background-size: cover;
-  
-  height: 95vh;
+  height: 100vh;
 }
-
 .block11{
-  margin-top: 20.5vh;
+  margin-top: 25.5vh;
 }
-/* .brx{
-  margin-top: 3vh;
-} */
-
 .block3 {
   height: 90vh;
   background-color: #0B0D0C;
@@ -169,7 +112,8 @@ sh-x2{
   .iconef i:hover {
     font-size: 30px;
   }
-  .magicpattern { 
+
+.magicpattern { 
     top: 70px;
     right: 80%;
     width: 500px;
@@ -178,7 +122,7 @@ sh-x2{
     /* Prevent background image from repeating */
     background-image: url("data:image/svg+xml;utf8,%3Csvg viewBox=%220 0 1000 1000%22 xmlns=%22http:%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cdefs%3E%3CclipPath id=%22a%22%3E%3Cpath fill=%22currentColor%22 d=%22M790 641.5Q664 783 460 852.5T130.5 711Q5 500 156 333t361-196.5q210-29.5 304.5 167t-31.5 338Z%22%2F%3E%3C%2FclipPath%3E%3C%2Fdefs%3E%3Cg clip-path=%22url(%23a)%22%3E%3Cpath fill=%22%23fff%22 d=%22M790 641.5Q664 783 460 852.5T130.5 711Q5 500 156 333t361-196.5q210-29.5 304.5 167t-31.5 338Z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
   }
-  .magicpattern-2{ 
+.magicpattern-2{ 
     top: 70px;
     right: 10%;
     width: 500px;
@@ -197,7 +141,6 @@ sh-x2{
     /* Add some padding or spacing if needed */
     /* padding: 220px; */
     /* Add a semi-transparent overlay for better readability of content */
-    
   }
   /* @media screen and (max-width: 1000px) {
     .emoji-main{
