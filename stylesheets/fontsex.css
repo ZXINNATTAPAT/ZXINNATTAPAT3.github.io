@@ -1,0 +1,8 @@
+.word{
+    color: #FFFFFF;
+    display: inline-block;
+  }
+.font-add{
+    font-family: 'Inter ', sans-serif;
+    font-size: 48px;
+}
