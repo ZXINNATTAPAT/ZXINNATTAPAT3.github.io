@@ -191,14 +191,14 @@ sh-x2{
     /* padding: 220px; */
     /* Add a semi-transparent overlay for better readability of content */
   }
-  /* @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1000px) {
     .emoji-main{
       display: none;
     }
     .wave{
       display: none;
     }
-  } */
+  }
 
   @media screen and (max-width: 767px) {
     /* .wave{
