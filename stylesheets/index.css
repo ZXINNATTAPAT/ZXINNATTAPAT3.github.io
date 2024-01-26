@@ -1,3 +1,4 @@
+@import "https://unpkg.com/transition-style/transition.hackpack.min.css";
 * {
   box-sizing: border-box;
   scroll-behavior: smooth;
@@ -35,6 +36,20 @@
 *::-webkit-scrollbar-thumb:active {
   background-color: #FFFFFF;
 }
+
+@keyframes wipe-in-up {
+  from {
+    clip-path: inset(100% 0 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+[transition-style="in:wipe:up"] {
+  animation: 2.5s cubic-bezier(.25, 1, .30, 1) wipe-in-up both;
+}
+
 .language-icon {
   font-size: 3.5rem;
   margin: 1.0rem;
@@ -70,7 +85,8 @@ sh-x2{
   background-size: cover;
 }
 .block11{
-  margin-top: 25.5vh;
+  text-align: center;
+  margin-top: 20.5vh;
 }
 .block3 {
   height: 90vh;
@@ -191,6 +207,9 @@ sh-x2{
     /* padding: 220px; */
     /* Add a semi-transparent overlay for better readability of content */
   }
+  .shd{
+    box-shadow: 2px 7px 20px 10px rgba(17, 17, 17, 1);
+  }
   @media screen and (max-width: 1000px) {
     .emoji-main{
       display: none;
@@ -212,6 +231,7 @@ sh-x2{
       height: 100vh;
     }
     .block11{
+      text-align: left;
       margin-top: 10vh;
       height: auto;
     }
