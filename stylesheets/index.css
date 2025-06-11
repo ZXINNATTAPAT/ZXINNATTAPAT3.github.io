@@ -71,10 +71,77 @@ sh-x{
 sh-x2{
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
-.block1 {
-  background-image: url('../Photo/gilles-lambert-msk5nnsasly-unsplash.avif');
+
+.bg-nmain {
+  position: relative;
+  background-image: url('../Photo/DSCF2374.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right center;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.bg-nmain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to left, rgba(255,255,255,0.7), rgba(255,255,255,0)); /* ไล่ขาวจากขวาไปซ้าย */
+  backdrop-filter: blur(3px); /* เพิ่มความละมุนอีกนิด */
+  z-index: 1;
+  pointer-events: none;
+}
+.bg-nmain > * {
+  position: relative;
+  z-index: 2;
+}
+.bg-cleanmain {
+  position: relative;
+  background-image: url('../Photo/DSCF2374.jpg');
   background-size: cover;
-  height: 100vh;
+  background-repeat: no-repeat;
+  background-position: center center;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: 24px;
+  min-height: 40vh; /* ค่าเริ่มต้นสำหรับมือถือ */
+}
+
+/* 👉 สำหรับหน้าจอกว้างกว่า 768px (Tablet ขึ้นไป) */
+@media (min-width: 768px) {
+  .bg-cleanmain {
+    min-height: 70vh;
+  }
+}
+
+.bg-cleanmain > * {
+  position: relative;
+  z-index: 1; /* ให้เนื้อหาอยู่เหนือพื้นหลัง */
+}
+.bg-cleanmain2 {
+  position: relative;
+  background-image: url('../Photo/retouch_2025051920044956.jpg');
+   background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.bg-cleanmain2 > * {
+  position: relative;
+  z-index: 1; /* ให้เนื้อหาอยู่เหนือพื้นหลัง */
+}
+
+.dashed-border {
+  border: 1.5px dashed #2C2C2C; /* ความหนา 2px, สีทอง */
+ border-radius: 0;    /* มุมโค้ง */
+  padding: 1rem;
+}
+
+.bg-submain {
+  background-image: url('../Photo/20230220_005806.jpg');
+  background-size: cover;
 }
 .bg-main {
   background-image: url('../Photo/gilles-lambert-msk5nnsasly-unsplash.avif');
@@ -114,6 +181,41 @@ sh-x2{
 .container1{
   box-sizing: border-box;
 }
+.responsive-profile {
+  font-size: 64px;
+}
+
+@media (min-width: 768px) {
+  .responsive-profile {
+    font-size: 64px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .responsive-profile {
+    font-size: 74px;
+  }
+}
+.section-title {
+  font-size: 54px;
+}
+
+@media (min-width: 768px) {
+  .section-title {
+    font-size: 64px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .section-title {
+    font-size: 84px;
+  }
+}
+img:hover {
+  transform: scale(1.02);
+  transition: transform 0.3s ease-in-out;
+}
+
 .borderef {
     position: relative;
     height: 342px;
@@ -210,102 +312,90 @@ sh-x2{
   .shd{
     box-shadow: 2px 7px 20px 10px rgba(17, 17, 17, 1);
   }
-  @media screen and (max-width: 1000px) {
-    .emoji-main{
-      display: none;
-    }
-    .wave{
-      display: none;
-    }
+
+  .scroll-wrapper {
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
   }
 
-  @media screen and (max-width: 767px) {
-    /* .wave{
-      display: none;
-    } */
-    .emoji-main{
-      display: none;
-    }
-    
-    .block1{
-      height: 100vh;
-    }
-    .block11{
-      text-align: left;
-      margin-top: 10vh;
-      height: auto;
-    }
-    .brx{
-      margin-top: 0vh;
-    }
+  .mockup-card {
+    scroll-snap-align: start;
+    transition: transform 0.3s ease;
+  }
 
-    .borderef {
-      position: relative;
-      height: 242px;
-      width: 160px;
-      background: transparent;
-      border-radius: 15px;
-      border: 2px solid #fff;
-      opacity: 0;
-      transition: 1.5s ease;
-    }
-    .borderef:hover {
-      opacity: 1;
-    }
-    .cardef {
-      height: 279px;
-      width: 200px;
-      background: #808080;
-      margin: 30px;
-      border-radius: 20px;
-      transition: .8s ease;
-      overflow: hidden;
-      box-shadow: 0 0 10px rgba(0, 0, 0, .3);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .card0ef {
-      background: url("../Photo/371488979_690728899700823_6830333154561649852_n.jpg") center center no-repeat;
-      background-size: 200px;
-    }
-    .card0ef:hover {
-      background: url("../Photo/371488979_690728899700823_6830333154561649852_n.jpg") left center no-repeat;
-      background-size: 280px;
-    }
-    .h2ef {
-      position: absolute;
-      bottom: 142.5px;
-      left: 25px;
-      width: 15px;
-      color:#fff;
-      font-size: 15px;
-      line-height: 1;
-      text-shadow: 0 0 10px rgba(0, 0, 0, .5);
-    }
-    .iconef {
-      position: absolute;
-      fill: #fff;
-      color: #fff;
-      height: 100px;
-      bottom: 30px;
-      width: 70px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-around;
-    }
-    .iconef i {
-      font-size: 20px;
-      transition: .2s ease;
-    }
-    .iconef i:hover {
-      font-size: 30px;
-    }
+  .mockup-card:hover {
+    transform: translateY(-6px);
   }
-  .cssbac2{
-    background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(100,43,115,1) 0%, rgba(4,0,4,1) 90% );
+
+  .scroll-wrapper::-webkit-scrollbar {
+    height: 8px;
   }
+
+  .scroll-wrapper::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 4px;
+  }
+
+  /* From Uiverse.io by bociKond */ 
+.container-add {
+   width: 100%;
+  height: 100%;
+  --s: 84px;
+  --c1: #f2f2f2;
+  --c2: #cdcbcc;
+  --c3: #999999;
+
+  --_g: 0 120deg, #0000 0;
+  background: conic-gradient(
+      from 0deg at calc(500% / 6) calc(100% / 3),
+      var(--c3) var(--_g)
+    ),
+    conic-gradient(
+      from -120deg at calc(100% / 6) calc(100% / 3),
+      var(--c2) var(--_g)
+    ),
+    conic-gradient(
+      from 120deg at calc(100% / 3) calc(500% / 6),
+      var(--c1) var(--_g)
+    ),
+    conic-gradient(
+      from 120deg at calc(200% / 3) calc(500% / 6),
+      var(--c1) var(--_g)
+    ),
+    conic-gradient(
+      from -180deg at calc(100% / 3) 50%,
+      var(--c2) 60deg,
+      var(--c1) var(--_g)
+    ),
+    conic-gradient(
+      from 60deg at calc(200% / 3) 50%,
+      var(--c1) 60deg,
+      var(--c3) var(--_g)
+    ),
+    conic-gradient(
+      from -60deg at 50% calc(100% / 3),
+      var(--c1) 120deg,
+      var(--c2) 0 240deg,
+      var(--c3) 0
+    );
+  background-size: calc(var(--s) * 1.732) var(--s);
+}
+.cardshadows:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+.backdrop-blur-custom {
+  backdrop-filter: blur(8px); /* Blur effect */
+  -webkit-backdrop-filter: blur(8px);
+  transition: background-color 0.3s ease;
+}
+
+
+
+
+  
 
   /* Navcss */
  

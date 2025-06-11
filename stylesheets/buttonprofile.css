@@ -1,0 +1,97 @@
+.custom-learn-more-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 2.5rem;
+  border: 2px solid #A30000;
+  background: transparent;
+  color: #A30000;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  overflow: hidden;
+  transition:
+    color 0.3s ease-in-out,
+    border-color 0.3s ease-in-out;
+}
+
+.custom-learn-more-btn .circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 3rem;
+  height: 3rem;
+  background: #A30000;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.5s ease-in-out;
+  z-index: -1;
+}
+
+.custom-learn-more-btn .button-text {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.custom-learn-more-btn .arrow {
+  width: 14px;
+  height: 2px;
+  background: #A30000;
+  position: relative;
+  transition:
+    transform 0.3s ease-in-out,
+    background 0.3s ease-in-out;
+}
+
+.custom-learn-more-btn .arrow::after {
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-right: 2px solid #A30000;
+  border-top: 2px solid #A30000;
+  transform: rotate(45deg);
+  right: -2px;
+  top: -3px;
+  transition: border-color 0.3s ease-in-out;
+}
+
+.custom-learn-more-btn:hover {
+  background-color: #A30000;
+  color: #fff;
+  border-color: transparent;
+}
+
+.custom-learn-more-btn:hover .circle {
+  transform: translate(-50%, -50%) scale(4);
+}
+
+.custom-learn-more-btn:hover .arrow {
+  background: #fff;
+  transform: translateX(5px);
+}
+
+.custom-learn-more-btn:hover .arrow::after {
+  border-color: #fff;
+}
+
+.custom-learn-more-btn:active {
+  transform: scale(0.98);
+  background-color: #A30000 ;
+  color: #fff !important;
+  border-color: #A30000;
+}
+
+.custom-learn-more-btn:active .arrow {
+  background: #fff;
+}
+
+.custom-learn-more-btn:active .arrow::after {
+  border-color: #fff;
+}
+

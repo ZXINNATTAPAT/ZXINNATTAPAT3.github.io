@@ -3,15 +3,57 @@
     display: inline-block;
   }
 .font-add{
-    -webkit-text-stroke-width: 3px;
-    -webkit-text-stroke-color: white;
     font-family: 'Inter ', sans-serif;
-    font-size: 140px;
+    font-size: 18px;
 }
 .font-add2{
     font-family: 'Inter ', sans-serif;
     font-size: 18px;
 }
+.playfair-400{
+  font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.playfair-500{
+  font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+}
+.playfair-600{
+  font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+}
+.parisienne-regular {
+  font-family: "Parisienne", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.dm-serif-display-regular {
+  font-family: "DM Serif Display", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.dm-serif-display-regular-italic {
+  font-family: "DM Serif Display", serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.unifrakturmaguntia-regular {
+  font-family: "UnifrakturMaguntia", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+
+
 
 @media screen and (max-width: 1600px){
     
