@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://zxinnattapat3.github.io/sitemap.xml
+Sitemap:https://zxinnattapat.github.io/ZXINNATTAPAT3.github.io/sitemap.xml
 
