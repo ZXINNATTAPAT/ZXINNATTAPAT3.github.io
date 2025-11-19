@@ -40,10 +40,6 @@
   <!-- Canonical URL -->
   <link rel="canonical" href="https://zxinnattapat3.github.io" />
 
-  <!-- Language Support -->
-  <link rel="alternate" hreflang="th" href="https://zxinnattapat3.github.io" />
-  <link rel="alternate" hreflang="en" href="https://zxinnattapat3.github.io" />
-  <link rel="alternate" hreflang="x-default" href="https://zxinnattapat3.github.io" />
 
   <!-- Favicon -->
   <link rel="icon" href="Photo/favicon.ico" type="image/x-icon" />
@@ -359,7 +355,7 @@
         <div class="col-12 col-lg-6">
           <div class="profile-block h-100">
             <h4 class="profile-heading playfair-400 mb-3">About Me</h4>
-            <p class="playfair-400 m-0" style="font-size: 16px" data-i18n="about.description">
+            <p class="playfair-400 m-0" style="font-size: 16px">
               Hi there! I'm Nattapat Phungphugdee — a Full Stack Developer in the making.<br />
               Currently a 4th-year Computer Science student at King Mongkut's University of Technology North
               Bangkok.<br />
@@ -770,7 +766,7 @@
       </h2>
       <p class="text-center mb-5 playfair-400"
         style="max-width: 680px; margin: 0 auto; font-size: 17px; line-height: 1.6; color: #86868b" data-aos="fade-up"
-        data-aos-delay="100" data-i18n="automation.description">
+        data-aos-delay="100">
         Streamlining workflows and connecting systems with automation tools and integration platforms.
       </p>
 
@@ -905,12 +901,10 @@
             <!-- Text Content -->
             <div>
               <h5 class="dm-serif-display-regular mb-3"
-                style="color: #1d1d1f; font-size: 1.5rem; font-weight: 600; letter-spacing: -0.3px"
-                data-i18n="automation.makecom.title">
+                style="color: #1d1d1f; font-size: 1.5rem; font-weight: 600; letter-spacing: -0.3px">
                 Make.com
               </h5>
-              <p class="playfair-400 mb-0" style="line-height: 1.6; color: #515154; font-size: 15px"
-                data-i18n="automation.makecom.description">
+              <p class="playfair-400 mb-0" style="line-height: 1.6; color: #515154; font-size: 15px">
                 Workflow automation and integration platform. Building complex scenarios to connect apps, automate
                 processes, and streamline business operations.
               </p>
@@ -987,12 +981,10 @@
             <!-- Text Content -->
             <div>
               <h5 class="dm-serif-display-regular mb-3"
-                style="color: #1d1d1f; font-size: 1.5rem; font-weight: 600; letter-spacing: -0.3px"
-                data-i18n="automation.playwright.title">
+                style="color: #1d1d1f; font-size: 1.5rem; font-weight: 600; letter-spacing: -0.3px">
                 Playwright
               </h5>
-              <p class="playfair-400 mb-0" style="line-height: 1.6; color: #515154; font-size: 15px"
-                data-i18n="automation.playwright.description">
+              <p class="playfair-400 mb-0" style="line-height: 1.6; color: #515154; font-size: 15px">
                 End-to-end testing framework for web applications. Writing reliable tests across multiple browsers with
                 modern automation capabilities.
               </p>
@@ -1067,12 +1059,10 @@
             <!-- Text Content -->
             <div>
               <h5 class="dm-serif-display-regular mb-3"
-                style="color: #1d1d1f; font-size: 1.5rem; font-weight: 600; letter-spacing: -0.3px"
-                data-i18n="automation.cicd.title">
+                style="color: #1d1d1f; font-size: 1.5rem; font-weight: 600; letter-spacing: -0.3px">
                 CI/CD
               </h5>
-              <p class="playfair-400 mb-0" style="line-height: 1.6; color: #515154; font-size: 15px"
-                data-i18n="automation.cicd.description">
+              <p class="playfair-400 mb-0" style="line-height: 1.6; color: #515154; font-size: 15px">
                 Continuous Integration and Deployment pipelines. Automating build, test, and deployment processes for
                 faster and more reliable releases.
               </p>
@@ -2253,24 +2243,6 @@
     }
   </script>
 
-  <!-- i18n Language Support -->
-  <script src="i18n.js"></script>
-  <script>
-    // Ensure toggleLanguage works after page load
-    document.addEventListener('DOMContentLoaded', function () {
-      const langToggle = document.getElementById('langToggle');
-      if (langToggle) {
-        langToggle.addEventListener('click', function (e) {
-          e.preventDefault();
-          if (typeof window.toggleLanguage === 'function') {
-            window.toggleLanguage();
-          } else {
-            console.error('toggleLanguage function not found');
-          }
-        });
-      }
-    });
-  </script>
 
   <!-- AOS Animation Init -->
   <script>
