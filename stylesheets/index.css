@@ -3013,3 +3013,135 @@ textarea.form-control-minimal:focus {
 .project-modal-body::-webkit-scrollbar-thumb:hover {
   background: #8a0000;
 }
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  /* Hide Navigation on Mobile */
+  nav.sticky-top.backdrop-blur-custom.primary-nav {
+    display: none !important;
+  }
+
+  /* Hide scroll progress on mobile */
+  .scroll-progress {
+    display: none !important;
+  }
+
+  /* Add spacing between sections on mobile */
+  section.container-fluid {
+    margin-bottom: 2.5rem !important;
+  }
+
+  section {
+    margin-bottom: 2.5rem !important;
+  }
+
+  /* Increase padding for sections on mobile */
+  section.container-fluid > .container {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+
+  /* Profile section mobile spacing */
+  section#profile.container-fluid {
+    padding-bottom: 2rem !important;
+  }
+
+  section#profile.container-fluid > .container {
+    padding-top: 2rem !important;
+  }
+
+  /* Skills section mobile spacing */
+  section.container-fluid[style*="background-color: #f8f8ff"] {
+    padding-bottom: 2rem !important;
+  }
+
+  /* Automation section mobile spacing */
+  section.container-fluid[style*="linear-gradient"] {
+    padding-bottom: 2rem !important;
+  }
+
+  /* Portfolio section mobile spacing */
+  section#portfolio.container-fluid {
+    padding-bottom: 2rem !important;
+  }
+
+  section#portfolio.container-fluid > .container {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+
+  /* UI/UX Projects section mobile spacing */
+  section.container-fluid[style*="background-color: #ffffff"] {
+    padding-bottom: 2rem !important;
+  }
+
+  section.container-fluid[style*="background-color: #ffffff"] > .container {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+
+  /* Portfolio List section mobile spacing */
+  section#portfolio-list.container-fluid {
+    padding-bottom: 2rem !important;
+  }
+
+  /* Experience section mobile spacing */
+  section#experience.container-fluid {
+    padding-bottom: 2rem !important;
+  }
+
+  section#experience.container-fluid > .container {
+    padding-top: 2rem !important;
+  }
+
+  /* Certificates section mobile spacing */
+  section#certificates {
+    padding-bottom: 2rem !important;
+  }
+
+  section#certificates > .container {
+    padding-top: 2rem !important;
+  }
+
+  /* Animated Divider mobile spacing */
+  .container-fluid[style*="background-color: #f8f8ff"]:not(section) {
+    padding-bottom: 1rem !important;
+    padding-top: 1.5rem !important;
+  }
+
+  /* Adjust container padding for better mobile spacing */
+  .container {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  /* Reduce margin for better mobile layout */
+  .row {
+    margin-left: -0.5rem !important;
+    margin-right: -0.5rem !important;
+  }
+
+  .row > * {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+  }
+
+  /* Hero section mobile adjustments */
+  header#home {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+}
+
+/* Tablet adjustments */
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* Show navigation on tablet */
+  nav.sticky-top.backdrop-blur-custom.primary-nav {
+    display: block !important;
+  }
+
+  /* Moderate spacing for tablet */
+  section.container-fluid {
+    margin-bottom: 1.5rem !important;
+  }
+}
