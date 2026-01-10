@@ -1,82 +1,177 @@
 .social-buttons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background:none;
-    /* box-shadow: 0px 0px 15px #00000027; */
-    /* padding: 15px 10px; */
-    /* border-radius: 5em; */
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  background: none;
+}
+
+.social-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 50px;
+  font-family: 'Playfair Display', serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  color: #fff;
+  background-color: #1d1d1f;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.social-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s;
+}
+
+.social-button:hover::before {
+  left: 100%;
+}
+
+.social-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.social-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.social-buttons svg,
+.social-buttons img {
+  width: 18px;
+  height: 18px;
+}
+
+.social-buttons svg {
+  fill: #fff;
+}
+
+/* TikTok specific - don't apply filter to img */
+.tiktok img {
+  filter: none !important;
+  width: 18px !important;
+  height: 18px !important;
+  object-fit: contain;
+}
+
+/* Individual button colors */
+.facebook {
+  background: linear-gradient(135deg, #3b5998 0%, #2d4373 100%);
+}
+
+.github {
+  background: linear-gradient(135deg, #333 0%, #1a1a1a 100%);
+}
+
+.linkedin {
+  background: linear-gradient(135deg, #0077b5 0%, #005885 100%);
+}
+
+.instagram {
+  background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+}
+
+.medium {
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+}
+
+.tiktok {
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+}
+
+.youtube {
+  background: linear-gradient(135deg, #FF0000 0%, #CC0000 100%);
+}
+
+/* Hero Section - Icon Only (Circular) */
+.hero-social-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.hero-social-buttons .social-button {
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  border-radius: 50%;
+  gap: 0;
+}
+
+.hero-social-buttons .social-button span {
+  display: none;
+}
+
+.hero-social-buttons svg,
+.hero-social-buttons img {
+  width: 22px;
+  height: 22px;
+  margin: 0;
+}
+
+/* Override white fill for hero icons */
+.hero-social-buttons svg {
+  fill: #fff !important;
+}
+
+.hero-social-buttons .github svg {
+  fill: #fff !important;
+}
+
+.hero-social-buttons .linkedin svg {
+  fill: #fff !important;
+}
+
+.hero-social-buttons .facebook svg {
+  fill: #fff !important;
+}
+
+.hero-social-buttons .instagram svg {
+  fill: #fff !important;
+}
+
+.hero-social-buttons .medium svg {
+  fill: #fff !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
   .social-button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin: 0 10px;
-    background-color: #fff;
-    box-shadow: 0px 0px 4px #00000027;
-    transition: 0.3s;
+    padding: 10px 20px;
+    font-size: 13px;
   }
   
-  .social-button:hover {
-    background-color: #f2f2f2;
-    box-shadow: 0px 0px 6px 3px #00000027;
+  .social-buttons svg,
+  .social-buttons img {
+    width: 16px;
+    height: 16px;
   }
   
-  .social-buttons svg {
-    transition: 0.3s;
+  .hero-social-buttons .social-button {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .hero-social-buttons svg,
+  .hero-social-buttons img {
+    width: 20px;
     height: 20px;
   }
-  
-  .facebook {
-    background-color: #3b5998;
-  }
-  
-  .facebook svg {
-    fill: #f2f2f2;
-  }
-  
-  .facebook:hover svg {
-    fill: #3b5998;
-  }
-  
-  .github {
-    background-color: #333;
-  }
-  
-  .github svg {
-    width: 25px;
-    height: 25px;
-    fill: #f2f2f2;
-  }
-  
-  .github:hover svg {
-    fill: #333;
-  }
-  
-  .linkedin {
-    background-color: #0077b5;
-  }
-  
-  .linkedin svg {
-    fill: #f2f2f2;
-  }
-  
-  .linkedin:hover svg {
-    fill: #0077b5;
-  }
-  
-  .instagram {
-    background-color: #c13584;
-  }
-  
-  .instagram svg {
-    fill: #f2f2f2;
-  }
-  
-  .instagram:hover svg {
-    fill: #c13584;
-  }
-  
+}
