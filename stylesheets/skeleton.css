@@ -123,8 +123,11 @@
   }
   
   .skeleton-navbar .skeleton-text:last-child {
-    width: 60px !important;
-    height: 18px !important;
+    display: none !important;
+  }
+  
+  .skeleton-navbar .skeleton-box {
+    display: block !important;
   }
   
   .skeleton-hero-title .skeleton-text {
