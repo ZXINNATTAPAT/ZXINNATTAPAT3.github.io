@@ -8,6 +8,7 @@
   </title>
   <link rel="icon" href="Photo/optimized/Logo.png" type="image/png">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="Permissions-Policy" content="accelerometer=(), gyroscope=(), magnetometer=(), payment=(), usb=(), interest-cohort=()" />
   <meta name="description"
     content="Hi there! I'm Nattapat Phungphugdee — a Full Stack Developer specializing in Next.js, React, and backend engineering. Computer Science graduate from King Mongkut's University of Technology North Bangkok (KMUTNB). Currently working as a Software Developer, passionate about clean code, practical design, and building meaningful digital experiences. Experienced in full stack development, software architecture, and modern web technologies." />
   <meta name="keywords"
@@ -48,7 +49,7 @@
 
 
   <!-- Favicon -->
-  <link rel="icon" href="Photo/favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="Photo/Logo.png" type="image/png" />
 
   <!-- Schema.org JSON-LD -->
   <script type="application/ld+json">
@@ -168,9 +169,8 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" media="print" onload="this.media='all'" />
   <noscript><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" /></noscript>
   <!-- AOS Animation -->
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" media="print" onload="this.media='all'" />
-  <noscript><link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" /></noscript>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
@@ -883,7 +883,17 @@
     </div>
   </section>
 
-  <script async src="https://www.tiktok.com/embed.js"></script>
+  <!-- TikTok Embed Script - Deferred for better performance -->
+  <script>
+    // Load TikTok embed script after page load to reduce main thread blocking
+    window.addEventListener('load', function() {
+      var script = document.createElement('script');
+      script.src = 'https://www.tiktok.com/embed.js';
+      script.async = true;
+      script.defer = true;
+      document.body.appendChild(script);
+    });
+  </script>
 
   <!-- Automation & Integration Tools Section -->
   <section class="container-fluid"
@@ -2371,38 +2381,45 @@
 
   <!-- AOS Animation Init -->
   <script>
-    AOS.init({
-      once: true,
-      duration: 800,
-      offset: 100,
+    // Initialize AOS after DOM is ready
+    document.addEventListener('DOMContentLoaded', function() {
+      if (typeof AOS !== 'undefined') {
+        AOS.init({
+          once: true,
+          duration: 800,
+          offset: 100,
+        });
+      }
     });
   </script>
 
   <!-- Loading Skeleton Script -->
   <script>
-    // Hide loading skeleton when page is fully loaded
-    window.addEventListener('load', function() {
-      const skeleton = document.getElementById('loading-skeleton');
-      
-      // Add fade-out class
-      skeleton.classList.add('fade-out');
-      
-      // Remove from DOM after animation completes
-      setTimeout(function() {
-        skeleton.style.display = 'none';
-      }, 500);
-    });
-    
-    // Fallback: Hide skeleton after 3 seconds if load event doesn't fire
-    setTimeout(function() {
+    // Hide loading skeleton as fast as possible
+    function hideSkeleton() {
       const skeleton = document.getElementById('loading-skeleton');
       if (skeleton && skeleton.style.display !== 'none') {
-        skeleton.classList.add('fade-out');
-        setTimeout(function() {
+        // Hide immediately with minimal animation
+        skeleton.style.opacity = '0';
+        skeleton.style.transition = 'opacity 100ms';
+        
+        // Remove from DOM quickly
+        requestAnimationFrame(function() {
           skeleton.style.display = 'none';
-        }, 500);
+        });
       }
-    }, 3000);
+    }
+    
+    // Hide skeleton immediately when DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', hideSkeleton);
+    } else {
+      // DOM already loaded - hide immediately
+      requestAnimationFrame(hideSkeleton);
+    }
+    
+    // Fallback: Hide skeleton after 800ms maximum
+    setTimeout(hideSkeleton, 800);
   </script>
 </body>
 
