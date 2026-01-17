@@ -5,7 +5,9 @@
   "scripts": {
     "build": "node build.js",
     "watch": "node build.js --watch",
-    "dev": "node build.js --watch"
+    "dev": "node build.js --watch",
+    "optimize-images": "node build.js --optimize-images",
+    "build:all": "npm run optimize-images && npm run build"
   },
   "keywords": [
     "portfolio",
@@ -16,6 +18,7 @@
   "license": "MIT",
   "devDependencies": {
     "marked": "^11.1.1",
-    "front-matter": "^4.0.2"
+    "front-matter": "^4.0.2",
+    "sharp": "^0.33.0"
   }
 }

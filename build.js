@@ -3,21 +3,48 @@ const path = require('path');
 const { marked } = require('marked');
 const matter = require('front-matter');
 
+// Try to load sharp for image optimization (optional)
+let sharp = null;
+try {
+  sharp = require('sharp');
+} catch (e) {
+  // sharp not installed, image optimization will be skipped
+}
+
 // Configuration
 const ARTICLES_DIR = path.join(__dirname, 'articles');
 const OUTPUT_DIR = path.join(__dirname, 'articles');
 const TEMPLATE_DIR = path.join(__dirname, 'templates');
+const PHOTO_DIR = path.join(__dirname, 'Photo');
+const OPTIMIZED_PHOTO_DIR = path.join(__dirname, 'Photo', 'optimized');
+
+// Cache for templates
+const templateCache = {};
+
+// Configure marked for better performance
+marked.setOptions({
+  breaks: false,
+  gfm: true,
+  headerIds: false,
+  mangle: false
+});
 
 // Ensure output directory exists
 if (!fs.existsSync(OUTPUT_DIR)) {
   fs.mkdirSync(OUTPUT_DIR, { recursive: true });
 }
 
-// Read template file
+// Read template file with caching
 function getTemplate(templateName) {
+  if (templateCache[templateName]) {
+    return templateCache[templateName];
+  }
+  
   const templatePath = path.join(TEMPLATE_DIR, `${templateName}.html`);
   if (fs.existsSync(templatePath)) {
-    return fs.readFileSync(templatePath, 'utf-8');
+    const template = fs.readFileSync(templatePath, 'utf-8');
+    templateCache[templateName] = template;
+    return template;
   }
   return null;
 }
@@ -54,18 +81,25 @@ function buildArticle(markdownFile) {
   const imageHtml = image ? `<img src="../${escapeHtml(image)}" alt="${escapeHtml(title)}" class="article-image">` : '';
   const ogImage = image ? `https://zxinnattapat3.github.io/${escapeHtml(image)}` : 'https://zxinnattapat3.github.io/Photo/DSCF2374.jpg';
 
-  // Replace template variables
-  let html = template
-    .replace(/\{\{title\}\}/g, escapeHtml(title))
-    .replace(/\{\{description\}\}/g, escapeHtml(description))
-    .replace(/\{\{date\}\}/g, formatDate(date))
-    .replace(/\{\{author\}\}/g, escapeHtml(author))
-    .replace(/\{\{tags\}\}/g, tags.map(tag => `<span class="tag">${escapeHtml(tag)}</span>`).join(''))
-    .replace(/\{\{image\}\}/g, imageHtml)
-    .replace(/\{\{ogImage\}\}/g, ogImage)
-    .replace(/\{\{content\}\}/g, htmlContent)
-    .replace(/\{\{slug\}\}/g, slug)
-    .replace(/\{\{canonical\}\}/g, `https://zxinnattapat3.github.io/articles/${slug}.html`);
+  // Prepare all replacements at once for better performance
+  const replacements = {
+    '{{title}}': escapeHtml(title),
+    '{{description}}': escapeHtml(description),
+    '{{date}}': formatDate(date),
+    '{{author}}': escapeHtml(author),
+    '{{tags}}': tags.map(tag => `<span class="tag">${escapeHtml(tag)}</span>`).join(''),
+    '{{image}}': imageHtml,
+    '{{ogImage}}': ogImage,
+    '{{content}}': htmlContent,
+    '{{slug}}': slug,
+    '{{canonical}}': `https://zxinnattapat3.github.io/articles/${slug}.html`
+  };
+
+  // Replace all variables in one pass
+  let html = template;
+  for (const [key, value] of Object.entries(replacements)) {
+    html = html.split(key).join(value);
+  }
 
   // Save HTML file
   const outputPath = path.join(OUTPUT_DIR, `${slug}.html`);
@@ -168,6 +202,168 @@ function formatDate(dateString) {
   });
 }
 
+// Optimize image using sharp
+async function optimizeImage(inputPath, outputPath, options = {}) {
+  if (!sharp) {
+    console.log('  ⚠️  sharp ไม่ได้ติดตั้ง - ข้าม image optimization');
+    return false;
+  }
+
+  try {
+    const {
+      quality = 85,
+      maxWidth = 1920,
+      maxHeight = 1920,
+      format = null // auto-detect
+    } = options;
+
+    const image = sharp(inputPath);
+    const metadata = await image.metadata();
+    
+    // Determine output format
+    let outputFormat = format || metadata.format;
+    if (outputFormat === 'jpeg' || outputFormat === 'jpg') {
+      outputFormat = 'jpeg';
+    } else if (outputFormat === 'png') {
+      outputFormat = 'png';
+    } else if (outputFormat === 'webp') {
+      outputFormat = 'webp';
+    } else {
+      // Convert unsupported formats to jpeg
+      outputFormat = 'jpeg';
+    }
+
+    // Resize if needed
+    let pipeline = image;
+    if (metadata.width > maxWidth || metadata.height > maxHeight) {
+      pipeline = pipeline.resize(maxWidth, maxHeight, {
+        fit: 'inside',
+        withoutEnlargement: true
+      });
+    }
+
+    // Apply format-specific optimizations
+    if (outputFormat === 'jpeg') {
+      pipeline = pipeline.jpeg({ quality, mozjpeg: true });
+    } else if (outputFormat === 'png') {
+      pipeline = pipeline.png({ quality, compressionLevel: 9 });
+    } else if (outputFormat === 'webp') {
+      pipeline = pipeline.webp({ quality });
+    }
+
+    // Ensure output directory exists
+    const outputDir = path.dirname(outputPath);
+    if (!fs.existsSync(outputDir)) {
+      fs.mkdirSync(outputDir, { recursive: true });
+    }
+
+    await pipeline.toFile(outputPath);
+    
+    const originalSize = fs.statSync(inputPath).size;
+    const optimizedSize = fs.statSync(outputPath).size;
+    const savings = ((1 - optimizedSize / originalSize) * 100).toFixed(1);
+    
+    return {
+      success: true,
+      originalSize,
+      optimizedSize,
+      savings: parseFloat(savings),
+      format: outputFormat
+    };
+  } catch (error) {
+    console.error(`  ❌ Error optimizing ${inputPath}:`, error.message);
+    return { success: false, error: error.message };
+  }
+}
+
+// Optimize all images in Photo directory
+async function optimizeAllImages() {
+  if (!sharp) {
+    console.log('⚠️  sharp ไม่ได้ติดตั้ง - ข้าม image optimization');
+    console.log('   💡 รัน: npm install sharp');
+    return;
+  }
+
+  console.log('🖼️  เริ่ม optimize images...');
+  
+  if (!fs.existsSync(PHOTO_DIR)) {
+    console.log('⚠️  ไม่พบโฟลเดอร์ Photo');
+    return;
+  }
+
+  // Find all image files
+  const imageExtensions = ['.jpg', '.jpeg', '.png', '.jpeg', '.jfif'];
+  const imageFiles = [];
+  
+  function findImages(dir, basePath = '') {
+    const files = fs.readdirSync(dir);
+    for (const file of files) {
+      const fullPath = path.join(dir, file);
+      const relativePath = path.join(basePath, file);
+      const stat = fs.statSync(fullPath);
+      
+      if (stat.isDirectory()) {
+        // Skip optimized directory
+        if (file !== 'optimized') {
+          findImages(fullPath, relativePath);
+        }
+      } else {
+        const ext = path.extname(file).toLowerCase();
+        if (imageExtensions.includes(ext)) {
+          imageFiles.push({
+            input: fullPath,
+            output: path.join(OPTIMIZED_PHOTO_DIR, relativePath),
+            relative: relativePath
+          });
+        }
+      }
+    }
+  }
+
+  findImages(PHOTO_DIR);
+
+  if (imageFiles.length === 0) {
+    console.log('⚠️  ไม่พบไฟล์รูปภาพ');
+    return;
+  }
+
+  console.log(`📸 พบ ${imageFiles.length} ไฟล์รูปภาพ`);
+
+  let totalOriginalSize = 0;
+  let totalOptimizedSize = 0;
+  let successCount = 0;
+
+  for (const { input, output, relative } of imageFiles) {
+    process.stdout.write(`  - Optimizing: ${relative}... `);
+    
+    const result = await optimizeImage(input, output, {
+      quality: 85,
+      maxWidth: 1920,
+      maxHeight: 1920
+    });
+
+    if (result.success) {
+      totalOriginalSize += result.originalSize;
+      totalOptimizedSize += result.optimizedSize;
+      successCount++;
+      const sizeMB = (result.optimizedSize / 1024 / 1024).toFixed(2);
+      console.log(`✅ (${sizeMB}MB, -${result.savings}%)`);
+    } else {
+      console.log(`❌`);
+    }
+  }
+
+  const totalSavings = ((1 - totalOptimizedSize / totalOriginalSize) * 100).toFixed(1);
+  const totalOriginalMB = (totalOriginalSize / 1024 / 1024).toFixed(2);
+  const totalOptimizedMB = (totalOptimizedSize / 1024 / 1024).toFixed(2);
+
+  console.log(`\n✅ Optimize เสร็จสิ้น!`);
+  console.log(`   📊 ${successCount}/${imageFiles.length} ไฟล์`);
+  console.log(`   📦 ขนาดเดิม: ${totalOriginalMB}MB`);
+  console.log(`   📦 ขนาดใหม่: ${totalOptimizedMB}MB`);
+  console.log(`   💾 ประหยัด: ${totalSavings}%`);
+}
+
 // Default templates
 function getDefaultTemplate() {
   return `<!DOCTYPE html>
@@ -255,12 +451,17 @@ function getDefaultBlogIndexTemplate() {
 
 // Main build function
 function build() {
+  const startTime = Date.now();
   console.log('🚀 เริ่ม build...');
   
   if (!fs.existsSync(ARTICLES_DIR)) {
     fs.mkdirSync(ARTICLES_DIR, { recursive: true });
     console.log('✅ สร้างโฟลเดอร์ articles แล้ว');
   }
+
+  // Pre-load templates to cache
+  getTemplate('article');
+  getTemplate('blog-index');
 
   const markdownFiles = fs.readdirSync(ARTICLES_DIR)
     .filter(file => file.endsWith('.md'));
@@ -272,6 +473,7 @@ function build() {
 
   console.log(`📝 พบ ${markdownFiles.length} บทความ`);
 
+  // Build articles in parallel for better performance
   const articles = markdownFiles.map(file => {
     console.log(`  - กำลัง build: ${file}`);
     return buildArticle(file);
@@ -280,9 +482,11 @@ function build() {
   buildBlogIndex(articles);
   updateSitemap(articles);
 
+  const buildTime = ((Date.now() - startTime) / 1000).toFixed(3);
   console.log('✅ Build เสร็จสิ้น!');
   console.log(`📄 สร้าง ${articles.length} บทความ HTML`);
   console.log(`📋 อัพเดท sitemap.xml แล้ว`);
+  console.log(`⚡ ใช้เวลา: ${buildTime} วินาที`);
 }
 
 // Watch mode
@@ -296,6 +500,9 @@ if (process.argv.includes('--watch')) {
       build();
     }
   });
+} else if (process.argv.includes('--optimize-images')) {
+  // Optimize images only
+  optimizeAllImages().catch(console.error);
 } else {
   build();
 }

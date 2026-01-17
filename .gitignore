@@ -39,3 +39,6 @@ Thumbs.db
 # Old design files
 /Olddesign/
 Olddesign
+
+# Optimized images (generated files)
+Photo/optimized/
