@@ -1892,28 +1892,27 @@ textarea.form-control-minimal:focus {
 }
 
 .ios-project-content {
-  padding: 24px 20px;
-  background: rgba(255, 255, 255, 0.65);
-  backdrop-filter: blur(30px);
-  -webkit-backdrop-filter: blur(30px);
-  border-radius: 18px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12),
-              0 2px 8px rgba(0, 0, 0, 0.08),
-              inset 0 1px 0 rgba(255, 255, 255, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 24px 24px;
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border-radius: 20px;
+  box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.1),
+              0 0 0 1px rgba(255, 255, 255, 0.4) inset;
+  border: 1px solid rgba(255, 255, 255, 0.4);
   display: flex;
   flex-direction: column;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .ios-project-card:hover .ios-project-content {
-  background: rgba(255, 255, 255, 0.80);
-  backdrop-filter: blur(40px);
-  -webkit-backdrop-filter: blur(40px);
-  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.16),
-              0 4px 12px rgba(0, 0, 0, 0.12),
-              inset 0 1px 0 rgba(255, 255, 255, 0.6);
-  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(32px) saturate(200%);
+  -webkit-backdrop-filter: blur(32px) saturate(200%);
+  box-shadow: 0 20px 40px -4px rgba(0, 0, 0, 0.12),
+              0 0 0 1px rgba(255, 255, 255, 0.7) inset;
+  transform: translateY(-6px) scale(1.02);
+  border-color: rgba(255, 255, 255, 0.6);
 }
 
 .ios-project-title {
@@ -1965,9 +1964,10 @@ textarea.form-control-minimal:focus {
   .ios-project-content {
     padding: 20px 16px;
     border-radius: 16px;
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    background: rgba(255, 255, 255, 0.60);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    background: rgba(255, 255, 255, 0.72);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
   }
   
   .ios-project-title {

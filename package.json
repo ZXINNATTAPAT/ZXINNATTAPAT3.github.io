@@ -1,0 +1,21 @@
+{
+  "name": "zxinnattapat-portfolio",
+  "version": "1.0.0",
+  "description": "Portfolio website with blog/articles for SEO",
+  "scripts": {
+    "build": "node build.js",
+    "watch": "node build.js --watch",
+    "dev": "node build.js --watch"
+  },
+  "keywords": [
+    "portfolio",
+    "blog",
+    "seo"
+  ],
+  "author": "Nattapat Phungphugdee",
+  "license": "MIT",
+  "devDependencies": {
+    "marked": "^11.1.1",
+    "front-matter": "^4.0.2"
+  }
+}

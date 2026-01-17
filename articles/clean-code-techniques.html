@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>เทคนิคการเขียนโค้ดที่ Clean และ Maintainable | Nattapat Phungphugdee</title>
+  <link rel="icon" href="../Photo/Logo.png" type="image/png">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="เรียนรู้หลักการและเทคนิคการเขียนโค้ดที่อ่านง่าย แก้ไขง่าย และดูแลรักษาง่าย สำหรับนักพัฒนาทุกระดับ" />
+  <meta name="author" content="Nattapat Phungphugdee" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="เทคนิคการเขียนโค้ดที่ Clean และ Maintainable" />
+  <meta property="og:description" content="เรียนรู้หลักการและเทคนิคการเขียนโค้ดที่อ่านง่าย แก้ไขง่าย และดูแลรักษาง่าย สำหรับนักพัฒนาทุกระดับ" />
+  <meta property="og:url" content="https://zxinnattapat3.github.io/articles/clean-code-techniques.html" />
+  <meta property="og:image" content="https://zxinnattapat3.github.io/Photo/DSCF2374.jpg" />
+  <meta property="og:locale" content="th_TH" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="เทคนิคการเขียนโค้ดที่ Clean และ Maintainable" />
+  <meta name="twitter:description" content="เรียนรู้หลักการและเทคนิคการเขียนโค้ดที่อ่านง่าย แก้ไขง่าย และดูแลรักษาง่าย สำหรับนักพัฒนาทุกระดับ" />
+  <meta name="twitter:image" content="https://zxinnattapat3.github.io/Photo/DSCF2374.jpg" />
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://zxinnattapat3.github.io/articles/clean-code-techniques.html" />
+
+  <!-- Main Stylesheets -->
+  <link rel="stylesheet" href="../stylesheets/index.css" />
+  <link rel="stylesheet" href="../stylesheets/cardblock2.css" />
+  <link rel="stylesheet" href="../stylesheets/cardslide.css" />
+  <link rel="stylesheet" href="../stylesheets/contact.css" />
+  <link rel="stylesheet" href="../stylesheets/fontsex.css" />
+  <link rel="stylesheet" href="../stylesheets/buttonprofile.css" />
+  <link rel="stylesheet" href="../stylesheets/baseblock.css" />
+
+  <!-- Smooth Transitions -->
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    * {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .article-section {
+      padding: 6rem 0 4rem;
+      min-height: 80vh;
+    }
+
+    .article-wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #667eea;
+      text-decoration: none;
+      margin-bottom: 2rem;
+      font-size: 0.95rem;
+      transition: all 0.3s;
+      font-weight: 500;
+    }
+
+    .back-link:hover {
+      color: #764ba2;
+      gap: 0.8rem;
+    }
+
+    .article-header {
+      background: white;
+      padding: 3rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      margin-bottom: 2rem;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .article-header h1 {
+      font-size: 2.8rem;
+      margin: 0 0 1.5rem 0;
+      color: #2c2c2c;
+      line-height: 1.3;
+      font-weight: 700;
+    }
+
+    .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      color: #666;
+      font-size: 0.95rem;
+      margin: 1.5rem 0;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .article-meta span {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .article-image {
+      width: 100%;
+      border-radius: 12px;
+      margin: 2rem 0;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .tag {
+      display: inline-block;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .article-content {
+      background: white;
+      padding: 3rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .article-content h2 {
+      font-size: 2rem;
+      margin-top: 2.5rem;
+      margin-bottom: 1.2rem;
+      color: #2c2c2c;
+      border-left: 4px solid #667eea;
+      padding-left: 1.2rem;
+      font-weight: 600;
+    }
+
+    .article-content h3 {
+      font-size: 1.5rem;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: #333;
+      font-weight: 600;
+    }
+
+    .article-content p {
+      margin-bottom: 1.5rem;
+      color: #555;
+      line-height: 1.9;
+      font-size: 1.05rem;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      margin: 1.5rem 0;
+      padding-left: 2rem;
+    }
+
+    .article-content li {
+      margin-bottom: 0.8rem;
+      line-height: 1.8;
+      color: #555;
+    }
+
+    .article-content code {
+      background: #f4f4f4;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9em;
+      color: #e83e8c;
+    }
+
+    .article-content pre {
+      background: #1e1e1e;
+      color: #d4d4d4;
+      padding: 1.5rem;
+      border-radius: 12px;
+      overflow-x: auto;
+      margin: 2rem 0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .article-content pre code {
+      background: none;
+      padding: 0;
+      color: inherit;
+    }
+
+    .article-content blockquote {
+      border-left: 4px solid #667eea;
+      padding-left: 1.5rem;
+      margin: 2rem 0;
+      color: #666;
+      font-style: italic;
+      background: #f8f9fa;
+      padding: 1.5rem;
+      border-radius: 8px;
+    }
+
+    .article-content a {
+      color: #667eea;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: all 0.3s;
+    }
+
+    .article-content a:hover {
+      border-bottom-color: #667eea;
+      color: #764ba2;
+    }
+
+    @media (max-width: 768px) {
+      .article-header h1 {
+        font-size: 2rem;
+      }
+
+      .article-section {
+        padding: 4rem 0 2rem;
+      }
+
+      .article-header,
+      .article-content {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+
+  <!-- Animation & UI Libraries -->
+  <link rel="stylesheet" href="https://unpkg.com/transition-style" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Kenia&family=Libre+Bodoni&family=Noto+Sans+Thai+Looped:wght@600&family=Noto+Sans+Thai:wght@500&display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Anuphan:wght@100..700&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=DM+Serif+Display:ital@0;1&family=Parisienne&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+    rel="stylesheet" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.css" rel="stylesheet" />
+  <!-- AOS Animation -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+</head>
+
+<body class="body-bg" style="background-color: #f8f8ff" data-aos-easing="ease" data-aos-duration="800"
+  data-aos-delay="0">
+
+  <!-- Navigation -->
+  <nav class="sticky-top backdrop-blur-custom primary-nav">
+    <div class="container-fluid d-flex justify-content-between align-items-center navbar-padding">
+      <a href="../index.html#home" class="text-decoration-none brand-link">
+        <h5 class="dm-serif-display-regular m-2" style="color: #2c2c2c; font-size: 20px">
+          NATTAPAT
+        </h5>
+      </a>
+      <div class="primary-nav-links">
+        <a href="../index.html#home" class="nav-link-ux text-decoration-none">Home</a>
+        <a href="../index.html#profile" class="nav-link-ux text-decoration-none">Profile</a>
+        <a href="../index.html#portfolio" class="nav-link-ux text-decoration-none">Portfolio</a>
+        <a href="../index.html#experience" class="nav-link-ux text-decoration-none">Experience</a>
+        <a href="../index.html#certificates" class="nav-link-ux text-decoration-none d-none d-md-inline-flex">Certificates</a>
+        <a href="../blog.html" class="nav-link-ux text-decoration-none active">Blog</a>
+      </div>
+      <a href="../index.html#footer" class="nav-link-ux nav-cta text-decoration-none">
+        <span>Contact</span>
+        <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+  </nav>
+  <div class="scroll-progress" role="presentation" aria-hidden="true"></div>
+
+  <!-- Article Section -->
+  <section class="article-section">
+    <div class="article-wrapper">
+      <a href="../blog.html" class="back-link">
+        <i class="fas fa-arrow-left"></i>
+        <span>กลับไปหน้า Blog for testing</span>
+      </a>
+
+      <article>
+        <header class="article-header" data-aos="fade-up">
+          <h1>เทคนิคการเขียนโค้ดที่ Clean และ Maintainable</h1>
+          <div class="article-meta">
+            <span>📅 26 มกราคม 2568</span>
+            <span>✍️ Nattapat Phungphugdee</span>
+          </div>
+          
+          <div class="tags"><span class="tag">Clean Code</span><span class="tag">Best Practices</span><span class="tag">Programming</span><span class="tag">Software Engineering</span></div>
+        </header>
+
+        <div class="article-content" data-aos="fade-up" data-aos-delay="100">
+          <h1>เทคนิคการเขียนโค้ดที่ Clean และ Maintainable</h1>
+<p>การเขียนโค้ดที่ดีไม่ใช่แค่ทำให้โปรแกรมทำงานได้ แต่ต้องทำให้โค้ดอ่านง่าย แก้ไขง่าย และดูแลรักษาง่ายด้วย ในบทความนี้เราจะมาดูเทคนิคต่างๆ ที่ช่วยให้โค้ดของเราดีขึ้นกันครับ</p>
+<h2>หลักการสำคัญ</h2>
+<h3>1. ตั้งชื่อตัวแปรและฟังก์ชันให้มีความหมาย</h3>
+<p><strong>ไม่ดี:</strong></p>
+<pre><code class="language-javascript">let d = 10;
+let arr = [];
+function calc(a, b) {
+  return a + b;
+}
+</code></pre>
+<p><strong>ดี:</strong></p>
+<pre><code class="language-javascript">let daysInWeek = 10;
+let userList = [];
+function calculateTotal(price, tax) {
+  return price + tax;
+}
+</code></pre>
+<h3>2. ฟังก์ชันควรทำแค่一件事เดียว (Single Responsibility)</h3>
+<p><strong>ไม่ดี:</strong></p>
+<pre><code class="language-javascript">function processUser(user) {
+  // Validate
+  if (!user.email) return;
+  
+  // Save to database
+  database.save(user);
+  
+  // Send email
+  emailService.send(user.email);
+  
+  // Log
+  console.log(&#39;User processed&#39;);
+}
+</code></pre>
+<p><strong>ดี:</strong></p>
+<pre><code class="language-javascript">function validateUser(user) {
+  return user.email !== undefined;
+}
+
+function saveUser(user) {
+  return database.save(user);
+}
+
+function sendWelcomeEmail(email) {
+  return emailService.send(email);
+}
+
+function processUser(user) {
+  if (!validateUser(user)) return;
+  saveUser(user);
+  sendWelcomeEmail(user.email);
+}
+</code></pre>
+<h3>3. ใช้ Comments อย่างเหมาะสม</h3>
+<p>Comments ควรอธิบาย <strong>&quot;ทำไม&quot;</strong> ไม่ใช่ <strong>&quot;อะไร&quot;</strong></p>
+<p><strong>ไม่ดี:</strong></p>
+<pre><code class="language-javascript">// Add 1 to count
+count = count + 1;
+</code></pre>
+<p><strong>ดี:</strong></p>
+<pre><code class="language-javascript">// Increment retry counter to handle transient network errors
+count = count + 1;
+</code></pre>
+<h3>4. ลด Nesting ด้วย Early Returns</h3>
+<p><strong>ไม่ดี:</strong></p>
+<pre><code class="language-javascript">function getUserData(userId) {
+  if (userId) {
+    if (userId &gt; 0) {
+      const user = database.find(userId);
+      if (user) {
+        return user.data;
+      }
+    }
+  }
+  return null;
+}
+</code></pre>
+<p><strong>ดี:</strong></p>
+<pre><code class="language-javascript">function getUserData(userId) {
+  if (!userId || userId &lt;= 0) return null;
+  
+  const user = database.find(userId);
+  if (!user) return null;
+  
+  return user.data;
+}
+</code></pre>
+<h2>Best Practices</h2>
+<h3>1. DRY (Don&#39;t Repeat Yourself)</h3>
+<p>หลีกเลี่ยงการเขียนโค้ดซ้ำๆ</p>
+<h3>2. KISS (Keep It Simple, Stupid)</h3>
+<p>ทำให้โค้ดเรียบง่ายที่สุดเท่าที่จะเป็นไปได้</p>
+<h3>3. YAGNI (You Aren&#39;t Gonna Need It)</h3>
+<p>อย่าเขียนโค้ดที่ยังไม่จำเป็น</p>
+<h2>สรุป</h2>
+<p>การเขียน Clean Code เป็นทักษะที่ต้องฝึกฝนอย่างต่อเนื่อง เริ่มต้นด้วยการตั้งชื่อให้ดี เขียนฟังก์ชันให้เล็กและทำหน้าที่เดียว แล้วค่อยๆ พัฒนาไปสู่ระดับที่สูงขึ้น</p>
+<blockquote>
+<p><strong>Remember</strong>: Code is read more often than it&#39;s written. เขียนโค้ดให้คนอื่นอ่านง่าย ไม่ใช่แค่ให้คอมพิวเตอร์เข้าใจ</p>
+</blockquote>
+<hr>
+<p><strong>อ่านเพิ่มเติม</strong>: Clean Code by Robert C. Martin</p>
+
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="footer" class="footer-modern">
+    <div class="container">
+      <div class="row gy-4 footer-main">
+        <div class="col-12 col-md-4 footer-brand">
+          <img src="../Photo/Logozxin.jpg" alt="Nattapat Logo" class="footer-logo" />
+          <p class="playfair-400 footer-brand-copy">
+            Full-stack developer crafting beautiful interfaces and dependable systems across web, cloud, and mobile.
+          </p>
+          <div class="footer-social">
+            <a href="https://www.linkedin.com/in/nattapat2002" target="_blank" aria-label="LinkedIn">
+              <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://github.com/ZXINNATTAPAT" target="_blank" aria-label="GitHub">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="https://www.instagram.com/nattazxin/" target="_blank" aria-label="Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+          </div>
+        </div>
+        <div class="col-6 col-md-2">
+          <h6 class="footer-heading">Portfolio</h6>
+          <ul class="footer-links">
+            <li><a href="../index.html#portfolio">Visual Highlights</a></li>
+            <li><a href="../index.html#profile">Profile</a></li>
+            <li><a href="../index.html#certificates">Certificates</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-2">
+          <h6 class="footer-heading">Experience</h6>
+          <ul class="footer-links">
+            <li><a href="../index.html#experience">Work History</a></li>
+            <li><a href="../index.html#experience">Internships</a></li>
+            <li><a href="../index.html#experience">Awards</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-2">
+          <h6 class="footer-heading">Resources</h6>
+          <ul class="footer-links">
+            <li><a href="https://medium.com/@bigboyzin88" target="_blank" rel="noopener">Medium</a></li>
+            <li><a href="https://www.linkedin.com/in/nattapat2002/details/certifications/" target="_blank"
+                rel="noopener">LinkedIn</a></li>
+            <li><a href="https://codepen.io/ZXINNATTAPAT/pens/" target="_blank" rel="noopener">CodePen</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-2">
+          <h6 class="footer-heading">Contact</h6>
+          <ul class="footer-links">
+            <li><a href="mailto:nattapat.p.npt@gmail.com">Email</a></li>
+            <li><a href="../index.html#footer">Contact</a></li>
+            <li><a href="https://linktr.ee/zxin_nizmoxa" target="_blank" rel="noopener">Linktree</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="mb-0 playfair-400">© 2025 Nattapat Phungphugdee. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="../index.html#home">Back to top</a>
+          <span>·</span>
+          <a href="../index.html#footer">Hire me</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Navigation UX Enhancements -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const progressBar = document.querySelector('.scroll-progress');
+      const navBar = document.querySelector('nav.sticky-top');
+
+      const updateProgress = () => {
+        if (!progressBar) return;
+        const scrollTop = window.scrollY;
+        const docHeight = document.body.scrollHeight - window.innerHeight;
+        const progress = docHeight > 0 ? Math.min((scrollTop / docHeight) * 100, 100) : 0;
+        progressBar.style.width = `${progress}%`;
+      };
+
+      const handleScrollState = () => {
+        updateProgress();
+        if (navBar) {
+          navBar.classList.toggle('nav-scrolled', window.scrollY > 24);
+        }
+      };
+
+      updateProgress();
+      handleScrollState();
+
+      window.addEventListener('scroll', handleScrollState, { passive: true });
+      window.addEventListener('resize', updateProgress);
+    });
+  </script>
+
+  <!-- AOS Animation Init -->
+  <script>
+    AOS.init({
+      once: true,
+      duration: 800,
+      offset: 100,
+    });
+  </script>
+</body>
+
+</html>
