@@ -1,12 +1,20 @@
-/* Loading Skeleton Styles */
-.loading-skeleton-wrapper {
+/* Loading Screen Container */
+.loading-screen {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100vh;
+  z-index: 99999;
   background: #f8f8ff;
-  z-index: 9999;
+}
+
+/* Loading Skeleton Styles */
+.loading-skeleton-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: #f8f8ff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14,7 +22,7 @@
   transition: opacity 0.5s ease-out;
 }
 
-.loading-skeleton-wrapper.fade-out {
+.loading-screen.fade-out .loading-skeleton-wrapper {
   opacity: 0;
   pointer-events: none;
 }
@@ -25,40 +33,43 @@
   padding: 2rem;
 }
 
-/* Skeleton Brand */
-.skeleton-brand {
+/* Skeleton Navbar */
+.skeleton-navbar {
   display: flex;
   align-items: center;
-  gap: 16px;
-  margin-bottom: 3rem;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  margin-bottom: 2rem;
 }
 
 /* Skeleton Hero */
 .skeleton-hero {
-  margin-bottom: 4rem;
   text-align: center;
+  padding: 2rem 1rem;
+  margin-bottom: 2rem;
+}
+
+.skeleton-hero-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
 .skeleton-social {
   display: flex;
   justify-content: center;
-  gap: 12px;
+  align-items: center;
+  gap: 16px;
   flex-wrap: wrap;
+  margin-top: 2rem;
 }
 
-/* Skeleton Cards */
-.skeleton-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-top: 3rem;
-}
-
-.skeleton-card {
-  background: #ffffff;
-  border-radius: 20px;
-  padding: 1.5rem;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+/* Skeleton Profile Image */
+.skeleton-profile-image {
+  padding: 0 1rem;
+  margin-bottom: 2rem;
 }
 
 /* Base Skeleton Elements */
@@ -102,18 +113,82 @@
 
 /* Responsive */
 @media (max-width: 768px) {
-  .skeleton-hero .skeleton-text:first-child,
-  .skeleton-hero .skeleton-text:nth-child(2) {
-    width: 90% !important;
-    height: 32px !important;
+  .skeleton-navbar {
+    padding: 1rem;
   }
   
-  .skeleton-cards {
-    grid-template-columns: 1fr;
+  .skeleton-navbar .skeleton-text:first-child {
+    width: 100px !important;
+    height: 24px !important;
+  }
+  
+  .skeleton-navbar .skeleton-text:last-child {
+    width: 60px !important;
+    height: 18px !important;
+  }
+  
+  .skeleton-hero-title .skeleton-text {
+    width: 45% !important;
+    height: 40px !important;
+  }
+  
+  .skeleton-hero-title .skeleton-text:first-child {
+    width: 150px !important;
+    height: 45px !important;
+  }
+  
+  .skeleton-hero-title .skeleton-text:nth-child(2) {
+    width: 200px !important;
+    height: 50px !important;
+  }
+  
+  .skeleton-hero-title .skeleton-text:nth-child(3) {
+    width: 240px !important;
+    height: 40px !important;
+  }
+  
+  .skeleton-hero-title .skeleton-text:nth-child(4) {
+    width: 140px !important;
+    height: 45px !important;
+  }
+  
+  .skeleton-hero .skeleton-text:last-of-type {
+    width: 85% !important;
+    height: 18px !important;
   }
   
   .skeleton-social .skeleton-circle {
-    width: 40px;
-    height: 40px;
+    width: 48px !important;
+    height: 48px !important;
+  }
+  
+  .skeleton-profile-image .skeleton-box {
+    height: 350px !important;
+    border-radius: 16px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .skeleton-hero-title {
+    flex-direction: column;
+    gap: 0.25rem !important;
+  }
+  
+  .skeleton-hero-title .skeleton-text {
+    width: 80% !important;
+    margin: 0 auto !important;
+  }
+  
+  .skeleton-social {
+    gap: 12px;
+  }
+  
+  .skeleton-social .skeleton-circle {
+    width: 44px !important;
+    height: 44px !important;
+  }
+  
+  .skeleton-profile-image .skeleton-box {
+    height: 280px !important;
   }
 }
