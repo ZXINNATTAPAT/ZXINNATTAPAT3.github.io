@@ -72,3 +72,30 @@
 @media screen and (max-width: 767px) {
   .font-add{font-size: 45px;}
 }
+
+/* Anuphan Font for Thai Support */
+.anuphan-regular {
+  font-family: "Anuphan", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.anuphan-medium {
+  font-family: "Anuphan", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.anuphan-bold {
+  font-family: "Anuphan", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* Apply globally */
+body {
+  font-family: "Inter", "Anuphan", sans-serif;
+}

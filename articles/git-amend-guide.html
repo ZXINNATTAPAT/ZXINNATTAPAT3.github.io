@@ -12,29 +12,29 @@
     gtag('config', 'G-NNJBFHP6S8');
   </script>
   <meta charset="UTF-8" />
-  <title>เริ่มต้นพัฒนาเว็บด้วย Next.js - คู่มือสำหรับผู้เริ่มต้น | Nattapat Phungphugdee</title>
+  <title>แก้ไข Commit ล่าสุดง่ายๆ ด้วย git commit --amend | Nattapat Phungphugdee</title>
   <link rel="icon" href="../Photo/Logo.png" type="image/png">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="เรียนรู้พื้นฐานการพัฒนาเว็บแอปพลิเคชันด้วย Next.js Framework ที่ได้รับความนิยมสูงสุดในปัจจุบัน" />
+  <meta name="description" content="ลืมใส่ไฟล์? พิมพ์ Commit message ผิด? มาดูวิธีแก้ไข Commit ล่าสุดด้วยคำสั่ง git commit --amend แบบ Step-by-step" />
   <meta name="author" content="Nattapat Phungphugdee" />
   <meta name="robots" content="index, follow" />
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="เริ่มต้นพัฒนาเว็บด้วย Next.js - คู่มือสำหรับผู้เริ่มต้น" />
-  <meta property="og:description" content="เรียนรู้พื้นฐานการพัฒนาเว็บแอปพลิเคชันด้วย Next.js Framework ที่ได้รับความนิยมสูงสุดในปัจจุบัน" />
-  <meta property="og:url" content="https://zxinnattapat3.github.io/articles/nextjs-beginner-guide.html" />
-  <meta property="og:image" content="https://zxinnattapat3.github.io/Photo/Logo.png" />
+  <meta property="og:title" content="แก้ไข Commit ล่าสุดง่ายๆ ด้วย git commit --amend" />
+  <meta property="og:description" content="ลืมใส่ไฟล์? พิมพ์ Commit message ผิด? มาดูวิธีแก้ไข Commit ล่าสุดด้วยคำสั่ง git commit --amend แบบ Step-by-step" />
+  <meta property="og:url" content="https://zxinnattapat3.github.io/articles/git-amend-guide.html" />
+  <meta property="og:image" content="../Photo/Logo.png" />
   <meta property="og:locale" content="th_TH" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="เริ่มต้นพัฒนาเว็บด้วย Next.js - คู่มือสำหรับผู้เริ่มต้น" />
-  <meta name="twitter:description" content="เรียนรู้พื้นฐานการพัฒนาเว็บแอปพลิเคชันด้วย Next.js Framework ที่ได้รับความนิยมสูงสุดในปัจจุบัน" />
-  <meta name="twitter:image" content="https://zxinnattapat3.github.io/Photo/Logo.png" />
+  <meta name="twitter:title" content="แก้ไข Commit ล่าสุดง่ายๆ ด้วย git commit --amend" />
+  <meta name="twitter:description" content="ลืมใส่ไฟล์? พิมพ์ Commit message ผิด? มาดูวิธีแก้ไข Commit ล่าสุดด้วยคำสั่ง git commit --amend แบบ Step-by-step" />
+  <meta name="twitter:image" content="../Photo/Logo.png" />
 
   <!-- Canonical URL -->
-  <link rel="canonical" href="https://zxinnattapat3.github.io/articles/nextjs-beginner-guide.html" />
+  <link rel="canonical" href="https://zxinnattapat3.github.io/articles/git-amend-guide.html" />
 
   <!-- Main Stylesheets -->
   <link rel="stylesheet" href="../stylesheets/index.css" />
@@ -99,6 +99,7 @@
       color: #2c2c2c;
       line-height: 1.3;
       font-weight: 700;
+      font-family: 'Playfair Display', 'Anuphan', sans-serif;
     }
 
     .article-meta {
@@ -312,72 +313,81 @@
     <div class="article-wrapper">
       <a href="../blog.html" class="back-link">
         <i class="fas fa-arrow-left"></i>
-        <span>กลับไปหน้า Blog for testing</span>
+        <span>กลับไปหน้า Blog</span>
       </a>
 
       <article>
         <header class="article-header" data-aos="fade-up">
-          <h1>เริ่มต้นพัฒนาเว็บด้วย Next.js - คู่มือสำหรับผู้เริ่มต้น</h1>
+          <h1>แก้ไข Commit ล่าสุดง่ายๆ ด้วย git commit --amend</h1>
           <div class="article-meta">
-            <span><i class="far fa-calendar-alt"></i> 27 มกราคม 2568</span>
+            <span><i class="far fa-calendar-alt"></i> 1 กุมภาพันธ์ 2568</span>
             <span><i class="far fa-user"></i> Nattapat Phungphugdee</span>
           </div>
-          <!-- <img src="../Photo/Logo.png" alt="เริ่มต้นพัฒนาเว็บด้วย Next.js - คู่มือสำหรับผู้เริ่มต้น" class="article-image"> -->
-          <div class="tags"><span class="tag">Next.js</span><span class="tag">React</span><span class="tag">Web Development</span><span class="tag">Tutorial</span></div>
+          <!-- <img src="../Photo/Logo.png" alt="Git Amend Guide" class="article-image"> -->
+          <div class="tags">
+            <span class="tag">Git</span>
+            <span class="tag">Version Control</span>
+            <span class="tag">Tips</span>
+          </div>
         </header>
 
         <div class="article-content" data-aos="fade-up" data-aos-delay="100">
-          <h1>เริ่มต้นพัฒนาเว็บด้วย Next.js</h1>
-<p>Next.js เป็น React Framework ที่มีประสิทธิภาพสูงและได้รับความนิยมอย่างมากในวงการพัฒนาเว็บสมัยใหม่ ในบทความนี้เราจะมาทำความรู้จักกับ Next.js และเรียนรู้วิธีการเริ่มต้นใช้งานกันครับ</p>
-<h2>Next.js คืออะไร?</h2>
-<p>Next.js เป็น <strong>React Framework</strong> ที่สร้างโดย Vercel ซึ่งช่วยให้การพัฒนาเว็บแอปพลิเคชันด้วย React ง่ายขึ้นและมีประสิทธิภาพมากขึ้น โดยมีฟีเจอร์สำคัญดังนี้:</p>
-<ul>
-<li><strong>Server-Side Rendering (SSR)</strong>: รองรับการ render บน server</li>
-<li><strong>Static Site Generation (SSG)</strong>: สร้าง static pages ล่วงหน้า</li>
-<li><strong>API Routes</strong>: สร้าง API endpoints ได้ง่าย</li>
-<li><strong>Automatic Code Splitting</strong>: แบ่งโค้ดอัตโนมัติเพื่อเพิ่มประสิทธิภาพ</li>
-<li><strong>Image Optimization</strong>: ปรับปรุงรูปภาพอัตโนมัติ</li>
-</ul>
-<h2>ทำไมต้องใช้ Next.js?</h2>
-<h3>1. ประสิทธิภาพสูง</h3>
-<p>Next.js มีการ optimize หลายอย่างที่ช่วยให้เว็บไซต์โหลดเร็วขึ้น เช่น:</p>
-<ul>
-<li>Automatic code splitting</li>
-<li>Image optimization</li>
-<li>Font optimization</li>
-</ul>
-<h3>2. SEO Friendly</h3>
-<p>ด้วยการรองรับ SSR และ SSG ทำให้ search engines สามารถ crawl และ index เนื้อหาได้ดีขึ้น</p>
-<h3>3. Developer Experience</h3>
-<ul>
-<li>Hot reload</li>
-<li>TypeScript support</li>
-<li>Built-in CSS support</li>
-<li>Easy deployment</li>
-</ul>
-<h2>เริ่มต้นใช้งาน</h2>
-<h3>ติดตั้ง Next.js</h3>
-<pre><code class="language-bash">npx create-next-app@latest my-app
-cd my-app
-npm run dev
-</code></pre>
-<h3>โครงสร้างโปรเจกต์</h3>
-<pre><code>my-app/
-├── pages/
-│   ├── index.js
-│   └── api/
-├── public/
-├── styles/
-└── package.json
-</code></pre>
-<h2>สรุป</h2>
-<p>Next.js เป็นเครื่องมือที่ยอดเยี่ยมสำหรับการพัฒนาเว็บแอปพลิเคชันสมัยใหม่ ไม่ว่าจะเป็นเว็บไซต์ธรรมดา หรือแอปพลิเคชันที่ซับซ้อน Next.js ก็สามารถรองรับได้</p>
-<blockquote>
-<p><strong>Tip</strong>: เริ่มต้นด้วยการสร้างโปรเจกต์เล็กๆ เพื่อทำความเข้าใจพื้นฐานก่อน แล้วค่อยๆ พัฒนาไปสู่โปรเจกต์ที่ซับซ้อนขึ้น</p>
-</blockquote>
-<hr>
-<p><strong>ติดตามบทความต่อไป</strong>: เราจะมาดูวิธีการสร้าง API routes และจัดการกับ data fetching ใน Next.js กันครับ</p>
+          <p>
+            เคยไหมครับ? กด commit ไปแล้วแต่นึกขึ้นได้ว่าลืม add ไฟล์ หรือพิมพ์ commit message ผิด! 
+            แทนที่จะต้องสร้าง commit ใหม่เพื่อแก้คำผิด เราสามารถใช้คำสั่งมหัศจรรย์อย่าง <code>git commit --amend</code> 
+            เพื่อแก้ไข commit ล่าสุดของเราได้ เนียนเหมือนไม่เคยทำผิดมาก่อน
+          </p>
 
+          <h2>git commit --amend คืออะไร?</h2>
+          <p>
+            คำสั่ง <code>git commit --amend</code> ใช้สำหรับ <strong>"เขียนทับ"</strong> commit ล่าสุดของคุณ 
+            มันมีประโยชน์มากเมื่อคุณต้องการแก้ไขสิ่งเล็กๆ น้อยๆ โดยไม่ต้องสร้าง commit ใหม่ให้รก History
+          </p>
+
+          <h2>สถานการณ์ที่ 1: แค่อยากแก้ Commit Message</h2>
+          <p>
+            ถ้าคุณแค่พิมพ์ผิด และไม่ได้ต้องการเปลี่ยนแปลงไฟล์ใดๆ ให้ใช้คำสั่งนี้:
+          </p>
+          <pre><code>git commit --amend -m "ข้อความ Commit ใหม่ที่ถูกต้อง"</code></pre>
+          <p>
+            คำสั่งนี้จะเปลี่ยนข้อความของ commit ล่าสุดเป็นข้อความใหม่ทันที
+          </p>
+
+          <h2>สถานการณ์ที่ 2: ลืม Add ไฟล์</h2>
+          <p>
+            สมมติว่าคุณ commit ไปแล้ว แต่ลืมไฟล์ <code>style.css</code> ที่แก้ไปนิดหน่อย วิธีแก้คือ:
+          </p>
+          <ol>
+            <li>Add ไฟล์ที่ลืมเข้า staging area ก่อน:
+              <pre><code>git add style.css</code></pre>
+            </li>
+            <li>รันคำสั่ง amend เพื่อรวมไฟล์นี้เข้าไปใน commit ล่าสุด:
+              <pre><code>git commit --amend --no-edit</code></pre>
+            </li>
+          </ol>
+          <p>
+            Option <code>--no-edit</code> หมายความว่าเราจะใช้ Commit Message เดิม ไม่ต้องการแก้ไขข้อความ 
+            (แต่ถ้าอยากแก้ข้อความด้วย ก็แค่ตัด <code>--no-edit</code> ออก แล้วใส่ <code>-m "ข้อความใหม่"</code> แทน)
+          </p>
+
+          <h2>⚠️ คำเตือนสำคัญ!</h2>
+          <blockquote>
+            <strong>ห้ามใช้ --amend กับ Commit ที่ Push ขึ้น Server ไปแล้ว!</strong> 
+            (ถ้าคุณทำงานร่วมกับคนอื่น)
+          </blockquote>
+          <p>
+            การทำ amend คือการเปลี่ยน <strong>Hash ID</strong> ของ commit นั้นๆ ใหม่ เท่ากับว่ามันคือ commit ตัวใหม่เลย 
+            ถ้าคนอื่นในทีมดึง code ชุดเก่าไปแล้ว และคุณไป amend แล้ว push ทับ (Force push) จะทำให้ history ของเพื่อนร่วมทีมพังได้
+          </p>
+          <p>
+            ดังนั้น: <strong>ใช้ amend เฉพาะกับ commit ที่ยังอยู่แค่ในเครื่องของคุณ (Local) เท่านั้น!</strong>
+          </p>
+
+          <h3>สรุป</h3>
+          <p>
+            <code>git commit --amend</code> เป็นเครื่องมือที่ช่วยให้ Git History ของคุณสะอาดและดูเป็นมืออาชีพขึ้น 
+            จำไว้ใช้เวลาพิมพ์ผิดหรือลืมของ แต่อย่าลืมกฎเหล็กเรื่องการ Push ด้วยนะครับ!
+          </p>
         </div>
       </article>
     </div>

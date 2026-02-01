@@ -55,130 +55,216 @@
     }
 
     .blog-header {
-      text-align: center;
+      text-align: left;
       margin-bottom: 4rem;
-      padding: 2rem 0;
+      padding: 2rem 5%;
     }
 
     .blog-header h1 {
       font-size: 3.5rem;
       margin: 0 0 1rem 0;
       font-weight: 700;
-      color: #2c2c2c;
+      color: #a30000;
+      font-family: 'Playfair Display', 'Anuphan', sans-serif;
     }
 
     .blog-header p {
       font-size: 1.2rem;
       color: #666;
       margin: 0;
+      font-family: 'Inter', 'Anuphan', sans-serif;
     }
 
-    .articles-list {
-      display: grid;
-      gap: 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 1rem;
-    }
-
-    .article-preview {
-      background: white;
-      border-radius: 16px;
-      padding: 2.5rem;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      border: 1px solid rgba(0, 0, 0, 0.05);
-    }
-
-    .article-preview:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
-    }
-
-    .article-preview h2 {
-      margin: 0 0 1rem 0;
-      font-size: 1.8rem;
-      font-weight: 600;
-    }
-
-    .article-preview h2 a {
-      color: #2c2c2c;
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-
-    .article-preview h2 a:hover {
-      color: #667eea;
-    }
-
-    .article-meta {
+    .category-badges {
       display: flex;
       flex-wrap: wrap;
-      gap: 1rem;
+      gap: 0.8rem;
+      margin-top: 1.5rem;
+    }
+
+    .category-badge {
+      display: inline-block;
+      padding: 0.4rem 1rem;
+      border: 1px solid #ddd;
+      border-radius: 20px;
       color: #666;
       font-size: 0.9rem;
-      margin: 1rem 0;
-    }
-
-    .preview-image {
-      width: 100%;
-      border-radius: 12px;
-      margin: 1.5rem 0;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
-
-    .description {
-      color: #555;
-      line-height: 1.8;
-      margin: 1rem 0;
-      font-size: 1.05rem;
-    }
-
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin: 1rem 0;
-    }
-
-    .tag {
-      display: inline-block;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      padding: 0.4rem 1rem;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      font-weight: 500;
-    }
-
-    .read-more {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-top: 1rem;
-      color: #667eea;
       text-decoration: none;
-      font-weight: 600;
-      transition: all 0.3s;
+      transition: all 0.2s ease;
+      font-family: 'Inter', 'Anuphan', sans-serif;
     }
 
-    .read-more:hover {
-      color: #764ba2;
-      gap: 0.8rem;
+    .category-badge:hover, .category-badge.active {
+      background-color: #a30000;
+      color: white;
+      border-color: #a30000;
+    }
+
+    /* Updated Card Styles for Mockup Look */
+    .articles-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 0 5%;
+    }
+
+    @media (max-width: 992px) {
+      .articles-list {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
     @media (max-width: 768px) {
-      .blog-header h1 {
-        font-size: 2.5rem;
+      .articles-list {
+        grid-template-columns: 1fr;
       }
+    }
 
-      .blog-section {
-        padding: 4rem 0 2rem;
-      }
+    .article-preview {
+      background: transparent; /* No white bg for the whole card, content sits on page bg or simplified */
+      border: none;
+      box-shadow: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      transition: transform 0.3s ease;
+    }
 
-      .article-preview {
-        padding: 1.5rem;
-      }
+    .article-preview:hover {
+      transform: translateY(-5px);
+    }
+
+    /* Image Wrapper & Overlay */
+    .article-image-wrapper {
+      position: relative;
+      width: 100%;
+      padding-bottom: 60%; /* Aspect ratio */
+      border-radius: 0;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      background-color: #ddd;
+    }
+
+    .article-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .article-preview:hover .article-image {
+      transform: scale(1.05);
+    }
+
+    .article-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1rem 1.5rem;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: white;
+      font-size: 0.85rem;
+      z-index: 2;
+    }
+
+    /* Darker overlay text if image is light? sticky to white text with shadow or dark bg */
+    /* Let's use a gradient fade for text readability if needed, but the mockup has a blur bar. 
+       Assuming the blur bar needs to be legible. Dark text might be better if the bar is light-ish. */
+    .article-overlay {
+      background: rgba(255, 255, 255, 0.75); /* Lighter glass */
+      color: #333;
+    }
+
+    .article-meta-info {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.3;
+    }
+    
+    .article-author {
+      font-weight: 600;
+      color: #111;
+    }
+    .article-date {
+      font-size: 0.8rem;
+      color: #555;
+    }
+
+    .article-category {
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: #333;
+    }
+
+    /* Content below image */
+    .article-content {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .article-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      line-height: 1.3;
+      margin: 0;
+      font-family: 'Playfair Display', 'Anuphan', sans-serif;
+    }
+
+    .article-title a {
+      color: #1a1a1a;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .article-title a:hover {
+      color: #a30000;
+    }
+
+    .article-description {
+      color: #666;
+      font-size: 1rem;
+      line-height: 1.6;
+      margin: 0;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      font-family: 'Inter', 'Anuphan', sans-serif;
+    }
+
+    .article-read-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #a30000;
+      font-weight: 600;
+      text-decoration: none;
+      margin-top: 0.5rem;
+      font-size: 1rem;
+      font-family: 'Inter', 'Anuphan', sans-serif;
+    }
+
+    .article-read-more i {
+      transition: transform 0.2s;
+    }
+
+    .article-read-more:hover i {
+      transform: translateX(4px);
     }
   </style>
 
@@ -241,37 +327,94 @@
   <!-- Blog Section -->
   <section id="blog" class="blog-section">
     <div class="blog-header" data-aos="fade-up">
-      <h1>Blog for testing</h1>
-      <p>บทความเกี่ยวกับการพัฒนาเว็บ, เทคโนโลยี, และประสบการณ์การทำงาน</p>
+      <h1>Blog</h1>
+      <p>พื้นที่บันทึกประสบการณ์การเขียนโค้ด การพัฒนาเว็บ และการทำงานจริง<br>ผ่านมุมมองของนักพัฒนาที่ลงมือทำด้วยตัวเอง</p>
+      
+      <div class="category-badges">
+        <a href="#" class="category-badge active">All</a>
+        <a href="#" class="category-badge">Tips</a>
+        <a href="#" class="category-badge">Web Development</a>
+        <a href="#" class="category-badge">Experience</a>
+      </div>
     </div>
 
     <div class="articles-list">
       
-    <article class="article-preview">
-      <h2><a href="articles/nextjs-beginner-guide.html">เริ่มต้นพัฒนาเว็บด้วย Next.js - คู่มือสำหรับผู้เริ่มต้น</a></h2>
-      <div class="article-meta">
-        <span class="date">27 มกราคม 2568</span>
-        <span class="author">Nattapat Phungphugdee</span>
-      </div>
-      <img src="Photo/Logo.png" alt="เริ่มต้นพัฒนาเว็บด้วย Next.js - คู่มือสำหรับผู้เริ่มต้น" class="preview-image">
-      <p class="description">เรียนรู้พื้นฐานการพัฒนาเว็บแอปพลิเคชันด้วย Next.js Framework ที่ได้รับความนิยมสูงสุดในปัจจุบัน</p>
-      <div class="tags"><span class="tag">Next.js</span><span class="tag">React</span><span class="tag">Web Development</span><span class="tag">Tutorial</span></div>
-      <a href="articles/nextjs-beginner-guide.html" class="read-more">อ่านต่อ →</a>
-    </article>
-  
+      <!-- Article 1 -->
+      <article class="article-preview" data-aos="fade-up" data-aos-delay="100">
+        <div class="article-image-wrapper">
 
-    <article class="article-preview">
-      <h2><a href="articles/clean-code-techniques.html">เทคนิคการเขียนโค้ดที่ Clean และ Maintainable</a></h2>
-      <div class="article-meta">
-        <span class="date">26 มกราคม 2568</span>
-        <span class="author">Nattapat Phungphugdee</span>
-      </div>
-      
-      <p class="description">เรียนรู้หลักการและเทคนิคการเขียนโค้ดที่อ่านง่าย แก้ไขง่าย และดูแลรักษาง่าย สำหรับนักพัฒนาทุกระดับ</p>
-      <div class="tags"><span class="tag">Clean Code</span><span class="tag">Best Practices</span><span class="tag">Programming</span><span class="tag">Software Engineering</span></div>
-      <a href="articles/clean-code-techniques.html" class="read-more">อ่านต่อ →</a>
-    </article>
-  
+          <div class="article-overlay">
+            <div class="article-meta-info">
+              <span class="article-author">Nattapat Phungphugdee</span>
+              <span class="article-date">27 Jan 2025</span>
+            </div>
+            <span class="article-category">Development</span>
+          </div>
+        </div>
+        <div class="article-content">
+          <h2 class="article-title">
+            <a href="articles/nextjs-beginner-guide.html">เริ่มต้นพัฒนาเว็บด้วย Next.js - คู่มือสำหรับผู้เริ่มต้น</a>
+          </h2>
+          <p class="article-description">
+            เรียนรู้พื้นฐานการพัฒนาเว็บแอปพลิเคชันด้วย Next.js Framework ที่ได้รับความนิยมสูงสุดในปัจจุบัน พร้อมตัวอย่างการใช้งานจริงและการขึ้นโครงโปรเจกต์
+          </p>
+          <a href="articles/nextjs-beginner-guide.html" class="article-read-more">
+            Read post <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </article>
+
+      <!-- Article 2 -->
+      <article class="article-preview" data-aos="fade-up" data-aos-delay="200">
+        <div class="article-image-wrapper">
+
+          <div class="article-overlay">
+            <div class="article-meta-info">
+              <span class="article-author">Nattapat Phungphugdee</span>
+              <span class="article-date">26 Jan 2025</span>
+            </div>
+            <span class="article-category">Best Practices</span>
+          </div>
+        </div>
+        <div class="article-content">
+          <h2 class="article-title">
+            <a href="articles/clean-code-techniques.html">เทคนิคการเขียนโค้ดที่ Clean และ Maintainable</a>
+          </h2>
+          <p class="article-description">
+            เจาะลึกหลักการเขียนโค้ดให้อ่านง่าย แก้ไขง่าย และยั่งยืน ด้วยเทคนิค Clean Code ที่นักพัฒนาทุกคนควรรู้ เพื่อลดหนี้ทางเทคนิคในอนาคต
+          </p>
+          <a href="articles/clean-code-techniques.html" class="article-read-more">
+            Read post <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </article>
+
+      <!-- Article 3 -->
+      <article class="article-preview" data-aos="fade-up" data-aos-delay="300">
+        <div class="article-image-wrapper">
+
+          <div class="article-overlay">
+            <div class="article-meta-info">
+              <span class="article-author">Nattapat Phungphugdee</span>
+              <span class="article-date">1 Feb 2025</span>
+            </div>
+            <span class="article-category">Git Tips</span>
+          </div>
+        </div>
+        <div class="article-content">
+          <h2 class="article-title">
+            <a href="articles/git-amend-guide.html">แก้ไข Commit ล่าสุดง่ายๆ ด้วย git commit --amend</a>
+          </h2>
+          <p class="article-description">
+            ลืมใส่ไฟล์? พิมพ์ Commit message ผิด? มาดูวิธีแก้ไข Commit ล่าสุดด้วยคำสั่ง git commit --amend แบบ Step-by-step
+          </p>
+          <a href="articles/git-amend-guide.html" class="article-read-more">
+            Read post <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </article>
+
     </div>
   </section>
 

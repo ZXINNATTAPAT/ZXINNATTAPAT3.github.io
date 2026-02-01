@@ -1260,7 +1260,7 @@ body.menu-open {
 /* comfortable reading */
 .profile-block p{ line-height: 1.9; color: #2c2c2c; }
 .edu-item{ align-items: flex-start; }
-.edu-item .edu-logo{ height: 48px; width: auto; }
+.edu-item .edu-logo{ height: 48px; width: 48px; object-fit: contain; }
 .edu-list{ position: relative; padding-left: 22px; }
 .edu-list::before{
   content: ""; position: absolute; left: 8px; top: 4px; bottom: 4px;
@@ -1315,7 +1315,7 @@ body.menu-open {
   font-size: 1.22em;
   color: #2c2c2c;
 }
-.edu-item .edu-logo{ height: 50px; width: auto; }
+.edu-item .edu-logo{ height: 50px; width: 50px; object-fit: contain; }
 
 /* Minimal Contact Section Style */
 .contact-info-minimal {
@@ -3074,31 +3074,50 @@ textarea.form-control-minimal:focus {
 
 .project-modal-title {
   font-size: clamp(24px, 4vw, 36px);
-  font-weight: 600;
+  font-weight: 700;
   color: #1d1d1f;
   margin-bottom: 8px;
   line-height: 1.2;
+  font-family: 'Playfair Display', 'Anuphan', serif;
 }
 
 .project-modal-subtitle {
   font-size: 18px;
   color: #a30000;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
   font-weight: 500;
+  font-family: 'Playfair Display', 'Anuphan', serif;
 }
 
 .project-modal-description {
   font-size: 16px;
   line-height: 1.7;
-  color: #55555c;
+  color: #444;
   margin-bottom: 24px;
+  font-family: 'Playfair Display', 'Anuphan', serif;
 }
 
 .project-modal-tech {
   padding: 20px;
-  background: #f8f8ff;
+  background: #f8f9fa;
   border-radius: 12px;
-  margin-bottom: 16px;
+  margin-bottom: 24px;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.project-modal-tech h4 {
+  font-family: 'Playfair Display', 'Anuphan', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #1d1d1f;
+}
+
+.project-modal-tech p {
+  font-family: 'Inter', 'Anuphan', sans-serif;
+  font-size: 0.95rem;
+  color: #555;
+  margin: 0;
 }
 
 .project-modal-actions {
