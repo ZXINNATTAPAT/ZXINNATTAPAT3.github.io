@@ -133,6 +133,205 @@
       scroll-behavior: smooth;
     }
 
+    html[lang="th"] body {
+      font-family: "Inter", "Anuphan", "Noto Sans Thai", sans-serif;
+      font-size: 16px;
+      line-height: 1.68;
+    }
+
+    /* Keep original EN display fonts; let Thai glyphs fallback to Anuphan */
+    html[lang="th"] .playfair-400 {
+      font-family: "Playfair Display", "Anuphan", "Noto Sans Thai", serif !important;
+    }
+
+    html[lang="th"] .dm-serif-display-regular {
+      font-family: "DM Serif Display", "Anuphan", "Noto Sans Thai", serif !important;
+    }
+
+    html[lang="th"] .parisienne-regular {
+      font-family: "Parisienne", "Anuphan", "Noto Sans Thai", cursive !important;
+    }
+
+    /* Thai mode: keep all text upright (no italic styling) */
+    html[lang="th"] em,
+    html[lang="th"] i,
+    html[lang="th"] .fst-italic,
+    html[lang="th"] [style*="font-style: italic"] {
+      font-style: normal !important;
+    }
+
+    html[lang="th"] h1.sh-x,
+    html[lang="th"] h1.dm-serif-display-regular,
+    html[lang="th"] h2.dm-serif-display-regular,
+    html[lang="th"] h2.profile-heading,
+    html[lang="th"] h3.profile-heading {
+      font-weight: 600 !important;
+      letter-spacing: 0 !important;
+    }
+
+    html[lang="th"] h1.sh-x {
+      font-size: clamp(40px, 6.2vw, 82px) !important;
+      line-height: 1.16 !important;
+    }
+
+    html[lang="th"] h1.dm-serif-display-regular {
+      font-size: clamp(34px, 5vw, 62px) !important;
+      line-height: 1.2 !important;
+    }
+
+    html[lang="th"] h2.dm-serif-display-regular {
+      font-size: clamp(26px, 4.4vw, 48px) !important;
+      line-height: 1.24 !important;
+    }
+
+    html[lang="th"] h2.profile-heading,
+    html[lang="th"] h3.profile-heading {
+      font-size: clamp(21px, 3.1vw, 31px) !important;
+      line-height: 1.28 !important;
+    }
+
+    html[lang="th"] .nav-link-ux,
+    html[lang="th"] .mobile-nav-link {
+      font-family: "Inter", "Anuphan", "Noto Sans Thai", sans-serif !important;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-transform: none !important;
+      letter-spacing: 0 !important;
+      line-height: 1.35;
+    }
+
+    html[lang="th"] .nav-cta,
+    html[lang="th"] .nav-lang-select,
+    html[lang="th"] .mobile-lang-select,
+    html[lang="th"] .mobile-lang-label {
+      font-family: "Inter", "Anuphan", "Noto Sans Thai", sans-serif !important;
+      text-transform: none !important;
+      letter-spacing: 0 !important;
+      font-weight: 600;
+    }
+
+    html[lang="th"] .nav-lang-select,
+    html[lang="th"] .mobile-lang-select {
+      font-family: "Inter", Arial, sans-serif !important;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    html[lang="th"] .primary-nav-links {
+      gap: 1.15rem;
+    }
+
+    html[lang="th"] p,
+    html[lang="th"] li,
+    html[lang="th"] small {
+      line-height: 1.68 !important;
+      letter-spacing: 0;
+    }
+
+    html[lang="th"] .ios-project-title,
+    html[lang="th"] .experience-title,
+    html[lang="th"] .ios-community-title,
+    html[lang="th"] .project-modal-title {
+      font-size: clamp(1.2rem, 2.1vw, 1.58rem) !important;
+      font-weight: 600 !important;
+      line-height: 1.4 !important;
+    }
+
+    html[lang="th"] .ios-project-subtitle,
+    html[lang="th"] .ios-project-desc,
+    html[lang="th"] .certificate-meta,
+    html[lang="th"] .certificate-desc,
+    html[lang="th"] .project-modal-description,
+    html[lang="th"] .project-modal-subtitle,
+    html[lang="th"] .footer-brand-copy {
+      font-size: clamp(0.92rem, 1.2vw, 1rem) !important;
+      line-height: 1.62 !important;
+    }
+
+    html[lang="ja"] body {
+      font-family: "Inter", "Noto Sans JP", sans-serif;
+      font-size: 16px;
+      line-height: 1.72;
+    }
+
+    html[lang="ja"] .playfair-400 {
+      font-family: "Playfair Display", "Noto Sans JP", serif !important;
+    }
+
+    html[lang="ja"] .dm-serif-display-regular {
+      font-family: "DM Serif Display", "Noto Sans JP", serif !important;
+    }
+
+    html[lang="ja"] .parisienne-regular {
+      font-family: "Parisienne", "Noto Sans JP", cursive !important;
+    }
+
+    html[lang="ja"] em,
+    html[lang="ja"] i,
+    html[lang="ja"] .fst-italic,
+    html[lang="ja"] [style*="font-style: italic"] {
+      font-style: normal !important;
+    }
+
+    html[lang="ja"] h1.sh-x,
+    html[lang="ja"] h1.dm-serif-display-regular,
+    html[lang="ja"] h2.dm-serif-display-regular,
+    html[lang="ja"] h2.profile-heading,
+    html[lang="ja"] h3.profile-heading {
+      font-weight: 600 !important;
+      letter-spacing: 0 !important;
+    }
+
+    html[lang="ja"] h1.sh-x {
+      font-size: clamp(38px, 5.8vw, 76px) !important;
+      line-height: 1.2 !important;
+    }
+
+    html[lang="ja"] .nav-link-ux,
+    html[lang="ja"] .mobile-nav-link {
+      font-family: "Inter", "Noto Sans JP", sans-serif !important;
+      font-weight: 600;
+      text-transform: none !important;
+      letter-spacing: 0 !important;
+      line-height: 1.4;
+    }
+
+    html[lang="ja"] .nav-cta,
+    html[lang="ja"] .nav-lang-select,
+    html[lang="ja"] .mobile-lang-select,
+    html[lang="ja"] .mobile-lang-label {
+      font-family: "Inter", "Noto Sans JP", sans-serif !important;
+      text-transform: none !important;
+      letter-spacing: 0 !important;
+      font-weight: 600;
+    }
+
+    html[lang="ja"] .nav-lang-select,
+    html[lang="ja"] .mobile-lang-select {
+      font-family: "Inter", Arial, sans-serif !important;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    html[lang="ja"] p,
+    html[lang="ja"] li,
+    html[lang="ja"] small {
+      line-height: 1.72 !important;
+      letter-spacing: 0;
+    }
+
+    #portfolio-list .portfolio-heading-word {
+      font-family: inherit !important;
+      font-style: normal !important;
+      font-weight: 600;
+      font-size: inherit;
+      letter-spacing: 0;
+    }
+
+    #portfolio-list .portfolio-heading-word + .portfolio-heading-word {
+      margin-left: 0.35em;
+    }
+
     /* Smooth transitions for all sections */
     section {
       transition: background-color 0.8s cubic-bezier(0.4, 0, 0.2, 1),
@@ -184,9 +383,9 @@
     rel="stylesheet" media="print" onload="this.media='all'" />
   <noscript><link href="https://fonts.googleapis.com/css2?family=Kenia&family=Libre+Bodoni&family=Noto+Sans+Thai+Looped:wght@600&family=Noto+Sans+Thai:wght@500&display=swap" rel="stylesheet" /></noscript>
   <link
-    href="https://fonts.googleapis.com/css2?family=Anuphan:wght@100..700&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=DM+Serif+Display:ital@0;1&family=Parisienne&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Anuphan:wght@100..700&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=DM+Serif+Display:ital@0;1&family=Noto+Sans+JP:wght@400;500;600;700&family=Parisienne&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
     rel="stylesheet" media="print" onload="this.media='all'" />
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@100..700&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=DM+Serif+Display:ital@0;1&family=Parisienne&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet" /></noscript>
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@100..700&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=DM+Serif+Display:ital@0;1&family=Noto+Sans+JP:wght@400;500;600;700&family=Parisienne&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet" /></noscript>
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
     integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous" media="print" onload="this.media='all'" />
@@ -288,16 +487,24 @@
         </h5>
       </a>
       <div class="primary-nav-links d-none d-lg-flex">
-        <a href="#home" class="nav-link-ux text-decoration-none">Home</a>
-        <a href="#profile" class="nav-link-ux text-decoration-none">Profile</a>
-        <a href="#portfolio" class="nav-link-ux text-decoration-none">Portfolio</a>
-        <a href="#experience" class="nav-link-ux text-decoration-none">Experience</a>
-        <a href="#certificates" class="nav-link-ux text-decoration-none d-none d-md-inline-flex">Certificates</a>
-        <a href="blog.html" class="nav-link-ux text-decoration-none">Blog</a>
+        <a href="#home" class="nav-link-ux text-decoration-none" data-i18n="nav.home">Home</a>
+        <a href="#profile" class="nav-link-ux text-decoration-none" data-i18n="nav.profile">Profile</a>
+        <a href="#portfolio" class="nav-link-ux text-decoration-none" data-i18n="nav.portfolio">Portfolio</a>
+        <a href="#experience" class="nav-link-ux text-decoration-none" data-i18n="nav.experience">Experience</a>
+        <a href="#certificates" class="nav-link-ux text-decoration-none d-none d-md-inline-flex" data-i18n="nav.certificates">Certificates</a>
+        <a href="blog.html" class="nav-link-ux text-decoration-none" data-i18n="nav.blog">Blog</a>
       </div>
       <div class="d-flex align-items-center gap-2">
-        <a href="#footer" class="nav-link-ux nav-cta text-decoration-none d-none d-md-inline-flex">
-          <span>Contact</span>
+        <div class="nav-language-control d-none d-md-inline-flex">
+          <label for="langSelect" class="visually-hidden">Select language</label>
+          <select id="langSelect" class="nav-lang-select" aria-label="Select language">
+            <option value="en">EN</option>
+            <option value="th">TH</option>
+            <option value="ja">JP</option>
+          </select>
+        </div>
+        <a href="#contact" class="nav-link-ux nav-cta text-decoration-none d-none d-md-inline-flex">
+          <span data-i18n="nav.contact">Contact</span>
           <i class="fas fa-arrow-right"></i>
         </a>
         <!-- Mobile Menu Toggle -->
@@ -311,14 +518,22 @@
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
       <div class="mobile-menu-content">
-        <a href="#home" class="mobile-nav-link" onclick="closeMobileMenu()">Home</a>
-        <a href="#profile" class="mobile-nav-link" onclick="closeMobileMenu()">Profile</a>
-        <a href="#portfolio" class="mobile-nav-link" onclick="closeMobileMenu()">Portfolio</a>
-        <a href="#experience" class="mobile-nav-link" onclick="closeMobileMenu()">Experience</a>
-        <a href="#certificates" class="mobile-nav-link" onclick="closeMobileMenu()">Certificates</a>
-        <a href="blog.html" class="mobile-nav-link" onclick="closeMobileMenu()">Blog</a>
-        <a href="#footer" class="mobile-nav-link mobile-nav-cta" onclick="closeMobileMenu()">
-          <span>Contact</span>
+        <a href="#home" class="mobile-nav-link" onclick="closeMobileMenu()" data-i18n="nav.home">Home</a>
+        <a href="#profile" class="mobile-nav-link" onclick="closeMobileMenu()" data-i18n="nav.profile">Profile</a>
+        <a href="#portfolio" class="mobile-nav-link" onclick="closeMobileMenu()" data-i18n="nav.portfolio">Portfolio</a>
+        <a href="#experience" class="mobile-nav-link" onclick="closeMobileMenu()" data-i18n="nav.experience">Experience</a>
+        <a href="#certificates" class="mobile-nav-link" onclick="closeMobileMenu()" data-i18n="nav.certificates">Certificates</a>
+        <a href="blog.html" class="mobile-nav-link" onclick="closeMobileMenu()" data-i18n="nav.blog">Blog</a>
+        <div class="mobile-lang-control">
+          <span class="mobile-lang-label" data-i18n="nav.language">Language</span>
+          <select id="mobileLangSelect" class="mobile-lang-select" aria-label="Select language">
+            <option value="en">EN</option>
+            <option value="th">TH</option>
+            <option value="ja">JP</option>
+          </select>
+        </div>
+        <a href="#contact" class="mobile-nav-link mobile-nav-cta" onclick="closeMobileMenu()">
+          <span data-i18n="nav.contact">Contact</span>
           <i class="fas fa-arrow-right"></i>
         </a>
       </div>
@@ -333,19 +548,19 @@
         <div class="text-center px-3" data-aos="fade-up" data-aos-delay="50">
           <h1 class="playfair-400 sh-x mb-2" style="color: #a30000; font-size: clamp(48px, 7vw, 100px)"
             data-aos="fade-up" data-aos-delay="100">
-            Hi, I'm
+            <span data-i18n="hero.hi">Hi, I'm</span>
             <span class="parisienne-regular" style="color: #a30000; font-size: clamp(52px, 8vw, 110px)">
               Nattapat
             </span>
           </h1>
           <h1 class="playfair-400 sh-x mb-3" style="color: #a30000; font-size: clamp(36px, 6vw, 90px)"
             data-aos="fade-up" data-aos-delay="150">
-            a Developer Based in
+            <span data-i18n="hero.developer">a Developer Based in</span>
             <span class="parisienne-regular" style="color: #a30000; font-size: clamp(42px, 7vw, 95px)">
-              Thailand </span>.
+              <span data-i18n="hero.thailand">Thailand</span> </span>.
           </h1>
           <p class="playfair-400" style="opacity: 0.7; font-size: clamp(14px, 2.5vw, 18px)" data-aos="fade-up"
-            data-aos-delay="100">
+            data-aos-delay="100" data-i18n="hero.education">
             B.Sc. in Computer and Information Science — Faculty of Applied
             Science
           </p>
@@ -456,20 +671,20 @@
       <div class="row gy-5 align-items-center">
         <!-- Left Title (PROFILE) -->
         <div class="col-md-5 text-center " data-aos="fade-right">
-          <h1 class="playfair-400 sh-x responsive-profile">PROFILE</h1>
+          <h1 class="playfair-400 sh-x responsive-profile" data-i18n="profile.title">PROFILE</h1>
           <h1 class="playfair-400 sh-x responsive-profile" style="
                 color: transparent;
                 -webkit-text-stroke: 1.5px #2c2c2c;
                 text-transform: uppercase;
-              ">
+              " data-i18n="profile.title">
             PROFILE
           </h1>
-          <h1 class="playfair-400 sh-x responsive-profile">PROFILE</h1>
+          <h1 class="playfair-400 sh-x responsive-profile" data-i18n="profile.title">PROFILE</h1>
           <h1 class="playfair-400 sh-x responsive-profile" style="
                 color: transparent;
                 -webkit-text-stroke: 1.5px #2c2c2c;
                 text-transform: uppercase;
-              ">
+              " data-i18n="profile.title">
             PROFILE
           </h1>
         </div>
@@ -479,19 +694,19 @@
             <div class="col-md-10">
               <div class="airdrop-collage">
                 <div class="airdrop-card shadow">
-                  <div class="airdrop-header">AirDrop</div>
+                  <div class="airdrop-header" data-i18n="profile.airdrop">AirDrop</div>
                   <div class="airdrop-photo">
                     <img src="Photo/optimized/20230220_005806.jpg" alt="profile" width="300" height="400" loading="lazy" / width="300" height="400" loading="lazy">
                   </div>
                   <div class="airdrop-input">
-                    <span>MY PROFILE</span>
+                    <span data-i18n="profile.myProfile">MY PROFILE</span>
                     <button class="mic" aria-label="voice">
                       <i class="fas fa-microphone"></i>
                     </button>
                   </div>
                   <div class="airdrop-actions">
-                    <button class="btn-decline">Decline</button>
-                    <button class="btn-accept">Accept</button>
+                    <button class="btn-decline" data-i18n="profile.decline">Decline</button>
+                    <button class="btn-accept" data-i18n="profile.accept">Accept</button>
                   </div>
                 </div>
                 <img class="float-item fi-1" src="Photo/optimized/emoji_me-removebg-preview.png" alt="sticker" width="100" height="100" loading="lazy" />
@@ -509,8 +724,8 @@
       <div class="row mt-4 g-3">
         <div class="col-12 col-lg-6">
           <div class="profile-block h-100">
-            <h3 class="profile-heading playfair-400 mb-3">About Me</h3>
-            <p class="playfair-400 m-0" style="font-size: 16px; line-height: 1.8;">
+            <h3 class="profile-heading playfair-400 mb-3" data-i18n="about.title">About Me</h3>
+            <p class="playfair-400 m-0" style="font-size: 16px; line-height: 1.8;" data-i18n-html="about.description">
               My name is Nattapat Phungphugdee.<br/>
               I'm a <strong>frontend-focused full stack developer</strong> currently working full-time on real-world web applications.<br/><br/>
               
@@ -528,7 +743,7 @@
         </div>
         <div class="col-12 col-lg-6">
           <div class="profile-block h-100">
-            <h3 class="profile-heading playfair-400 mb-3">Education</h3>
+            <h3 class="profile-heading playfair-400 mb-3" data-i18n="education.title">Education</h3>
             <div class="edu-list">
               <!-- KMUTNB -->
               <div class="edu-item mb-4">
@@ -538,30 +753,30 @@
                     alt="KMUTNB Logo" class="edu-logo img-fluid" />
                   <div class="flex-grow-1">
                     <strong class="playfair-400">King Mongkut's University of Technology North Bangkok (KMUTNB)</strong><br />
-                    <small class="edu-year playfair-400">2021 - Present</small>
+                    <small class="edu-year playfair-400" data-i18n="education.kmutnb.year">2021 - Present</small>
                   </div>
                 </div>
                 
                 <!-- Achievements & Coursework under KMUTNB -->
                 <div class="ms-5">
-                  <h4 class="playfair-400 mb-2" style="font-size: 13px; color: #666;">Achievements</h4>
+                  <h4 class="playfair-400 mb-2" style="font-size: 13px; color: #666;" data-i18n="education.kmutnb.achievements">Achievements</h4>
                   <div class="mb-3">
-                    <strong class="playfair-400" style="font-size: 13px;">Science Exhibition Day 2025</strong><br/>
-                    <small class="playfair-400" style="color: #888; font-size: 12px;">🥇 Gold Award Winner - Asset Management System for ECT Central Office</small>
+                    <strong class="playfair-400" style="font-size: 13px;" data-i18n="education.kmutnb.scienceDay">Science Exhibition Day 2025</strong><br/>
+                    <small class="playfair-400" style="color: #888; font-size: 12px;" data-i18n="education.kmutnb.goldAward">🥇 Gold Award Winner - Asset Management System for ECT Central Office</small>
                   </div>
                   
-                  <h4 class="playfair-400 mb-2" style="font-size: 13px; color: #666;">Key Coursework</h4>
+                  <h4 class="playfair-400 mb-2" style="font-size: 13px; color: #666;" data-i18n="education.kmutnb.coursework">Key Coursework</h4>
                   <div class="d-flex flex-wrap gap-2">
-                    <span class="badge rounded-pill" style="background: #f0f0f0; color: #333; font-weight: 400; padding: 4px 10px; font-size: 11px;">
+                    <span class="badge rounded-pill" style="background: #f0f0f0; color: #333; font-weight: 400; padding: 4px 10px; font-size: 11px;" data-i18n="education.kmutnb.web">
                       Web Development
                     </span>
-                    <span class="badge rounded-pill" style="background: #f0f0f0; color: #333; font-weight: 400; padding: 4px 10px; font-size: 11px;">
+                    <span class="badge rounded-pill" style="background: #f0f0f0; color: #333; font-weight: 400; padding: 4px 10px; font-size: 11px;" data-i18n="education.kmutnb.software">
                       Software Engineering
                     </span>
-                    <span class="badge rounded-pill" style="background: #f0f0f0; color: #333; font-weight: 400; padding: 4px 10px; font-size: 11px;">
+                    <span class="badge rounded-pill" style="background: #f0f0f0; color: #333; font-weight: 400; padding: 4px 10px; font-size: 11px;" data-i18n="education.kmutnb.python">
                       Python Programming
                     </span>
-                    <span class="badge rounded-pill" style="background: #f0f0f0; color: #333; font-weight: 400; padding: 4px 10px; font-size: 11px;">
+                    <span class="badge rounded-pill" style="background: #f0f0f0; color: #333; font-weight: 400; padding: 4px 10px; font-size: 11px;" data-i18n="education.kmutnb.dataStructure">
                       Data Structure
                     </span>
                   </div>
@@ -582,7 +797,7 @@
                   alt="Sarasas Pittaya Logo" class="edu-logo img-fluid" style="border-radius: 50%; object-fit: cover;" />
                 <div class="flex-grow-1">
                   <strong class="playfair-400">Sarasas Pittaya School</strong><br />
-                  <small class="edu-year playfair-400">2009 - 2015 (Elementary)</small>
+                  <small class="edu-year playfair-400" data-i18n="education.sarasas.year">2009 - 2015 (Elementary)</small>
                 </div>
               </div>
             </div>
@@ -596,7 +811,7 @@
   <!-- Skills Section -->
   <section class="container-fluid" style="background-color: #f8f8ff; padding-top: 0; padding-bottom: 3rem; transition: background-color 0.6s ease;">
     <div class="container">
-      <h2 class="profile-heading playfair-400 mb-3 text-center" style="color: #2c2c2c">
+      <h2 class="profile-heading playfair-400 mb-3 text-center" style="color: #2c2c2c" data-i18n="skills.title">
         My Skills
       </h2>
 
@@ -824,10 +1039,10 @@
               <img src="Photo/optimized/Logozxin-removebg-preview.png" alt="ZXIN mini logo" style="width: 48px; height: 48px; object-fit: contain" / width="200" height="200" loading="lazy">
             </div>
             <div>
-              <p class="text-uppercase mb-1" style="font-size: 0.75rem; letter-spacing: 0.08em; color: #6b6b6b">
+              <p class="text-uppercase mb-1" style="font-size: 0.75rem; letter-spacing: 0.08em; color: #6b6b6b" data-i18n="creator.mode">
                 Creator mode
               </p>
-              <p class="mb-0 playfair-400" style="font-size: 0.95rem; color: #2c2c2c">
+              <p class="mb-0 playfair-400" style="font-size: 0.95rem; color: #2c2c2c" data-i18n="creator.subtitle">
                 Quick snapshots from my dev-life TikTok channel.
               </p>
             </div>
@@ -836,10 +1051,10 @@
                 color: #2c2c2c;
                 font-size: clamp(24px, 4vw, 36px);
                 font-weight: 500;
-              ">
+              " data-i18n="creator.title">
             Tech Content Creator
           </h2>
-          <p class="playfair-400 mb-0" style="font-size: 0.95rem; color: #55555c; line-height: 1.65">
+          <p class="playfair-400 mb-0" style="font-size: 0.95rem; color: #55555c; line-height: 1.65" data-i18n-html="creator.description">
             Follow my coding & dev lifestyle on TikTok 💻🎥
             <br class="d-md-none" />
             I drop code tips, build logs, and community stories in Thai & English.
@@ -858,10 +1073,10 @@
                 box-shadow: 0 18px 45px rgba(17, 24, 39, 0.08);
               ">
             <div class="card-body pb-0">
-              <span class="d-inline-block text-uppercase mb-2" style="font-size: 0.75rem; letter-spacing: 0.08em; color: #6b6b6b">
+              <span class="d-inline-block text-uppercase mb-2" style="font-size: 0.75rem; letter-spacing: 0.08em; color: #6b6b6b" data-i18n="creator.cards.teamwork.title">
                 Teamwork & Git
               </span>
-              <p class="playfair-400 mb-3" style="font-size: 0.95rem; color: #1d1d1f">
+              <p class="playfair-400 mb-3" style="font-size: 0.95rem; color: #1d1d1f" data-i18n="creator.cards.teamwork.description">
                 First team project shipped with Git—messy process, solid lesson learned together.
               </p>
             </div>
@@ -888,10 +1103,10 @@
                 box-shadow: 0 18px 45px rgba(17, 24, 39, 0.08);
               ">
             <div class="card-body pb-0">
-              <span class="d-inline-block text-uppercase mb-2" style="font-size: 0.75rem; letter-spacing: 0.08em; color: #6b6b6b">
+              <span class="d-inline-block text-uppercase mb-2" style="font-size: 0.75rem; letter-spacing: 0.08em; color: #6b6b6b" data-i18n="creator.cards.framework.title">
                 Framework Experiments
               </span>
-              <p class="playfair-400 mb-3" style="font-size: 0.95rem; color: #1d1d1f">
+              <p class="playfair-400 mb-3" style="font-size: 0.95rem; color: #1d1d1f" data-i18n="creator.cards.framework.description">
                 Comparing Tailwind vs Bootstrap in real projects to find the right fit.
               </p>
             </div>
@@ -918,10 +1133,10 @@
                 box-shadow: 0 18px 45px rgba(17, 24, 39, 0.08);
               ">
             <div class="card-body pb-0">
-              <span class="d-inline-block text-uppercase mb-2" style="font-size: 0.75rem; letter-spacing: 0.08em; color: #6b6b6b">
+              <span class="d-inline-block text-uppercase mb-2" style="font-size: 0.75rem; letter-spacing: 0.08em; color: #6b6b6b" data-i18n="creator.cards.ui.title">
                 UI Components
               </span>
-              <p class="playfair-400 mb-3" style="font-size: 0.95rem; color: #1d1d1f">
+              <p class="playfair-400 mb-3" style="font-size: 0.95rem; color: #1d1d1f" data-i18n="creator.cards.ui.description">
                 Sharing how I add motion and polish to Bootstrap card components.
               </p>
             </div>
@@ -992,16 +1207,16 @@
 
   <!-- Automation & Integration Tools Section -->
   <section class="container-fluid"
-    style="background: linear-gradient(to bottom, #f8f8ff 0%, #f8f8ff 50%, #f8f8ff 100%); padding-top: 0; padding-bottom: 3rem; transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);">
+    style="background-color: #f8f8ff; padding-top: 0; padding-bottom: 3rem; transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);">
     <div class="container px-4" style="max-width: 1200px;">
       <h2 class="dm-serif-display-regular mb-4 text-center"
         style="color: #1d1d1f; font-size: clamp(32px, 5vw, 56px); font-weight: 600; letter-spacing: -0.5px"
-        data-aos="fade-up">
+        data-aos="fade-up" data-i18n="automation.title">
         Automation & Integration
       </h2>
       <p class="text-center mb-5 playfair-400"
         style="max-width: 680px; margin: 0 auto; font-size: 17px; line-height: 1.6; color: #6b6b6b" data-aos="fade-up"
-        data-aos-delay="50">
+        data-aos-delay="50" data-i18n="automation.description">
         Streamlining workflows and connecting systems with automation tools and integration platforms.
       </p>
 
@@ -1137,9 +1352,9 @@
             <div>
               <h3 class="dm-serif-display-regular mb-3"
                 style="color: #1d1d1f; font-size: 1.5rem; font-weight: 600; letter-spacing: -0.3px">
-                Make.com
+                <span data-i18n="automation.makecom.title">Make.com</span>
               </h3>
-              <p class="playfair-400 mb-0" style="line-height: 1.6; color: #515154; font-size: 15px">
+              <p class="playfair-400 mb-0" style="line-height: 1.6; color: #515154; font-size: 15px" data-i18n="automation.makecom.description">
                 Workflow automation and integration platform. Building complex scenarios to connect apps, automate
                 processes, and streamline business operations.
               </p>
@@ -1217,9 +1432,9 @@
             <div>
               <h3 class="dm-serif-display-regular mb-3"
                 style="color: #1d1d1f; font-size: 1.5rem; font-weight: 600; letter-spacing: -0.3px">
-                Playwright
+                <span data-i18n="automation.playwright.title">Playwright</span>
               </h3>
-              <p class="playfair-400 mb-0" style="line-height: 1.6; color: #515154; font-size: 15px">
+              <p class="playfair-400 mb-0" style="line-height: 1.6; color: #515154; font-size: 15px" data-i18n="automation.playwright.description">
                 End-to-end testing framework for web applications. Writing reliable tests across multiple browsers with
                 modern automation capabilities.
               </p>
@@ -1295,9 +1510,9 @@
             <div>
               <h3 class="dm-serif-display-regular mb-3"
                 style="color: #1d1d1f; font-size: 1.5rem; font-weight: 600; letter-spacing: -0.3px">
-                CI/CD
+                <span data-i18n="automation.cicd.title">CI/CD</span>
               </h3>
-              <p class="playfair-400 mb-0" style="line-height: 1.6; color: #515154; font-size: 15px">
+              <p class="playfair-400 mb-0" style="line-height: 1.6; color: #515154; font-size: 15px" data-i18n="automation.cicd.description">
                 Continuous Integration and Deployment pipelines. Automating build, test, and deployment processes for
                 faster and more reliable releases.
               </p>
@@ -1312,15 +1527,14 @@
 
   <!-- Visual Highlights -->
   <section id="portfolio" class="container-fluid"
-    style="background: linear-gradient(to bottom, #f8f8ff 0%, #f8f8ff 20%, #ffffff 100%); padding-top: 0; padding-bottom: 0; transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);">
-    <span class="visual-highlight-glow" aria-hidden="true"></span>
+    style="background-color: #f8f8ff; padding-top: 0; padding-bottom: 0; transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);">
     <div class="container" style="padding-top: 3rem; padding-bottom: 3rem;">
       <div class="text-center mb-5">
         <h2 class="dm-serif-display-regular mb-3"
           style="font-size: clamp(32px, 6vw, 64px); color: #1d1d1f; font-weight: 600; letter-spacing: -0.5px">
-          Visual Highlights
+          <span data-i18n="visual.title">Visual Highlights</span>
         </h2>
-        <p class="text-muted mx-auto" style="max-width: 680px; font-size: 17px; line-height: 1.6; color: #6b6b6b">
+        <p class="text-muted mx-auto" style="max-width: 680px; font-size: 17px; line-height: 1.6; color: #6b6b6b" data-i18n="visual.description">
           A curated selection of my featured projects. Each work blends elegant
           design, smart functionality, and seamless user experiences.
         </p>
@@ -1526,16 +1740,16 @@
           <p id="modalProjectSubtitle" class="project-modal-subtitle playfair-400"></p>
           <p id="modalProjectDescription" class="project-modal-description playfair-400"></p>
           <div class="project-modal-tech">
-            <h6 class="playfair-400 mb-2" style="font-weight: 600; color: #2c2c2c;">Technologies</h6>
+            <h6 class="playfair-400 mb-2" style="font-weight: 600; color: #2c2c2c;" data-i18n="modal.technologies">Technologies</h6>
             <p id="modalProjectTech" class="playfair-400" style="color: #6b6b6b; font-size: 0.95rem;"></p>
           </div>
           <div class="project-modal-actions mt-4">
             <a id="modalGithubLink" href="#" target="_blank" class="btn btn-sm github-icon-btn me-2"
               style="background-color: #24292e; color: white; border-radius: 8px; padding: 0.5rem 1rem; text-decoration: none; transition: all 0.2s;">
-              <i class="fab fa-github me-2"></i>View on GitHub
+              <i class="fab fa-github me-2"></i><span data-i18n="modal.viewGithub">View on GitHub</span>
             </a>
             <a id="modalDemoLink" href="#" target="_blank" class="btn btn-sm demo-btn-outline playfair-400" style="display: none;">
-              <i class="fas fa-external-link-alt me-2"></i>Live Demo
+              <i class="fas fa-external-link-alt me-2"></i><span data-i18n="modal.liveDemo">Live Demo</span>
             </a>
           </div>
         </div>
@@ -1545,7 +1759,7 @@
 
   <!-- UI/UX Projects -->
   <section class="container-fluid"
-    style="background-color: #ffffff; padding-top: 0; padding-bottom: 0; transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);">
+    style="background-color: #f8f8ff; padding-top: 0; padding-bottom: 0; transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);">
     <div class="container" style="padding-top: 3rem; padding-bottom: 3rem; max-width: 1200px;">
       <!-- OLIF APP SECTION -->
       <section class="mb-5">
@@ -1630,14 +1844,8 @@
       <div class="py-4 py-md-5">
         <h2 class="dm-serif-display-regular text-center text-md-start mb-4 mb-md-5"
           style="color: #2c2c2c; font-size: clamp(32px, 6vw, 72px); line-height: 1.1; padding-bottom: 1rem; border-bottom: 1px solid rgba(0, 0, 0, 0.15);">
-          <span style="
-                font-family: 'Playfair Display', serif;
-                font-style: italic;
-                font-size: clamp(28px, 5vw, 60px);
-              ">
-            Portfolio
-          </span>
-          <span style="font-size: clamp(24px, 4vw, 48px);">PROJECT</span>
+          <span class="portfolio-heading-word" data-i18n="portfolioList.portfolio">Portfolio</span>
+          <span class="portfolio-heading-word" data-i18n="portfolioList.project">PROJECT</span>
         </h2>
         <!-- Project Rows -->
         <div class="row py-3 py-md-4 align-items-center g-3 g-md-4">
@@ -1747,7 +1955,7 @@
         </div>
         <div class="text-center">
           <button class="custom-learn-more-btn" onclick="window.location.href='#portfolio'">
-            <span class="button-text">MORE PROJECTS </span>
+            <span class="button-text" data-i18n="portfolioList.moreProjects">MORE PROJECTS </span>
             <div class="circle"></div>
             <div class="arrow"></div>
           </button>
@@ -1761,10 +1969,10 @@
     <div class="container" style="max-width: 1200px;">
       <!-- Section Header -->
       <div class="text-center mb-5" data-aos="fade-up">
-        <h1 class="dm-serif-display-regular mb-3" style="color: #2c2c2c; font-size: clamp(40px, 8vw, 80px)">
+        <h1 class="dm-serif-display-regular mb-3" style="color: #2c2c2c; font-size: clamp(40px, 8vw, 80px)" data-i18n="experience.title">
           EXPERIENCE & INTERNSHIP
         </h1>
-        <p class="playfair-400 text-muted mx-auto" style="max-width: 600px; font-size: 1.1rem">
+        <p class="playfair-400 text-muted mx-auto" style="max-width: 600px; font-size: 1.1rem" data-i18n="experience.description">
           My professional journey from internship to full-time developer,
           building real-world solutions and growing with each opportunity.
         </p>
@@ -2009,7 +2217,7 @@
   </section>
 
   <!-- Extracurricular & Community -->
-  <section class="container-fluid" style="background-color: #f8f8f8ff; padding-top: 0; padding-bottom: 3rem;">
+  <section class="container-fluid" style="background-color: #f8f8ff; padding-top: 0; padding-bottom: 3rem;">
     <div class="container" style="max-width: 1200px;">
         <h2 class="dm-serif-display-regular text-center mb-5" style="
             font-size: clamp(32px, 6vw, 80px);
@@ -2017,7 +2225,7 @@
             border-bottom: 2px solid #2c2c2c;
             width: fit-content;
             margin: auto;
-          ">
+          " data-i18n="extracurricular.title">
         EXTRACURRICULAR & COMMUNITY
       </h2>
       <div class="row row-cols-1 row-cols-md-3 g-4 px-4">
@@ -2095,11 +2303,11 @@
             color: #2c2c2c;
             font-size: clamp(24px, 4vw, 36px);
             font-weight: 500;
-          ">
+          " data-i18n="certificates.title">
         Browse My Achievements
       </h2>
       <p class="text-center text-muted mb-4 playfair-400"
-        style="font-size: 0.9rem; max-width: 500px; margin: 0 auto; line-height: 1.5">
+        style="font-size: 0.9rem; max-width: 500px; margin: 0 auto; line-height: 1.5" data-i18n="certificates.description">
         A collection of certifications and skills I've earned through real
         projects and continuous learning.
       </p>
@@ -2185,11 +2393,97 @@
             "
           onmouseover="this.style.backgroundColor='rgba(0, 0, 0, 0.04)'; this.style.borderColor='rgba(0, 0, 0, 0.25)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 2px 8px rgba(0, 0, 0, 0.1)'"
           onmouseout="this.style.backgroundColor='transparent'; this.style.borderColor='rgba(0, 0, 0, 0.15)'; this.style.transform='translateY(0)'; this.style.boxShadow='none'">
-          <i class="fab fa-linkedin me-2"></i>View more on LinkedIn
+          <i class="fab fa-linkedin me-2"></i><span data-i18n="certificates.viewMore">View more on LinkedIn</span>
         </a>
       </div>
     </div>
 
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="container-fluid" style="background-color: #f8f8ff; padding-top: 0; padding-bottom: 3rem;">
+    <div class="container" style="max-width: 1200px;">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <h2 class="dm-serif-display-regular mb-3" style="font-size: clamp(30px, 5vw, 58px); color: #2c2c2c;" data-i18n="contact.title">
+          Get in Touch
+        </h2>
+        <p class="playfair-400 text-muted mx-auto" style="max-width: 700px; font-size: 1rem;" data-i18n="contact.description">
+          Ready to collaborate? Reach out through email or connect on social platforms.
+        </p>
+      </div>
+
+      <div class="row g-4 g-lg-5 align-items-stretch">
+        <div class="col-12 col-lg-6" data-aos="fade-right">
+          <div class="contact-info-minimal h-100">
+            <div class="contact-info-card h-100 p-4 p-lg-5 bg-white rounded-4 shadow-sm">
+              <div class="contact-info-item">
+                <div class="contact-info-label">
+                  <i class="fas fa-envelope me-2"></i><span data-i18n="contact.emailLabel">Email</span>
+                </div>
+                <div class="contact-info-value">
+                  <a href="mailto:nattapat.p.npt@gmail.com" class="contact-link">nattapat.p.npt@gmail.com</a>
+                </div>
+              </div>
+
+              <div class="contact-info-item">
+                <div class="contact-info-label">
+                  <i class="fas fa-phone-alt me-2"></i><span data-i18n="contact.phoneLabel">Phone</span>
+                </div>
+                <div class="contact-info-value">
+                  <a href="tel:+66836684009" class="contact-link">+66 83 668 4009</a>
+                </div>
+              </div>
+
+              <div class="contact-info-item">
+                <div class="contact-info-label">
+                  <i class="fas fa-map-marker-alt me-2"></i><span data-i18n="contact.locationLabel">Location</span>
+                </div>
+                <div class="contact-info-value">Bangkok, Thailand</div>
+              </div>
+
+              <div class="contact-info-item">
+                <div class="contact-info-label">
+                  <i class="fas fa-clock me-2"></i><span data-i18n="contact.availableLabel">Availability</span>
+                </div>
+                <div class="contact-info-value" data-i18n="contact.availableValue">Open for freelance and full-time opportunities</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-lg-6" data-aos="fade-left">
+          <div class="contact-form-minimal contact-info-card h-100 p-4 p-lg-5 bg-white rounded-4 shadow-sm d-flex flex-column justify-content-between">
+            <div>
+              <h3 class="profile-heading playfair-400 mb-3" style="font-size: clamp(24px, 3.8vw, 36px);" data-i18n="contact.ctaTitle">
+                Let's build something together
+              </h3>
+              <p class="playfair-400 text-muted mb-4" style="font-size: 1rem;" data-i18n="contact.ctaDescription">
+                Share your idea, timeline, and goals. I will get back to you as soon as possible.
+              </p>
+
+              <div class="contact-info-label mb-2">
+                <i class="fas fa-share-alt me-2"></i><span data-i18n="contact.socialLabel">Social</span>
+              </div>
+              <div class="contact-social-links mb-4">
+                <a href="https://github.com/ZXINNATTAPAT" target="_blank" rel="noopener noreferrer" class="contact-social-link">GitHub</a>
+                <a href="https://www.linkedin.com/in/nattapat2002" target="_blank" rel="noopener noreferrer" class="contact-social-link">LinkedIn</a>
+                <a href="https://www.instagram.com/nattazxin/" target="_blank" rel="noopener noreferrer" class="contact-social-link">Instagram</a>
+                <a href="https://medium.com/@bigboyzin88" target="_blank" rel="noopener noreferrer" class="contact-social-link">Medium</a>
+              </div>
+            </div>
+
+            <div class="d-flex flex-wrap gap-2">
+              <a href="mailto:nattapat.p.npt@gmail.com?subject=Project%20Inquiry%20from%20Portfolio" class="btn-submit-minimal">
+                <i class="fas fa-paper-plane me-2"></i><span data-i18n="contact.sendEmail">Send Email</span>
+              </a>
+              <a href="https://www.linkedin.com/in/nattapat2002" target="_blank" rel="noopener noreferrer" class="contact-social-link">
+                <span data-i18n="contact.openLinkedIn">Open LinkedIn</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- Footer -->
@@ -2198,7 +2492,7 @@
       <div class="row gy-4 footer-main">
         <div class="col-12 col-md-4 footer-brand">
           <img src="Photo/optimized/Logozxin.jpg" alt="Nattapat Logo" class="footer-logo" / width="200" height="200" loading="lazy">
-          <p class="playfair-400 footer-brand-copy">
+          <p class="playfair-400 footer-brand-copy" data-i18n="footer.brandCopy">
             Full-stack developer crafting beautiful interfaces and dependable systems across web, cloud, and mobile.
           </p>
           <div class="footer-social">
@@ -2214,23 +2508,23 @@
           </div>
         </div>
         <div class="col-6 col-md-2">
-          <h6 class="footer-heading">Portfolio</h6>
+          <h6 class="footer-heading" data-i18n="footer.portfolioHeading">Portfolio</h6>
           <ul class="footer-links">
-            <li><a href="#portfolio">Visual Highlights</a></li>
-            <li><a href="#profile">Profile</a></li>
-            <li><a href="#certificates">Certificates</a></li>
+            <li><a href="#portfolio" data-i18n="footer.portfolioVisual">Visual Highlights</a></li>
+            <li><a href="#profile" data-i18n="footer.portfolioProfile">Profile</a></li>
+            <li><a href="#certificates" data-i18n="footer.portfolioCertificates">Certificates</a></li>
           </ul>
         </div>
         <div class="col-6 col-md-2">
-          <h6 class="footer-heading">Experience</h6>
+          <h6 class="footer-heading" data-i18n="footer.experienceHeading">Experience</h6>
           <ul class="footer-links">
-            <li><a href="#experience">Work History</a></li>
-            <li><a href="#experience">Internships</a></li>
-            <li><a href="#experience">Awards</a></li>
+            <li><a href="#experience" data-i18n="footer.experienceWorkHistory">Work History</a></li>
+            <li><a href="#experience" data-i18n="footer.experienceInternships">Internships</a></li>
+            <li><a href="#experience" data-i18n="footer.experienceAwards">Awards</a></li>
           </ul>
         </div>
         <div class="col-6 col-md-2">
-          <h6 class="footer-heading">Resources</h6>
+          <h6 class="footer-heading" data-i18n="footer.resourcesHeading">Resources</h6>
           <ul class="footer-links">
             <li><a href="https://medium.com/@bigboyzin88" target="_blank" rel="noopener">Medium</a></li>
             <li><a href="https://www.linkedin.com/in/nattapat2002/details/certifications/" target="_blank"
@@ -2239,20 +2533,20 @@
           </ul>
         </div>
         <div class="col-6 col-md-2">
-          <h6 class="footer-heading">Contact</h6>
+          <h6 class="footer-heading" data-i18n="footer.contactHeading">Contact</h6>
           <ul class="footer-links">
-            <li><a href="mailto:nattapat.p.npt@gmail.com">Email</a></li>
-            <li><a href="#footer">Contact</a></li>
+            <li><a href="mailto:nattapat.p.npt@gmail.com" data-i18n="footer.contactEmail">Email</a></li>
+            <li><a href="#contact" data-i18n="footer.contactLabel">Contact</a></li>
             <li><a href="https://linktr.ee/zxin_nizmoxa" target="_blank" rel="noopener">Linktree</a></li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
-        <p class="mb-0 playfair-400">© 2025 Nattapat Phungphugdee. All rights reserved.</p>
+        <p class="mb-0 playfair-400" data-i18n="footer.copyright">© 2025 Nattapat Phungphugdee. All rights reserved.</p>
         <div class="footer-bottom-links">
-          <a href="#home">Back to top</a>
+          <a href="#home" data-i18n="footer.backToTop">Back to top</a>
           <span>·</span>
-          <a href="#footer">Hire me</a>
+          <a href="#contact" data-i18n="footer.hireMe">Hire me</a>
         </div>
       </div>
     </div>
@@ -2425,7 +2719,6 @@
       if (!visualHighlightSection) return;
 
       const cards = Array.from(visualHighlightSection.querySelectorAll('.ios-project-card'));
-      const glow = visualHighlightSection.querySelector('.visual-highlight-glow');
 
       // Add initial styles for cards
       cards.forEach((card) => {
@@ -2433,13 +2726,6 @@
         card.style.transform = 'translateY(60px)';
         card.style.transition = 'opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.9s cubic-bezier(0.22, 1, 0.36, 1)';
       });
-
-      // Add initial styles for glow
-      if (glow) {
-        glow.style.opacity = '0';
-        glow.style.filter = 'blur(110px)';
-        glow.style.transition = 'opacity 1.6s ease-out, filter 1.6s ease-out, transform 1.6s ease-out';
-      }
 
       // Use Intersection Observer for scroll-triggered animations
       if ('IntersectionObserver' in window) {
@@ -2449,7 +2735,7 @@
               setTimeout(function() {
                 entry.target.style.opacity = '1';
                 entry.target.style.transform = 'translateY(0px)';
-                entry.target.style.boxShadow = '0 20px 55px rgba(15, 15, 30, 0.18)';
+                entry.target.style.boxShadow = '0 8px 18px rgba(15, 15, 30, 0.09)';
               }, index * 80);
               cardObserver.unobserve(entry.target);
             }
@@ -2462,44 +2748,6 @@
         cards.forEach(function(card) {
           cardObserver.observe(card);
         });
-
-        // Glow animation
-        if (glow) {
-          const glowObserver = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
-              if (entry.isIntersecting) {
-                entry.target.style.opacity = '0.35';
-                entry.target.style.filter = 'blur(60px)';
-                glowObserver.unobserve(entry.target);
-                
-                // Animate glow on scroll
-                let ticking = false;
-                function updateGlow() {
-                  if (!ticking) {
-                    window.requestAnimationFrame(function() {
-                      const rect = visualHighlightSection.getBoundingClientRect();
-                      const scrollProgress = Math.max(0, Math.min(1, (window.innerHeight - rect.top) / (window.innerHeight + rect.height)));
-                      const opacity = 0.15 + (0.2 * (1 - scrollProgress));
-                      const blur = 60 + (50 * scrollProgress);
-                      entry.target.style.opacity = opacity;
-                      entry.target.style.filter = 'blur(' + blur + 'px)';
-                      ticking = false;
-                    });
-                    ticking = true;
-                  }
-                }
-                
-                window.addEventListener('scroll', updateGlow, { passive: true });
-                updateGlow();
-              }
-            });
-          }, {
-            threshold: 0,
-            rootMargin: '200px 0px'
-          });
-          
-          glowObserver.observe(glow);
-        }
       } else {
         // Fallback: simple fade-in on load
         window.addEventListener('load', function() {
@@ -2509,10 +2757,6 @@
               card.style.transform = 'translateY(0px)';
             }, index * 100);
           });
-          if (glow) {
-            glow.style.opacity = '0.35';
-            glow.style.filter = 'blur(60px)';
-          }
         });
       }
     })();
@@ -2773,6 +3017,8 @@
       startAOS();
     }
   </script>
+
+  <script src="i18n.js"></script>
 
 </body>
 
