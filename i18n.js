@@ -452,15 +452,551 @@ const translations = {
       backToTop: "上に戻る",
       hireMe: "相談する"
     }
+  },
+  zh: {
+    nav: {
+      home: "首页",
+      profile: "个人简介",
+      portfolio: "作品集",
+      experience: "经验",
+      certificates: "证书",
+      blog: "博客",
+      language: "语言",
+      contact: "联系"
+    },
+    hero: {
+      hi: "你好，我是",
+      developer: "一名常驻",
+      thailand: "泰国",
+      education: "计算机与信息科学学士 — 应用科学学院"
+    },
+    profile: {
+      title: "个人简介",
+      airdrop: "AirDrop",
+      myProfile: "我的资料",
+      decline: "拒绝",
+      accept: "接受"
+    },
+    about: {
+      title: "关于我",
+      description:
+        "我叫 Nattapat Phungphugdee。<br/>" +
+        "目前是一名 <strong>以前端为核心的全栈开发者</strong>，全职参与真实业务场景的 Web 应用开发。<br/><br/>" +
+        "我的主要方向是 <strong>前端开发</strong>。我专注于构建干净、可靠且易用的界面，重视可用性、一致性和长期可维护性。相比复杂冗余的设计，我更偏好能在生产环境稳定落地的简洁方案。<br/><br/>" +
+        "后端方面我具备中级能力，能熟练进行 API 集成、数据流处理，并理解系统逻辑，从而让前端功能与整体系统架构更好地协同。<br/><br/>" +
+        "在日常工作中，我重视代码可读性、务实的设计决策以及团队协作。对真实开发流程、跨角色沟通、持续迭代和系统优化都有成熟经验。<br/><br/>" +
+        "我目前开放 <strong>前端开发工程师</strong> 或 <strong>全栈开发工程师</strong> 的机会，期待持续交付生产级前端成果，并进一步深化后端工程与系统设计能力。"
+    },
+    education: {
+      title: "教育经历",
+      kmutnb: {
+        year: "2021 - 至今",
+        achievements: "成果",
+        scienceDay: "Science Exhibition Day 2025",
+        goldAward: "🥇 金奖 - 泰国选举委员会中央办公室资产管理系统",
+        coursework: "核心课程",
+        web: "Web 开发",
+        software: "软件工程",
+        python: "Python 编程",
+        dataStructure: "数据结构"
+      },
+      sarasas: {
+        year: "2009 - 2015（小学）"
+      }
+    },
+    skills: {
+      title: "我的技能"
+    },
+    creator: {
+      mode: "创作者模式",
+      subtitle: "来自我技术向 TikTok 频道的开发日常片段。",
+      title: "科技内容创作者",
+      description:
+        "欢迎在 TikTok 关注我的编程与开发生活 💻🎥<br class=\"d-md-none\" />" +
+        "我会分享代码技巧、构建日志，以及泰语与英语社区内容。",
+      cards: {
+        teamwork: {
+          title: "团队协作与 Git",
+          description: "首次团队项目通过 Git 交付。过程不完美，但收获了扎实经验。"
+        },
+        framework: {
+          title: "框架实践",
+          description: "在真实项目中比较 Tailwind 与 Bootstrap，选择更合适的方案。"
+        },
+        ui: {
+          title: "UI 组件",
+          description: "分享如何为 Bootstrap 卡片组件加入动效与细节打磨。"
+        }
+      }
+    },
+    automation: {
+      title: "自动化与集成",
+      description: "通过自动化工具与集成平台优化流程并连接系统。",
+      makecom: {
+        title: "Make.com",
+        description: "工作流自动化与集成平台。用于连接应用、自动化流程并提升业务效率。"
+      },
+      playwright: {
+        title: "Playwright",
+        description: "Web 应用端到端测试框架。可在多浏览器环境中编写稳定可靠的自动化测试。"
+      },
+      cicd: {
+        title: "CI/CD",
+        description: "持续集成与持续部署流水线。自动化 build、test、deploy 流程，加速并稳定发布。"
+      }
+    },
+    visual: {
+      title: "视觉精选",
+      description: "精选代表项目，融合优雅设计、实用功能与流畅的用户体验。"
+    },
+    modal: {
+      technologies: "技术栈",
+      viewGithub: "在 GitHub 查看",
+      liveDemo: "在线演示"
+    },
+    portfolioList: {
+      portfolio: "作品集",
+      project: "项目",
+      moreProjects: "查看更多项目"
+    },
+    experience: {
+      title: "经验与实习",
+      description: "从实习到全职开发者的成长路径，在每一次真实项目中持续进步。"
+    },
+    extracurricular: {
+      title: "课外活动与社区"
+    },
+    certificates: {
+      title: "成果与证书",
+      description: "汇总我在真实项目与持续学习中获得的证书与技能。",
+      viewMore: "在 LinkedIn 查看更多"
+    },
+    contact: {
+      title: "联系我",
+      description: "如果你准备合作，欢迎通过邮件或社交平台与我联系。",
+      emailLabel: "邮箱",
+      phoneLabel: "电话",
+      locationLabel: "所在地",
+      availableLabel: "可用状态",
+      availableValue: "开放自由职业与全职机会",
+      socialLabel: "社交平台",
+      ctaTitle: "一起做点有意思的项目",
+      ctaDescription: "欢迎分享你的想法、时间线和目标，我会尽快回复你。",
+      sendEmail: "发送邮件",
+      openLinkedIn: "打开 LinkedIn"
+    },
+    footer: {
+      brandCopy: "全栈开发者，专注于打造精致界面与可靠系统，覆盖 Web、云端与移动端。",
+      portfolioHeading: "作品集",
+      portfolioVisual: "视觉精选",
+      portfolioProfile: "个人简介",
+      portfolioCertificates: "证书",
+      experienceHeading: "经验",
+      experienceWorkHistory: "工作经历",
+      experienceInternships: "实习经历",
+      experienceAwards: "奖项",
+      resourcesHeading: "资源",
+      contactHeading: "联系",
+      contactEmail: "邮箱",
+      contactLabel: "联系",
+      copyright: "© 2025 Nattapat Phungphugdee. 保留所有权利。",
+      backToTop: "回到顶部",
+      hireMe: "合作咨询"
+    }
+  },
+  de: {
+    nav: {
+      home: "Startseite",
+      profile: "Profil",
+      portfolio: "Portfolio",
+      experience: "Erfahrung",
+      certificates: "Zertifikate",
+      blog: "Blog",
+      language: "Sprache",
+      contact: "Kontakt"
+    },
+    hero: {
+      hi: "Hallo, ich bin",
+      developer: "ein Entwickler mit Standort in",
+      thailand: "Thailand",
+      education: "B.Sc. in Informatik und Informationswissenschaft — Fakultät für Angewandte Wissenschaften"
+    },
+    profile: {
+      title: "PROFIL",
+      airdrop: "AirDrop",
+      myProfile: "MEIN PROFIL",
+      decline: "Ablehnen",
+      accept: "Annehmen"
+    },
+    about: {
+      title: "Über mich",
+      description:
+        "Mein Name ist Nattapat Phungphugdee.<br/>" +
+        "Ich arbeite derzeit Vollzeit als <strong>Full-Stack-Entwickler mit Fokus auf Frontend</strong> an realen Webanwendungen.<br/><br/>" +
+        "Mein Hauptfokus liegt auf <strong>Frontend-Entwicklung</strong>. Ich baue saubere, zuverlässige Benutzeroberflächen mit Blick auf Usability, Konsistenz und langfristige Wartbarkeit. Ich bevorzuge einfache und klare Lösungen, die in der Produktion stabil funktionieren, statt unnötig komplexer Designs.<br/><br/>" +
+        "Im Backend arbeite ich auf solidem Mittelstufenniveau. Ich integriere regelmäßig APIs, verarbeite Datenflüsse und verstehe Systemlogik gut genug, um Frontend-Features sinnvoll in das Gesamtsystem einzubetten.<br/><br/>" +
+        "In meiner täglichen Arbeit lege ich Wert auf gut lesbaren Code, pragmatische Designentscheidungen und Teamarbeit. Ich bin es gewohnt, in realen Entwicklungsumgebungen zu arbeiten: mit anderen zu kollaborieren, Feedback umzusetzen und bestehende Systeme kontinuierlich zu verbessern.<br/><br/>" +
+        "Ich bin offen für Rollen als <strong>Frontend Developer</strong> oder <strong>Full Stack Developer</strong>, in denen ich produktionsreife Frontend-Lösungen liefern und mich gleichzeitig in Backend-Engineering und Systemdesign weiterentwickeln kann."
+    },
+    education: {
+      title: "Ausbildung",
+      kmutnb: {
+        year: "2021 - Heute",
+        achievements: "Erfolge",
+        scienceDay: "Science Exhibition Day 2025",
+        goldAward: "🥇 Gold-Auszeichnung - Asset-Management-System für das zentrale ECT-Büro",
+        coursework: "Relevante Kurse",
+        web: "Webentwicklung",
+        software: "Software Engineering",
+        python: "Python-Programmierung",
+        dataStructure: "Datenstrukturen"
+      },
+      sarasas: {
+        year: "2009 - 2015 (Grundschule)"
+      }
+    },
+    skills: {
+      title: "Meine Skills"
+    },
+    creator: {
+      mode: "Creator-Modus",
+      subtitle: "Kurze Einblicke aus meinem Dev-Life TikTok-Kanal.",
+      title: "Tech-Content-Creator",
+      description:
+        "Folge meinem Coding- und Dev-Lifestyle auf TikTok 💻🎥<br class=\"d-md-none\" />" +
+        "Ich teile Code-Tipps, Build-Logs und Community-Stories auf Thai und Englisch.",
+      cards: {
+        teamwork: {
+          title: "Teamwork & Git",
+          description: "Erstes Teamprojekt mit Git ausgeliefert – chaotischer Prozess, aber starke Lernerfahrung."
+        },
+        framework: {
+          title: "Framework-Experimente",
+          description: "Vergleich von Tailwind und Bootstrap in realen Projekten, um die beste Wahl zu treffen."
+        },
+        ui: {
+          title: "UI-Komponenten",
+          description: "Ich zeige, wie ich Bootstrap-Karten mit Motion und Feinschliff aufwerte."
+        }
+      }
+    },
+    automation: {
+      title: "Automatisierung & Integration",
+      description: "Workflows optimieren und Systeme mit Automatisierungstools und Integrationsplattformen verbinden.",
+      makecom: {
+        title: "Make.com",
+        description: "Plattform für Workflow-Automatisierung und Integration. Aufbau komplexer Szenarien zur App-Verknüpfung und Prozessoptimierung."
+      },
+      playwright: {
+        title: "Playwright",
+        description: "End-to-End-Testframework für Webanwendungen. Zuverlässige Tests über mehrere Browser mit moderner Automatisierung."
+      },
+      cicd: {
+        title: "CI/CD",
+        description: "Pipelines für Continuous Integration und Deployment. Build-, Test- und Deploy-Prozesse werden automatisiert – schneller und zuverlässiger."
+      }
+    },
+    visual: {
+      title: "Visuelle Highlights",
+      description: "Eine kuratierte Auswahl meiner wichtigsten Projekte – mit elegantem Design, smarten Funktionen und nahtloser User Experience."
+    },
+    modal: {
+      technologies: "Technologien",
+      viewGithub: "Auf GitHub ansehen",
+      liveDemo: "Live-Demo"
+    },
+    portfolioList: {
+      portfolio: "Portfolio",
+      project: "PROJEKTE",
+      moreProjects: "MEHR PROJEKTE"
+    },
+    experience: {
+      title: "ERFAHRUNG & PRAKTIKUM",
+      description: "Mein beruflicher Weg vom Praktikum bis zur Vollzeit-Entwicklung, mit Wachstum durch reale Projekte."
+    },
+    extracurricular: {
+      title: "AUSSERSCHULISCHE AKTIVITÄTEN & COMMUNITY"
+    },
+    certificates: {
+      title: "Meine Erfolge ansehen",
+      description: "Eine Sammlung von Zertifikaten und Skills, die ich durch reale Projekte und kontinuierliches Lernen erworben habe.",
+      viewMore: "Mehr auf LinkedIn ansehen"
+    },
+    contact: {
+      title: "Kontakt aufnehmen",
+      description: "Bereit zur Zusammenarbeit? Schreib mir per E-Mail oder verbinde dich über Social Media.",
+      emailLabel: "E-Mail",
+      phoneLabel: "Telefon",
+      locationLabel: "Standort",
+      availableLabel: "Verfügbarkeit",
+      availableValue: "Offen für Freelance- und Vollzeit-Möglichkeiten",
+      socialLabel: "Social",
+      ctaTitle: "Lass uns gemeinsam etwas bauen",
+      ctaDescription: "Teile deine Idee, deinen Zeitplan und deine Ziele mit mir. Ich melde mich schnellstmöglich zurück.",
+      sendEmail: "E-Mail senden",
+      openLinkedIn: "LinkedIn öffnen"
+    },
+    footer: {
+      brandCopy: "Full-Stack-Entwickler, der schöne Interfaces und zuverlässige Systeme für Web, Cloud und Mobile entwickelt.",
+      portfolioHeading: "Portfolio",
+      portfolioVisual: "Visuelle Highlights",
+      portfolioProfile: "Profil",
+      portfolioCertificates: "Zertifikate",
+      experienceHeading: "Erfahrung",
+      experienceWorkHistory: "Berufserfahrung",
+      experienceInternships: "Praktika",
+      experienceAwards: "Auszeichnungen",
+      resourcesHeading: "Ressourcen",
+      contactHeading: "Kontakt",
+      contactEmail: "E-Mail",
+      contactLabel: "Kontakt",
+      copyright: "© 2025 Nattapat Phungphugdee. Alle Rechte vorbehalten.",
+      backToTop: "Nach oben",
+      hireMe: "Mit mir arbeiten"
+    }
+  },
+  ko: {
+    nav: {
+      home: "홈",
+      profile: "프로필",
+      portfolio: "포트폴리오",
+      experience: "경력",
+      certificates: "자격증",
+      blog: "블로그",
+      language: "언어",
+      contact: "연락처"
+    },
+    hero: {
+      hi: "안녕하세요, 저는",
+      developer: "태국을 기반으로 활동하는",
+      thailand: "개발자입니다",
+      education: "컴퓨터 및 정보과학 학사 — 응용과학부"
+    },
+    profile: {
+      title: "프로필",
+      airdrop: "AirDrop",
+      myProfile: "내 프로필",
+      decline: "거절",
+      accept: "수락"
+    },
+    about: {
+      title: "소개",
+      description:
+        "제 이름은 Nattapat Phungphugdee입니다.<br/>" +
+        "현재 실무 웹 애플리케이션을 개발하는 환경에서 <strong>프론트엔드 중심의 풀스택 개발자</strong>로 풀타임 근무 중입니다.<br/><br/>" +
+        "제 주요 강점은 <strong>프론트엔드 개발</strong>입니다. 사용성, 일관성, 장기 유지보수성을 고려해 깔끔하고 신뢰할 수 있는 UI를 구현합니다. 과도하게 복잡한 설계보다 실제 서비스에서 안정적으로 동작하는 단순하고 명확한 해법을 선호합니다.<br/><br/>" +
+        "백엔드도 중급 수준으로 다룰 수 있습니다. API 연동, 데이터 흐름 처리, 시스템 로직 이해를 바탕으로 프론트엔드 기능이 전체 시스템과 자연스럽게 맞물리도록 설계합니다.<br/><br/>" +
+        "일상적인 개발에서는 읽기 쉬운 코드, 실용적인 설계 판단, 팀 협업을 중요하게 생각합니다. 실제 개발 환경에서 협업하고 피드백을 반영하며 기존 시스템을 지속적으로 개선해 온 경험이 있습니다.<br/><br/>" +
+        "저는 <strong>프론트엔드 개발자</strong> 또는 <strong>풀스택 개발자</strong> 역할에 열려 있으며, 프로덕션 수준의 프론트엔드 결과물을 꾸준히 제공하면서 백엔드 엔지니어링과 시스템 설계 역량도 더 깊게 확장하고자 합니다."
+    },
+    education: {
+      title: "학력",
+      kmutnb: {
+        year: "2021 - 현재",
+        achievements: "성과",
+        scienceDay: "Science Exhibition Day 2025",
+        goldAward: "🥇 금상 - ECT 중앙사무소 자산관리 시스템",
+        coursework: "주요 과목",
+        web: "웹 개발",
+        software: "소프트웨어 공학",
+        python: "Python 프로그래밍",
+        dataStructure: "자료구조"
+      },
+      sarasas: {
+        year: "2009 - 2015 (초등학교)"
+      }
+    },
+    skills: {
+      title: "나의 기술"
+    },
+    creator: {
+      mode: "크리에이터 모드",
+      subtitle: "개발 라이프 TikTok 채널의 짧은 스냅샷",
+      title: "테크 콘텐츠 크리에이터",
+      description:
+        "TikTok에서 제 코딩 및 개발 라이프를 팔로우해 보세요 💻🎥<br class=\"d-md-none\" />" +
+        "코드 팁, 빌드 로그, 커뮤니티 이야기를 태국어와 영어로 공유합니다.",
+      cards: {
+        teamwork: {
+          title: "팀워크 & Git",
+          description: "Git으로 첫 팀 프로젝트를 배포했습니다. 과정은 거칠었지만 확실한 배움을 얻었습니다."
+        },
+        framework: {
+          title: "프레임워크 실험",
+          description: "실제 프로젝트에서 Tailwind와 Bootstrap을 비교해 상황에 맞는 선택을 찾고 있습니다."
+        },
+        ui: {
+          title: "UI 컴포넌트",
+          description: "Bootstrap 카드 컴포넌트에 모션과 디테일을 더하는 방법을 공유합니다."
+        }
+      }
+    },
+    automation: {
+      title: "자동화 및 통합",
+      description: "자동화 도구와 통합 플랫폼으로 워크플로를 최적화하고 시스템을 연결합니다.",
+      makecom: {
+        title: "Make.com",
+        description: "워크플로 자동화 및 통합 플랫폼입니다. 앱 연결, 프로세스 자동화, 운영 효율화를 위한 시나리오를 구축합니다."
+      },
+      playwright: {
+        title: "Playwright",
+        description: "웹 애플리케이션용 E2E 테스트 프레임워크입니다. 여러 브라우저에서 신뢰도 높은 자동화 테스트를 구현합니다."
+      },
+      cicd: {
+        title: "CI/CD",
+        description: "지속적 통합 및 배포 파이프라인으로 build, test, deploy를 자동화해 더 빠르고 안정적인 릴리스를 만듭니다."
+      }
+    },
+    visual: {
+      title: "비주얼 하이라이트",
+      description: "대표 프로젝트를 엄선해 소개합니다. 세련된 디자인, 실용적인 기능, 매끄러운 사용자 경험을 함께 담았습니다."
+    },
+    modal: {
+      technologies: "기술 스택",
+      viewGithub: "GitHub에서 보기",
+      liveDemo: "라이브 데모"
+    },
+    portfolioList: {
+      portfolio: "포트폴리오",
+      project: "프로젝트",
+      moreProjects: "프로젝트 더 보기"
+    },
+    experience: {
+      title: "경력 및 인턴십",
+      description: "인턴에서 풀타임 개발자로 성장해 온 과정과 실제 프로젝트를 통한 발전 기록입니다."
+    },
+    extracurricular: {
+      title: "비교과 활동 및 커뮤니티"
+    },
+    certificates: {
+      title: "성과 둘러보기",
+      description: "실제 프로젝트와 지속적인 학습을 통해 얻은 자격증과 기술을 모았습니다.",
+      viewMore: "LinkedIn에서 더 보기"
+    },
+    contact: {
+      title: "연락하기",
+      description: "협업을 원하시나요? 이메일 또는 소셜 채널로 편하게 연락주세요.",
+      emailLabel: "이메일",
+      phoneLabel: "전화",
+      locationLabel: "위치",
+      availableLabel: "가능 여부",
+      availableValue: "프리랜서 및 정규직 기회를 열어두고 있습니다",
+      socialLabel: "소셜",
+      ctaTitle: "함께 멋진 것을 만들어봐요",
+      ctaDescription: "아이디어, 일정, 목표를 공유해 주세요. 최대한 빠르게 답변드리겠습니다.",
+      sendEmail: "이메일 보내기",
+      openLinkedIn: "LinkedIn 열기"
+    },
+    footer: {
+      brandCopy: "웹, 클라우드, 모바일 전반에서 아름다운 인터페이스와 신뢰할 수 있는 시스템을 만드는 풀스택 개발자입니다.",
+      portfolioHeading: "포트폴리오",
+      portfolioVisual: "비주얼 하이라이트",
+      portfolioProfile: "프로필",
+      portfolioCertificates: "자격증",
+      experienceHeading: "경력",
+      experienceWorkHistory: "업무 이력",
+      experienceInternships: "인턴십",
+      experienceAwards: "수상",
+      resourcesHeading: "리소스",
+      contactHeading: "연락처",
+      contactEmail: "이메일",
+      contactLabel: "연락처",
+      copyright: "© 2025 Nattapat Phungphugdee. 모든 권리 보유.",
+      backToTop: "맨 위로",
+      hireMe: "협업 문의"
+    }
   }
 };
 
-const languageOrder = ['en', 'th', 'ja'];
+const languageOrder = ['en', 'th', 'ja', 'zh', 'de', 'ko'];
+const languageAliases = {
+  jp: 'ja',
+  cn: 'zh',
+  'zh-cn': 'zh',
+  'zh_cn': 'zh',
+  'zh-hans': 'zh',
+  'de-de': 'de',
+  'de_de': 'de',
+  ger: 'de',
+  kr: 'ko',
+  'ko-kr': 'ko',
+  'ko_kr': 'ko',
+  kor: 'ko'
+};
 
-let currentLang = localStorage.getItem('language') || 'en';
-if (currentLang === 'jp') {
-  currentLang = 'ja';
+const seoLanguagePages = {
+  en: 'index.html',
+  th: 'th.html',
+  ja: 'ja.html',
+  zh: 'zh.html',
+  ko: 'ko.html'
+};
+
+function getCurrentPageName(pathname) {
+  const rawPath = (pathname || window.location.pathname || '').toLowerCase();
+  const cleanPath = rawPath.split('?')[0].split('#')[0];
+  if (!cleanPath || cleanPath === '/' || cleanPath.endsWith('/')) {
+    return 'index.html';
+  }
+
+  const segments = cleanPath.split('/').filter(Boolean);
+  const lastSegment = segments[segments.length - 1] || '';
+  if (!lastSegment || !lastSegment.includes('.')) {
+    return 'index.html';
+  }
+
+  return lastSegment;
 }
+
+function getLanguageFromCurrentPage() {
+  const htmlLang = (document.documentElement.getAttribute('data-i18n-lang') || '').toLowerCase();
+  const mappedHtmlLang = languageAliases[htmlLang] || htmlLang;
+  if (translations[mappedHtmlLang]) {
+    return mappedHtmlLang;
+  }
+
+  const currentPage = getCurrentPageName();
+  for (const [lang, pageName] of Object.entries(seoLanguagePages)) {
+    if (currentPage === pageName) {
+      return lang;
+    }
+  }
+
+  return '';
+}
+
+function getSeoPagePath(lang) {
+  return seoLanguagePages[lang] || '';
+}
+
+function shouldNavigateToLanguagePage(lang) {
+  const targetPage = getSeoPagePath(lang);
+  if (!targetPage) {
+    return false;
+  }
+
+  const currentPage = getCurrentPageName();
+  return currentPage !== targetPage;
+}
+
+function getSeoPageUrl(lang) {
+  const targetPage = getSeoPagePath(lang);
+  if (!targetPage) {
+    return '';
+  }
+
+  try {
+    return new URL(targetPage, window.location.href).href;
+  } catch (error) {
+    return targetPage;
+  }
+}
+
+const storedLangRaw = (localStorage.getItem('language') || 'en').toLowerCase();
+const storedLang = languageAliases[storedLangRaw] || storedLangRaw;
+const pageLang = getLanguageFromCurrentPage();
+
+let currentLang = pageLang || storedLang || 'en';
 if (!translations[currentLang]) {
   currentLang = 'en';
 }
@@ -515,9 +1051,20 @@ function updateLanguage() {
 }
 
 function setLanguage(lang) {
+  lang = (lang || '').toLowerCase();
+  lang = languageAliases[lang] || lang;
+
   if (!translations[lang]) {
     return;
   }
+
+  localStorage.setItem('language', lang);
+
+  if (shouldNavigateToLanguagePage(lang)) {
+    window.location.href = getSeoPageUrl(lang);
+    return;
+  }
+
   currentLang = lang;
   updateLanguage();
 }
