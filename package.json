@@ -4,7 +4,9 @@
   "description": "Portfolio website with blog/articles for SEO",
   "scripts": {
     "build": "node build.js",
+    "build:index": "node build.js --pages-only",
     "watch": "node build.js --watch",
+    "watch:index": "node build.js --watch --pages-only",
     "dev": "node build.js --watch",
     "optimize-images": "node build.js --optimize-images",
     "build:all": "npm run optimize-images && npm run build"

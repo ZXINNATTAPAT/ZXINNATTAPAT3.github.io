@@ -1,0 +1,32 @@
+<!-- Project Detail Modal -->
+  <div id="projectModal" class="project-modal" style="display: none;">
+    <div class="project-modal-overlay"></div>
+    <div class="project-modal-content">
+      <button class="project-modal-close" aria-label="Close modal">
+        <i class="fas fa-times"></i>
+      </button>
+      <div class="project-modal-body">
+        <div class="project-modal-image-container">
+          <img id="modalProjectImage" src="" alt="Project" class="project-modal-image" />
+        </div>
+        <div class="project-modal-info">
+          <h2 id="modalProjectTitle" class="project-modal-title playfair-400"></h2>
+          <p id="modalProjectSubtitle" class="project-modal-subtitle playfair-400"></p>
+          <p id="modalProjectDescription" class="project-modal-description playfair-400"></p>
+          <div class="project-modal-tech">
+            <h6 class="playfair-400 mb-2" style="font-weight: 600; color: #2c2c2c;" data-i18n="modal.technologies">Technologies</h6>
+            <p id="modalProjectTech" class="playfair-400" style="color: #6b6b6b; font-size: 0.95rem;"></p>
+          </div>
+          <div class="project-modal-actions mt-4">
+            <a id="modalGithubLink" href="#" target="_blank" class="btn btn-sm github-icon-btn me-2"
+              style="background-color: #24292e; color: white; border-radius: 8px; padding: 0.5rem 1rem; text-decoration: none; transition: all 0.2s;">
+              <i class="fab fa-github me-2"></i><span data-i18n="modal.viewGithub">View on GitHub</span>
+            </a>
+            <a id="modalDemoLink" href="#" target="_blank" class="btn btn-sm demo-btn-outline playfair-400" style="display: none;">
+              <i class="fas fa-external-link-alt me-2"></i><span data-i18n="modal.liveDemo">Live Demo</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

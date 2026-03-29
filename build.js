@@ -15,8 +15,17 @@ try {
 const ARTICLES_DIR = path.join(__dirname, 'articles');
 const OUTPUT_DIR = path.join(__dirname, 'articles');
 const TEMPLATE_DIR = path.join(__dirname, 'templates');
+const COMPONENTS_DIR = path.join(__dirname, 'components');
 const PHOTO_DIR = path.join(__dirname, 'Photo');
 const OPTIMIZED_PHOTO_DIR = path.join(__dirname, 'Photo', 'optimized');
+const STATIC_PAGES = [
+  {
+    template: path.join(TEMPLATE_DIR, 'index.template.html'),
+    output: path.join(__dirname, 'index.html'),
+    label: 'index.html'
+  }
+];
+const BUILD_PAGES_ONLY = process.argv.includes('--pages-only');
 
 // Cache for templates
 const templateCache = {};
@@ -47,6 +56,45 @@ function getTemplate(templateName) {
     return template;
   }
   return null;
+}
+
+function resolveIncludes(content, baseDir, seen = new Set()) {
+  return content.replace(/<!--\s*@include\s+(.+?)\s*-->/g, (_, includePath) => {
+    const resolvedPath = path.resolve(baseDir, includePath.trim());
+
+    if (seen.has(resolvedPath)) {
+      throw new Error(`Circular include detected: ${resolvedPath}`);
+    }
+
+    if (!fs.existsSync(resolvedPath)) {
+      throw new Error(`Include file not found: ${resolvedPath}`);
+    }
+
+    seen.add(resolvedPath);
+    const includeContent = fs.readFileSync(resolvedPath, 'utf-8');
+    const compiledContent = resolveIncludes(includeContent, path.dirname(resolvedPath), seen);
+    seen.delete(resolvedPath);
+
+    return compiledContent.trimEnd();
+  });
+}
+
+function buildStaticPages() {
+  let builtCount = 0;
+
+  for (const page of STATIC_PAGES) {
+    if (!fs.existsSync(page.template)) {
+      continue;
+    }
+
+    const templateContent = fs.readFileSync(page.template, 'utf-8');
+    const outputContent = resolveIncludes(templateContent, path.dirname(page.template));
+    fs.writeFileSync(page.output, outputContent, 'utf-8');
+    builtCount++;
+    console.log(`📄 ประกอบหน้า static: ${page.label}`);
+  }
+
+  return builtCount;
 }
 
 // Convert Markdown to HTML
@@ -453,6 +501,16 @@ function getDefaultBlogIndexTemplate() {
 function build() {
   const startTime = Date.now();
   console.log('🚀 เริ่ม build...');
+
+  const staticPagesBuilt = buildStaticPages();
+
+  if (BUILD_PAGES_ONLY) {
+    const buildTime = ((Date.now() - startTime) / 1000).toFixed(3);
+    console.log('✅ Build หน้า static เสร็จสิ้น!');
+    console.log(`📦 สร้างหน้า static ${staticPagesBuilt} หน้า`);
+    console.log(`⚡ ใช้เวลา: ${buildTime} วินาที`);
+    return;
+  }
   
   if (!fs.existsSync(ARTICLES_DIR)) {
     fs.mkdirSync(ARTICLES_DIR, { recursive: true });
@@ -468,6 +526,9 @@ function build() {
 
   if (markdownFiles.length === 0) {
     console.log('⚠️  ไม่พบไฟล์ Markdown ในโฟลเดอร์ articles');
+    const buildTime = ((Date.now() - startTime) / 1000).toFixed(3);
+    console.log(`📦 สร้างหน้า static ${staticPagesBuilt} หน้า`);
+    console.log(`⚡ ใช้เวลา: ${buildTime} วินาที`);
     return;
   }
 
@@ -484,6 +545,7 @@ function build() {
 
   const buildTime = ((Date.now() - startTime) / 1000).toFixed(3);
   console.log('✅ Build เสร็จสิ้น!');
+  console.log(`📦 สร้างหน้า static ${staticPagesBuilt} หน้า`);
   console.log(`📄 สร้าง ${articles.length} บทความ HTML`);
   console.log(`📋 อัพเดท sitemap.xml แล้ว`);
   console.log(`⚡ ใช้เวลา: ${buildTime} วินาที`);
@@ -493,12 +555,27 @@ function build() {
 if (process.argv.includes('--watch')) {
   console.log('👀 เปิดโหมด watch...');
   build();
-  
-  fs.watch(ARTICLES_DIR, { recursive: true }, (eventType, filename) => {
-    if (filename && filename.endsWith('.md')) {
-      console.log(`\n🔄 ตรวจพบการเปลี่ยนแปลง: ${filename}`);
-      build();
+
+  const watchTargets = [
+    { dir: TEMPLATE_DIR, test: filename => filename.endsWith('.html') },
+    { dir: COMPONENTS_DIR, test: filename => filename.endsWith('.html') }
+  ];
+
+  if (!BUILD_PAGES_ONLY) {
+    watchTargets.unshift({ dir: ARTICLES_DIR, test: filename => filename.endsWith('.md') });
+  }
+
+  watchTargets.forEach(({ dir, test }) => {
+    if (!fs.existsSync(dir)) {
+      return;
     }
+
+    fs.watch(dir, { recursive: true }, (eventType, filename) => {
+      if (filename && test(filename)) {
+        console.log(`\n🔄 ตรวจพบการเปลี่ยนแปลง: ${filename}`);
+        build();
+      }
+    });
   });
 } else if (process.argv.includes('--optimize-images')) {
   // Optimize images only

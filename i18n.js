@@ -58,9 +58,7 @@ const translations = {
       mode: "Creator mode",
       subtitle: "Quick snapshots from my dev-life TikTok channel.",
       title: "Tech Content Creator",
-      description:
-        "Follow my coding & dev lifestyle on TikTok 💻🎥<br class=\"d-md-none\" />" +
-        "I drop code tips, build logs, and community stories in Thai & English.",
+      description: "",
       cards: {
         teamwork: {
           title: "Teamwork & Git",
