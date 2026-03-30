@@ -26,6 +26,8 @@ const translations = {
     },
     about: {
       title: "About Me",
+      letsWork: "Let's Work together",
+      resume: "Resume",
       description:
         "My name is Nattapat Phungphugdee.<br/>" +
         "I'm a <strong>frontend-focused full stack developer</strong> currently working full-time on real-world web applications.<br/><br/>" +
@@ -52,7 +54,8 @@ const translations = {
       }
     },
     skills: {
-      title: "My Skills"
+      title: "My Skills",
+      listAll: "List all skills"
     },
     creator: {
       mode: "Creator mode",
@@ -175,6 +178,8 @@ const translations = {
     },
     about: {
       title: "เกี่ยวกับผม",
+      letsWork: "มาร่วมงานกัน",
+      resume: "เรซูเม่",
       description:
         "ผมชื่อ ณัฐภัทร พึ่งภักดี<br/>" +
         "ปัจจุบันทำงานเป็น <strong>นักพัฒนา Full Stack ที่เน้น Frontend</strong> แบบเต็มเวลา บนงานเว็บแอปพลิเคชันจริง<br/><br/>" +
@@ -201,7 +206,8 @@ const translations = {
       }
     },
     skills: {
-      title: "ทักษะของฉัน"
+      title: "ทักษะของฉัน",
+      listAll: "สกิลทั้งหมด"
     },
     creator: {
       mode: "โหมดครีเอเตอร์",
@@ -326,6 +332,8 @@ const translations = {
     },
     about: {
       title: "私について",
+      letsWork: "一緒に働きましょう",
+      resume: "履歴書",
       description:
         "私の名前はナッタパット・プンパクディーです。<br/>" +
         "現在、実務のWebアプリ開発で <strong>フロントエンド重視のフルスタック開発者</strong> としてフルタイムで働いています。<br/><br/>" +
@@ -352,7 +360,8 @@ const translations = {
       }
     },
     skills: {
-      title: "スキル"
+      title: "スキル",
+      listAll: "全スキル"
     },
     creator: {
       mode: "クリエイターモード",
@@ -477,6 +486,8 @@ const translations = {
     },
     about: {
       title: "关于我",
+      letsWork: "一起合作吧",
+      resume: "简历",
       description:
         "我叫 Nattapat Phungphugdee。<br/>" +
         "目前是一名 <strong>以前端为核心的全栈开发者</strong>，全职参与真实业务场景的 Web 应用开发。<br/><br/>" +
@@ -503,7 +514,8 @@ const translations = {
       }
     },
     skills: {
-      title: "我的技能"
+      title: "我的技能",
+      listAll: "全部技能"
     },
     creator: {
       mode: "创作者模式",
@@ -628,6 +640,8 @@ const translations = {
     },
     about: {
       title: "Über mich",
+      letsWork: "Lass uns zusammenarbeiten",
+      resume: "Lebenslauf",
       description:
         "Mein Name ist Nattapat Phungphugdee.<br/>" +
         "Ich arbeite derzeit Vollzeit als <strong>Full-Stack-Entwickler mit Fokus auf Frontend</strong> an realen Webanwendungen.<br/><br/>" +
@@ -654,7 +668,8 @@ const translations = {
       }
     },
     skills: {
-      title: "Meine Skills"
+      title: "Meine Skills",
+      listAll: "Alle Skills"
     },
     creator: {
       mode: "Creator-Modus",
@@ -779,6 +794,8 @@ const translations = {
     },
     about: {
       title: "소개",
+      letsWork: "함께 일해요",
+      resume: "이력서",
       description:
         "제 이름은 Nattapat Phungphugdee입니다.<br/>" +
         "현재 실무 웹 애플리케이션을 개발하는 환경에서 <strong>프론트엔드 중심의 풀스택 개발자</strong>로 풀타임 근무 중입니다.<br/><br/>" +
@@ -805,7 +822,8 @@ const translations = {
       }
     },
     skills: {
-      title: "나의 기술"
+      title: "나의 기술",
+      listAll: "전체 스킬"
     },
     creator: {
       mode: "크리에이터 모드",

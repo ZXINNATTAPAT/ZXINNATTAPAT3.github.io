@@ -18,11 +18,67 @@ const TEMPLATE_DIR = path.join(__dirname, 'templates');
 const COMPONENTS_DIR = path.join(__dirname, 'components');
 const PHOTO_DIR = path.join(__dirname, 'Photo');
 const OPTIMIZED_PHOTO_DIR = path.join(__dirname, 'Photo', 'optimized');
+const BASE_URL = 'https://zxinnattapat3.github.io';
 const STATIC_PAGES = [
   {
     template: path.join(TEMPLATE_DIR, 'index.template.html'),
     output: path.join(__dirname, 'index.html'),
-    label: 'index.html'
+    label: 'index.html',
+    replacements: {
+      '{{htmlLang}}': 'en',
+      '{{dataI18nLangAttr}}': ' data-i18n-lang="en"',
+      '{{pageUrl}}': `${BASE_URL}/`,
+      '{{ogLocale}}': 'en_US',
+      '{{canonicalUrl}}': `${BASE_URL}/`
+    }
+  },
+  {
+    template: path.join(TEMPLATE_DIR, 'index.template.html'),
+    output: path.join(__dirname, 'th.html'),
+    label: 'th.html',
+    replacements: {
+      '{{htmlLang}}': 'th',
+      '{{dataI18nLangAttr}}': ' data-i18n-lang="th"',
+      '{{pageUrl}}': `${BASE_URL}/th.html`,
+      '{{ogLocale}}': 'th_TH',
+      '{{canonicalUrl}}': `${BASE_URL}/th.html`
+    }
+  },
+  {
+    template: path.join(TEMPLATE_DIR, 'index.template.html'),
+    output: path.join(__dirname, 'ja.html'),
+    label: 'ja.html',
+    replacements: {
+      '{{htmlLang}}': 'ja',
+      '{{dataI18nLangAttr}}': ' data-i18n-lang="ja"',
+      '{{pageUrl}}': `${BASE_URL}/ja.html`,
+      '{{ogLocale}}': 'ja_JP',
+      '{{canonicalUrl}}': `${BASE_URL}/ja.html`
+    }
+  },
+  {
+    template: path.join(TEMPLATE_DIR, 'index.template.html'),
+    output: path.join(__dirname, 'zh.html'),
+    label: 'zh.html',
+    replacements: {
+      '{{htmlLang}}': 'zh',
+      '{{dataI18nLangAttr}}': ' data-i18n-lang="zh"',
+      '{{pageUrl}}': `${BASE_URL}/zh.html`,
+      '{{ogLocale}}': 'zh_CN',
+      '{{canonicalUrl}}': `${BASE_URL}/zh.html`
+    }
+  },
+  {
+    template: path.join(TEMPLATE_DIR, 'index.template.html'),
+    output: path.join(__dirname, 'ko.html'),
+    label: 'ko.html',
+    replacements: {
+      '{{htmlLang}}': 'ko',
+      '{{dataI18nLangAttr}}': ' data-i18n-lang="ko"',
+      '{{pageUrl}}': `${BASE_URL}/ko.html`,
+      '{{ogLocale}}': 'ko_KR',
+      '{{canonicalUrl}}': `${BASE_URL}/ko.html`
+    }
   }
 ];
 const BUILD_PAGES_ONLY = process.argv.includes('--pages-only');
@@ -79,6 +135,16 @@ function resolveIncludes(content, baseDir, seen = new Set()) {
   });
 }
 
+function applyReplacements(content, replacements = {}) {
+  let output = content;
+
+  for (const [key, value] of Object.entries(replacements)) {
+    output = output.split(key).join(value);
+  }
+
+  return output;
+}
+
 function buildStaticPages() {
   let builtCount = 0;
 
@@ -88,7 +154,8 @@ function buildStaticPages() {
     }
 
     const templateContent = fs.readFileSync(page.template, 'utf-8');
-    const outputContent = resolveIncludes(templateContent, path.dirname(page.template));
+    const compiledContent = resolveIncludes(templateContent, path.dirname(page.template));
+    const outputContent = applyReplacements(compiledContent, page.replacements);
     fs.writeFileSync(page.output, outputContent, 'utf-8');
     builtCount++;
     console.log(`📄 ประกอบหน้า static: ${page.label}`);
@@ -192,16 +259,15 @@ function buildBlogIndex(articles) {
 
 // Build sitemap with articles
 function updateSitemap(articles) {
-  const baseUrl = 'https://zxinnattapat3.github.io';
   const urls = [
     {
-      loc: `${baseUrl}/`,
+      loc: `${BASE_URL}/`,
       lastmod: new Date().toISOString().split('T')[0],
       changefreq: 'monthly',
       priority: '1.0'
     },
     {
-      loc: `${baseUrl}/blog.html`,
+      loc: `${BASE_URL}/blog.html`,
       lastmod: new Date().toISOString().split('T')[0],
       changefreq: 'weekly',
       priority: '0.8'
@@ -210,7 +276,7 @@ function updateSitemap(articles) {
 
   articles.forEach(article => {
     urls.push({
-      loc: `${baseUrl}/articles/${article.slug}.html`,
+      loc: `${BASE_URL}/articles/${article.slug}.html`,
       lastmod: article.date,
       changefreq: 'monthly',
       priority: '0.7'
