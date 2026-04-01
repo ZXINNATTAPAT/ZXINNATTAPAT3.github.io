@@ -54,7 +54,7 @@ const translations = {
       }
     },
     skills: {
-      title: "My Skills",
+      title: "Tech Stack",
       listAll: "List all skills"
     },
     creator: {
@@ -75,7 +75,41 @@ const translations = {
           title: "UI Components",
           description: "Sharing how I add motion and polish to Bootstrap card components."
         }
-      }
+      },
+      experimentsTitle: "Experiments",
+      experimentsHtml:
+        '<section class="creator-exp-org mb-3">' +
+        '<h3 class="h6 mb-1 fw-semibold" style="color:#1d1d1f;">Business ALive Co., Ltd (Thailand)</h3>' +
+        '<p class="small text-muted mb-2 mb-md-3">Hybrid · 10 mos</p>' +
+        '<p class="small fw-semibold mb-1" style="color:#2c2c2c;">Software Developer · Full-time</p>' +
+        '<p class="small text-muted mb-2">Aug 2025 – Present · 9 mos · Bangkok, Thailand</p>' +
+        '<ul class="small ps-3 mb-2 creator-exp-list">' +
+        "<li>Work directly with clients to understand requirements, discuss workflows, and refine features so the system matches real business needs.</li>" +
+        "<li>Handle primary frontend responsibilities and contribute to backend development when features require full end-to-end implementation.</li>" +
+        "<li>Participate in API and system design with a focus on scalability and performance, including reducing unnecessary response data and improving API efficiency.</li>" +
+        "<li>Build reusable and tailored UI components to solve product-specific problems, such as custom search comboboxes that combine dropdown interactions with pagination.</li>" +
+        "<li>Collaborate with the team in an Agile workflow using Azure DevOps for task management, code reviews, and sprint discussions.</li>" +
+        "</ul>" +
+        '<p class="small text-secondary mb-3">Next.js · NestJS · +1</p>' +
+        '<p class="small fw-semibold mb-1" style="color:#2c2c2c;">Next.js Developer · Part-time</p>' +
+        '<p class="small text-muted mb-2">Jul 2025 – Aug 2025 · 2 mos · Bangkok, Thailand</p>' +
+        '<ul class="small ps-3 mb-2 creator-exp-list">' +
+        "<li>Implemented specific features and fixed bugs in ongoing projects.</li>" +
+        "<li>Gained hands-on experience in an Agile, task-based development environment alongside full-time developers.</li>" +
+        "</ul>" +
+        '<p class="small text-secondary mb-0">Next.js · NestJS</p>' +
+        "</section>" +
+        '<section class="creator-exp-org">' +
+        '<h3 class="h6 mb-1 fw-semibold" style="color:#1d1d1f;">Office of the Election Commission of Thailand</h3>' +
+        '<p class="small text-muted mb-2">Internship · May 2024 – Jul 2024 · 3 mos · Bangkok · On-site</p>' +
+        '<p class="small fw-semibold mb-2" style="color:#2c2c2c;">Developer — Internship &amp; Capstone: Asset Management System</p>' +
+        '<ul class="small ps-3 mb-2 creator-exp-list">' +
+        "<li>Developed and maintained an internal Asset Management System using C# and Microsoft SQL Server.</li>" +
+        "<li>Designed and implemented a web application to streamline equipment and asset tracking across departments.</li>" +
+        "<li>Collaborated with IT officers to test, refine, and enhance the system for better data accessibility and operational efficiency.</li>" +
+        "</ul>" +
+        '<p class="small text-secondary mb-0">C# · Microsoft SQL Server · +1</p>' +
+        "</section>"
     },
     automation: {
       title: "Automation & Integration",
@@ -105,7 +139,7 @@ const translations = {
     portfolioList: {
       portfolio: "Portfolio",
       project: "PROJECT",
-      moreProjects: "MORE PROJECTS"
+      moreProjects: "More projects"
     },
     experience: {
       title: "EXPERIENCE & INTERNSHIP",
@@ -123,7 +157,6 @@ const translations = {
       title: "Get in Touch",
       description: "Ready to collaborate? Reach out through email or connect on social platforms.",
       emailLabel: "Email",
-      phoneLabel: "Phone",
       locationLabel: "Location",
       availableLabel: "Availability",
       availableValue: "Open for freelance and full-time opportunities",
@@ -206,7 +239,7 @@ const translations = {
       }
     },
     skills: {
-      title: "ทักษะของฉัน",
+      title: "Tech Stack",
       listAll: "สกิลทั้งหมด"
     },
     creator: {
@@ -229,7 +262,41 @@ const translations = {
           title: "UI Components",
           description: "แชร์วิธีเพิ่มโมชั่นและความเนี๊ยบให้ Bootstrap card components"
         }
-      }
+      },
+      experimentsTitle: "การทดลองและประสบการณ์",
+      experimentsHtml:
+        '<section class="creator-exp-org mb-3">' +
+        '<h3 class="h6 mb-1 fw-semibold" style="color:#1d1d1f;">Business ALive Co., Ltd (ประเทศไทย)</h3>' +
+        '<p class="small text-muted mb-2 mb-md-3">Hybrid · 10 เดือน</p>' +
+        '<p class="small fw-semibold mb-1" style="color:#2c2c2c;">Software Developer · เต็มเวลา</p>' +
+        '<p class="small text-muted mb-2">ส.ค. 2025 – ปัจจุบัน · 9 เดือน · กรุงเทพฯ</p>' +
+        '<ul class="small ps-3 mb-2 creator-exp-list">' +
+        "<li>ทำงานร่วมกับลูกค้าโดยตรงเพื่อรับความต้องการ ออกแบบเวิร์กโฟลว์ และปรับฟีเจอร์ให้ระบบสอดคล้องกับการใช้งานจริง</li>" +
+        "<li>รับผิดชอบหลักฝั่ง frontend และช่วยงาน backend เมื่อฟีเจอร์ต้องทำแบบ end-to-end</li>" +
+        "<li>มีส่วนร่วมออกแบบ API และระบบ โดยเน้นความสามารถในการขยายและประสิทธิภาพ รวมถึงลดข้อมูล response ที่ไม่จำเป็น</li>" +
+        "<li>สร้าง UI component ที่นำกลับมาใช้ได้และเหมาะกับผลิตภัณฑ์ เช่น combobox ค้นหาแบบผสม dropdown กับ pagination</li>" +
+        "<li>ทำงานแบบ Agile กับทีม ใช้ Azure DevOps จัดงาน รีวิวโค้ด และประชุมสปรินต์</li>" +
+        "</ul>" +
+        '<p class="small text-secondary mb-3">Next.js · NestJS · +1</p>' +
+        '<p class="small fw-semibold mb-1" style="color:#2c2c2c;">Next.js Developer · พาร์ทไทม์</p>' +
+        '<p class="small text-muted mb-2">ก.ค. 2025 – ส.ค. 2025 · 2 เดือน · กรุงเทพฯ</p>' +
+        '<ul class="small ps-3 mb-2 creator-exp-list">' +
+        "<li>พัฒนาฟีเจอร์และแก้บั๊กในโปรเจกต์ที่มีอยู่</li>" +
+        "<li>ได้ประสบการณ์จริงในสภาพแวดล้อม Agile แบบจัดงานเป็นทาสก์ ร่วมกับทีมพัฒนาเต็มเวลา</li>" +
+        "</ul>" +
+        '<p class="small text-secondary mb-0">Next.js · NestJS</p>' +
+        "</section>" +
+        '<section class="creator-exp-org">' +
+        '<h3 class="h6 mb-1 fw-semibold" style="color:#1d1d1f;">สำนักงานคณะกรรมการการเลือกตั้ง (กกต.)</h3>' +
+        '<p class="small text-muted mb-2">ฝึกงาน · พ.ค. 2024 – ก.ค. 2024 · 3 เดือน · กรุงเทพฯ · On-site</p>' +
+        '<p class="small fw-semibold mb-2" style="color:#2c2c2c;">Developer — ฝึกงานและโครงการ Capstone: ระบบบริหารทรัพย์สิน (Asset Management System)</p>' +
+        '<ul class="small ps-3 mb-2 creator-exp-list">' +
+        "<li>พัฒนาและดูแลระบบบริหารทรัพย์สินภายในองค์กรด้วย C# และ Microsoft SQL Server</li>" +
+        "<li>ออกแบบและพัฒนาเว็บแอปเพื่อติดตามครุภัณฑ์และทรัพย์สินข้ามหน่วยงาน</li>" +
+        "<li>ประสานงานเจ้าหน้าที่ IT ในการทดสอบ ปรับปรุง และยกระดับระบบให้เข้าถึงข้อมูลและใช้งานได้มีประสิทธิภาพขึ้น</li>" +
+        "</ul>" +
+        '<p class="small text-secondary mb-0">C# · Microsoft SQL Server · +1</p>' +
+        "</section>"
     },
     automation: {
       title: "ระบบอัตโนมัติและการเชื่อมต่อ",
@@ -277,7 +344,6 @@ const translations = {
       title: "ติดต่อผม",
       description: "พร้อมร่วมงานแล้วไหม? ติดต่อผ่านอีเมลหรือช่องทางโซเชียลได้เลย",
       emailLabel: "อีเมล",
-      phoneLabel: "โทรศัพท์",
       locationLabel: "ที่อยู่",
       availableLabel: "สถานะ",
       availableValue: "เปิดรับงาน Freelance และโอกาส Full-time",
@@ -360,7 +426,7 @@ const translations = {
       }
     },
     skills: {
-      title: "スキル",
+      title: "Tech Stack",
       listAll: "全スキル"
     },
     creator: {
@@ -383,7 +449,8 @@ const translations = {
           title: "UIコンポーネント",
           description: "Bootstrapカードにモーションと仕上げを加える方法を共有しています。"
         }
-      }
+      },
+      experimentsTitle: "実験・実務ハイライト"
     },
     automation: {
       title: "自動化と連携",
@@ -431,7 +498,6 @@ const translations = {
       title: "お問い合わせ",
       description: "コラボレーションのご相談は、メールまたはSNSからお気軽にご連絡ください。",
       emailLabel: "メール",
-      phoneLabel: "電話",
       locationLabel: "所在地",
       availableLabel: "対応状況",
       availableValue: "フリーランスとフルタイムの機会を受け付けています",
@@ -514,7 +580,7 @@ const translations = {
       }
     },
     skills: {
-      title: "我的技能",
+      title: "Tech Stack",
       listAll: "全部技能"
     },
     creator: {
@@ -537,7 +603,8 @@ const translations = {
           title: "UI 组件",
           description: "分享如何为 Bootstrap 卡片组件加入动效与细节打磨。"
         }
-      }
+      },
+      experimentsTitle: "实践与经历"
     },
     automation: {
       title: "自动化与集成",
@@ -585,7 +652,6 @@ const translations = {
       title: "联系我",
       description: "如果你准备合作，欢迎通过邮件或社交平台与我联系。",
       emailLabel: "邮箱",
-      phoneLabel: "电话",
       locationLabel: "所在地",
       availableLabel: "可用状态",
       availableValue: "开放自由职业与全职机会",
@@ -668,7 +734,7 @@ const translations = {
       }
     },
     skills: {
-      title: "Meine Skills",
+      title: "Tech Stack",
       listAll: "Alle Skills"
     },
     creator: {
@@ -691,7 +757,8 @@ const translations = {
           title: "UI-Komponenten",
           description: "Ich zeige, wie ich Bootstrap-Karten mit Motion und Feinschliff aufwerte."
         }
-      }
+      },
+      experimentsTitle: "Experimente & Praxis"
     },
     automation: {
       title: "Automatisierung & Integration",
@@ -721,7 +788,7 @@ const translations = {
     portfolioList: {
       portfolio: "Portfolio",
       project: "PROJEKTE",
-      moreProjects: "MEHR PROJEKTE"
+      moreProjects: "Weitere Projekte"
     },
     experience: {
       title: "ERFAHRUNG & PRAKTIKUM",
@@ -739,7 +806,6 @@ const translations = {
       title: "Kontakt aufnehmen",
       description: "Bereit zur Zusammenarbeit? Schreib mir per E-Mail oder verbinde dich über Social Media.",
       emailLabel: "E-Mail",
-      phoneLabel: "Telefon",
       locationLabel: "Standort",
       availableLabel: "Verfügbarkeit",
       availableValue: "Offen für Freelance- und Vollzeit-Möglichkeiten",
@@ -822,7 +888,7 @@ const translations = {
       }
     },
     skills: {
-      title: "나의 기술",
+      title: "Tech Stack",
       listAll: "전체 스킬"
     },
     creator: {
@@ -845,7 +911,8 @@ const translations = {
           title: "UI 컴포넌트",
           description: "Bootstrap 카드 컴포넌트에 모션과 디테일을 더하는 방법을 공유합니다."
         }
-      }
+      },
+      experimentsTitle: "실험 및 경험"
     },
     automation: {
       title: "자동화 및 통합",
@@ -893,7 +960,6 @@ const translations = {
       title: "연락하기",
       description: "협업을 원하시나요? 이메일 또는 소셜 채널로 편하게 연락주세요.",
       emailLabel: "이메일",
-      phoneLabel: "전화",
       locationLabel: "위치",
       availableLabel: "가능 여부",
       availableValue: "프리랜서 및 정규직 기회를 열어두고 있습니다",

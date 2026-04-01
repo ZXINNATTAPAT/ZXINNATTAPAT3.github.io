@@ -626,6 +626,8 @@
       </div>
     </div>
   </div>
+  <!-- Navigation and Hero with background wrapper -->
+<div class="hero-visual-wrapper">
   <!-- Navigation -->
   <nav class="sticky-top backdrop-blur-custom primary-nav">
     <div class="container-fluid d-flex justify-content-between align-items-center navbar-padding">
@@ -696,21 +698,21 @@
   <div class="scroll-progress" role="presentation" aria-hidden="true"></div>
   <!-- Hero Section -->
   <header id="home">
-    <div class="card border-0 rounded-0" style="background-color: #f8f8ff">
+    <div class="card border-0 rounded-0" style="background-color: transparent">
       <div class="container-fluid py-5">
         <div class="text-center px-3" data-aos="fade-up" data-aos-delay="50">
-          <h1 class="playfair-400 sh-x mb-2" style="color: #a30000; font-size: clamp(48px, 7vw, 100px)"
+          <h1 class="playfair-400 sh-x mb-2" style="color: #2c2c2c; font-size: clamp(48px, 7vw, 100px)"
             data-aos="fade-up" data-aos-delay="100">
             <span data-i18n="hero.hi">Hi, I'm</span>
             <span class="parisienne-regular" style="color: #a30000; font-size: clamp(52px, 8vw, 110px)">
               Nattapat
             </span>
           </h1>
-          <h1 class="playfair-400 sh-x mb-3" style="color: #a30000; font-size: clamp(36px, 6vw, 90px)"
+          <h1 class="playfair-400 sh-x mb-3" style="color: #2c2c2c; font-size: clamp(36px, 6vw, 90px)"
             data-aos="fade-up" data-aos-delay="150">
             <span data-i18n="hero.developer">a Developer Based in</span>
             <span class="parisienne-regular" style="color: #a30000; font-size: clamp(42px, 7vw, 95px)">
-              <span data-i18n="hero.thailand">Thailand</span> </span>.
+              <span data-i18n="hero.thailand">Thailand</span> </span><span style="color: #2c2c2c;">.</span>
           </h1>
           <p class="playfair-400" style="opacity: 0.7; font-size: clamp(14px, 2.5vw, 18px)" data-aos="fade-up"
             data-aos-delay="100" data-i18n="hero.education">
@@ -718,94 +720,31 @@
             Science
           </p>
 
-          <div class="hero-social-buttons">
-            <a href="https://github.com/ZXINNATTAPAT" class="social-button github"
-              aria-label="GitHub Profile">
-              <svg class="cf-icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="-2.5 0 19 19">
-                <path
-                  d="M9.464 17.178a4.506 4.506 0 0 1-2.013.317 4.29 4.29 0 0 1-2.007-.317.746.746 0 0 1-.277-.587c0-.22-.008-.798-.012-1.567-2.564.557-3.105-1.236-3.105-1.236a2.44 2.44 0 0 0-1.024-1.348c-.836-.572.063-.56.063-.56a1.937 1.937 0 0 1 1.412.95 1.962 1.962 0 0 0 2.682.765 1.971 1.971 0 0 1 .586-1.233c-2.046-.232-4.198-1.023-4.198-4.554a3.566 3.566 0 0 1 .948-2.474 3.313 3.313 0 0 1 .091-2.438s.773-.248 2.534.945a8.727 8.727 0 0 1 4.615 0c1.76-1.193 2.532-.945 2.532-.945a3.31 3.31 0 0 1 .092 2.438 3.562 3.562 0 0 1 .947 2.474c0 3.54-2.155 4.32-4.208 4.548a2.195 2.195 0 0 1 .625 1.706c0 1.232-.011 2.227-.011 2.529a.694.694 0 0 1-.272.587z">
-                </path>
-              </svg>
-              <span>GitHub</span>
+          <div class="profile-cta-row text-center align-items-center justify-content-center">
+            <a href="#contact" class="profile-cta-button profile-cta-button-primary">
+              <i class="fas fa-handshake"></i>
+              <span data-i18n="about.letsWork">Let's Work together</span>
             </a>
-            <a href="https://www.linkedin.com/in/nattapat2002/" class="social-button linkedin"
-              aria-label="LinkedIn Profile">
-              <svg viewBox="0 -2 44 44" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink">
-                <g id="Icons" stroke="none" stroke-width="1">
-                  <g transform="translate(-702.000000, -265.000000)">
-                    <path
-                      d="M746,305 L736.2754,305 L736.2754,290.9384 C736.2754,287.257796 734.754233,284.74515 731.409219,284.74515 C728.850659,284.74515 727.427799,286.440738 726.765522,288.074854 C726.517168,288.661395 726.555974,289.478453 726.555974,290.295511 L726.555974,305 L716.921919,305 C716.921919,305 717.046096,280.091247 716.921919,277.827047 L726.555974,277.827047 L726.555974,282.091631 C727.125118,280.226996 730.203669,277.565794 735.116416,277.565794 C741.21143,277.565794 746,281.474355 746,289.890824 L746,305 L746,305 Z M707.17921,274.428187 L707.117121,274.428187 C704.0127,274.428187 702,272.350964 702,269.717936 C702,267.033681 704.072201,265 707.238711,265 C710.402634,265 712.348071,267.028559 712.41016,269.710252 C712.41016,272.34328 710.402634,274.428187 707.17921,274.428187 L707.17921,274.428187 L707.17921,274.428187 Z M703.109831,277.827047 L711.685795,277.827047 L711.685795,305 L703.109831,305 L703.109831,277.827047 L703.109831,277.827047 Z"
-                      id="LinkedIn"></path>
-                  </g>
-                </g>
-              </svg>
-              <span>LinkedIn</span>
-            </a>
-            <a href="https://www.facebook.com/aomzinboy/" class="social-button facebook"
-              aria-label="Read more about Seminole tax hike">
-              <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 310 310" xml:space="preserve">
-                <g id="XMLID_834_">
-                  <path id="XMLID_835_"
-                    d="M81.703,165.106h33.981V305c0,2.762,2.238,5,5,5h57.616c2.762,0,5-2.238,5-5V165.765h39.064
-                                                c2.54,0,4.677-1.906,4.967-4.429l5.933-51.502c0.163-1.417-0.286-2.836-1.234-3.899c-0.949-1.064-2.307-1.673-3.732-1.673h-44.996
-                                                V71.978c0-9.732,5.24-14.667,15.576-14.667c1.473,0,29.42,0,29.42,0c2.762,0,5-2.239,5-5V5.037c0-2.762-2.238-5-5-5h-40.545
-                                                C187.467,0.023,186.832,0,185.896,0c-7.035,0-31.488,1.381-50.804,19.151c-21.402,19.692-18.427,43.27-17.716,47.358v37.752H81.703
-                                                c-2.762,0-5,2.238-5,5v50.844C76.703,162.867,78.941,165.106,81.703,165.106z"></path>
-                </g>
-              </svg>
-              <span>Facebook</span>
-            </a>
-            <a href="https://www.instagram.com/nattazxin/" class="social-button instagram"
-              aria-label="Read more about Seminole tax hike">
-              <svg width="800px" height="800px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink">
-                <g id="Page-1" stroke="none" stroke-width="1">
-                  <g id="Dribbble-Light-Preview" transform="translate(-340.000000, -7439.000000)">
-                    <g id="icons" transform="translate(56.000000, 160.000000)">
-                      <path
-                        d="M289.869652,7279.12273 C288.241769,7279.19618 286.830805,7279.5942 285.691486,7280.72871 C284.548187,7281.86918 284.155147,7283.28558 284.081514,7284.89653 C284.035742,7285.90201 283.768077,7293.49818 284.544207,7295.49028 C285.067597,7296.83422 286.098457,7297.86749 287.454694,7298.39256 C288.087538,7298.63872 288.809936,7298.80547 289.869652,7298.85411 C298.730467,7299.25511 302.015089,7299.03674 303.400182,7295.49028 C303.645956,7294.859 303.815113,7294.1374 303.86188,7293.08031 C304.26686,7284.19677 303.796207,7282.27117 302.251908,7280.72871 C301.027016,7279.50685 299.5862,7278.67508 289.869652,7279.12273 M289.951245,7297.06748 C288.981083,7297.0238 288.454707,7296.86201 288.103459,7296.72603 C287.219865,7296.3826 286.556174,7295.72155 286.214876,7294.84312 C285.623823,7293.32944 285.819846,7286.14023 285.872583,7284.97693 C285.924325,7283.83745 286.155174,7282.79624 286.959165,7281.99226 C287.954203,7280.99968 289.239792,7280.51332 297.993144,7280.90837 C299.135448,7280.95998 300.179243,7281.19026 300.985224,7281.99226 C301.980262,7282.98483 302.473801,7284.28014 302.071806,7292.99991 C302.028024,7293.96767 301.865833,7294.49274 301.729513,7294.84312 C300.829003,7297.15085 298.757333,7297.47145 289.951245,7297.06748 M298.089663,7283.68956 C298.089663,7284.34665 298.623998,7284.88065 299.283709,7284.88065 C299.943419,7284.88065 300.47875,7284.34665 300.47875,7283.68956 C300.47875,7283.03248 299.943419,7282.49847 299.283709,7282.49847 C298.623998,7282.49847 298.089663,7283.03248 298.089663,7283.68956 M288.862673,7288.98792 C288.862673,7291.80286 291.150266,7294.08479 293.972194,7294.08479 C296.794123,7294.08479 299.081716,7291.80286 299.081716,7288.98792 C299.081716,7286.17298 296.794123,7283.89205 293.972194,7283.89205 C291.150266,7283.89205 288.862673,7286.17298 288.862673,7288.98792 M290.655732,7288.98792 C290.655732,7287.16159 292.140329,7285.67967 293.972194,7285.67967 C295.80406,7285.67967 297.288657,7287.16159 297.288657,7288.98792 C297.288657,7290.81525 295.80406,7292.29716 293.972194,7292.29716 C292.140329,7292.29716 290.655732,7290.81525 290.655732,7288.98792"
-                        id="instagram-[#167]"></path>
-                    </g>
-                  </g>
-                </g>
-              </svg>
-              <span>Instagram</span>
-            </a>
-            <a href="https://medium.com/@bigboyzin88/about" class="social-button medium"
-              aria-label="Medium Profile">
-              <svg width="800px" height="800px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/>
-              </svg>
-              <span>Medium</span>
-            </a>
-            <a href="https://www.tiktok.com/@nattazxin" class="social-button tiktok"
-              aria-label="TikTok Profile">
-              <img src="Photo/optimized/Icon/TikTok_Icon_Black_Circle.png" alt="TikTok" width="48" height="48" loading="lazy">
-              <span>TikTok</span>
-            </a>
-            <a href="https://www.youtube.com/@NATTAZXIN" class="social-button youtube"
-              aria-label="YouTube Channel" target="_blank" rel="noopener noreferrer">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-              </svg>
-              <span>YouTube</span>
+            <a href="https://www.linkedin.com/in/nattapat2002/" class="profile-cta-button profile-cta-button-secondary" target="_blank" rel="noopener noreferrer">
+              <i class="fas fa-file-alt"></i>
+              <span data-i18n="about.resume">Resume</span>
             </a>
           </div>
+
         </div>
       </div>
     </div>
   </header>
 
   <!-- Animated Divider -->
-  <div class="container-fluid" style="background-color: #f8f8ff; padding: 2rem 0 0 0;">
+  <div class="container-fluid" style="background-color: transparent; padding: 2rem 0 0 0;">
     <div class="container" style="padding-bottom: 0;">
       <div
         class="animate__fadeIn animate__animated shadow bg-cleanmain d-flex align-items-center justify-content-center text-center">
       </div>
     </div>
   </div>
+</div>
 
   <script>
     // Toggle sticky-open for skill folders
@@ -840,6 +779,83 @@
                   " data-i18n="profile.title">
                 PROFILE
               </h1>
+            </div>
+
+            <br/><br/>
+            <div class="hero-social-buttons">
+              <a href="https://github.com/ZXINNATTAPAT" class="social-button github"
+                aria-label="GitHub Profile">
+                <svg class="cf-icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="-2.5 0 19 19">
+                  <path
+                    d="M9.464 17.178a4.506 4.506 0 0 1-2.013.317 4.29 4.29 0 0 1-2.007-.317.746.746 0 0 1-.277-.587c0-.22-.008-.798-.012-1.567-2.564.557-3.105-1.236-3.105-1.236a2.44 2.44 0 0 0-1.024-1.348c-.836-.572.063-.56.063-.56a1.937 1.937 0 0 1 1.412.95 1.962 1.962 0 0 0 2.682.765 1.971 1.971 0 0 1 .586-1.233c-2.046-.232-4.198-1.023-4.198-4.554a3.566 3.566 0 0 1 .948-2.474 3.313 3.313 0 0 1 .091-2.438s.773-.248 2.534.945a8.727 8.727 0 0 1 4.615 0c1.76-1.193 2.532-.945 2.532-.945a3.31 3.31 0 0 1 .092 2.438 3.562 3.562 0 0 1 .947 2.474c0 3.54-2.155 4.32-4.208 4.548a2.195 2.195 0 0 1 .625 1.706c0 1.232-.011 2.227-.011 2.529a.694.694 0 0 1-.272.587z">
+                  </path>
+                </svg>
+                <span>GitHub</span>
+              </a>
+              <a href="https://www.linkedin.com/in/nattapat2002/" class="social-button linkedin"
+                aria-label="LinkedIn Profile">
+                <svg viewBox="0 -2 44 44" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink">
+                  <g id="Icons" stroke="none" stroke-width="1">
+                    <g transform="translate(-702.000000, -265.000000)">
+                      <path
+                        d="M746,305 L736.2754,305 L736.2754,290.9384 C736.2754,287.257796 734.754233,284.74515 731.409219,284.74515 C728.850659,284.74515 727.427799,286.440738 726.765522,288.074854 C726.517168,288.661395 726.555974,289.478453 726.555974,290.295511 L726.555974,305 L716.921919,305 C716.921919,305 717.046096,280.091247 716.921919,277.827047 L726.555974,277.827047 L726.555974,282.091631 C727.125118,280.226996 730.203669,277.565794 735.116416,277.565794 C741.21143,277.565794 746,281.474355 746,289.890824 L746,305 L746,305 Z M707.17921,274.428187 L707.117121,274.428187 C704.0127,274.428187 702,272.350964 702,269.717936 C702,267.033681 704.072201,265 707.238711,265 C710.402634,265 712.348071,267.028559 712.41016,269.710252 C712.41016,272.34328 710.402634,274.428187 707.17921,274.428187 L707.17921,274.428187 L707.17921,274.428187 Z M703.109831,277.827047 L711.685795,277.827047 L711.685795,305 L703.109831,305 L703.109831,277.827047 L703.109831,277.827047 Z"
+                        id="LinkedIn"></path>
+                    </g>
+                  </g>
+                </svg>
+                <span>LinkedIn</span>
+              </a>
+              <a href="https://www.facebook.com/aomzinboy/" class="social-button facebook"
+                aria-label="Read more about Seminole tax hike">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 310 310" xml:space="preserve">
+                  <g id="XMLID_834_">
+                    <path id="XMLID_835_"
+                      d="M81.703,165.106h33.981V305c0,2.762,2.238,5,5,5h57.616c2.762,0,5-2.238,5-5V165.765h39.064
+                                                  c2.54,0,4.677-1.906,4.967-4.429l5.933-51.502c0.163-1.417-0.286-2.836-1.234-3.899c-0.949-1.064-2.307-1.673-3.732-1.673h-44.996
+                                                  V71.978c0-9.732,5.24-14.667,15.576-14.667c1.473,0,29.42,0,29.42,0c2.762,0,5-2.239,5-5V5.037c0-2.762-2.238-5-5-5h-40.545
+                                                  C187.467,0.023,186.832,0,185.896,0c-7.035,0-31.488,1.381-50.804,19.151c-21.402,19.692-18.427,43.27-17.716,47.358v37.752H81.703
+                                                  c-2.762,0-5,2.238-5,5v50.844C76.703,162.867,78.941,165.106,81.703,165.106z"></path>
+                  </g>
+                </svg>
+                <span>Facebook</span>
+              </a>
+              <a href="https://www.instagram.com/nattazxin/" class="social-button instagram"
+                aria-label="Read more about Seminole tax hike">
+                <svg width="800px" height="800px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink">
+                  <g id="Page-1" stroke="none" stroke-width="1">
+                    <g id="Dribbble-Light-Preview" transform="translate(-340.000000, -7439.000000)">
+                      <g id="icons" transform="translate(56.000000, 160.000000)">
+                        <path
+                          d="M289.869652,7279.12273 C288.241769,7279.19618 286.830805,7279.5942 285.691486,7280.72871 C284.548187,7281.86918 284.155147,7283.28558 284.081514,7284.89653 C284.035742,7285.90201 283.768077,7293.49818 284.544207,7295.49028 C285.067597,7296.83422 286.098457,7297.86749 287.454694,7298.39256 C288.087538,7298.63872 288.809936,7298.80547 289.869652,7298.85411 C298.730467,7299.25511 302.015089,7299.03674 303.400182,7295.49028 C303.645956,7294.859 303.815113,7294.1374 303.86188,7293.08031 C304.26686,7284.19677 303.796207,7282.27117 302.251908,7280.72871 C301.027016,7279.50685 299.5862,7278.67508 289.869652,7279.12273 M289.951245,7297.06748 C288.981083,7297.0238 288.454707,7296.86201 288.103459,7296.72603 C287.219865,7296.3826 286.556174,7295.72155 286.214876,7294.84312 C285.623823,7293.32944 285.819846,7286.14023 285.872583,7284.97693 C285.924325,7283.83745 286.155174,7282.79624 286.959165,7281.99226 C287.954203,7280.99968 289.239792,7280.51332 297.993144,7280.90837 C299.135448,7280.95998 300.179243,7281.19026 300.985224,7281.99226 C301.980262,7282.98483 302.473801,7284.28014 302.071806,7292.99991 C302.028024,7293.96767 301.865833,7294.49274 301.729513,7294.84312 C300.829003,7297.15085 298.757333,7297.47145 289.951245,7297.06748 M298.089663,7283.68956 C298.089663,7284.34665 298.623998,7284.88065 299.283709,7284.88065 C299.943419,7284.88065 300.47875,7284.34665 300.47875,7283.68956 C300.47875,7283.03248 299.943419,7282.49847 299.283709,7282.49847 C298.623998,7282.49847 298.089663,7283.03248 298.089663,7283.68956 M288.862673,7288.98792 C288.862673,7291.80286 291.150266,7294.08479 293.972194,7294.08479 C296.794123,7294.08479 299.081716,7291.80286 299.081716,7288.98792 C299.081716,7286.17298 296.794123,7283.89205 293.972194,7283.89205 C291.150266,7283.89205 288.862673,7286.17298 288.862673,7288.98792 M290.655732,7288.98792 C290.655732,7287.16159 292.140329,7285.67967 293.972194,7285.67967 C295.80406,7285.67967 297.288657,7287.16159 297.288657,7288.98792 C297.288657,7290.81525 295.80406,7292.29716 293.972194,7292.29716 C292.140329,7292.29716 290.655732,7290.81525 290.655732,7288.98792"
+                          id="instagram-[#167]"></path>
+                      </g>
+                    </g>
+                  </g>
+                </svg>
+                <span>Instagram</span>
+              </a>
+              <a href="https://medium.com/@bigboyzin88/about" class="social-button medium"
+                aria-label="Medium Profile">
+                <svg width="800px" height="800px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/>
+                </svg>
+                <span>Medium</span>
+              </a>
+              <a href="https://www.tiktok.com/@nattazxin" class="social-button tiktok"
+                aria-label="TikTok Profile">
+                <img src="Photo/optimized/Icon/TikTok_Icon_Black_Circle.png" alt="TikTok" width="48" height="48" loading="lazy">
+                <span>TikTok</span>
+              </a>
+              <a href="https://www.youtube.com/@NATTAZXIN" class="social-button youtube"
+                aria-label="YouTube Channel" target="_blank" rel="noopener noreferrer">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                </svg>
+                <span>YouTube</span>
+              </a>
             </div>
           </div>
           <div class="col-md-7" data-aos="fade-left" data-aos-delay="100">
@@ -891,16 +907,6 @@
               
               I'm open to opportunities as a <strong>Frontend Developer</strong> or <strong>Full Stack Developer</strong>, where I can continue delivering production-level frontend work while growing deeper in backend engineering and system design.
             </p>
-            <div class="profile-cta-row">
-              <a href="#contact" class="profile-cta-button profile-cta-button-primary">
-                <i class="fas fa-handshake"></i>
-                <span data-i18n="about.letsWork">Let's Work together</span>
-              </a>
-              <a href="https://www.linkedin.com/in/nattapat2002/" class="profile-cta-button profile-cta-button-secondary" target="_blank" rel="noopener noreferrer">
-                <i class="fas fa-file-alt"></i>
-                <span data-i18n="about.resume">Resume</span>
-              </a>
-            </div>
 
           </div>
         </div>
@@ -968,6 +974,7 @@
         </div>
       </div>
 
+
     </div>
   </section>
   <!-- Skills Section -->
@@ -976,240 +983,205 @@
       <div class="skills-shell">
         <div class="skills-heading-row">
           <h2 class="profile-heading playfair-400 mb-0 text-start" style="color: #2c2c2c" data-i18n="skills.title">
-            My Skills
+            Tech Stack
           </h2>
-          <p class="skills-heading-side mb-0" data-i18n="skills.listAll">
-            List all skills
-          </p>
+          <!-- <button class="skills-heading-btn mb-0" id="showAllSkillsBtn">
+            <span data-i18n="skills.listAll">List all skills</span>
+            <i class="fas fa-external-link-alt ms-2"></i>
+          </button> -->
         </div>
 
         <div class="app-dock-wrapper my-2" data-aos="fade-up">
-          <div class="app-dock shadow-sm" aria-label="Skills app dock">
-          <div class="app-item">
-            <div class="app-icon" title="SQL Server">
-              <img src="Photo/optimized/Icon/SQLserv.png" alt="SQL Server" class="app-icon-img" width="48" height="48" loading="lazy">
+          <div class="app-dock" aria-label="Skills marquee">
+            <!-- Original List -->
+            <div class="app-item">
+              <div class="app-icon" title="SQL Server"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg" alt="SQL Server" class="app-icon-img" width="48" height="48" loading="lazy"></div>
+              <div class="app-name">SQL Server</div>
             </div>
-            <div class="app-name">SQL Server</div>
-          </div>
-          <div class="app-item">
-            <div class="app-icon" title="React">
-              <img src="Photo/optimized/Icon/React.png" alt="React" class="app-icon-img" width="48" height="48" loading="lazy">
+            <div class="app-item">
+              <div class="app-icon" title="React"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" class="app-icon-img" width="48" height="48" loading="lazy"></div>
+              <div class="app-name">React</div>
             </div>
-            <div class="app-name">React</div>
-          </div>
-          <div class="app-item">
-            <div class="app-icon" title="Angular">
-              <img src="Photo/optimized/Icon/Angular.png" alt="Angular" class="app-icon-img" width="48" height="48" loading="lazy">
+            <div class="app-item">
+              <div class="app-icon" title="Angular"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg" alt="Angular" class="app-icon-img" width="48" height="48" loading="lazy"></div>
+              <div class="app-name">Angular</div>
             </div>
-            <div class="app-name">Angular</div>
-          </div>
-          <div class="app-item">
-            <div class="app-icon" title="Node.js">
-              <img src="Photo/optimized/Icon/Node.png" alt="Node.js" class="app-icon-img" width="48" height="48" loading="lazy">
+            <div class="app-item">
+              <div class="app-icon" title="Node.js"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" class="app-icon-img" width="48" height="48" loading="lazy"></div>
+              <div class="app-name">Node.js</div>
             </div>
-            <div class="app-name">Node.js</div>
-          </div>
-          <div class="app-item">
-            <div class="app-icon" title="Next.js">
-              <img src="Photo/optimized/Icon/Next.png" alt="Next.js" class="app-icon-img" width="48" height="48" loading="lazy">
+            <div class="app-item">
+              <div class="app-icon" title="Next.js"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js" class="app-icon-img" width="48" height="48" loading="lazy"></div>
+              <div class="app-name">Next.js</div>
             </div>
-            <div class="app-name">Next.js</div>
-          </div>
-          <div class="app-item">
-            <div class="app-icon" title="JavaScript">
-              <img src="Photo/optimized/Icon/JS.png" alt="JavaScript" class="app-icon-img" width="48" height="48" loading="lazy">
+            <div class="app-item">
+              <div class="app-icon" title="JavaScript"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" class="app-icon-img" width="48" height="48" loading="lazy"></div>
+              <div class="app-name">JavaScript</div>
             </div>
-            <div class="app-name">JavaScript</div>
-          </div>
-          <div class="app-item">
-            <div class="app-icon" title="TypeScript">
-              <img src="Photo/optimized/Icon/TS.png" alt="TypeScript" class="app-icon-img" width="48" height="48" loading="lazy">
+            <div class="app-item">
+              <div class="app-icon" title="TypeScript"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript" class="app-icon-img" width="48" height="48" loading="lazy"></div>
+              <div class="app-name">TypeScript</div>
             </div>
-            <div class="app-name">TypeScript</div>
-          </div>
-          <div class="app-item">
-            <div class="app-icon" title="MySQL">
-              <img src="Photo/optimized/Icon/Mysql.png" alt="MySQL" class="app-icon-img" width="48" height="48" loading="lazy">
+            <div class="app-item">
+              <div class="app-icon" title="MySQL"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" class="app-icon-img" width="48" height="48" loading="lazy"></div>
+              <div class="app-name">MySQL</div>
             </div>
-            <div class="app-name">MySQL</div>
-          </div>
-          <div class="app-item">
-            <div class="app-icon" title="PostgreSQL">
-              <img src="Photo/optimized/Icon/Postgeust.png" alt="PostgreSQL" class="app-icon-img" width="48" height="48" loading="lazy">
+            <div class="app-item">
+              <div class="app-icon" title="PostgreSQL"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" class="app-icon-img" width="48" height="48" loading="lazy"></div>
+              <div class="app-name">PostgreSQL</div>
             </div>
-            <div class="app-name">PostgreSQL</div>
-          </div>
-          <div class="app-item">
-            <div class="app-icon" title="REST API">
-              <img src="Photo/optimized/Icon/RESTAPI.png" alt="REST API" class="app-icon-img" width="48" height="48" loading="lazy">
+            <div class="app-item">
+              <div class="app-icon" title="REST API"><img src="https://cdn.simpleicons.org/openapiinitiative/6BA539" alt="REST API" class="app-icon-img" width="48" height="48" loading="lazy"></div>
+              <div class="app-name">REST API</div>
             </div>
-            <div class="app-name">REST API</div>
-          </div>
-          <div class="app-item">
-            <div class="app-icon" title="C#">
-              <img src="Photo/optimized/Icon/CSHARP.png" alt="C#" class="app-icon-img" width="48" height="48" loading="lazy">
+            <div class="app-item">
+              <div class="app-icon" title="C#"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#" class="app-icon-img" width="48" height="48" loading="lazy"></div>
+              <div class="app-name">C#</div>
             </div>
-            <div class="app-name">C#</div>
-          </div>
+
           </div>
         </div>
       </div>
     </div>
   </section>
-  <!-- TikTok Content Creator Section -->
-  <section id="content-creator" class="container-fluid creator-showcase-section" style="background-color: #f8f8ff; padding-top: 0; padding-bottom: 3rem;">
-    <div class="container">
-      <div class="container px-4 creator-showcase-shell" style="max-width: 1200px;">
-        <div class="row align-items-center justify-content-between g-4 mb-4">
-        <div class="col-12 col-lg-8">
-          <div class="d-flex align-items-center gap-3 mb-3">
-            <div class="p-2 rounded-circle creator-mode-badge">
-              <img src="Photo/optimized/Logozxin-removebg-preview.png" alt="ZXIN mini logo" style="width: 48px; height: 48px; object-fit: contain" / width="200" height="200" loading="lazy">
-            </div>
-            <div class="creator-mode-copy">
-              <p class="text-uppercase mb-1 creator-mode-label" data-i18n="creator.mode">
-                Creator mode
-              </p>
-              <p class="mb-0 playfair-400 creator-mode-subtitle" data-i18n="creator.subtitle">
-                Quick snapshots from my dev-life TikTok channel.
-              </p>
-            </div>
-          </div>
-          <h2 class="playfair-400 mb-3 creator-section-title" data-i18n="creator.title">
-            Tech Content Creator
-          </h2>
-        </div>
-        <div class="col-12 col-lg-4 text-center text-lg-end">
-         
-        </div>
-      </div>
 
-      <div class="row g-4">
-        <div class="col-12 col-lg-4">
-          <div class="card border-0 h-100 creator-glass-card">
-            <div class="card-body pb-0 creator-glass-body">
-              <span class="d-inline-block text-uppercase mb-2 creator-card-label" data-i18n="creator.cards.teamwork.title">
-                Teamwork & Git
-              </span>
-              <p class="playfair-400 mb-3 creator-card-description" data-i18n="creator.cards.teamwork.description">
-                First team project shipped with Git—messy process, solid lesson learned together.
-              </p>
-            </div>
-            <div class="px-3 pb-3 creator-glass-embed">
-              <blockquote class="tiktok-embed mb-0" cite="https://www.tiktok.com/@zxin_ntt/video/7540364208567831815"
-                data-video-id="7540364208567831815" data-embed-from="embed_page" style="max-width: 100%; min-width: 100%;">
-                <section>
-                  <a target="_blank" title="@zxin_ntt" href="https://www.tiktok.com/@zxin_ntt?refer=embed">@zxin_ntt</a>
-                  <p>ครั้งแรกที่ใช้ git ทำงานกับเพื่อนๆ ใช้แบบไม่ได้ถูกหลักสะเท่าไรแต่ก็หัดกันกับเพื่อนทำโปรเจคผ่านกันมาได้
-                    <a title="computerscience" target="_blank" href="https://www.tiktok.com/tag/computerscience?refer=embed">#computerscience</a>
-                    <a title="มจพ" target="_blank" href="https://www.tiktok.com/tag/%E0%B8%A1%E0%B8%88%E0%B8%9E?refer=embed">#มจพ</a>
-                    <a title="dev" target="_blank" href="https://www.tiktok.com/tag/dev?refer=embed">#dev</a>
-                  </p>
-                  <a target="_blank" title="♬ Beat - beaty" href="https://www.tiktok.com/music/Beat-7142169219956738050?refer=embed">♬ Beat - beaty</a>
-                </section>
-              </blockquote>
+  <!-- All Skills Modal -->
+  <div id="skillsModal" class="skills-modal" style="display: none;">
+    <div class="skills-modal-overlay"></div>
+    <div class="skills-modal-content">
+      <div class="skills-modal-header">
+        <h3 class="playfair-400 mb-0" data-i18n="skills.title">Tech Stack</h3>
+        <button class="skills-modal-close" id="closeSkillsModal" aria-label="Close modal">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="skills-modal-body">
+        <div class="skills-grid">
+          <!-- SQL Server -->
+          <div class="skill-card">
+            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg" alt="SQL Server"></div>
+            <div class="skill-card-info">
+              <div class="skill-card-name">SQL Server</div>
+              <div class="skill-card-level">Advanced</div>
             </div>
           </div>
-        </div>
-        <div class="col-12 col-lg-4">
-          <div class="card border-0 h-100 creator-glass-card">
-            <div class="card-body pb-0 creator-glass-body">
-              <span class="d-inline-block text-uppercase mb-2 creator-card-label" data-i18n="creator.cards.framework.title">
-                Framework Experiments
-              </span>
-              <p class="playfair-400 mb-3 creator-card-description" data-i18n="creator.cards.framework.description">
-                Comparing Tailwind vs Bootstrap in real projects to find the right fit.
-              </p>
-            </div>
-            <div class="px-3 pb-3 creator-glass-embed">
-              <blockquote class="tiktok-embed mb-0" cite="https://www.tiktok.com/@zxin_ntt/video/7522462410179890450"
-                data-video-id="7522462410179890450" data-embed-from="embed_page" style="max-width: 100%; min-width: 100%;">
-                <section>
-                  <a target="_blank" title="@zxin_ntt" href="https://www.tiktok.com/@zxin_ntt?refer=embed">@zxin_ntt</a>
-                  <p>ฝึกใช้tailwind css ครั้งแรกปกติใช้แต่Bootstrapค่ายม่วง เขียนไปเขียนมาเริ่มชอบละ ใครแนะนำTipอะไรการใช้เม้นมาบอกกันได้น้าา
-                    <a title="computerscience" target="_blank" href="https://www.tiktok.com/tag/computerscience?refer=embed">#computerscience</a>
-                    <a title="frontend" target="_blank" href="https://www.tiktok.com/tag/frontend?refer=embed">#frontend</a>
-                    <a title="dev" target="_blank" href="https://www.tiktok.com/tag/dev?refer=embed">#dev</a>
-                  </p>
-                  <a target="_blank" title="♬ MUTT - Leon Thomas" href="https://www.tiktok.com/music/MUTT-7400513247046453264?refer=embed">♬ MUTT - Leon Thomas</a>
-                </section>
-              </blockquote>
+          <!-- React -->
+          <div class="skill-card">
+            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React"></div>
+            <div class="skill-card-info">
+              <div class="skill-card-name">React</div>
+              <div class="skill-card-level">Advanced</div>
             </div>
           </div>
-        </div>
-        <div class="col-12 col-lg-4">
-          <div class="card border-0 h-100 creator-glass-card">
-            <div class="card-body pb-0 creator-glass-body">
-              <span class="d-inline-block text-uppercase mb-2 creator-card-label" data-i18n="creator.cards.ui.title">
-                UI Components
-              </span>
-              <p class="playfair-400 mb-3 creator-card-description" data-i18n="creator.cards.ui.description">
-                Sharing how I add motion and polish to Bootstrap card components.
-              </p>
-            </div>
-            <div class="px-3 pb-3 creator-glass-embed">
-              <blockquote class="tiktok-embed mb-0" cite="https://www.tiktok.com/@zxin_ntt/video/7544666852794879250"
-                data-video-id="7544666852794879250" data-embed-from="embed_page" style="max-width: 100%; min-width: 100%;">
-                <section>
-                  <a target="_blank" title="@zxin_ntt" href="https://www.tiktok.com/@zxin_ntt?refer=embed">@zxin_ntt</a>
-                  <p>มาลองสร้าง Card component ด้วย Bootstrap กัน
-                    <a title="dev" target="_blank" href="https://www.tiktok.com/tag/dev?refer=embed">#dev</a>
-                    <a title="computerscience" target="_blank" href="https://www.tiktok.com/tag/computerscience?refer=embed">#computerscience</a>
-                    <a title="cskmutnb" target="_blank" href="https://www.tiktok.com/tag/cskmutnb?refer=embed">#cskmutnb</a>
-                  </p>
-                  <a target="_blank" title="♬ Countless - Official Sound Studio" href="https://www.tiktok.com/music/Countless-6692683186809359108?refer=embed">♬ Countless - Official Sound Studio</a>
-                </section>
-              </blockquote>
+          <!-- Angular -->
+          <div class="skill-card">
+            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg" alt="Angular"></div>
+            <div class="skill-card-info">
+              <div class="skill-card-name">Angular</div>
+              <div class="skill-card-level">Intermediate</div>
             </div>
           </div>
-        </div>
+          <!-- Node.js -->
+          <div class="skill-card">
+            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js"></div>
+            <div class="skill-card-info">
+              <div class="skill-card-name">Node.js</div>
+              <div class="skill-card-level">Intermediate</div>
+            </div>
+          </div>
+          <!-- Next.js -->
+          <div class="skill-card">
+            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js"></div>
+            <div class="skill-card-info">
+              <div class="skill-card-name">Next.js</div>
+              <div class="skill-card-level">Intermediate</div>
+            </div>
+          </div>
+          <!-- JavaScript -->
+          <div class="skill-card">
+            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"></div>
+            <div class="skill-card-info">
+              <div class="skill-card-name">JavaScript</div>
+              <div class="skill-card-level">Advanced</div>
+            </div>
+          </div>
+          <!-- TypeScript -->
+          <div class="skill-card">
+            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript"></div>
+            <div class="skill-card-info">
+              <div class="skill-card-name">TypeScript</div>
+              <div class="skill-card-level">Advanced</div>
+            </div>
+          </div>
+          <!-- MySQL -->
+          <div class="skill-card">
+            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL"></div>
+            <div class="skill-card-info">
+              <div class="skill-card-name">MySQL</div>
+              <div class="skill-card-level">Advanced</div>
+            </div>
+          </div>
+          <!-- PostgreSQL -->
+          <div class="skill-card">
+            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL"></div>
+            <div class="skill-card-info">
+              <div class="skill-card-name">PostgreSQL</div>
+              <div class="skill-card-level">Intermediate</div>
+            </div>
+          </div>
+          <!-- REST API -->
+          <div class="skill-card">
+            <div class="skill-card-icon"><img src="https://cdn.simpleicons.org/openapiinitiative/6BA539" alt="REST API"></div>
+            <div class="skill-card-info">
+              <div class="skill-card-name">REST API</div>
+              <div class="skill-card-level">Advanced</div>
+            </div>
+          </div>
+          <!-- C# -->
+          <div class="skill-card">
+            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#"></div>
+            <div class="skill-card-info">
+              <div class="skill-card-name">C#</div>
+              <div class="skill-card-level">Intermediate</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- TikTok Embed Script - Lazy loaded with Intersection Observer -->
   <script>
-    // Lazy load TikTok embed script only when embeds are visible
-    (function() {
-      let tiktokScriptLoaded = false;
-      const tiktokEmbeds = document.querySelectorAll('.tiktok-embed');
-      
-      if (tiktokEmbeds.length === 0) return;
-      
-      const loadTiktokScript = function() {
-        if (tiktokScriptLoaded) return;
-        tiktokScriptLoaded = true;
-        
-        var script = document.createElement('script');
-        script.src = 'https://www.tiktok.com/embed.js';
-        script.async = true;
-        script.defer = true;
-        script.setAttribute('loading', 'lazy');
-        document.body.appendChild(script);
-      };
-      
-      // Use Intersection Observer for lazy loading
-      if ('IntersectionObserver' in window) {
-        const observer = new IntersectionObserver(function(entries) {
-          entries.forEach(function(entry) {
-            if (entry.isIntersecting) {
-              loadTiktokScript();
-              observer.disconnect();
-            }
-          });
-        }, {
-          rootMargin: '200px' // Start loading 200px before visible
-        });
-        
-        tiktokEmbeds.forEach(function(embed) {
-          observer.observe(embed);
-        });
-      } else {
-        // Fallback: load after page load if IntersectionObserver not supported
-        window.addEventListener('load', loadTiktokScript);
+    document.addEventListener('DOMContentLoaded', function() {
+      const modal = document.getElementById('skillsModal');
+      const btn = document.getElementById('showAllSkillsBtn');
+      const closeBtn = document.getElementById('closeSkillsModal');
+      const overlay = modal.querySelector('.skills-modal-overlay');
+
+      function openModal() {
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        setTimeout(() => modal.classList.add('is-open'), 10);
       }
-    })();
+
+      function closeModal() {
+        modal.classList.remove('is-open');
+        setTimeout(() => {
+          modal.style.display = 'none';
+          document.body.style.overflow = '';
+        }, 300);
+      }
+
+      btn.addEventListener('click', openModal);
+      closeBtn.addEventListener('click', closeModal);
+      overlay.addEventListener('click', closeModal);
+
+      // Close on Escape key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.style.display === 'flex') {
+          closeModal();
+        }
+      });
+    });
   </script>
   <!-- Visual Highlights -->
   <section id="portfolio" class="container-fluid"
@@ -1563,6 +1535,147 @@
       </div>
     </div>
   </section>
+  <!-- TikTok Content Creator Section -->
+  <section id="content-creator" class="container-fluid creator-showcase-section" style="background-color: #f8f8ff; padding-top: 0; padding-bottom: 3rem;">
+    <div class="container">
+      <div class="container px-4 creator-showcase-shell" style="max-width: 1200px;">
+        <div class="row align-items-center justify-content-between g-4 mb-4">
+        <div class="col-12 col-lg-8">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <div class="p-2 rounded-circle creator-mode-badge">
+              <img src="Photo/optimized/Logozxin-removebg-preview.png" alt="ZXIN mini logo" style="width: 48px; height: 48px; object-fit: contain" / width="200" height="200" loading="lazy">
+            </div>
+            <div class="creator-mode-copy">
+              <p class="text-uppercase mb-1 creator-mode-label" data-i18n="creator.mode">
+                Creator mode
+              </p>
+              <p class="mb-0 playfair-400 creator-mode-subtitle" data-i18n="creator.subtitle">
+                Quick snapshots from my dev-life TikTok channel.
+              </p>
+            </div>
+          </div>
+          <!-- <h2 class="playfair-400 mb-3 creator-section-title" data-i18n="creator.title">
+            Tech Content Creator
+          </h2> -->
+        </div>
+        <div class="col-12 col-lg-4 text-center text-lg-end">
+         
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-12 col-lg-4">
+          <div class="card border-0 h-100 creator-glass-card">
+            <div class="card-body pb-0 creator-glass-body">
+              <span class="d-inline-block text-uppercase mb-2 creator-card-label" data-i18n="creator.cards.teamwork.title">
+                Teamwork & Git
+              </span>
+              <p class="playfair-400 mb-3 creator-card-description" data-i18n="creator.cards.teamwork.description">
+                First team project shipped with Git—messy process, solid lesson learned together.
+              </p>
+            </div>
+            <div class="px-3 pb-3 creator-glass-embed">
+              <blockquote class="tiktok-embed mb-0" cite="https://www.tiktok.com/@zxin_ntt/video/7540364208567831815"
+                data-video-id="7540364208567831815" data-embed-from="embed_page" style="max-width: 100%; min-width: 100%;">
+                <section>
+                  <a target="_blank" title="@zxin_ntt" href="https://www.tiktok.com/@zxin_ntt?refer=embed">@zxin_ntt</a>
+                  <p>ครั้งแรกที่ใช้ git ทำงานกับเพื่อนๆ ใช้แบบไม่ได้ถูกหลักสะเท่าไรแต่ก็หัดกันกับเพื่อนทำโปรเจคผ่านกันมาได้
+                    <a title="computerscience" target="_blank" href="https://www.tiktok.com/tag/computerscience?refer=embed">#computerscience</a>
+                    <a title="มจพ" target="_blank" href="https://www.tiktok.com/tag/%E0%B8%A1%E0%B8%88%E0%B8%9E?refer=embed">#มจพ</a>
+                    <a title="dev" target="_blank" href="https://www.tiktok.com/tag/dev?refer=embed">#dev</a>
+                  </p>
+                  <a target="_blank" title="♬ Beat - beaty" href="https://www.tiktok.com/music/Beat-7142169219956738050?refer=embed">♬ Beat - beaty</a>
+                </section>
+              </blockquote>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-lg-4">
+          <div class="card border-0 h-100 creator-glass-card">
+            <div class="card-body pb-3 creator-glass-body">
+              <span class="d-inline-block text-uppercase mb-2 creator-card-label" data-i18n="creator.experimentsTitle">
+                Experiments
+              </span>
+              <div class="creator-experiments-wrap">
+                <div class="creator-experiments-content playfair-400" data-i18n-html="creator.experimentsHtml"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-lg-4">
+          <div class="card border-0 h-100 creator-glass-card">
+            <div class="card-body pb-0 creator-glass-body">
+              <span class="d-inline-block text-uppercase mb-2 creator-card-label" data-i18n="creator.cards.ui.title">
+                UI Components
+              </span>
+              <p class="playfair-400 mb-3 creator-card-description" data-i18n="creator.cards.ui.description">
+                Sharing how I add motion and polish to Bootstrap card components.
+              </p>
+            </div>
+            <div class="px-3 pb-3 creator-glass-embed">
+              <blockquote class="tiktok-embed mb-0" cite="https://www.tiktok.com/@zxin_ntt/video/7544666852794879250"
+                data-video-id="7544666852794879250" data-embed-from="embed_page" style="max-width: 100%; min-width: 100%;">
+                <section>
+                  <a target="_blank" title="@zxin_ntt" href="https://www.tiktok.com/@zxin_ntt?refer=embed">@zxin_ntt</a>
+                  <p>มาลองสร้าง Card component ด้วย Bootstrap กัน
+                    <a title="dev" target="_blank" href="https://www.tiktok.com/tag/dev?refer=embed">#dev</a>
+                    <a title="computerscience" target="_blank" href="https://www.tiktok.com/tag/computerscience?refer=embed">#computerscience</a>
+                    <a title="cskmutnb" target="_blank" href="https://www.tiktok.com/tag/cskmutnb?refer=embed">#cskmutnb</a>
+                  </p>
+                  <a target="_blank" title="♬ Countless - Official Sound Studio" href="https://www.tiktok.com/music/Countless-6692683186809359108?refer=embed">♬ Countless - Official Sound Studio</a>
+                </section>
+              </blockquote>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TikTok Embed Script - Lazy loaded with Intersection Observer -->
+  <script>
+    // Lazy load TikTok embed script only when embeds are visible
+    (function() {
+      let tiktokScriptLoaded = false;
+      const tiktokEmbeds = document.querySelectorAll('.tiktok-embed');
+      
+      if (tiktokEmbeds.length === 0) return;
+      
+      const loadTiktokScript = function() {
+        if (tiktokScriptLoaded) return;
+        tiktokScriptLoaded = true;
+        
+        var script = document.createElement('script');
+        script.src = 'https://www.tiktok.com/embed.js';
+        script.async = true;
+        script.defer = true;
+        script.setAttribute('loading', 'lazy');
+        document.body.appendChild(script);
+      };
+      
+      // Use Intersection Observer for lazy loading
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              loadTiktokScript();
+              observer.disconnect();
+            }
+          });
+        }, {
+          rootMargin: '200px' // Start loading 200px before visible
+        });
+        
+        tiktokEmbeds.forEach(function(embed) {
+          observer.observe(embed);
+        });
+      } else {
+        // Fallback: load after page load if IntersectionObserver not supported
+        window.addEventListener('load', loadTiktokScript);
+      }
+    })();
+  </script>
   <!-- Portfolio Project List -->
   <section class="container-fluid" style="background-color: #f8f8ff; padding-top: 0; padding-bottom: 0;" id="portfolio-list">
     <div class="container px-3 px-md-4" style="max-width: 1200px;">
@@ -1678,12 +1791,8 @@
             <span style="font-size: clamp(20px, 2.5vw, 28px); color: #6b6b6b">→</span>
           </div>
         </div>
-        <div class="text-center">
-          <button class="custom-learn-more-btn" onclick="window.location.href='#portfolio'">
-            <span class="button-text" data-i18n="portfolioList.moreProjects">MORE PROJECTS </span>
-            <div class="circle"></div>
-            <div class="arrow"></div>
-          </button>
+        <div class="text-end mt-3 mt-md-4">
+          <a href="#portfolio" class="portfolio-more-nav-link" data-i18n="portfolioList.moreProjects">More projects</a>
         </div>
       </div>
     </div>
@@ -2134,6 +2243,11 @@
                 <p class="playfair-400 text-muted mb-4" style="font-size: 1rem;">
                   Email first, but phone and location stay close by when we need to move fast.
                 </p>
+                <div class="d-flex flex-wrap gap-2">
+                  <a href="mailto:nattapat.p.npt@gmail.com?subject=Project%20Inquiry%20from%20Portfolio" class="btn-submit-minimal">
+                    <i class="fas fa-paper-plane me-2"></i><span data-i18n="contact.sendEmail">Send Email</span>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -2174,20 +2288,6 @@
                   <article class="contact-mail-detail-card">
                     <div class="contact-mail-detail-head">
                       <div class="contact-mail-detail-label">
-                        <i class="fas fa-phone-alt"></i>
-                        <span data-i18n="contact.phoneLabel">Phone</span>
-                      </div>
-                      <span class="contact-mail-detail-tag">Direct</span>
-                    </div>
-                    <div class="contact-mail-detail-value">
-                      <a href="tel:+66836684009" class="contact-link">+66 83 668 4009</a>
-                    </div>
-                    <p class="contact-mail-detail-note">Useful when we need fast alignment or quick follow-up.</p>
-                  </article>
-
-                  <article class="contact-mail-detail-card">
-                    <div class="contact-mail-detail-head">
-                      <div class="contact-mail-detail-label">
                         <i class="fas fa-map-marker-alt"></i>
                         <span data-i18n="contact.locationLabel">Location</span>
                       </div>
@@ -2208,22 +2308,6 @@
                     <div class="contact-mail-detail-value" data-i18n="contact.availableValue">Open for freelance and full-time opportunities</div>
                     <p class="contact-mail-detail-note">If you already have a timeline or scope, send it over and I can reply faster.</p>
                   </article>
-                </div>
-
-                <div class="contact-mail-compose">
-                  <div>
-                    <h3 class="profile-heading playfair-400 mb-3" style="font-size: clamp(24px, 3.8vw, 36px);" data-i18n="contact.ctaTitle">
-                      Let's build something together
-                    </h3>
-                    <p class="playfair-400 text-muted mb-4" style="font-size: 1rem;" data-i18n="contact.ctaDescription">
-                      Share your idea, timeline, and goals. I will get back to you as soon as possible.
-                    </p>
-                  </div>
-                  <div class="d-flex flex-wrap gap-2">
-                    <a href="mailto:nattapat.p.npt@gmail.com?subject=Project%20Inquiry%20from%20Portfolio" class="btn-submit-minimal">
-                      <i class="fas fa-paper-plane me-2"></i><span data-i18n="contact.sendEmail">Send Email</span>
-                    </a>
-                  </div>
                 </div>
               </div>
             </div>
