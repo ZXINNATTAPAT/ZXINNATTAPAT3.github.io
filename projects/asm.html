@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NNJBFHP6S8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-NNJBFHP6S8');
+  </script>
+  <meta charset="UTF-8" />
+  <title>ASM® - Asset Management System | Nattapat Phungphugdee</title>
+  <link rel="icon" href="../Photo/optimized/Logo.png" type="image/png">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Government inventory system for ECT. A comprehensive asset management solution designed to streamline inventory tracking, automated depreciation, and inventory audits." />
+  <meta name="author" content="Nattapat Phungphugdee" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="ASM® - Asset Management System" />
+  <meta property="og:description" content="Government inventory system for ECT. A comprehensive asset management solution designed to streamline inventory tracking, automated depreciation, and inventory audits." />
+  <meta property="og:url" content="https://zxinnattapat3.github.io/projects/asm.html" />
+  <meta property="og:image" content="https://zxinnattapat3.github.io/Photo/optimized/Mockup/ASM.png" />
+  <meta property="og:locale" content="th_TH" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="ASM® - Asset Management System" />
+  <meta name="twitter:description" content="Government inventory system for ECT. A comprehensive asset management solution designed to streamline inventory tracking, automated depreciation, and inventory audits." />
+  <meta name="twitter:image" content="https://zxinnattapat3.github.io/Photo/optimized/Mockup/ASM.png" />
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://zxinnattapat3.github.io/projects/asm.html" />
+
+  <!-- Fonts and Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Anuphan:wght@100..700&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=DM+Serif+Display:ital@0;1&family=Noto+Sans+Thai:wght@400;500;600;700&family=Parisienne&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Loading Screen CSS -->
+  <link rel="stylesheet" href="../stylesheets/skeleton.css" />
+  <!-- Main Stylesheets -->
+  <link rel="stylesheet" href="../stylesheets/index.css" />
+  <link rel="stylesheet" href="../stylesheets/fontsex.css" />
+  <link rel="stylesheet" href="../stylesheets/cardblock2.css" />
+  <link rel="stylesheet" href="../stylesheets/cardslide.css" />
+  <link rel="stylesheet" href="../stylesheets/contact.css" />
+  <link rel="stylesheet" href="../stylesheets/buttonprofile.css" />
+  <link rel="stylesheet" href="../stylesheets/baseblock.css" />
+
+  <!-- AOS Animation -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      --project-hero-blob-left: rgba(255, 220, 102, 0.22);
+      --project-hero-blob-right: rgba(197, 241, 146, 0.18);
+      --project-page-gradient: linear-gradient(180deg, #f8f8ff 0%, #f8f8ff 100%);
+      --project-device-gradient:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 248, 255, 0.96) 100%);
+      background:
+        var(--project-page-gradient);
+      font-family: "Inter", "Anuphan", "Noto Sans Thai", sans-serif;
+      color: #1d1d1f;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body.project-theme-asm {
+      --project-hero-blob-left: rgba(146, 221, 255, 0.24);
+      --project-hero-blob-right: rgba(74, 193, 156, 0.24);
+    }
+
+    body.project-theme-homema {
+      --project-hero-blob-left: rgba(255, 220, 102, 0.24);
+      --project-hero-blob-right: rgba(197, 241, 146, 0.22);
+    }
+
+    body.project-theme-votemai {
+      --project-hero-blob-left: rgba(105, 122, 255, 0.22);
+      --project-hero-blob-right: rgba(124, 223, 255, 0.18);
+    }
+
+    body.project-theme-olaf {
+      --project-hero-blob-left: rgba(209, 216, 230, 0.24);
+      --project-hero-blob-right: rgba(244, 247, 252, 0.58);
+    }
+    
+    .project-page-content {
+      background: transparent;
+      padding: 2rem 0 5rem;
+    }
+
+    .project-shell {
+      max-width: 1060px;
+    }
+
+    .project-hero-minimal {
+      position: relative;
+      overflow: visible;
+      isolation: isolate;
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+      padding: clamp(2.9rem, 5vw, 4.8rem) clamp(1.5rem, 4vw, 4rem) clamp(2.6rem, 5vw, 3.6rem);
+      margin: clamp(0.9rem, 2vw, 1.4rem) 0 clamp(3.2rem, 6vw, 4.8rem);
+      box-shadow: none;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      text-align: center;
+    }
+
+    .project-hero-minimal::before {
+      content: "";
+      position: absolute;
+      inset: -12% -14% -4%;
+      background:
+        radial-gradient(circle at 14% 34%, var(--project-hero-blob-left) 0%, transparent 34%),
+        radial-gradient(circle at 86% 10%, var(--project-hero-blob-right) 0%, transparent 32%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.86) 0%, rgba(255, 255, 255, 0.42) 52%, rgba(255, 255, 255, 0) 100%);
+      filter: blur(34px);
+      opacity: 1;
+      z-index: 0;
+    }
+
+    .project-hero-minimal::after {
+      content: "";
+      position: absolute;
+      inset: 18% -8% -10%;
+      background:
+        linear-gradient(180deg, rgba(248, 248, 255, 0) 0%, rgba(248, 248, 255, 0.34) 48%, rgba(248, 248, 255, 0.88) 80%, rgba(248, 248, 255, 1) 100%);
+      filter: blur(10px);
+      z-index: 0;
+    }
+
+    .project-title-large {
+      position: relative;
+      z-index: 1;
+      font-family: "Playfair Display", "Anuphan", "Noto Sans Thai", serif;
+      font-optical-sizing: auto;
+      font-size: clamp(40px, 5.8vw, 68px);
+      font-weight: 400;
+      color: #1d1d1f;
+      margin: 0 auto 1.2rem;
+      max-width: 20ch;
+      line-height: 1.08;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+
+    .project-summary-text {
+      position: relative;
+      z-index: 1;
+      font-size: clamp(16px, 1.45vw, 18px);
+      max-width: 34rem;
+      margin: 0 auto 1.4rem;
+      color: #66666f;
+      line-height: 1.8;
+    }
+
+    .project-meta-inline {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.5rem 1rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .project-hero-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: auto;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      font-size: 1rem;
+      font-weight: 400;
+      color: #66666f;
+      gap: 1rem;
+    }
+
+    .project-hero-pill:not(:last-child)::after {
+      content: "";
+      width: 4px;
+      height: 4px;
+      border-radius: 999px;
+      background: rgba(29, 29, 31, 0.24);
+    }
+
+    .project-main-visual {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: clamp(340px, 44vw, 540px);
+      padding: clamp(0.25rem, 2vw, 1rem) 0 0;
+    }
+
+    .project-showcase-img {
+      position: relative;
+      display: block;
+      width: min(100%, 760px);
+      max-height: 520px;
+      object-fit: contain;
+      border-radius: 0;
+      box-shadow: none;
+      filter: drop-shadow(0 24px 36px rgba(29, 29, 31, 0.12));
+      margin: 0;
+    }
+
+    .tech-pill-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem 1rem;
+    }
+
+    .project-tech-inline {
+      position: relative;
+      z-index: 1;
+      justify-content: center;
+      align-items: flex-start;
+      margin-top: 1.25rem;
+    }
+
+    .project-tech-item {
+      width: 74px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.45rem;
+      flex: 0 0 auto;
+    }
+
+    .project-tech-icon {
+      width: 62px;
+      height: 62px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.86) 0%, rgba(245, 248, 255, 0.72) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.76);
+      box-shadow:
+        0 12px 24px rgba(17, 24, 39, 0.08),
+        0 2px 10px rgba(17, 24, 39, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.92);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .project-tech-icon::before {
+      content: "";
+      position: absolute;
+      top: 6px;
+      left: 8px;
+      right: 8px;
+      height: 34%;
+      border-radius: 999px;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0));
+      pointer-events: none;
+    }
+
+    .project-tech-icon-img {
+      width: 62%;
+      height: 62%;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.16));
+      position: relative;
+      z-index: 1;
+    }
+
+    .project-tech-fa,
+    .project-tech-icon-fallback {
+      position: relative;
+      z-index: 1;
+      color: #2c2c2c;
+    }
+
+    .project-tech-fa {
+      font-size: 1.45rem;
+    }
+
+    .project-tech-icon-fallback {
+      font-family: "Inter", "Anuphan", "Noto Sans Thai", sans-serif;
+      font-size: 0.84rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .project-tech-label {
+      font-size: 0.72rem;
+      line-height: 1.18;
+      color: #5f5f68;
+      text-align: center;
+      text-wrap: balance;
+    }
+
+    .project-story-section {
+      padding-top: 1.8rem;
+    }
+
+    .project-story-wrap {
+      display: grid;
+      gap: 1.2rem;
+    }
+
+    .project-story-header {
+      max-width: 620px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .project-story-label {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: #8f8f98;
+      margin-bottom: 0.65rem;
+    }
+
+    .project-story-caption {
+      font-size: 1rem;
+      color: #6e6e76;
+      line-height: 1.75;
+      margin: 0;
+    }
+
+    .markdown-body {
+      display: grid;
+      gap: 1.2rem;
+      margin-top: 0;
+    }
+
+    .story-overview-card,
+    .story-feature-card {
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+      padding: 0;
+      box-shadow: none;
+    }
+
+    .story-feature-card {
+      display: grid;
+      gap: 1.35rem;
+    }
+
+    .story-feature-card-emphasis {
+      grid-template-columns: minmax(0, 1fr) minmax(220px, 320px);
+      align-items: center;
+    }
+
+    .story-feature-copy {
+      min-width: 0;
+    }
+
+    .story-feature-media {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .story-feature-device {
+      width: 100%;
+      padding: 0;
+      border-radius: 0;
+      border: 0;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    .story-feature-thumb {
+      width: 100%;
+      max-height: 280px;
+      object-fit: contain;
+      filter: drop-shadow(0 14px 20px rgba(29, 29, 31, 0.1));
+    }
+
+    .story-feature-note {
+      margin: 0.85rem 0 0;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #7b7b83;
+      text-align: center;
+    }
+
+    .markdown-body > :first-child {
+      margin-top: 0;
+    }
+
+    .markdown-body h2 {
+      font-family: "Playfair Display", "Anuphan", "Noto Sans Thai", serif;
+      font-optical-sizing: auto;
+      color: #1d1d1f;
+      margin-top: 3rem;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+      font-size: clamp(26px, 3vw, 36px);
+      letter-spacing: 0;
+    }
+
+    .markdown-body h3 {
+      font-family: "Playfair Display", "Anuphan", "Noto Sans Thai", serif;
+      font-optical-sizing: auto;
+      color: #1d1d1f;
+      margin-top: 2.2rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+      font-size: clamp(20px, 2vw, 26px);
+      letter-spacing: 0;
+    }
+
+    .story-overview-card h2,
+    .story-feature-card h3 {
+      margin-top: 0;
+    }
+
+    .markdown-body p {
+      margin: 0.85rem 0 0;
+      font-size: 1.02rem;
+      line-height: 1.8;
+      color: #4f4f57;
+    }
+
+    .markdown-body ul {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0 0;
+      display: grid;
+      gap: 0.9rem;
+    }
+
+    .markdown-body li {
+      position: relative;
+      margin: 0;
+      padding-left: 1.2rem;
+      color: #4a4a52;
+      line-height: 1.75;
+    }
+
+    .markdown-body li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.78rem;
+      width: 0.42rem;
+      height: 0.42rem;
+      border-radius: 999px;
+      background: #a30000;
+    }
+
+    .markdown-body strong { color: #1d1d1f; }
+
+    .markdown-body a {
+      color: #1d1d1f;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(29, 29, 31, 0.2);
+    }
+
+    .markdown-body a:hover {
+      color: #55555d;
+      border-bottom-color: rgba(29, 29, 31, 0.35);
+    }
+
+    @media (max-width: 991.98px) {
+      .project-page-content {
+        padding-top: 1.5rem;
+      }
+
+      .story-feature-card-emphasis {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 575.98px) {
+      .project-main-visual {
+        min-height: auto;
+        margin-top: 0.75rem;
+      }
+
+      .project-hero-minimal {
+        margin-bottom: 2.5rem;
+      }
+
+      .project-showcase-img {
+        width: 100%;
+      }
+
+      .project-tech-item {
+        width: 68px;
+      }
+
+      .project-tech-icon {
+        width: 56px;
+        height: 56px;
+        border-radius: 16px;
+      }
+
+      .project-tech-label {
+        font-size: 0.68rem;
+      }
+
+      .project-title-large {
+        max-width: 18ch;
+        line-height: 1.06;
+      }
+    }
+  </style>
+</head>
+
+<body class="project-theme-asm">
+  <!-- Loading Screen -->
+  <div class="loading-screen" id="loadingScreen" aria-label="Loading page content">
+    <div class="loading-skeleton-wrapper">
+      <div class="loading-skeleton-container">
+        <!-- Skeleton Navbar -->
+        <div class="skeleton-navbar">
+          <div class="skeleton skeleton-text" style="width: 140px; height: 28px;"></div>
+          <div style="flex: 1;"></div>
+          <div class="d-flex align-items-center gap-2">
+            <div class="skeleton skeleton-text d-none d-md-block" style="width: 80px; height: 20px;"></div>
+            <div class="skeleton skeleton-box d-lg-none" style="width: 32px; height: 32px; border-radius: 4px;"></div>
+          </div>
+        </div>
+
+        <!-- Skeleton Hero Section -->
+        <div class="skeleton-hero">
+          <!-- Large Title 1: "Hi, I'm Nattapat" -->
+          <div class="skeleton-hero-title">
+            <div class="skeleton skeleton-text" style="width: 200px; height: 60px; margin: 0 auto 0.5rem; display: inline-block;"></div>
+            <div class="skeleton skeleton-text" style="width: 280px; height: 70px; margin: 0 auto 1rem; display: inline-block;"></div>
+          </div>
+          
+          <!-- Large Title 2: "a Developer Based in Thailand" -->
+          <div class="skeleton-hero-title">
+            <div class="skeleton skeleton-text" style="width: 320px; height: 55px; margin: 0 auto 0.5rem; display: inline-block;"></div>
+            <div class="skeleton skeleton-text" style="width: 180px; height: 60px; margin: 0 auto 1.5rem; display: inline-block;"></div>
+          </div>
+          
+          <!-- Subtitle: "B.Sc. in Computer..." -->
+          <div class="skeleton skeleton-text" style="width: 65%; max-width: 500px; height: 22px; margin: 0 auto 3rem;"></div>
+          
+          <!-- Skeleton Social Icons (7 icons) -->
+          <div class="skeleton-social">
+            <div class="skeleton skeleton-circle" style="width: 56px; height: 56px;"></div>
+            <div class="skeleton skeleton-circle" style="width: 56px; height: 56px;"></div>
+            <div class="skeleton skeleton-circle" style="width: 56px; height: 56px;"></div>
+            <div class="skeleton skeleton-circle" style="width: 56px; height: 56px;"></div>
+            <div class="skeleton skeleton-circle" style="width: 56px; height: 56px;"></div>
+            <div class="skeleton skeleton-circle" style="width: 56px; height: 56px;"></div>
+            <div class="skeleton skeleton-circle" style="width: 56px; height: 56px;"></div>
+          </div>
+        </div>
+
+        <!-- Skeleton Profile Image -->
+        <div class="skeleton-profile-image">
+          <div class="skeleton skeleton-box" style="height: 500px; max-width: 800px; margin: 3rem auto 0; border-radius: 24px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Navigation and Hero with background wrapper -->
+<div class="hero-visual-wrapper">
+  <!-- Navigation -->
+  <nav class="sticky-top backdrop-blur-custom primary-nav">
+    <div class="container-fluid d-flex justify-content-between align-items-center navbar-padding">
+      <a href="../index.html#home" class="text-decoration-none brand-link">
+        <h5 class="dm-serif-display-regular m-2" style="color: #2c2c2c; font-size: 20px">
+          NATTAPAT
+        </h5>
+      </a>
+      <div class="primary-nav-links d-none d-lg-flex">
+        <a href="../index.html#home" class="nav-link-ux text-decoration-none" data-i18n="nav.home">Home</a>
+        <a href="../index.html#profile" class="nav-link-ux text-decoration-none" data-i18n="nav.profile">Profile</a>
+        <a href="../index.html#portfolio" class="nav-link-ux text-decoration-none" data-i18n="nav.portfolio">Portfolio</a>
+        <a href="../index.html#experience" class="nav-link-ux text-decoration-none" data-i18n="nav.experience">Experience</a>
+        <a href="../index.html#certificates" class="nav-link-ux text-decoration-none d-none d-md-inline-flex" data-i18n="nav.certificates">Certificates</a>
+        <a href="../blog.html" class="nav-link-ux text-decoration-none" data-i18n="nav.blog">Blog</a>
+      </div>
+      <div class="d-flex align-items-center gap-2">
+        <div class="nav-language-control d-none d-md-inline-flex">
+          <label for="langSelect" class="visually-hidden">Select language</label>
+          <select id="langSelect" class="nav-lang-select" aria-label="Select language">
+            <option value="en">EN</option>
+            <option value="th">TH</option>
+            <option value="ja">JP</option>
+            <option value="zh">CN</option>
+            <option value="de">DE</option>
+            <option value="ko">KO</option>
+          </select>
+        </div>
+        <a href="../index.html#contact" class="nav-link-ux nav-cta text-decoration-none d-none d-md-inline-flex">
+          <span data-i18n="nav.contact">Contact</span>
+          <i class="fas fa-arrow-right"></i>
+        </a>
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-menu-toggle d-lg-none" id="mobileMenuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+      <div class="mobile-menu-content">
+        <a href="../index.html#home" class="mobile-nav-link" onclick="closeMobileMenu()" data-i18n="nav.home">Home</a>
+        <a href="../index.html#profile" class="mobile-nav-link" onclick="closeMobileMenu()" data-i18n="nav.profile">Profile</a>
+        <a href="../index.html#portfolio" class="mobile-nav-link" onclick="closeMobileMenu()" data-i18n="nav.portfolio">Portfolio</a>
+        <a href="../index.html#experience" class="mobile-nav-link" onclick="closeMobileMenu()" data-i18n="nav.experience">Experience</a>
+        <a href="../index.html#certificates" class="mobile-nav-link" onclick="closeMobileMenu()" data-i18n="nav.certificates">Certificates</a>
+        <a href="../blog.html" class="mobile-nav-link" onclick="closeMobileMenu()" data-i18n="nav.blog">Blog</a>
+        <div class="mobile-lang-control">
+          <span class="mobile-lang-label" data-i18n="nav.language">Language</span>
+          <select id="mobileLangSelect" class="mobile-lang-select" aria-label="Select language">
+            <option value="en">EN</option>
+            <option value="th">TH</option>
+            <option value="ja">JP</option>
+            <option value="zh">CN</option>
+            <option value="de">DE</option>
+            <option value="ko">KO</option>
+          </select>
+        </div>
+        <a href="../index.html#contact" class="mobile-nav-link mobile-nav-cta" onclick="closeMobileMenu()">
+          <span data-i18n="nav.contact">Contact</span>
+          <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </nav>
+  <div class="scroll-progress" role="presentation" aria-hidden="true"></div>
+
+  <main class="project-page-content">
+    <div class="container project-shell">
+
+      <!-- Project Header -->
+      <section class="project-hero-minimal" data-aos="fade-up">
+        <h1 class="project-title-large">ASM® - Asset Management System</h1>
+        <p class="project-summary-text">Government inventory system for ECT. A comprehensive asset management solution designed to streamline inventory tracking, automated depreciation, and inventory audits.</p>
+
+        <div class="project-meta-inline" data-aos="fade-up" data-aos-delay="100">
+          <span class="project-hero-pill">27 มกราคม 2568</span>
+          <span class="project-hero-pill">Full Stack Developer</span>
+        </div>
+
+        <div class="project-main-visual" data-aos="zoom-in" data-aos-duration="1000">
+          <img src="../Photo/optimized/Mockup/ASM.png" alt="ASM® - Asset Management System" class="project-showcase-img">
+        </div>
+
+        <div class="tech-pill-group project-tech-inline" data-aos="fade-up" data-aos-delay="150">
+          
+    <span class="project-tech-item" title="Angular">
+      <span class="project-tech-icon">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg" alt="Angular" class="project-tech-icon-img" loading="lazy">
+      </span>
+      <span class="project-tech-label">Angular</span>
+    </span>
+  
+    <span class="project-tech-item" title="ASP.NET Core">
+      <span class="project-tech-icon">
+        <img src="https://cdn.simpleicons.org/dotnet/512BD4" alt="ASP.NET Core" class="project-tech-icon-img" loading="lazy">
+      </span>
+      <span class="project-tech-label">ASP.NET Core</span>
+    </span>
+  
+    <span class="project-tech-item" title="C#">
+      <span class="project-tech-icon">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#" class="project-tech-icon-img" loading="lazy">
+      </span>
+      <span class="project-tech-label">C#</span>
+    </span>
+  
+    <span class="project-tech-item" title="SQL Server">
+      <span class="project-tech-icon">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg" alt="SQL Server" class="project-tech-icon-img" loading="lazy">
+      </span>
+      <span class="project-tech-label">SQL Server</span>
+    </span>
+  
+    <span class="project-tech-item" title="Government">
+      <span class="project-tech-icon">
+        <i class="fas fa-landmark project-tech-fa" aria-hidden="true"></i>
+      </span>
+      <span class="project-tech-label">Government</span>
+    </span>
+  
+        </div>
+      </section>
+
+      <!-- Project Content -->
+      <section class="project-story-section pb-5" data-aos="fade-up">
+        <div class="project-story-wrap">
+          <div class="project-story-header">
+            <span class="project-story-label">Project Story</span>
+            <p class="project-story-caption">A cleaner walkthrough of the product direction, key features, and the technical thinking behind the build.</p>
+          </div>
+          <div class="markdown-body">
+            <h2>Project Overview</h2>
+<p><strong>ASM® (Asset Management System)</strong> is a comprehensive solution developed for the <strong>ECT (Election Commission of Thailand) Central Office</strong>. The system is designed to modernize and streamline the management of government assets, moving away from legacy paper-based or fragmented digital processes.</p>
+<h3>Key Features</h3>
+<ul>
+<li><strong>Real-time Inventory Tracking</strong>: Monitor asset locations, status, and assignment in real-time.</li>
+<li><strong>Automated Depreciation</strong>: Calculate asset value over time using standard government accounting rules.</li>
+<li><strong>Audit Management</strong>: Tools for periodic physical inventory checks and reconciliation.</li>
+<li><strong>Reporting Dashboard</strong>: Detailed insights into asset distribution, value, and lifecycle.</li>
+</ul>
+<h3>Technical Implementation</h3>
+<p>The project was built using a robust enterprise stack:</p>
+<ul>
+<li><strong>Backend</strong>: ASP.NET Core with C# for high performance and type safety.</li>
+<li><strong>Database</strong>: Microsoft SQL Server for reliable data persistence and complex querying.</li>
+<li><strong>Frontend</strong>: Built with Angular to provide a structured, accessible interface for government officials.</li>
+</ul>
+<h3>Impact</h3>
+<p>The implementation of ASM® has significantly reduced the time required for asset auditing and improved the accuracy of financial reporting for ECT.</p>
+
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Contact Section -->
+  <section id="contact" class="container-fluid" style="background-color: #f8f8ff; padding-top: 0; padding-bottom: 3rem;">
+    <div class="container" style="max-width: 1200px;">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <h2 class="dm-serif-display-regular mb-3" style="font-size: clamp(30px, 5vw, 58px); color: #2c2c2c;" data-i18n="contact.title">
+          Get in Touch
+        </h2>
+        <p class="playfair-400 text-muted mx-auto" style="max-width: 700px; font-size: 1rem;" data-i18n="contact.description">
+          Ready to collaborate? Reach out through email or connect on social platforms.
+        </p>
+      </div>
+
+      <div class="row g-4 g-lg-5 align-items-stretch">
+        <div class="col-12 col-lg-6" data-aos="fade-right">
+          <div class="contact-info-minimal contact-mail-sidebar-copy h-100">
+            <div class="contact-mail-sidebar-copy-inner h-100">
+              <div class="contact-mail-sidebar-top">
+                <p class="contact-mail-eyebrow">Mailboxes</p>
+                <h3 class="profile-heading playfair-400 mb-3" style="font-size: clamp(24px, 3.6vw, 34px);">
+                  All your contact channels in one place
+                </h3>
+                <p class="playfair-400 text-muted mb-4" style="font-size: 1rem;">
+                  Email first, but phone and location stay close by when we need to move fast.
+                </p>
+                <div class="d-flex flex-wrap gap-2">
+                  <a href="mailto:nattapat.p.npt@gmail.com?subject=Project%20Inquiry%20from%20Portfolio" class="btn-submit-minimal">
+                    <i class="fas fa-paper-plane me-2"></i><span data-i18n="contact.sendEmail">Send Email</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-lg-6" data-aos="fade-left">
+          <div class="contact-form-minimal contact-mail-app h-100 p-4 p-lg-5 d-flex flex-column justify-content-between">
+            <div class="contact-mail-window h-100">
+              <div class="contact-mail-chrome">
+                <div class="contact-mail-traffic">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+                <div class="contact-mail-search">Search mail</div>
+                <div class="contact-mail-sync">
+                  <i class="fas fa-cloud me-2"></i>
+                  <span>Live</span>
+                </div>
+              </div>
+
+              <div class="contact-mail-body">
+                <div class="contact-mail-detail-grid contact-mail-detail-list">
+                  <article class="contact-mail-detail-card">
+                    <div class="contact-mail-detail-head">
+                      <div class="contact-mail-detail-label">
+                        <i class="fas fa-envelope"></i>
+                        <span data-i18n="contact.emailLabel">Email</span>
+                      </div>
+                      <span class="contact-mail-detail-tag">Primary</span>
+                    </div>
+                    <div class="contact-mail-detail-value">
+                      <a href="mailto:nattapat.p.npt@gmail.com" class="contact-link">nattapat.p.npt@gmail.com</a>
+                    </div>
+                    <p class="contact-mail-detail-note">Best for project briefs, product requests, and collaboration plans.</p>
+                  </article>
+
+                  <article class="contact-mail-detail-card">
+                    <div class="contact-mail-detail-head">
+                      <div class="contact-mail-detail-label">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span data-i18n="contact.locationLabel">Location</span>
+                      </div>
+                      <span class="contact-mail-detail-tag">Base</span>
+                    </div>
+                    <div class="contact-mail-detail-value">Bangkok, Thailand</div>
+                    <p class="contact-mail-detail-note">Open to remote work, async collaboration, and local meetings.</p>
+                  </article>
+
+                  <article class="contact-mail-detail-card">
+                    <div class="contact-mail-detail-head">
+                      <div class="contact-mail-detail-label">
+                        <i class="fas fa-clock"></i>
+                        <span data-i18n="contact.availableLabel">Availability</span>
+                      </div>
+                      <span class="contact-mail-detail-tag">Status</span>
+                    </div>
+                    <div class="contact-mail-detail-value" data-i18n="contact.availableValue">Open for freelance and full-time opportunities</div>
+                    <p class="contact-mail-detail-note">If you already have a timeline or scope, send it over and I can reply faster.</p>
+                  </article>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Footer -->
+  <footer id="footer" class="footer-modern">
+    <div class="container-fluid px-4 px-lg-5">
+      <div class="row gy-4 footer-main">
+        <div class="col-12 col-md-4 footer-brand">
+          <h2 class="parisienne-regular mb-0" style="font-size: clamp(3.1rem, 6vw, 5.4rem);color: #ffffff;">Nattapat Phungphugdee</h2>
+          <p class="playfair-400 footer-brand-copy" data-i18n="footer.brandCopy">
+            Full-stack developer crafting beautiful interfaces and dependable systems across web, cloud, and mobile.
+          </p>
+          <div class="footer-social">
+            <a href="https://www.linkedin.com/in/nattapat2002" target="_blank" aria-label="LinkedIn">
+              <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://github.com/ZXINNATTAPAT" target="_blank" aria-label="GitHub">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="https://www.instagram.com/nattazxin/" target="_blank" aria-label="Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+          </div>
+        </div>
+        <div class="col-6 col-md-2">
+          <h6 class="footer-heading" data-i18n="footer.portfolioHeading">Portfolio</h6>
+          <ul class="footer-links">
+            <li><a href="../index.html#portfolio" data-i18n="footer.portfolioVisual">Visual Highlights</a></li>
+            <li><a href="../index.html#profile" data-i18n="footer.portfolioProfile">Profile</a></li>
+            <li><a href="../index.html#certificates" data-i18n="footer.portfolioCertificates">Certificates</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-2">
+          <h6 class="footer-heading" data-i18n="footer.experienceHeading">Experience</h6>
+          <ul class="footer-links">
+            <li><a href="../index.html#experience" data-i18n="footer.experienceWorkHistory">Work History</a></li>
+            <li><a href="../index.html#experience" data-i18n="footer.experienceInternships">Internships</a></li>
+            <li><a href="../index.html#experience" data-i18n="footer.experienceAwards">Awards</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-2">
+          <h6 class="footer-heading" data-i18n="footer.resourcesHeading">Resources</h6>
+          <ul class="footer-links">
+            <li><a href="https://medium.com/@bigboyzin88" target="_blank" rel="noopener">Medium</a></li>
+            <li><a href="https://www.linkedin.com/in/nattapat2002/details/certifications/" target="_blank"
+                rel="noopener">LinkedIn</a></li>
+            <li><a href="https://codepen.io/ZXINNATTAPAT/pens/" target="_blank" rel="noopener">CodePen</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-2">
+          <h6 class="footer-heading" data-i18n="footer.contactHeading">Contact</h6>
+          <ul class="footer-links">
+            <li><a href="mailto:nattapat.p.npt@gmail.com" data-i18n="footer.contactEmail">Email</a></li>
+            <li><a href="../index.html#contact" data-i18n="footer.contactLabel">Contact</a></li>
+            <li><a href="https://linktr.ee/zxin_nizmoxa" target="_blank" rel="noopener">Linktree</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="mb-0 playfair-400" data-i18n="footer.copyright">© 2025 Nattapat Phungphugdee. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="../index.html#home" data-i18n="footer.backToTop">Back to top</a>
+          <span>·</span>
+          <a href="../index.html#contact" data-i18n="footer.hireMe">Hire me</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Scripts from Main Page -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="../i18n.js"></script>
+
+  <!-- Loading Screen Handler -->
+  <script>
+    (function() {
+      'use strict';
+      const loadingScreen = document.getElementById('loadingScreen');
+      const body = document.body;
+      
+      function hideLoadingScreen() {
+        if (!loadingScreen) return;
+        body.classList.add('loaded');
+        setTimeout(() => {
+          loadingScreen.style.display = 'none';
+        }, 500);
+      }
+
+      window.addEventListener('load', hideLoadingScreen);
+      // Fallback
+      setTimeout(hideLoadingScreen, 2000);
+    })();
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const markdownBody = document.querySelector('.markdown-body');
+      if (!markdownBody) return;
+
+      const sourceImage = document.querySelector('.project-main-visual img');
+      const children = Array.from(markdownBody.children);
+      if (!children.length) return;
+
+      const fragment = document.createDocumentFragment();
+      let index = 0;
+      let visualUsed = false;
+
+      while (index < children.length) {
+        const current = children[index];
+        const tagName = current.tagName;
+
+        if (tagName === 'H2') {
+          const overviewCard = document.createElement('section');
+          overviewCard.className = 'story-overview-card';
+          overviewCard.setAttribute('data-aos', 'fade-up');
+          overviewCard.appendChild(current);
+          index += 1;
+
+          while (index < children.length && !['H2', 'H3'].includes(children[index].tagName)) {
+            overviewCard.appendChild(children[index]);
+            index += 1;
+          }
+
+          fragment.appendChild(overviewCard);
+          continue;
+        }
+
+        if (tagName === 'H3') {
+          const featureCard = document.createElement('section');
+          featureCard.className = 'story-feature-card';
+          featureCard.setAttribute('data-aos', 'fade-up');
+
+          const featureCopy = document.createElement('div');
+          featureCopy.className = 'story-feature-copy';
+          featureCopy.appendChild(current);
+          index += 1;
+
+          while (index < children.length && !['H2', 'H3'].includes(children[index].tagName)) {
+            featureCopy.appendChild(children[index]);
+            index += 1;
+          }
+
+          featureCard.appendChild(featureCopy);
+
+          if (!visualUsed && sourceImage) {
+            featureCard.classList.add('story-feature-card-emphasis');
+
+            const featureMedia = document.createElement('div');
+            featureMedia.className = 'story-feature-media';
+
+            const featureDevice = document.createElement('div');
+            featureDevice.className = 'story-feature-device';
+
+            const thumb = sourceImage.cloneNode(true);
+            thumb.className = 'story-feature-thumb';
+            featureDevice.appendChild(thumb);
+
+            const note = document.createElement('p');
+            note.className = 'story-feature-note';
+            note.textContent = 'Product Preview';
+            featureDevice.appendChild(note);
+
+            featureMedia.appendChild(featureDevice);
+            featureCard.appendChild(featureMedia);
+            visualUsed = true;
+          }
+
+          fragment.appendChild(featureCard);
+          continue;
+        }
+
+        fragment.appendChild(current);
+        index += 1;
+      }
+
+      markdownBody.replaceChildren(fragment);
+    });
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (typeof AOS !== 'undefined') {
+        AOS.init({
+          once: true,
+          duration: 800,
+          offset: 100,
+        });
+      }
+    });
+  </script>
+
+  <!-- Navigation UX Enhancements -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const progressBar = document.querySelector('.scroll-progress');
+      const navBar = document.querySelector('nav.sticky-top');
+      const navLinks = document.querySelectorAll('.nav-link-ux');
+      const portfolioLink = Array.from(navLinks).find(link => {
+        const href = link.getAttribute('href') || '';
+        return href.includes('#portfolio');
+      });
+
+      const updateProgress = () => {
+        if (!progressBar) return;
+        const scrollTop = window.scrollY;
+        const docHeight = document.body.scrollHeight - window.innerHeight;
+        const progress = docHeight > 0 ? Math.min((scrollTop / docHeight) * 100, 100) : 0;
+        progressBar.style.width = `${progress}%`;
+      };
+
+      const updateNavState = () => {
+        navLinks.forEach(link => link.classList.remove('active'));
+        if (portfolioLink) {
+          portfolioLink.classList.add('active');
+        }
+      };
+
+      const handleScrollState = () => {
+        updateProgress();
+        updateNavState();
+        if (navBar) {
+          navBar.classList.toggle('nav-scrolled', window.scrollY > 24);
+        }
+      };
+
+      handleScrollState();
+      window.addEventListener('scroll', handleScrollState, { passive: true });
+      window.addEventListener('resize', updateProgress);
+    });
+  </script>
+  
+  <!-- Mobile Menu Script -->
+  <script>
+    (function() {
+      'use strict';
+      
+      const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const body = document.body;
+      
+      if (!mobileMenuToggle || !mobileMenu) return;
+      
+      function toggleMobileMenu() {
+        const isActive = mobileMenu.classList.contains('active');
+        if (isActive) {
+          closeMobileMenu();
+        } else {
+          openMobileMenu();
+        }
+      }
+      
+      function openMobileMenu() {
+        mobileMenu.querySelectorAll('.mobile-nav-link').forEach(function(link) {
+          link.classList.remove('active');
+        });
+        mobileMenu.classList.add('active');
+        mobileMenuToggle.classList.add('active');
+        mobileMenuToggle.setAttribute('aria-expanded', 'true');
+        body.classList.add('menu-open');
+      }
+      
+      function closeMobileMenu() {
+        mobileMenu.classList.remove('active');
+        mobileMenuToggle.classList.remove('active');
+        mobileMenuToggle.setAttribute('aria-expanded', 'false');
+        body.classList.remove('menu-open');
+      }
+
+      window.closeMobileMenu = closeMobileMenu;
+      
+      mobileMenuToggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        toggleMobileMenu();
+      });
+      
+      document.addEventListener('click', function(e) {
+        if (mobileMenu.classList.contains('active')) {
+          if (!mobileMenu.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
+            closeMobileMenu();
+          }
+        }
+      });
+      
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+          closeMobileMenu();
+        }
+      });
+    })();
+  </script>
+</body>
+
+</html>

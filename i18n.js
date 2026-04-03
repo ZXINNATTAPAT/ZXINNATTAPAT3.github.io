@@ -57,6 +57,11 @@ const translations = {
       title: "Tech Stack",
       listAll: "List all skills"
     },
+    cloud: {
+      kicker: "Deployment Picks",
+      title: "Cloud & Hosting",
+      description: "Platforms I like using when shipping and hosting products."
+    },
     creator: {
       mode: "Creator mode",
       subtitle: "Quick snapshots from my dev-life TikTok channel.",
@@ -79,7 +84,7 @@ const translations = {
       experimentsTitle: "Experiments",
       experimentsHtml:
         '<section class="creator-exp-org mb-3">' +
-        '<h3 class="h6 mb-1 fw-semibold" style="color:#1d1d1f;">Business ALive Co., Ltd (Thailand)</h3>' +
+        '<h3 class="h6 mb-1 fw-semibold" style="color:#1d1d1f;"><a href="https://www.balives.com/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">Business ALive Co., Ltd (Thailand) <i class="fas fa-external-link-alt ms-1" style="font-size: 0.7rem; opacity: 0.7;"></i></a></h3>' +
         '<p class="small text-muted mb-2 mb-md-3">Hybrid · 10 mos</p>' +
         '<p class="small fw-semibold mb-1" style="color:#2c2c2c;">Software Developer · Full-time</p>' +
         '<p class="small text-muted mb-2">Aug 2025 – Present · 9 mos · Bangkok, Thailand</p>' +
@@ -128,7 +133,7 @@ const translations = {
       }
     },
     visual: {
-      title: "Visual Highlights",
+      title: "Projects",
       description: "A curated selection of my featured projects. Each work blends elegant design, smart functionality, and seamless user experiences."
     },
     modal: {
@@ -242,6 +247,11 @@ const translations = {
       title: "Tech Stack",
       listAll: "สกิลทั้งหมด"
     },
+    cloud: {
+      kicker: "Deployment Picks",
+      title: "Cloud & Hosting",
+      description: "แพลตฟอร์มที่ผมชอบใช้เวลาปล่อยงานและโฮสต์โปรเจกต์"
+    },
     creator: {
       mode: "โหมดครีเอเตอร์",
       subtitle: "ภาพสั้น ๆ จากช่อง TikTok สายเดฟของผม",
@@ -266,7 +276,7 @@ const translations = {
       experimentsTitle: "การทดลองและประสบการณ์",
       experimentsHtml:
         '<section class="creator-exp-org mb-3">' +
-        '<h3 class="h6 mb-1 fw-semibold" style="color:#1d1d1f;">Business ALive Co., Ltd (ประเทศไทย)</h3>' +
+        '<h3 class="h6 mb-1 fw-semibold" style="color:#1d1d1f;"><a href="https://www.balives.com/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">Business ALive Co., Ltd (ประเทศไทย) <i class="fas fa-external-link-alt ms-1" style="font-size: 0.7rem; opacity: 0.7;"></i></a></h3>' +
         '<p class="small text-muted mb-2 mb-md-3">Hybrid · 10 เดือน</p>' +
         '<p class="small fw-semibold mb-1" style="color:#2c2c2c;">Software Developer · เต็มเวลา</p>' +
         '<p class="small text-muted mb-2">ส.ค. 2025 – ปัจจุบัน · 9 เดือน · กรุงเทพฯ</p>' +
@@ -368,8 +378,8 @@ const translations = {
       contactEmail: "อีเมล",
       contactLabel: "ติดต่อ",
       copyright: "© 2025 Nattapat Phungphugdee. สงวนลิขสิทธิ์",
-      backToTop: "กลับขึ้นบน",
-      hireMe: "ร่วมงานกับผม"
+      backToTop: "กลับไปด้านบน",
+      hireMe: "จ้างงานผม"
     }
   },
   ja: {
@@ -428,6 +438,11 @@ const translations = {
     skills: {
       title: "Tech Stack",
       listAll: "全スキル"
+    },
+    cloud: {
+      kicker: "Deployment Picks",
+      title: "Cloud & Hosting",
+      description: "プロダクトの公開やホスティングでよく使うプラットフォームです。"
     },
     creator: {
       mode: "クリエイターモード",
@@ -583,6 +598,11 @@ const translations = {
       title: "Tech Stack",
       listAll: "全部技能"
     },
+    cloud: {
+      kicker: "Deployment Picks",
+      title: "Cloud & Hosting",
+      description: "我在部署与托管产品时常用的平台。"
+    },
     creator: {
       mode: "创作者模式",
       subtitle: "来自我技术向 TikTok 频道的开发日常片段。",
@@ -737,6 +757,11 @@ const translations = {
       title: "Tech Stack",
       listAll: "Alle Skills"
     },
+    cloud: {
+      kicker: "Deployment Picks",
+      title: "Cloud & Hosting",
+      description: "Plattformen, die ich gerne zum Deployen und Hosten von Projekten nutze."
+    },
     creator: {
       mode: "Creator-Modus",
       subtitle: "Kurze Einblicke aus meinem Dev-Life TikTok-Kanal.",
@@ -777,7 +802,7 @@ const translations = {
       }
     },
     visual: {
-      title: "Visuelle Highlights",
+      title: "Projekte",
       description: "Eine kuratierte Auswahl meiner wichtigsten Projekte – mit elegantem Design, smarten Funktionen und nahtloser User Experience."
     },
     modal: {
@@ -890,6 +915,11 @@ const translations = {
     skills: {
       title: "Tech Stack",
       listAll: "전체 스킬"
+    },
+    cloud: {
+      kicker: "Deployment Picks",
+      title: "Cloud & Hosting",
+      description: "프로덕트를 배포하고 호스팅할 때 자주 사용하는 플랫폼입니다."
     },
     creator: {
       mode: "크리에이터 모드",
@@ -1067,11 +1097,11 @@ function getSeoPageUrl(lang) {
     return '';
   }
 
-  try {
-    return new URL(targetPage, window.location.href).href;
-  } catch (error) {
-    return targetPage;
-  }
+  // Get root path (up one level if in a subdirectory)
+  const isSubdirectory = window.location.pathname.includes('/projects/') || window.location.pathname.includes('/articles/');
+  const rootPrefix = isSubdirectory ? '../' : '';
+  
+  return rootPrefix + targetPage;
 }
 
 const storedLangRaw = (localStorage.getItem('language') || 'en').toLowerCase();

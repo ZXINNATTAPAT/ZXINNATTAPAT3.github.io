@@ -576,19 +576,22 @@
 
 <body class="body-bg" style="background-color: #f8f8ff" data-aos-easing="ease-out" data-aos-duration="400"
   data-aos-delay="0">
+  <!-- Scroll Progress Bar -->
+  <div id="scroll-progress-container">
+    <div id="scroll-progress-bar"></div>
+  </div>
     <!-- @include ../components/index/loading-screen.html -->
   <!-- @include ../components/index/navigation.html -->
   <!-- @include ../components/index/hero.html -->
   <!-- @include ../components/index/profile.html -->
   <!-- @include ../components/index/skills.html -->
+  <!-- @include ../components/index/cloud-platforms.html -->
   <!-- @include ../components/index/visual-highlights.html -->
-  <!-- @include ../components/index/project-modal.html -->
   <!-- @include ../components/index/uiux-projects.html -->
   <!-- @include ../components/index/automation-tools.html -->
   <!-- @include ../components/index/content-creator.html -->
   <!-- @include ../components/index/portfolio-project-list.html -->
   <!-- @include ../components/index/experience.html -->
-  <!-- @include ../components/index/extracurricular.html -->
   <!-- @include ../components/index/certificates.html -->
   <!-- @include ../components/index/contact.html -->
   <!-- @include ../components/index/footer.html -->
@@ -1185,6 +1188,18 @@
 
   <script src="i18n.js"></script>
 
+  <script>
+    // Scroll Progress Bar Logic
+    window.onscroll = function() {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      const progressBar = document.getElementById("scroll-progress-bar");
+      if (progressBar) {
+        progressBar.style.width = scrolled + "%";
+      }
+    };
+  </script>
 </body>
 
 </html>

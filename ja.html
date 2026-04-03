@@ -576,6 +576,10 @@
 
 <body class="body-bg" style="background-color: #f8f8ff" data-aos-easing="ease-out" data-aos-duration="400"
   data-aos-delay="0">
+  <!-- Scroll Progress Bar -->
+  <div id="scroll-progress-container">
+    <div id="scroll-progress-bar"></div>
+  </div>
     <!-- Loading Screen -->
   <div class="loading-screen" id="loadingScreen" aria-label="Loading page content">
     <div class="loading-skeleton-wrapper">
@@ -721,7 +725,7 @@
           </p>
 
           <div class="profile-cta-row text-center align-items-center justify-content-center">
-            <a href="#contact" class="profile-cta-button profile-cta-button-primary">
+            <a href="https://www.linkedin.com/in/nattapat2002/" class="profile-cta-button profile-cta-button-primary" target="_blank" rel="noopener noreferrer">
               <i class="fas fa-handshake"></i>
               <span data-i18n="about.letsWork">Let's Work together</span>
             </a>
@@ -757,7 +761,7 @@
     });
   </script>
   <!-- About Me -->
-  <section id="profile" class="container-fluid mt-4" style="background-color: #f8f8ff; padding-top: 0; padding-bottom: 3rem;">
+  <section id="profile" class="container-fluid mt-5" style="background-color: #f8f8ff; padding-top: 4rem; padding-bottom: 3rem;">
     <div class="container" data-aos="fade-up" data-aos-delay="100">
         <div class="row gy-5 align-items-center profile-hero-row">
           <!-- Left Title (PROFILE) -->
@@ -859,7 +863,7 @@
             </div>
           </div>
           <div class="col-md-7" data-aos="fade-left" data-aos-delay="100">
-            <div class="row">
+            <div class="row justify-content-center">
               <!-- Image Box -->
               <div class="col-md-10">
                 <div class="airdrop-collage">
@@ -1183,6 +1187,59 @@
       });
     });
   </script>
+  <section id="cloud-platforms" class="container-fluid cloud-platforms-section">
+  <div class="container">
+    <div class="cloud-platforms-shell">
+      <div class="cloud-platforms-header" data-aos="fade-up">
+        <span class="cloud-platforms-kicker" data-i18n="cloud.kicker">Deployment Picks</span>
+        <h2 class="profile-heading playfair-400 mb-2" style="color: #2c2c2c" data-i18n="cloud.title">
+          Cloud & Hosting
+        </h2>
+        <p class="cloud-platforms-description mb-0" data-i18n="cloud.description">
+          Platforms I like using when shipping and hosting products.
+        </p>
+      </div>
+
+      <div class="cloud-platforms-grid">
+        <article class="cloud-platform-card cloud-platform-railway" data-aos="fade-up" data-aos-delay="0" aria-label="Railway">
+          <div class="cloud-platform-brand">
+            <span class="cloud-platform-mark">
+              <img src="https://cdn.simpleicons.org/railway/0B0D0E" alt="Railway" loading="lazy" />
+            </span>
+            <span class="cloud-platform-name">Railway</span>
+          </div>
+        </article>
+
+        <article class="cloud-platform-card cloud-platform-vercel" data-aos="fade-up" data-aos-delay="50" aria-label="Vercel">
+          <div class="cloud-platform-brand">
+            <span class="cloud-platform-mark">
+              <img src="https://cdn.simpleicons.org/vercel/FFFFFF" alt="Vercel" loading="lazy" />
+            </span>
+            <span class="cloud-platform-name">Vercel</span>
+          </div>
+        </article>
+
+        <article class="cloud-platform-card cloud-platform-netlify" data-aos="fade-up" data-aos-delay="100" aria-label="Netlify">
+          <div class="cloud-platform-brand">
+            <span class="cloud-platform-mark">
+              <img src="https://cdn.simpleicons.org/netlify/FFFFFF" alt="Netlify" loading="lazy" />
+            </span>
+            <span class="cloud-platform-name">Netlify</span>
+          </div>
+        </article>
+
+        <article class="cloud-platform-card cloud-platform-render" data-aos="fade-up" data-aos-delay="150" aria-label="Render">
+          <div class="cloud-platform-brand">
+            <span class="cloud-platform-mark">
+              <img src="https://cdn.simpleicons.org/render/000000" alt="Render" loading="lazy" />
+            </span>
+            <span class="cloud-platform-name">Render</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
   <!-- Visual Highlights -->
   <section id="portfolio" class="container-fluid"
     style="background-color: #f8f8ff; padding-top: 0; padding-bottom: 0; transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);">
@@ -1190,7 +1247,7 @@
       <div class="text-center mb-5">
         <h2 class="playfair-400 mb-3"
           style="font-size: clamp(32px, 6vw, 64px); color: #1d1d1f; font-weight: 600; letter-spacing: -0.5px">
-          <span data-i18n="visual.title">Visual Highlights</span>
+          <span data-i18n="visual.title">Projects</span>
         </h2>
         <p class="text-muted mx-auto" style="max-width: 680px; font-size: 17px; line-height: 1.6; color: #6b6b6b" data-i18n="visual.description">
           A curated selection of my featured projects. Each work blends elegant
@@ -1201,135 +1258,67 @@
       <div class="row g-4 justify-content-center px-3 px-md-4">
         <!-- Project Cards -->
         <div class="col-12 col-md-6 col-lg-6">
-          <div class="ios-project-card project-card-clickable" 
-               data-aos="fade-up" 
-               data-aos-delay="0" 
-               data-aos-duration="400"
-               data-project="asm"
-               data-title="ASM®"
-               data-subtitle="Asset Management System"
-               data-description="Government inventory system for ECT. A comprehensive asset management solution designed to streamline inventory tracking, automated depreciation, and inventory audits for government organizations."
-               data-tech="ASP.NET Core, C#, SQL Server"
-               data-github-url=""
-               data-demo-url=""
-               data-image="Photo/optimized/Mockup/ASM.png">
-            <div class="ios-project-image bg-asm">
-              <img src="Photo/optimized/Mockup/ASM.png" alt="ASM" / width="800" height="600" loading="lazy">
-              <div class="ios-project-overlay">
-                <p class="ios-project-kicker playfair-400">ASM®</p>
-                <h3 class="ios-project-heading playfair-400">Asset Management System</h3>
-                <p class="ios-project-summary">Government inventory system for ECT</p>
+          <a href="projects/asm.html" class="text-decoration-none">
+            <div class="ios-project-card" data-aos="fade-up" data-aos-delay="0">
+              <div class="ios-project-image bg-asm">
+                <img src="Photo/optimized/Mockup/ASM.png" alt="ASM" width="800" height="600" loading="lazy">
+                <div class="ios-project-overlay">
+                  <p class="ios-project-kicker playfair-400">ASM®</p>
+                  <h3 class="ios-project-heading playfair-400">Asset Management System</h3>
+                  <p class="ios-project-summary">Government inventory system for ECT</p>
+                </div>
               </div>
             </div>
-          </div>
+          </a>
         </div>
 
         <div class="col-12 col-md-6 col-lg-6">
-          <div class="ios-project-card project-card-clickable" 
-               data-aos="fade-up" 
-               data-aos-delay="50" 
-               data-aos-duration="400"
-               data-project="homema"
-               data-title="HOMEMA®"
-               data-subtitle="Hiring Platform"
-               data-description="Connects users with technicians via CRUD + API. A modern hiring platform that bridges the gap between service seekers and skilled technicians, featuring real-time matching and seamless communication."
-               data-tech="React, Node.js, Express, REST API"
-               data-github-url=""
-               data-demo-url="https://homema.onrender.com/"
-               data-image="Photo/optimized/Mockup/HOMEMA.png">
-            <div class="ios-project-image bg-homema">
-              <img src="Photo/optimized/Mockup/HOMEMA.png" alt="HOMEMA" / width="800" height="600" loading="lazy">
-              <div class="ios-project-overlay">
-                <p class="ios-project-kicker playfair-400">HOMEMA®</p>
-                <h3 class="ios-project-heading playfair-400">Hiring Platform</h3>
-                <p class="ios-project-summary">Connects users with technicians via CRUD + API</p>
+          <a href="projects/homema.html" class="text-decoration-none">
+            <div class="ios-project-card" data-aos="fade-up" data-aos-delay="50">
+              <div class="ios-project-image bg-homema">
+                <img src="Photo/optimized/Mockup/HOMEMA.png" alt="HOMEMA" width="800" height="600" loading="lazy">
+                <div class="ios-project-overlay">
+                  <p class="ios-project-kicker playfair-400">HOMEMA®</p>
+                  <h3 class="ios-project-heading playfair-400">Hiring Platform</h3>
+                  <p class="ios-project-summary">Connects users with technicians via CRUD + API</p>
+                </div>
               </div>
             </div>
-          </div>
+          </a>
         </div>
 
         <div class="col-12 col-md-6 col-lg-6">
-          <div class="ios-project-card project-card-clickable" 
-               data-aos="fade-up" 
-               data-aos-delay="100" 
-               data-aos-duration="400"
-               data-project="votemai"
-               data-title="VOTEMAI™"
-               data-subtitle="Blockchain Voting"
-               data-description="Solidity + IPFS on MERN. Transparent elections powered by blockchain technology. A decentralized voting platform ensuring transparency, immutability, and security for democratic processes."
-               data-tech="React, Node.js, MongoDB, Solidity, IPFS"
-               data-github-url=""
-               data-demo-url="https://votemai-kis6zaqh7-zxinnattapats-projects.vercel.app/"
-               data-image="Photo/optimized/Mockup/VOTEMAI.png">
-            <div class="ios-project-image bg-votemai">
-              <img src="Photo/optimized/Mockup/VOTEMAI.png" alt="VOTEMAI" / width="800" height="600" loading="lazy">
-              <div class="ios-project-overlay">
-                <p class="ios-project-kicker playfair-400">VOTEMAI™</p>
-                <h3 class="ios-project-heading playfair-400">Blockchain Voting</h3>
-                <p class="ios-project-summary">Solidity + IPFS on MERN. Transparent elections</p>
+          <a href="projects/votemai.html" class="text-decoration-none">
+            <div class="ios-project-card" data-aos="fade-up" data-aos-delay="100">
+              <div class="ios-project-image bg-votemai">
+                <img src="Photo/optimized/Mockup/VOTEMAI.png" alt="VOTEMAI" width="800" height="600" loading="lazy">
+                <div class="ios-project-overlay">
+                  <p class="ios-project-kicker playfair-400">VOTEMAI™</p>
+                  <h3 class="ios-project-heading playfair-400">Blockchain Voting</h3>
+                  <p class="ios-project-summary">Solidity + IPFS on MERN. Transparent elections</p>
+                </div>
               </div>
             </div>
-          </div>
+          </a>
         </div>
 
         <div class="col-12 col-md-6 col-lg-6">
-          <div class="ios-project-card project-card-clickable" 
-               data-aos="fade-up" 
-               data-aos-delay="150" 
-               data-aos-duration="400"
-               data-project="olaf"
-               data-title="OLAF"
-               data-subtitle="Dev Blog Platform"
-               data-description="Built with Django + React. Personal tech journal for developers. A modern blogging platform designed for developers to share their coding journey, technical insights, and project experiences."
-               data-tech="React, Django, Python"
-               data-github-url=""
-               data-demo-url="https://olafs.netlify.app/feed"
-               data-image="Photo/optimized/Mockup/OLAF.png">
-            <div class="ios-project-image bg-olaf">
-              <img src="Photo/optimized/Mockup/OLAF.png" alt="OLAF" / width="800" height="600" loading="lazy">
-              <div class="ios-project-overlay">
-                <p class="ios-project-kicker playfair-400">OLAF</p>
-                <h3 class="ios-project-heading playfair-400">Dev Blog Platform</h3>
-                <p class="ios-project-summary">Built with Django + React. Personal tech journal</p>
+          <a href="projects/olaf.html" class="text-decoration-none">
+            <div class="ios-project-card" data-aos="fade-up" data-aos-delay="150">
+              <div class="ios-project-image bg-olaf">
+                <img src="Photo/optimized/Mockup/OLAF.png" alt="OLAF" width="800" height="600" loading="lazy">
+                <div class="ios-project-overlay">
+                  <p class="ios-project-kicker playfair-400">OLAF</p>
+                  <h3 class="ios-project-heading playfair-400">Dev Blog Platform</h3>
+                  <p class="ios-project-summary">Built with Django + React. Personal tech journal</p>
+                </div>
               </div>
             </div>
-          </div>
+          </a>
         </div>
       </div>
     </div>
   </section>
-  <!-- Project Detail Modal -->
-  <div id="projectModal" class="project-modal" style="display: none;">
-    <div class="project-modal-overlay"></div>
-    <div class="project-modal-content">
-      <button class="project-modal-close" aria-label="Close modal">
-        <i class="fas fa-times"></i>
-      </button>
-      <div class="project-modal-body">
-        <div class="project-modal-image-container">
-          <img id="modalProjectImage" src="" alt="Project" class="project-modal-image" />
-        </div>
-        <div class="project-modal-info">
-          <h2 id="modalProjectTitle" class="project-modal-title playfair-400"></h2>
-          <p id="modalProjectSubtitle" class="project-modal-subtitle playfair-400"></p>
-          <p id="modalProjectDescription" class="project-modal-description playfair-400"></p>
-          <div class="project-modal-tech">
-            <h6 class="playfair-400 mb-2" style="font-weight: 600; color: #2c2c2c;" data-i18n="modal.technologies">Technologies</h6>
-            <p id="modalProjectTech" class="playfair-400" style="color: #6b6b6b; font-size: 0.95rem;"></p>
-          </div>
-          <div class="project-modal-actions mt-4">
-            <a id="modalGithubLink" href="#" target="_blank" class="btn btn-sm github-icon-btn me-2"
-              style="background-color: #24292e; color: white; border-radius: 8px; padding: 0.5rem 1rem; text-decoration: none; transition: all 0.2s;">
-              <i class="fab fa-github me-2"></i><span data-i18n="modal.viewGithub">View on GitHub</span>
-            </a>
-            <a id="modalDemoLink" href="#" target="_blank" class="btn btn-sm demo-btn-outline playfair-400" style="display: none;">
-              <i class="fas fa-external-link-alt me-2"></i><span data-i18n="modal.liveDemo">Live Demo</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
   <!-- UI/UX Projects -->
   <section class="container-fluid"
     style="background-color: #f8f8ff; padding-top: 0; padding-bottom: 0; transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);">
@@ -1697,89 +1686,101 @@
           <span class="portfolio-heading-word" data-i18n="portfolioList.project">PROJECT</span>
         </h2>
         <!-- Project Rows -->
-        <div class="row py-3 py-md-4 align-items-center g-3 g-md-4">
-          <div class="col-12 col-md-3 text-center text-md-start">
-            <img class="shadow-sm img-fluid" src="Photo/optimized/olafbanner.png" alt="OLAF Logo"
-              style="max-width: 100%; width: 100%; max-width: 300px; border-radius: 20px; object-fit: cover; aspect-ratio: 16/9;" / loading="lazy">
+        <a href="projects/olaf.html" class="text-decoration-none project-list-row-link">
+          <div class="row py-3 py-md-4 align-items-center g-3 g-md-4">
+            <div class="col-12 col-md-3 text-center text-md-start">
+              <img class="shadow-sm img-fluid" src="Photo/optimized/olafbanner.png" alt="OLAF Logo"
+                style="max-width: 100%; width: 100%; max-width: 300px; border-radius: 20px; object-fit: cover; aspect-ratio: 16/9;" / loading="lazy">
+            </div>
+            <div class="col-12 col-md-8">
+              <h3 class="mb-2 mb-md-3 playfair-400"
+                style="font-size: clamp(18px, 2.5vw, 22px); line-height: 1.4; color: #1d1d1f">
+                OLAF® – Modern Social Media Platform
+              </h3>
+              <p class="text-muted mb-0" style="font-size: clamp(14px, 1.8vw, 16px); line-height: 1.6">
+                Modern React social media platform with secure authentication, post management, comments, and user
+                profiles. Built with React 18, HTTP-only cookies, and Cloudinary integration.
+              </p>
+            </div>
+            <div class="col-12 col-md-1 text-center text-md-end d-none d-md-block">
+              <span style="font-size: clamp(20px, 2.5vw, 28px); color: #6b6b6b">→</span>
+            </div>
           </div>
-          <div class="col-12 col-md-8">
-            <h3 class="mb-2 mb-md-3 playfair-400"
-              style="font-size: clamp(18px, 2.5vw, 22px); line-height: 1.4; color: #1d1d1f">
-              OLAF® – Modern Social Media Platform
-            </h3>
-            <p class="text-muted mb-0" style="font-size: clamp(14px, 1.8vw, 16px); line-height: 1.6">
-              Modern React social media platform with secure authentication, post management, comments, and user
-              profiles. Built with React 18, HTTP-only cookies, and Cloudinary integration.
-            </p>
-          </div>
-          <div class="col-12 col-md-1 text-center text-md-end d-none d-md-block">
-            <span style="font-size: clamp(20px, 2.5vw, 28px); color: #6b6b6b">→</span>
-          </div>
-        </div>
+        </a>
         <hr style="border: none; border-top: 1px solid rgba(0, 0, 0, 0.15); margin: 0;">
-        <div class="row py-3 py-md-4 align-items-center g-3 g-md-4">
-          <div class="col-12 col-md-3 text-center text-md-start">
-            <img class="shadow-sm img-fluid" src="Photo/optimized/AMS..jpg" alt="Assetix Logo"
-              style="max-width: 100%; width: 100%; max-width: 300px; border-radius: 20px" / loading="lazy">
+        
+        <a href="projects/asm.html" class="text-decoration-none project-list-row-link">
+          <div class="row py-3 py-md-4 align-items-center g-3 g-md-4">
+            <div class="col-12 col-md-3 text-center text-md-start">
+              <img class="shadow-sm img-fluid" src="Photo/optimized/AMS..jpg" alt="Assetix Logo"
+                style="max-width: 100%; width: 100%; max-width: 300px; border-radius: 20px" / loading="lazy">
+            </div>
+            <div class="col-12 col-md-8">
+              <h5 class="mb-2 mb-md-3 playfair-400"
+                style="font-size: clamp(18px, 2.5vw, 22px); line-height: 1.4; color: #1d1d1f">
+                ASM.® – Asset Management System for ECT
+              </h5>
+              <p class="text-muted mb-0" style="font-size: clamp(14px, 1.8vw, 16px); line-height: 1.6">
+                Asset management system for the Election Commission of Thailand. Features include CRUD operations,
+                automated depreciation, and inventory audits. Built with Angular, ASP.NET Core, PostgreSQL.
+              </p>
+            </div>
+            <div class="col-12 col-md-1 text-center text-md-end d-none d-md-block">
+              <span style="font-size: clamp(20px, 2.5vw, 28px); color: #6b6b6b">→</span>
+            </div>
           </div>
-          <div class="col-12 col-md-8">
-            <h5 class="mb-2 mb-md-3 playfair-400"
-              style="font-size: clamp(18px, 2.5vw, 22px); line-height: 1.4; color: #1d1d1f">
-              ASM.® – Asset Management System for ECT
-            </h5>
-            <p class="text-muted mb-0" style="font-size: clamp(14px, 1.8vw, 16px); line-height: 1.6">
-              Asset management system for the Election Commission of Thailand. Features include CRUD operations,
-              automated depreciation, and inventory audits. Built with Angular, ASP.NET Core, PostgreSQL.
-            </p>
-          </div>
-          <div class="col-12 col-md-1 text-center text-md-end d-none d-md-block">
-            <span style="font-size: clamp(20px, 2.5vw, 28px); color: #6b6b6b">→</span>
-          </div>
-        </div>
+        </a>
         <hr style="border: none; border-top: 1px solid rgba(0, 0, 0, 0.15); margin: 0;">
-        <div class="row py-3 py-md-4 align-items-center g-3 g-md-4">
-          <div class="col-12 col-md-3 text-center text-md-start">
-            <img class="shadow-sm img-fluid" src="Photo/optimized/votemaiLogo.jpg" alt="Votemai Logo"
-              style="max-width: 100%; width: 100%; max-width: 300px; border-radius: 20px" / loading="lazy">
+
+        <a href="projects/votemai.html" class="text-decoration-none project-list-row-link">
+          <div class="row py-3 py-md-4 align-items-center g-3 g-md-4">
+            <div class="col-12 col-md-3 text-center text-md-start">
+              <img class="shadow-sm img-fluid" src="Photo/optimized/votemaiLogo.jpg" alt="Votemai Logo"
+                style="max-width: 100%; width: 100%; max-width: 300px; border-radius: 20px" / loading="lazy">
+            </div>
+            <div class="col-12 col-md-8">
+              <h5 class="mb-2 mb-md-3 playfair-400"
+                style="font-size: clamp(18px, 2.5vw, 22px); line-height: 1.4; color: #1d1d1f">
+                VOTEMAI® – Decentralized Voting Application
+              </h5>
+              <p class="text-muted mb-0" style="font-size: clamp(14px, 1.8vw, 16px); line-height: 1.6">
+                Blockchain-based voting platform using <strong>MERN Stack, Solidity, and IPFS</strong>. Features smart
+                contracts on <strong>MATIC (Polygon)</strong> network and secure voting via <strong>Metamask</strong>. Led
+                full-stack development with <strong>Hardhat</strong> and <strong>React.js</strong>.
+              </p>
+            </div>
+            <div class="col-12 col-md-1 text-center text-md-end d-none d-md-block">
+              <span style="font-size: clamp(20px, 2.5vw, 28px); color: #6b6b6b">→</span>
+            </div>
           </div>
-          <div class="col-12 col-md-8">
-            <h5 class="mb-2 mb-md-3 playfair-400"
-              style="font-size: clamp(18px, 2.5vw, 22px); line-height: 1.4; color: #1d1d1f">
-              VOTEMAI® – Decentralized Voting Application
-            </h5>
-            <p class="text-muted mb-0" style="font-size: clamp(14px, 1.8vw, 16px); line-height: 1.6">
-              Blockchain-based voting platform using <strong>MERN Stack, Solidity, and IPFS</strong>. Features smart
-              contracts on <strong>MATIC (Polygon)</strong> network and secure voting via <strong>Metamask</strong>. Led
-              full-stack development with <strong>Hardhat</strong> and <strong>React.js</strong>.
-            </p>
-          </div>
-          <div class="col-12 col-md-1 text-center text-md-end d-none d-md-block">
-            <span style="font-size: clamp(20px, 2.5vw, 28px); color: #6b6b6b">→</span>
-          </div>
-        </div>
+        </a>
         <hr style="border: none; border-top: 1px solid rgba(0, 0, 0, 0.15); margin: 0;">
-        <div class="row py-3 py-md-4 align-items-center g-3 g-md-4">
-          <div class="col-12 col-md-3 text-center text-md-start">
-            <img class="shadow-sm img-fluid" src="Photo/optimized/6.jpg" alt="HOMEMA Logo"
-              style="max-width: 100%; width: 100%; max-width: 300px; border-radius: 20px" / loading="lazy">
+
+        <a href="projects/homema.html" class="text-decoration-none project-list-row-link">
+          <div class="row py-3 py-md-4 align-items-center g-3 g-md-4">
+            <div class="col-12 col-md-3 text-center text-md-start">
+              <img class="shadow-sm img-fluid" src="Photo/optimized/6.jpg" alt="HOMEMA Logo"
+                style="max-width: 100%; width: 100%; max-width: 300px; border-radius: 20px" / loading="lazy">
+            </div>
+            <div class="col-12 col-md-8">
+              <h5 class="mb-2 mb-md-3 playfair-400"
+                style="font-size: clamp(18px, 2.5vw, 22px); line-height: 1.4; color: #1d1d1f">
+                HOMEMA® – Technician Hiring Platform
+              </h5>
+              <p class="text-muted mb-0" style="font-size: clamp(14px, 1.8vw, 16px); line-height: 1.6">
+                Web platform connecting users with qualified technicians. Features secure authentication, CRUD operations,
+                and RESTful API integration. Responsive Bootstrap UI with mobile-first design. Led team as project leader.
+                <br />
+                <span class="fw-semibold">Tech stack:</span> React.js, Node.js, MySQL, Bootstrap
+              </p>
+            </div>
+            <div class="col-12 col-md-1 text-center text-md-end d-none d-md-block">
+              <span style="font-size: clamp(20px, 2.5vw, 28px); color: #6b6b6b">→</span>
+            </div>
           </div>
-          <div class="col-12 col-md-8">
-            <h5 class="mb-2 mb-md-3 playfair-400"
-              style="font-size: clamp(18px, 2.5vw, 22px); line-height: 1.4; color: #1d1d1f">
-              HOMEMA® – Technician Hiring Platform
-            </h5>
-            <p class="text-muted mb-0" style="font-size: clamp(14px, 1.8vw, 16px); line-height: 1.6">
-              Web platform connecting users with qualified technicians. Features secure authentication, CRUD operations,
-              and RESTful API integration. Responsive Bootstrap UI with mobile-first design. Led team as project leader.
-              <br />
-              <span class="fw-semibold">Tech stack:</span> React.js, Node.js, MySQL, Bootstrap
-            </p>
-          </div>
-          <div class="col-12 col-md-1 text-center text-md-end d-none d-md-block">
-            <span style="font-size: clamp(20px, 2.5vw, 28px); color: #6b6b6b">→</span>
-          </div>
-        </div>
+        </a>
         <hr style="border: none; border-top: 1px solid rgba(0, 0, 0, 0.15); margin: 0;">
+
         <div class="row py-3 py-md-4 align-items-center g-3 g-md-4">
           <div class="col-12 col-md-3 text-center text-md-start">
             <img class="shadow-sm img-fluid" src="Photo/optimized/5.jpg" alt="ZSELL Logo"
@@ -1848,7 +1849,12 @@
                         </span>
                       </div>
                     </div>
-                    <h4 class="playfair-400 mb-2 experience-company">Business ALive Co.,Ltd (Thailand)</h4>
+                    <h4 class="playfair-400 mb-2 experience-company">
+                      <a href="https://www.balives.com/" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;">
+                        Business ALive Co.,Ltd (Thailand)
+                        <i class="fas fa-external-link-alt ms-1" style="font-size: 0.8rem; opacity: 0.7;"></i>
+                      </a>
+                    </h4>
                     <div class="d-flex flex-wrap gap-2">
                       <span class="badge rounded-pill tech-badge-minimal playfair-400">
                         <i class="fas fa-calendar-alt me-1"></i> Aug 2025 - Present
@@ -1920,7 +1926,12 @@
                         <i class="fas fa-clock me-1"></i> Part-time
                       </span>
                     </div>
-                    <h4 class="playfair-400 mb-2 experience-company">Business ALive Co.,Ltd (Thailand)</h4>
+                    <h4 class="playfair-400 mb-2 experience-company">
+                      <a href="https://www.balives.com/" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;">
+                        Business ALive Co.,Ltd (Thailand)
+                        <i class="fas fa-external-link-alt ms-1" style="font-size: 0.8rem; opacity: 0.7;"></i>
+                      </a>
+                    </h4>
                     <div class="d-flex flex-wrap gap-2">
                       <span class="badge rounded-pill tech-badge-minimal playfair-400">
                         <i class="fas fa-calendar-alt me-1"></i> Jul 2025 - Aug 2025
@@ -2053,85 +2064,6 @@
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- Extracurricular & Community -->
-  <section class="container-fluid" style="background-color: #f8f8ff; padding-top: 0; padding-bottom: 3rem;">
-    <div class="container" style="max-width: 1200px;">
-        <h2 class="dm-serif-display-regular text-center mb-5" style="
-            font-size: clamp(32px, 6vw, 80px);
-            color: #2c2c2c;
-            border-bottom: 2px solid #2c2c2c;
-            width: fit-content;
-            margin: auto;
-          " data-i18n="extracurricular.title">
-        EXTRACURRICULAR & COMMUNITY
-      </h2>
-      <div class="row row-cols-1 row-cols-md-3 g-4 px-4">
-        <!-- Gold Medal Card -->
-        <div class="col">
-          <a class="ios-community-card d-block text-decoration-none"
-            href="http://sci.kmutnb.ac.th/content/view/1284/%E0%B8%84%E0%B8%93%E0%B8%B0%E0%B8%A7%E0%B8%B4%E0%B8%97%E0%B8%A2%E0%B8%B2%E0%B8%A8%E0%B8%B2%E0%B8%AA%E0%B8%95%E0%B8%A3%E0%B9%8C%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%A2%E0%B8%B8%E0%B8%81%E0%B8%95%E0%B9%8C-%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%87%E0%B8%B2%E0%B8%99-Science-Exhibition-Day-2025-"
-            target="_blank" rel="noopener noreferrer">
-            <div class="ios-community-image">
-              <img src="Photo/optimized/Cergold.jpg" alt="Gold Medal Project" / loading="lazy">
-            </div>
-            <div class="ios-community-content">
-              <h3 class="ios-community-title playfair-400">
-                <i class="fas fa-award me-2"></i> Gold Medal –
-                Science Exhibition Day 2025
-              </h3>
-              <p class="ios-community-desc playfair-400">
-                KMUTNB · Asset Management System for Central Election
-                Commission
-              </p>
-              <span class="badge bg-dark rounded-pill mt-2" style="font-size: 0.75rem">
-                View event details ↗
-              </span>
-            </div>
-          </a>
-        </div>
-        <!-- Honorable Mention Card -->
-        <div class="col">
-          <div class="ios-community-card">
-            <div class="ios-community-image">
-              <img src="Photo/optimized/1706870113398.jfif" alt="Health Innovation Project" / loading="lazy">
-            </div>
-            <div class="ios-community-content">
-              <h3 class="ios-community-title playfair-400">
-                <i class="fas fa-certificate me-2"></i>
-                Honorable Mention – Health Innovation 2024
-              </h3>
-              <p class="ios-community-desc playfair-400">
-                KMUTNB 65th Anniversary Innovation Project · 193 teams
-                participated
-              </p>
-              <a href="https://www.facebook.com/photo/?fbid=787984496678754&set=pcb.787984756678728"
-                class="badge bg-dark rounded-pill mt-2 text-decoration-none" style="font-size: 0.75rem" target="_blank"
-                rel="noopener noreferrer">
-                View event photos ↗
-              </a>
-            </div>
-          </div>
-        </div>
-        <!-- Young Data Scientist Card -->
-        <div class="col">
-          <div class="ios-community-card">
-            <div class="ios-community-image">
-              <img src="Photo/optimized/1706897917406.jfif" alt="Young Data Scientist 2019" / loading="lazy">
-            </div>
-            <div class="ios-community-content">
-              <h3 class="ios-community-title playfair-400">
-                <i class="fas fa-flask me-2"></i> Young Data
-                Scientist 2019
-              </h3>
-              <p class="ios-community-desc playfair-400">
-                Thai Programmer Association
-              </p>
             </div>
           </div>
         </div>
@@ -2985,6 +2917,18 @@
 
   <script src="i18n.js"></script>
 
+  <script>
+    // Scroll Progress Bar Logic
+    window.onscroll = function() {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      const progressBar = document.getElementById("scroll-progress-bar");
+      if (progressBar) {
+        progressBar.style.width = scrolled + "%";
+      }
+    };
+  </script>
 </body>
 
 </html>

@@ -13,7 +13,9 @@ try {
 
 // Configuration
 const ARTICLES_DIR = path.join(__dirname, 'articles');
-const OUTPUT_DIR = path.join(__dirname, 'articles');
+const PROJECTS_DIR = path.join(__dirname, 'projects');
+const ARTICLES_OUTPUT_DIR = path.join(__dirname, 'articles');
+const PROJECTS_OUTPUT_DIR = path.join(__dirname, 'projects'); // Outputting to projects/ for simpler URLs
 const TEMPLATE_DIR = path.join(__dirname, 'templates');
 const COMPONENTS_DIR = path.join(__dirname, 'components');
 const PHOTO_DIR = path.join(__dirname, 'Photo');
@@ -29,7 +31,8 @@ const STATIC_PAGES = [
       '{{dataI18nLangAttr}}': ' data-i18n-lang="en"',
       '{{pageUrl}}': `${BASE_URL}/`,
       '{{ogLocale}}': 'en_US',
-      '{{canonicalUrl}}': `${BASE_URL}/`
+      '{{canonicalUrl}}': `${BASE_URL}/`,
+      '{{root}}': ''
     }
   },
   {
@@ -83,6 +86,27 @@ const STATIC_PAGES = [
 ];
 const BUILD_PAGES_ONLY = process.argv.includes('--pages-only');
 
+const PROJECT_TECH_ICON_MAP = {
+  'Angular': { type: 'image', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg' },
+  'ASP.NET Core': { type: 'image', src: 'https://cdn.simpleicons.org/dotnet/512BD4' },
+  'Blockchain': { type: 'fa', icon: 'fas fa-link' },
+  'C#': { type: 'image', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg' },
+  'Dev Blog': { type: 'fa', icon: 'fas fa-feather-alt' },
+  'Django': { type: 'image', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg' },
+  'Express': { type: 'image', src: 'https://cdn.simpleicons.org/express/000000' },
+  'Government': { type: 'fa', icon: 'fas fa-landmark' },
+  'IPFS': { type: 'image', src: 'https://cdn.simpleicons.org/ipfs/65C2CB' },
+  'Markdown': { type: 'image', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/markdown/markdown-original.svg' },
+  'MongoDB': { type: 'image', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg' },
+  'Node.js': { type: 'image', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
+  'PostgreSQL': { type: 'image', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg' },
+  'Python': { type: 'image', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
+  'React': { type: 'image', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
+  'REST API': { type: 'image', src: 'https://cdn.simpleicons.org/openapiinitiative/6BA539' },
+  'SQL Server': { type: 'image', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg' },
+  'Solidity': { type: 'image', src: 'https://cdn.simpleicons.org/solidity/363636' }
+};
+
 // Cache for templates
 const templateCache = {};
 
@@ -95,8 +119,8 @@ marked.setOptions({
 });
 
 // Ensure output directory exists
-if (!fs.existsSync(OUTPUT_DIR)) {
-  fs.mkdirSync(OUTPUT_DIR, { recursive: true });
+if (!fs.existsSync(ARTICLES_OUTPUT_DIR)) {
+  fs.mkdirSync(ARTICLES_OUTPUT_DIR, { recursive: true });
 }
 
 // Read template file with caching
@@ -217,7 +241,7 @@ function buildArticle(markdownFile) {
   }
 
   // Save HTML file
-  const outputPath = path.join(OUTPUT_DIR, `${slug}.html`);
+  const outputPath = path.join(ARTICLES_OUTPUT_DIR, `${slug}.html`);
   fs.writeFileSync(outputPath, html, 'utf-8');
   
   return {
@@ -229,6 +253,67 @@ function buildArticle(markdownFile) {
     tags,
     image
   };
+}
+
+// Build project HTML
+function buildProject(markdownFile) {
+  const filePath = path.join(PROJECTS_DIR, markdownFile);
+  const content = fs.readFileSync(filePath, 'utf-8');
+  const { attributes, body } = matter(content);
+  
+  const {
+    title = 'Untitled Project',
+    description = '',
+    date = new Date().toISOString().split('T')[0],
+    author = 'Nattapat Phungphugdee',
+    tags = [],
+    image = '',
+    slug = path.basename(markdownFile, '.md')
+  } = attributes;
+
+  const htmlContent = markdownToHtml(body);
+  const template = getTemplate('project.template') || getTemplate('project') || getDefaultTemplate();
+
+  const imageHtml = image ? `<img src="{{root}}${escapeHtml(image)}" alt="${escapeHtml(title)}" class="project-showcase-img">` : '';
+  const ogImage = image ? `https://zxinnattapat3.github.io/${escapeHtml(image)}` : 'https://zxinnattapat3.github.io/Photo/DSCF2374.jpg';
+
+  const replacements = {
+    '{{title}}': escapeHtml(title),
+    '{{description}}': escapeHtml(description),
+    '{{date}}': formatDate(date),
+    '{{author}}': escapeHtml(author),
+    '{{tags}}': renderProjectTechStack(tags),
+    '{{image}}': imageHtml,
+    '{{ogImage}}': ogImage,
+    '{{content}}': htmlContent,
+    '{{slug}}': slug,
+    '{{canonical}}': `https://zxinnattapat3.github.io/projects/${slug}.html`,
+    '{{root}}': '../'
+  };
+
+  let html = template;
+  // Resolve includes first
+  let compiledContent = resolveIncludes(html, TEMPLATE_DIR);
+  
+  // Fix asset paths in includes for subpages (e.g. Photo/ -> {{root}}Photo/)
+  // Only apply this if {{root}} is not empty (i.e. we are in a subfolder)
+  if (replacements['{{root}}'] && replacements['{{root}}'] !== '') {
+    const root = replacements['{{root}}'];
+    // Match common asset paths that don't already have http or root prefix
+    compiledContent = compiledContent.replace(/(src|href)="(?!(http|https|\{\{root\}\}|\/))((Photo|stylesheets|js|node_modules)\/)/g, `$1="${root}$3`);
+    
+    // Fix hash links in navbar/footer to point to main page (e.g. href="#home" -> href="../index.html#home")
+    // We assume any href starting with # should be prefixed with {{root}}index.html
+    compiledContent = compiledContent.replace(/href="(#[a-zA-Z0-9_-]+)"/g, `href="${root}index.html$1"`);
+    compiledContent = compiledContent.replace(/href="blog\.html"/g, `href="${root}blog.html"`);
+  }
+
+  html = applyReplacements(compiledContent, replacements);
+
+  const outputPath = path.join(PROJECTS_OUTPUT_DIR, `${slug}.html`);
+  fs.writeFileSync(outputPath, html, 'utf-8');
+  
+  return { slug, title, description, date, author, tags, image };
 }
 
 // Build blog index
@@ -257,8 +342,8 @@ function buildBlogIndex(articles) {
   fs.writeFileSync(path.join(__dirname, 'blog.html'), html, 'utf-8');
 }
 
-// Build sitemap with articles
-function updateSitemap(articles) {
+// Build sitemap with articles and projects
+function updateSitemap(articles, projects) {
   const urls = [
     {
       loc: `${BASE_URL}/`,
@@ -283,6 +368,15 @@ function updateSitemap(articles) {
     });
   });
 
+  projects.forEach(project => {
+    urls.push({
+      loc: `${BASE_URL}/projects/${project.slug}.html`,
+      lastmod: project.date,
+      changefreq: 'monthly',
+      priority: '0.7'
+    });
+  });
+
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${urls.map(url => `  <url>
@@ -297,6 +391,48 @@ ${urls.map(url => `  <url>
 }
 
 // Helper functions
+function renderProjectTechStack(tags) {
+  return tags.map(renderProjectTechTag).join('');
+}
+
+function renderProjectTechTag(tag) {
+  const safeTag = escapeHtml(tag);
+  const techMeta = PROJECT_TECH_ICON_MAP[tag];
+
+  let iconMarkup = `<span class="project-tech-icon-fallback">${escapeHtml(getTagMonogram(tag))}</span>`;
+
+  if (techMeta?.type === 'image') {
+    iconMarkup = `<img src="${techMeta.src}" alt="${safeTag}" class="project-tech-icon-img" loading="lazy">`;
+  } else if (techMeta?.type === 'fa') {
+    iconMarkup = `<i class="${techMeta.icon} project-tech-fa" aria-hidden="true"></i>`;
+  }
+
+  return `
+    <span class="project-tech-item" title="${safeTag}">
+      <span class="project-tech-icon">
+        ${iconMarkup}
+      </span>
+      <span class="project-tech-label">${safeTag}</span>
+    </span>
+  `;
+}
+
+function getTagMonogram(tag) {
+  const words = String(tag)
+    .replace(/[^\w\s+.#-]/g, ' ')
+    .split(/\s+/)
+    .filter(Boolean);
+
+  if (words.length === 0) return '?';
+  if (words.length === 1) return words[0].slice(0, 2).toUpperCase();
+
+  return words
+    .slice(0, 2)
+    .map(word => word[0])
+    .join('')
+    .toUpperCase();
+}
+
 function escapeHtml(text) {
   if (!text) return '';
   return String(text)
@@ -583,36 +719,44 @@ function build() {
     console.log('✅ สร้างโฟลเดอร์ articles แล้ว');
   }
 
-  // Pre-load templates to cache
-  getTemplate('article');
-  getTemplate('blog-index');
-
-  const markdownFiles = fs.readdirSync(ARTICLES_DIR)
-    .filter(file => file.endsWith('.md'));
-
-  if (markdownFiles.length === 0) {
-    console.log('⚠️  ไม่พบไฟล์ Markdown ในโฟลเดอร์ articles');
-    const buildTime = ((Date.now() - startTime) / 1000).toFixed(3);
-    console.log(`📦 สร้างหน้า static ${staticPagesBuilt} หน้า`);
-    console.log(`⚡ ใช้เวลา: ${buildTime} วินาที`);
-    return;
+  if (!fs.existsSync(PROJECTS_DIR)) {
+    fs.mkdirSync(PROJECTS_DIR, { recursive: true });
+    console.log('✅ สร้างโฟลเดอร์ projects แล้ว');
   }
 
-  console.log(`📝 พบ ${markdownFiles.length} บทความ`);
+  // Pre-load templates to cache
+  getTemplate('article');
+  getTemplate('project');
+  getTemplate('blog-index');
 
-  // Build articles in parallel for better performance
-  const articles = markdownFiles.map(file => {
-    console.log(`  - กำลัง build: ${file}`);
+  // Build articles
+  const markdownArticles = fs.readdirSync(ARTICLES_DIR)
+    .filter(file => file.endsWith('.md'));
+  
+  console.log(`📝 พบ ${markdownArticles.length} บทความ`);
+  const articles = markdownArticles.map(file => {
+    console.log(`  - กำลัง build article: ${file}`);
     return buildArticle(file);
   });
 
+  // Build projects
+  const markdownProjects = fs.readdirSync(PROJECTS_DIR)
+    .filter(file => file.endsWith('.md'));
+  
+  console.log(`🛠️ พบ ${markdownProjects.length} โปรเจกต์`);
+  const projects = markdownProjects.map(file => {
+    console.log(`  - กำลัง build project: ${file}`);
+    return buildProject(file);
+  });
+
   buildBlogIndex(articles);
-  updateSitemap(articles);
+  updateSitemap(articles, projects);
 
   const buildTime = ((Date.now() - startTime) / 1000).toFixed(3);
   console.log('✅ Build เสร็จสิ้น!');
   console.log(`📦 สร้างหน้า static ${staticPagesBuilt} หน้า`);
   console.log(`📄 สร้าง ${articles.length} บทความ HTML`);
+  console.log(`🛠️ สร้าง ${projects.length} โปรเจกต์ HTML`);
   console.log(`📋 อัพเดท sitemap.xml แล้ว`);
   console.log(`⚡ ใช้เวลา: ${buildTime} วินาที`);
 }
@@ -629,6 +773,7 @@ if (process.argv.includes('--watch')) {
 
   if (!BUILD_PAGES_ONLY) {
     watchTargets.unshift({ dir: ARTICLES_DIR, test: filename => filename.endsWith('.md') });
+    watchTargets.unshift({ dir: PROJECTS_DIR, test: filename => filename.endsWith('.md') });
   }
 
   watchTargets.forEach(({ dir, test }) => {
