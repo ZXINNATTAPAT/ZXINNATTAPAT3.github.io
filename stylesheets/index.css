@@ -1756,14 +1756,32 @@ body.menu-open {
   }
 }
 
-/* Automation & Integration */
+/* Workflow Automation */
 .automation-shell {
   max-width: 1100px;
+}
+
+.automation-logo-only {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 0 1.25rem;
+}
+
+.automation-logo-only-image {
+  display: block;
+  width: min(240px, 68vw);
+  max-width: 100%;
+  height: auto;
 }
 
 .automation-card-grid {
   --bs-gutter-x: 1rem;
   --bs-gutter-y: 1rem;
+}
+
+.automation-card-grid-single {
+  --bs-gutter-x: 0;
 }
 
 .automation-mini-card {
@@ -1781,12 +1799,36 @@ body.menu-open {
     border-color 0.35s ease;
 }
 
+.automation-mini-card-make {
+  padding: 18px;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid rgba(198, 172, 255, 0.42);
+  box-shadow:
+    0 24px 56px rgba(110, 74, 207, 0.16),
+    0 10px 24px rgba(110, 74, 207, 0.08);
+}
+
 .automation-mini-card:hover {
   transform: translateY(-4px);
   border-color: rgba(255, 255, 255, 1);
   box-shadow:
     0 18px 36px rgba(15, 23, 42, 0.08),
     0 6px 14px rgba(15, 23, 42, 0.04);
+}
+
+.automation-mini-card-make:hover {
+  border-color: rgba(132, 94, 247, 0.42);
+  box-shadow:
+    0 28px 60px rgba(92, 52, 196, 0.18),
+    0 14px 30px rgba(92, 52, 196, 0.12);
+}
+
+.automation-feature-layout {
+  display: grid;
+  grid-template-columns: minmax(250px, 0.92fr) minmax(0, 1.08fr);
+  gap: 24px;
+  align-items: center;
 }
 
 .automation-card-media {
@@ -1826,6 +1868,13 @@ body.menu-open {
   padding: 0 4px 4px;
 }
 
+.automation-card-copy-feature {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4px 8px 4px 0;
+}
+
 .automation-media-badge {
   position: absolute;
   top: 12px;
@@ -1855,11 +1904,24 @@ body.menu-open {
   letter-spacing: -0.03em;
 }
 
+.automation-mini-card-make .automation-card-title {
+  margin-bottom: 12px;
+  color: #241634;
+  font-family: "Inter", sans-serif;
+  font-size: clamp(1.6rem, 2.3vw, 2.05rem);
+  font-weight: 800;
+  line-height: 1.02;
+}
+
 .automation-chip-row {
   display: flex;
   flex-wrap: wrap;
   gap: 0.4rem;
   margin: 0 0 0.8rem;
+}
+
+.automation-mini-card-make .automation-chip-row {
+  margin-bottom: 1rem;
 }
 
 .automation-chip {
@@ -1877,6 +1939,12 @@ body.menu-open {
   letter-spacing: 0.03em;
 }
 
+.automation-mini-card-make .automation-chip {
+  background: rgba(116, 73, 230, 0.09);
+  border-color: rgba(116, 73, 230, 0.12);
+  color: #5d38c6;
+}
+
 .automation-card-desc {
   margin: 0;
   color: #62646d;
@@ -1884,31 +1952,115 @@ body.menu-open {
   line-height: 1.58;
 }
 
+.automation-mini-card-make .automation-card-desc {
+  max-width: 34rem;
+  color: #625a74;
+  font-size: 0.98rem;
+  line-height: 1.7;
+}
+
 .automation-media-make {
-  padding: 12px;
-  background:
-    radial-gradient(circle at top right, rgba(182, 165, 255, 0.16), transparent 34%),
-    linear-gradient(135deg, #faf7ff 0%, #ffffff 58%, #f5f8ff 100%);
+  min-height: 250px;
+  margin-bottom: 0;
+  padding: 0;
+  background: transparent;
 }
 
-.automation-make-frame {
+.automation-media-make::before {
+  display: none;
+}
+
+.automation-make-brand-window {
   width: 100%;
-  height: 100%;
-  padding: 12px 10px 10px;
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.92);
-  border: 1px solid rgba(228, 231, 245, 0.82);
+  min-height: 100%;
+  display: grid;
+  grid-template-columns: 22px 1fr;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid rgba(226, 211, 255, 0.9);
+  background:
+    linear-gradient(135deg, rgba(255, 247, 252, 0.98) 0%, rgba(255, 255, 255, 0.98) 100%);
   box-shadow:
-    0 12px 24px rgba(15, 23, 42, 0.06),
-    inset 0 1px 0 rgba(255, 255, 255, 0.94);
+    inset 0 1px 0 rgba(255, 255, 255, 0.86),
+    0 14px 30px rgba(132, 95, 210, 0.12);
 }
 
-.automation-card-thumb-make {
-  object-position: center;
-  object-fit: contain;
-  border-radius: 10px;
-  box-shadow: none;
-  background: #ffffff;
+.automation-make-brand-strip {
+  background:
+    linear-gradient(180deg, #f1dcff 0%, #e2cbff 100%);
+}
+
+.automation-make-brand-surface {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px 24px 20px 14px;
+  background:
+    radial-gradient(circle at 10% 12%, rgba(244, 218, 255, 0.7), transparent 22%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(252, 245, 255, 0.96) 100%);
+}
+
+.automation-make-brand-surface::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 46%;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(243, 233, 255, 0.76) 100%);
+  pointer-events: none;
+}
+
+.automation-make-logo-lockup,
+.automation-make-skeleton {
+  position: relative;
+  z-index: 1;
+}
+
+.automation-make-logo-lockup {
+  display: flex;
+  align-items: center;
+  align-items: flex-start;
+  width: 100%;
+  margin: 0 0 20px;
+}
+
+.automation-make-logo-image {
+  display: block;
+  width: min(190px, 82%);
+  max-width: 100%;
+  height: auto;
+  margin-left: -16px;
+  transform: translateY(10px);
+  filter: drop-shadow(0 8px 20px rgba(126, 88, 211, 0.12));
+}
+
+.automation-make-skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  width: 82%;
+  margin-top: 0;
+}
+
+.automation-make-line {
+  display: block;
+  height: 10px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(217, 201, 233, 0.85), rgba(237, 230, 243, 0.48));
+}
+
+.automation-make-line-short {
+  width: 52%;
+}
+
+.automation-make-line-wide {
+  width: 88%;
+}
+
+.automation-make-line-mid {
+  width: 66%;
 }
 
 .automation-cicd-node,
@@ -2137,6 +2289,16 @@ body.menu-open {
     border-radius: 18px;
   }
 
+  .automation-mini-card-make {
+    padding: 14px;
+    border-radius: 24px;
+  }
+
+  .automation-feature-layout {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
   .automation-card-media {
     min-height: 120px;
     margin-bottom: 14px;
@@ -2160,6 +2322,41 @@ body.menu-open {
 
   .automation-chip {
     font-size: 0.68rem;
+  }
+
+  .automation-media-make {
+    min-height: 208px;
+  }
+
+  .automation-make-brand-window {
+    grid-template-columns: 18px 1fr;
+    border-radius: 20px;
+  }
+
+  .automation-make-brand-surface {
+    padding: 18px 18px 18px 12px;
+  }
+
+  .automation-make-logo-image {
+    width: min(160px, 82%);
+    margin-left: -12px;
+    transform: translateY(8px);
+  }
+
+  .automation-make-logo-lockup {
+    margin-bottom: 16px;
+  }
+
+  .automation-make-skeleton {
+    width: 86%;
+  }
+
+  .automation-make-line {
+    height: 8px;
+  }
+
+  .automation-card-copy-feature {
+    padding: 0 2px 2px;
   }
 
   .automation-browser-card {

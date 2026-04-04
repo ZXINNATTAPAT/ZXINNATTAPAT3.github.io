@@ -118,11 +118,16 @@ const translations = {
         "</section>"
     },
     automation: {
-      title: "Automation & Integration",
-      description: "Streamlining workflows and connecting systems with automation tools and integration platforms.",
+      title: "Workflow Automation",
+      description: "Using automation to connect services, reduce repetitive work, and create smoother digital workflows.",
       makecom: {
         title: "Make.com",
-        description: "Workflow automation and integration platform. Building complex scenarios to connect apps, automate processes, and streamline business operations."
+        tags: {
+          automation: "Automation",
+          integration: "Integration",
+          notifications: "Notifications"
+        },
+        description: "Building connected workflows across APIs, notifications, and business processes with a focus on simplicity and reliability."
       },
       playwright: {
         title: "Playwright",
@@ -312,11 +317,16 @@ const translations = {
         "</section>"
     },
     automation: {
-      title: "ระบบอัตโนมัติและการเชื่อมต่อ",
-      description: "ปรับปรุงเวิร์กโฟลว์และเชื่อมต่อระบบด้วยเครื่องมืออัตโนมัติและแพลตฟอร์ม integration",
+      title: "ระบบอัตโนมัติเวิร์กโฟลว์",
+      description: "ใช้ระบบอัตโนมัติเพื่อเชื่อมต่อบริการ ลดงานซ้ำซ้อน และทำให้เวิร์กโฟลว์ดิจิทัลลื่นไหลยิ่งขึ้น",
       makecom: {
         title: "Make.com",
-        description: "แพลตฟอร์มสำหรับทำ Workflow Automation และ Integration ช่วยเชื่อมแอป ทำงานซ้ำให้อัตโนมัติ และลดขั้นตอนการทำงานธุรกิจ"
+        tags: {
+          automation: "อัตโนมัติ",
+          integration: "การเชื่อมต่อ",
+          notifications: "การแจ้งเตือน"
+        },
+        description: "สร้างเวิร์กโฟลว์ที่เชื่อมต่อกันระหว่าง API ระบบแจ้งเตือน และกระบวนการธุรกิจ โดยเน้นความเรียบง่ายและความน่าเชื่อถือ"
       },
       playwright: {
         title: "Playwright",
@@ -473,11 +483,16 @@ const translations = {
       experimentsTitle: "実験・実務ハイライト"
     },
     automation: {
-      title: "自動化と連携",
-      description: "自動化ツールと連携プラットフォームで、ワークフローの効率化とシステム接続を実現します。",
+      title: "ワークフロー自動化",
+      description: "自動化を活用してサービスをつなぎ、繰り返し作業を減らし、よりスムーズなデジタルワークフローを実現します。",
       makecom: {
         title: "Make.com",
-        description: "ワークフロー自動化と連携のプラットフォーム。アプリ連携、業務自動化、運用効率化のための複雑なシナリオを構築します。"
+        tags: {
+          automation: "自動化",
+          integration: "連携",
+          notifications: "通知"
+        },
+        description: "API、通知、業務プロセスをまたぐ連携ワークフローを、シンプルさと信頼性を重視して構築します。"
       },
       playwright: {
         title: "Playwright",
@@ -634,11 +649,16 @@ const translations = {
       experimentsTitle: "实践与经历"
     },
     automation: {
-      title: "自动化与集成",
-      description: "通过自动化工具与集成平台优化流程并连接系统。",
+      title: "工作流自动化",
+      description: "通过自动化连接各类服务，减少重复工作，让数字化工作流更顺畅。",
       makecom: {
         title: "Make.com",
-        description: "工作流自动化与集成平台。用于连接应用、自动化流程并提升业务效率。"
+        tags: {
+          automation: "自动化",
+          integration: "集成",
+          notifications: "通知"
+        },
+        description: "围绕 API、通知与业务流程构建互联工作流，重点关注简洁性与可靠性。"
       },
       playwright: {
         title: "Playwright",
@@ -795,11 +815,16 @@ const translations = {
       experimentsTitle: "Experimente & Praxis"
     },
     automation: {
-      title: "Automatisierung & Integration",
-      description: "Workflows optimieren und Systeme mit Automatisierungstools und Integrationsplattformen verbinden.",
+      title: "Workflow-Automatisierung",
+      description: "Automatisierung nutzen, um Services zu verbinden, repetitive Arbeit zu reduzieren und digitale Workflows reibungsloser zu gestalten.",
       makecom: {
         title: "Make.com",
-        description: "Plattform für Workflow-Automatisierung und Integration. Aufbau komplexer Szenarien zur App-Verknüpfung und Prozessoptimierung."
+        tags: {
+          automation: "Automatisierung",
+          integration: "Integration",
+          notifications: "Benachrichtigungen"
+        },
+        description: "Verbundene Workflows über APIs, Benachrichtigungen und Geschäftsprozesse hinweg aufbauen, mit Fokus auf Einfachheit und Zuverlässigkeit."
       },
       playwright: {
         title: "Playwright",
@@ -956,11 +981,16 @@ const translations = {
       experimentsTitle: "실험 및 경험"
     },
     automation: {
-      title: "자동화 및 통합",
-      description: "자동화 도구와 통합 플랫폼으로 워크플로를 최적화하고 시스템을 연결합니다.",
+      title: "워크플로 자동화",
+      description: "자동화를 활용해 서비스를 연결하고 반복 업무를 줄여 더 매끄러운 디지털 워크플로를 만듭니다.",
       makecom: {
         title: "Make.com",
-        description: "워크플로 자동화 및 통합 플랫폼입니다. 앱 연결, 프로세스 자동화, 운영 효율화를 위한 시나리오를 구축합니다."
+        tags: {
+          automation: "자동화",
+          integration: "통합",
+          notifications: "알림"
+        },
+        description: "API, 알림, 비즈니스 프로세스를 연결하는 워크플로를 단순함과 안정성에 초점을 맞춰 구축합니다."
       },
       playwright: {
         title: "Playwright",
