@@ -1,0 +1,35 @@
+<svg width="260" height="88" viewBox="0 0 260 88" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Business ALive Logo</title>
+  <desc id="desc">Business ALive wordmark with red and dark circular symbol.</desc>
+  <rect width="260" height="88" rx="16" fill="white" fill-opacity="0"/>
+  <g transform="translate(10 18)">
+    <circle cx="18" cy="8" r="5.2" fill="#F22A2E"/>
+    <circle cx="8" cy="24" r="4.4" fill="#F22A2E"/>
+    <circle cx="29" cy="24" r="4.8" fill="#F22A2E"/>
+    <circle cx="18" cy="40" r="5.2" fill="#F22A2E"/>
+    <circle cx="42" cy="14" r="5.2" fill="#F22A2E"/>
+    <circle cx="42" cy="34" r="5.2" fill="#F22A2E"/>
+
+    <circle cx="22.5" cy="24" r="2.7" fill="#2A2A2A"/>
+    <circle cx="29.5" cy="15.5" r="2.4" fill="#2A2A2A"/>
+    <circle cx="30" cy="32.2" r="2.4" fill="#2A2A2A"/>
+    <circle cx="37.5" cy="24" r="2.6" fill="#2A2A2A"/>
+    <circle cx="29.5" cy="24" r="2" fill="#777777"/>
+  </g>
+
+  <g transform="translate(78 20)">
+    <text x="0" y="20"
+      fill="#111111"
+      font-family="Inter, Arial, Helvetica, sans-serif"
+      font-size="19"
+      font-weight="400"
+      letter-spacing="4.2">Business</text>
+    <text x="66" y="46"
+      font-family="Inter, Arial, Helvetica, sans-serif"
+      font-size="25"
+      font-weight="500"
+      letter-spacing="1.5">
+      <tspan fill="#F22A2E">A</tspan><tspan fill="#F22A2E">L</tspan><tspan fill="#111111">ive</tspan>
+    </text>
+  </g>
+</svg>

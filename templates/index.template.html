@@ -590,7 +590,6 @@
   <!-- @include ../components/index/uiux-projects.html -->
   <!-- @include ../components/index/automation-tools.html -->
   <!-- @include ../components/index/content-creator.html -->
-  <!-- @include ../components/index/portfolio-project-list.html -->
   <!-- @include ../components/index/experience.html -->
   <!-- @include ../components/index/certificates.html -->
   <!-- @include ../components/index/contact.html -->
@@ -747,18 +746,293 @@
     });
   </script>
 
-  <!-- Experience Accordion Toggle -->
+  <!-- UI/UX Project Drag Strip -->
   <script>
-    function toggleExperience(header) {
-      const card = header.closest('.experience-card-minimal');
-      const isExpanded = card.classList.contains('expanded');
+    document.addEventListener('DOMContentLoaded', () => {
+      const section = document.getElementById('uiux-projects');
+      if (!section) return;
 
-      if (isExpanded) {
-        card.classList.remove('expanded');
-      } else {
-        card.classList.add('expanded');
+      const shell = section.querySelector('[data-uiux-drag-shell]');
+      const track = section.querySelector('[data-uiux-drag-track]');
+      if (!shell || !track) {
+        return;
       }
-    }
+
+      const cards = Array.from(track.querySelectorAll('.uiux-drag-card'));
+
+      shell.querySelectorAll('img').forEach((image) => {
+        image.draggable = false;
+      });
+
+      let isDragging = false;
+      let pointerId = null;
+      let startX = 0;
+      let startScrollLeft = 0;
+      let moved = false;
+      let rafId = 0;
+      let snapTimerId = 0;
+
+      const scheduleCardUpdate = () => {
+        if (rafId) {
+          return;
+        }
+
+        rafId = window.requestAnimationFrame(() => {
+          rafId = 0;
+          updateCards();
+        });
+      };
+
+      const getCardTargetScroll = (card) => {
+        const cardCenter = card.offsetLeft + (card.offsetWidth / 2);
+        return Math.max(0, cardCenter - (shell.clientWidth / 2));
+      };
+
+      const updateCards = () => {
+        if (!cards.length) {
+          return;
+        }
+
+        const shellCenter = shell.scrollLeft + (shell.clientWidth / 2);
+        const maxDistance = shell.clientWidth * 0.42;
+        let nearestCard = cards[0];
+        let nearestDistance = Number.POSITIVE_INFINITY;
+
+        cards.forEach((card) => {
+          const cardCenter = card.offsetLeft + (card.offsetWidth / 2);
+          const distance = Math.abs(cardCenter - shellCenter);
+          const progress = Math.min(distance / maxDistance, 1);
+          const scale = 1 - (progress * 0.18);
+          const blur = progress * 3.2;
+
+          card.style.setProperty('--uiux-card-scale', scale.toFixed(3));
+          card.style.setProperty('--uiux-card-blur', `${blur.toFixed(2)}px`);
+          card.style.setProperty('--uiux-card-z', String(Math.round((1 - progress) * 10) + 1));
+
+          if (distance < nearestDistance) {
+            nearestDistance = distance;
+            nearestCard = card;
+          }
+        });
+
+        cards.forEach((card) => {
+          card.classList.toggle('is-active', card === nearestCard);
+          if (card === nearestCard) {
+            card.style.setProperty('--uiux-card-scale', '1.03');
+            card.style.setProperty('--uiux-card-blur', '0px');
+            card.style.setProperty('--uiux-card-z', '18');
+          }
+        });
+      };
+
+      const snapToNearestCard = () => {
+        if (!cards.length) {
+          return;
+        }
+
+        const shellCenter = shell.scrollLeft + (shell.clientWidth / 2);
+        let nearestCard = cards[0];
+        let nearestDistance = Number.POSITIVE_INFINITY;
+
+        cards.forEach((card) => {
+          const cardCenter = card.offsetLeft + (card.offsetWidth / 2);
+          const distance = Math.abs(cardCenter - shellCenter);
+          if (distance < nearestDistance) {
+            nearestDistance = distance;
+            nearestCard = card;
+          }
+        });
+
+        shell.scrollTo({
+          left: getCardTargetScroll(nearestCard),
+          behavior: 'smooth'
+        });
+      };
+
+      const endDrag = () => {
+        if (pointerId !== null && shell.hasPointerCapture(pointerId)) {
+          shell.releasePointerCapture(pointerId);
+        }
+
+        isDragging = false;
+        pointerId = null;
+        startX = 0;
+        startScrollLeft = 0;
+        shell.classList.remove('is-dragging');
+        snapToNearestCard();
+
+        window.setTimeout(() => {
+          moved = false;
+        }, 0);
+      };
+
+      shell.addEventListener('dragstart', (event) => {
+        event.preventDefault();
+      });
+
+      shell.addEventListener('pointerdown', (event) => {
+        if (event.pointerType === 'mouse' && event.button !== 0) {
+          return;
+        }
+
+        isDragging = true;
+        pointerId = event.pointerId;
+        startX = event.clientX;
+        startScrollLeft = shell.scrollLeft;
+        moved = false;
+        shell.setPointerCapture(event.pointerId);
+        shell.classList.add('is-dragging');
+        event.preventDefault();
+      });
+
+      shell.addEventListener('pointermove', (event) => {
+        if (!isDragging || pointerId !== event.pointerId) {
+          return;
+        }
+
+        const delta = event.clientX - startX;
+        if (Math.abs(delta) > 4) {
+          moved = true;
+        }
+
+        shell.scrollLeft = startScrollLeft - delta;
+        scheduleCardUpdate();
+      });
+
+      const handlePointerEnd = (event) => {
+        if (pointerId !== event.pointerId) {
+          return;
+        }
+
+        endDrag();
+      };
+
+      shell.addEventListener('pointerup', handlePointerEnd);
+      shell.addEventListener('pointercancel', handlePointerEnd);
+      shell.addEventListener('lostpointercapture', () => {
+        if (!isDragging) {
+          return;
+        }
+
+        endDrag();
+      });
+
+      shell.addEventListener('click', (event) => {
+        if (!moved) {
+          return;
+        }
+
+        event.preventDefault();
+        event.stopPropagation();
+      }, true);
+
+      shell.addEventListener('scroll', () => {
+        scheduleCardUpdate();
+
+        if (isDragging) {
+          return;
+        }
+
+        window.clearTimeout(snapTimerId);
+        snapTimerId = window.setTimeout(() => {
+          snapToNearestCard();
+        }, 90);
+      }, { passive: true });
+
+      window.addEventListener('resize', () => {
+        scheduleCardUpdate();
+        window.clearTimeout(snapTimerId);
+        snapTimerId = window.setTimeout(() => {
+          snapToNearestCard();
+        }, 90);
+      });
+
+      window.requestAnimationFrame(() => {
+        snapToNearestCard();
+        scheduleCardUpdate();
+      });
+    });
+  </script>
+
+  <!-- Experience Showcase Toggle -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const section = document.getElementById('experience');
+      if (!section) return;
+
+      const cards = Array.from(section.querySelectorAll('.experience-showcase-card'));
+      const panels = Array.from(section.querySelectorAll('.experience-showcase-panel'));
+      const panelWrap = section.querySelector('.experience-showcase-panels');
+      const hint = section.querySelector('.experience-showcase-hint');
+      if (!cards.length || !panels.length || !panelWrap) return;
+
+      const clearExperience = () => {
+        cards.forEach((card) => {
+          card.classList.remove('is-active');
+          card.setAttribute('aria-pressed', 'false');
+        });
+
+        panels.forEach((panel) => {
+          panel.classList.remove('is-active');
+          panel.hidden = true;
+        });
+
+        panelWrap.hidden = true;
+        if (hint) {
+          hint.hidden = false;
+        }
+      };
+
+      const activateExperience = (targetId, options = {}) => {
+        const nextCard = cards.find((card) => card.dataset.experienceTarget === targetId);
+        if (!nextCard) {
+          clearExperience();
+          return;
+        }
+
+        if (options.toggle && nextCard.classList.contains('is-active')) {
+          clearExperience();
+          return;
+        }
+
+        panelWrap.hidden = false;
+        if (hint) {
+          hint.hidden = true;
+        }
+
+        cards.forEach((card) => {
+          const isActive = card.dataset.experienceTarget === targetId;
+          card.classList.toggle('is-active', isActive);
+          card.setAttribute('aria-pressed', String(isActive));
+        });
+
+        panels.forEach((panel) => {
+          const isActive = panel.id === targetId;
+          panel.classList.toggle('is-active', isActive);
+          panel.hidden = !isActive;
+        });
+      };
+
+      cards.forEach((card, index) => {
+        card.addEventListener('click', () => {
+          activateExperience(card.dataset.experienceTarget, { toggle: true });
+        });
+
+        card.addEventListener('keydown', (event) => {
+          if (!['ArrowRight', 'ArrowLeft', 'ArrowDown', 'ArrowUp'].includes(event.key)) {
+            return;
+          }
+
+          event.preventDefault();
+          const direction = event.key === 'ArrowRight' || event.key === 'ArrowDown' ? 1 : -1;
+          const nextIndex = (index + direction + cards.length) % cards.length;
+          cards[nextIndex].focus();
+          activateExperience(cards[nextIndex].dataset.experienceTarget);
+        });
+      });
+
+      clearExperience();
+    });
   </script>
 
   <!-- Lightweight Visual Highlights Animation - Vanilla JS + CSS -->

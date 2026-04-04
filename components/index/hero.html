@@ -12,14 +12,20 @@
           </h1>
           <h1 class="playfair-400 sh-x mb-3" style="color: #2c2c2c; font-size: clamp(36px, 6vw, 90px)"
             data-aos="fade-up" data-aos-delay="150">
-            <span data-i18n="hero.developer">a Developer Based in</span>
-            <span class="parisienne-regular" style="color: #a30000; font-size: clamp(42px, 7vw, 95px)">
-              <span data-i18n="hero.thailand">Thailand</span> </span><span style="color: #2c2c2c;">.</span>
+            <span data-i18n="hero.developer">A Software Developer</span>
+            <span style="display: block;">
+              <span data-i18n="hero.location">Based in</span>
+              <span class="parisienne-regular hero-writing-word" style="color: #a30000; font-size: clamp(42px, 7vw, 95px)">
+                <span class="hero-writing-word-inner">
+                  <span data-i18n="hero.thailand">Thailand</span>
+                  <span class="hero-writing-dot">.</span>
+                </span>
+              </span>
+            </span>
           </h1>
-          <p class="playfair-400" style="opacity: 0.7; font-size: clamp(14px, 2.5vw, 18px)" data-aos="fade-up"
+          <p class="playfair-400 hero-decode-text" style="opacity: 0.7; font-size: clamp(14px, 2.5vw, 18px)" data-aos="fade-up"
             data-aos-delay="100" data-i18n="hero.education">
-            B.Sc. in Computer and Information Science — Faculty of Applied
-            Science
+            B.Sc. in Computer and Information Science — Faculty of Applied Science
           </p>
 
           <div class="profile-cta-row text-center align-items-center justify-content-center">
@@ -49,12 +55,182 @@
 </div>
 
   <script>
+    const heroDecodeState = new WeakMap();
+
+    function syncHeroWritingWord(animate = true) {
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      document.querySelectorAll('.hero-writing-word').forEach(function (word) {
+        const inner = word.querySelector('.hero-writing-word-inner');
+        if (!inner) return;
+
+        word.classList.remove('hero-writing-active');
+        inner.style.width = 'auto';
+
+        const fullWidth = inner.scrollWidth;
+        word.style.setProperty('--hero-write-width', `${fullWidth}px`);
+
+        if (!animate || prefersReducedMotion) {
+          inner.style.width = 'auto';
+          return;
+        }
+
+        inner.style.width = '0px';
+        void inner.offsetWidth;
+        word.classList.add('hero-writing-active');
+      });
+    }
+
+    function getHeroDecodeCharset(target) {
+      if (/[\u0E00-\u0E7F]/.test(target)) {
+        return 'กขคงจฉชซญฎฐฑฒดตถทธนบปผพฟภมยรลวศษสหอ0123456789';
+      }
+
+      if (/[\u3040-\u30FF\u4E00-\u9FFF]/.test(target)) {
+        return 'アイウエオカキクケコサシスセソタチツテトナニヌネノ0123456789';
+      }
+
+      if (/[\uAC00-\uD7AF]/.test(target)) {
+        return '가나다라마바사아자차카타파하0123456789';
+      }
+
+      return 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    }
+
+    function isHeroDecodeEligible(char) {
+      return /[A-Za-z0-9\u0E00-\u0E7F\u3040-\u30FF\u4E00-\u9FFF\uAC00-\uD7AF]/.test(char);
+    }
+
+    function buildHeroDecodeFrame(target, progress, charset, tick) {
+      const chars = Array.from(target);
+      const eligibleIndexes = [];
+
+      chars.forEach(function (char, index) {
+        if (isHeroDecodeEligible(char)) {
+          eligibleIndexes.push(index);
+        }
+      });
+
+      if (!eligibleIndexes.length) {
+        return target;
+      }
+
+      const orderByIndex = new Map(
+        eligibleIndexes.map(function (charIndex, order) {
+          return [charIndex, order];
+        })
+      );
+
+      const totalEligible = eligibleIndexes.length;
+      const rawStep = progress * totalEligible;
+      const activeOrder = Math.min(Math.floor(rawStep), totalEligible - 1);
+      const activeProgress = rawStep - activeOrder;
+      const activeTick = Math.floor(tick / 52);
+
+      return chars
+        .map(function (char, index) {
+          if (char === ' ') {
+            return ' ';
+          }
+
+          if (!isHeroDecodeEligible(char)) {
+            return char;
+          }
+
+          const order = orderByIndex.get(index);
+
+          if (progress >= 1 || order < activeOrder) {
+            return char;
+          }
+
+          if (order === activeOrder) {
+            if (activeProgress > 0.78) {
+              return char;
+            }
+
+            return charset[(activeTick + order * 7) % charset.length];
+          }
+
+          return char;
+        })
+        .join('');
+    }
+
+    function syncHeroDecodeText(animate = true) {
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      document.querySelectorAll('.hero-decode-text').forEach(function (element) {
+        const target = (element.textContent || '').trim();
+        const activeState = heroDecodeState.get(element);
+
+        if (activeState && activeState.frameId) {
+          window.cancelAnimationFrame(activeState.frameId);
+        }
+
+        element.classList.remove('hero-decode-active');
+        element.dataset.decodeTarget = target;
+
+        if (!animate || prefersReducedMotion || !target) {
+          element.textContent = target;
+          return;
+        }
+
+        const charset = getHeroDecodeCharset(target);
+        const duration = 3600;
+        const start = performance.now();
+
+        element.classList.add('hero-decode-active');
+
+        const render = function (now) {
+          const progress = Math.min((now - start) / duration, 1);
+          element.textContent = buildHeroDecodeFrame(target, progress, charset, now);
+
+          if (progress < 1) {
+            const frameId = window.requestAnimationFrame(render);
+            heroDecodeState.set(element, { frameId });
+            return;
+          }
+
+          element.textContent = target;
+          element.classList.remove('hero-decode-active');
+          heroDecodeState.delete(element);
+        };
+
+        const frameId = window.requestAnimationFrame(render);
+        heroDecodeState.set(element, { frameId });
+      });
+    }
+
     // Toggle sticky-open for skill folders
     document.addEventListener('DOMContentLoaded', function () {
       document.querySelectorAll('.skill-folder').forEach(function (el) {
         const toggle = function () { el.classList.toggle('open'); };
         el.addEventListener('click', toggle);
         el.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
+      });
+
+      window.requestAnimationFrame(function () {
+        syncHeroWritingWord(true);
+        syncHeroDecodeText(true);
+      });
+    });
+
+    window.addEventListener('i18n:updated', function () {
+      window.requestAnimationFrame(function () {
+        syncHeroWritingWord(true);
+        syncHeroDecodeText(true);
+      });
+    });
+
+    let heroWritingResizeFrame = null;
+    window.addEventListener('resize', function () {
+      if (heroWritingResizeFrame) {
+        window.cancelAnimationFrame(heroWritingResizeFrame);
+      }
+
+      heroWritingResizeFrame = window.requestAnimationFrame(function () {
+        syncHeroWritingWord(false);
+        syncHeroDecodeText(false);
       });
     });
   </script>

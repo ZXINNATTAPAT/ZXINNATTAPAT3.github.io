@@ -714,14 +714,20 @@
           </h1>
           <h1 class="playfair-400 sh-x mb-3" style="color: #2c2c2c; font-size: clamp(36px, 6vw, 90px)"
             data-aos="fade-up" data-aos-delay="150">
-            <span data-i18n="hero.developer">a Developer Based in</span>
-            <span class="parisienne-regular" style="color: #a30000; font-size: clamp(42px, 7vw, 95px)">
-              <span data-i18n="hero.thailand">Thailand</span> </span><span style="color: #2c2c2c;">.</span>
+            <span data-i18n="hero.developer">A Software Developer</span>
+            <span style="display: block;">
+              <span data-i18n="hero.location">Based in</span>
+              <span class="parisienne-regular hero-writing-word" style="color: #a30000; font-size: clamp(42px, 7vw, 95px)">
+                <span class="hero-writing-word-inner">
+                  <span data-i18n="hero.thailand">Thailand</span>
+                  <span class="hero-writing-dot">.</span>
+                </span>
+              </span>
+            </span>
           </h1>
-          <p class="playfair-400" style="opacity: 0.7; font-size: clamp(14px, 2.5vw, 18px)" data-aos="fade-up"
+          <p class="playfair-400 hero-decode-text" style="opacity: 0.7; font-size: clamp(14px, 2.5vw, 18px)" data-aos="fade-up"
             data-aos-delay="100" data-i18n="hero.education">
-            B.Sc. in Computer and Information Science — Faculty of Applied
-            Science
+            B.Sc. in Computer and Information Science — Faculty of Applied Science
           </p>
 
           <div class="profile-cta-row text-center align-items-center justify-content-center">
@@ -751,12 +757,182 @@
 </div>
 
   <script>
+    const heroDecodeState = new WeakMap();
+
+    function syncHeroWritingWord(animate = true) {
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      document.querySelectorAll('.hero-writing-word').forEach(function (word) {
+        const inner = word.querySelector('.hero-writing-word-inner');
+        if (!inner) return;
+
+        word.classList.remove('hero-writing-active');
+        inner.style.width = 'auto';
+
+        const fullWidth = inner.scrollWidth;
+        word.style.setProperty('--hero-write-width', `${fullWidth}px`);
+
+        if (!animate || prefersReducedMotion) {
+          inner.style.width = 'auto';
+          return;
+        }
+
+        inner.style.width = '0px';
+        void inner.offsetWidth;
+        word.classList.add('hero-writing-active');
+      });
+    }
+
+    function getHeroDecodeCharset(target) {
+      if (/[\u0E00-\u0E7F]/.test(target)) {
+        return 'กขคงจฉชซญฎฐฑฒดตถทธนบปผพฟภมยรลวศษสหอ0123456789';
+      }
+
+      if (/[\u3040-\u30FF\u4E00-\u9FFF]/.test(target)) {
+        return 'アイウエオカキクケコサシスセソタチツテトナニヌネノ0123456789';
+      }
+
+      if (/[\uAC00-\uD7AF]/.test(target)) {
+        return '가나다라마바사아자차카타파하0123456789';
+      }
+
+      return 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    }
+
+    function isHeroDecodeEligible(char) {
+      return /[A-Za-z0-9\u0E00-\u0E7F\u3040-\u30FF\u4E00-\u9FFF\uAC00-\uD7AF]/.test(char);
+    }
+
+    function buildHeroDecodeFrame(target, progress, charset, tick) {
+      const chars = Array.from(target);
+      const eligibleIndexes = [];
+
+      chars.forEach(function (char, index) {
+        if (isHeroDecodeEligible(char)) {
+          eligibleIndexes.push(index);
+        }
+      });
+
+      if (!eligibleIndexes.length) {
+        return target;
+      }
+
+      const orderByIndex = new Map(
+        eligibleIndexes.map(function (charIndex, order) {
+          return [charIndex, order];
+        })
+      );
+
+      const totalEligible = eligibleIndexes.length;
+      const rawStep = progress * totalEligible;
+      const activeOrder = Math.min(Math.floor(rawStep), totalEligible - 1);
+      const activeProgress = rawStep - activeOrder;
+      const activeTick = Math.floor(tick / 52);
+
+      return chars
+        .map(function (char, index) {
+          if (char === ' ') {
+            return ' ';
+          }
+
+          if (!isHeroDecodeEligible(char)) {
+            return char;
+          }
+
+          const order = orderByIndex.get(index);
+
+          if (progress >= 1 || order < activeOrder) {
+            return char;
+          }
+
+          if (order === activeOrder) {
+            if (activeProgress > 0.78) {
+              return char;
+            }
+
+            return charset[(activeTick + order * 7) % charset.length];
+          }
+
+          return char;
+        })
+        .join('');
+    }
+
+    function syncHeroDecodeText(animate = true) {
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      document.querySelectorAll('.hero-decode-text').forEach(function (element) {
+        const target = (element.textContent || '').trim();
+        const activeState = heroDecodeState.get(element);
+
+        if (activeState && activeState.frameId) {
+          window.cancelAnimationFrame(activeState.frameId);
+        }
+
+        element.classList.remove('hero-decode-active');
+        element.dataset.decodeTarget = target;
+
+        if (!animate || prefersReducedMotion || !target) {
+          element.textContent = target;
+          return;
+        }
+
+        const charset = getHeroDecodeCharset(target);
+        const duration = 3600;
+        const start = performance.now();
+
+        element.classList.add('hero-decode-active');
+
+        const render = function (now) {
+          const progress = Math.min((now - start) / duration, 1);
+          element.textContent = buildHeroDecodeFrame(target, progress, charset, now);
+
+          if (progress < 1) {
+            const frameId = window.requestAnimationFrame(render);
+            heroDecodeState.set(element, { frameId });
+            return;
+          }
+
+          element.textContent = target;
+          element.classList.remove('hero-decode-active');
+          heroDecodeState.delete(element);
+        };
+
+        const frameId = window.requestAnimationFrame(render);
+        heroDecodeState.set(element, { frameId });
+      });
+    }
+
     // Toggle sticky-open for skill folders
     document.addEventListener('DOMContentLoaded', function () {
       document.querySelectorAll('.skill-folder').forEach(function (el) {
         const toggle = function () { el.classList.toggle('open'); };
         el.addEventListener('click', toggle);
         el.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
+      });
+
+      window.requestAnimationFrame(function () {
+        syncHeroWritingWord(true);
+        syncHeroDecodeText(true);
+      });
+    });
+
+    window.addEventListener('i18n:updated', function () {
+      window.requestAnimationFrame(function () {
+        syncHeroWritingWord(true);
+        syncHeroDecodeText(true);
+      });
+    });
+
+    let heroWritingResizeFrame = null;
+    window.addEventListener('resize', function () {
+      if (heroWritingResizeFrame) {
+        window.cancelAnimationFrame(heroWritingResizeFrame);
+      }
+
+      heroWritingResizeFrame = window.requestAnimationFrame(function () {
+        syncHeroWritingWord(false);
+        syncHeroDecodeText(false);
       });
     });
   </script>
@@ -783,83 +959,6 @@
                   " data-i18n="profile.title">
                 PROFILE
               </h1>
-            </div>
-
-            <br/><br/>
-            <div class="hero-social-buttons">
-              <a href="https://github.com/ZXINNATTAPAT" class="social-button github"
-                aria-label="GitHub Profile">
-                <svg class="cf-icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="-2.5 0 19 19">
-                  <path
-                    d="M9.464 17.178a4.506 4.506 0 0 1-2.013.317 4.29 4.29 0 0 1-2.007-.317.746.746 0 0 1-.277-.587c0-.22-.008-.798-.012-1.567-2.564.557-3.105-1.236-3.105-1.236a2.44 2.44 0 0 0-1.024-1.348c-.836-.572.063-.56.063-.56a1.937 1.937 0 0 1 1.412.95 1.962 1.962 0 0 0 2.682.765 1.971 1.971 0 0 1 .586-1.233c-2.046-.232-4.198-1.023-4.198-4.554a3.566 3.566 0 0 1 .948-2.474 3.313 3.313 0 0 1 .091-2.438s.773-.248 2.534.945a8.727 8.727 0 0 1 4.615 0c1.76-1.193 2.532-.945 2.532-.945a3.31 3.31 0 0 1 .092 2.438 3.562 3.562 0 0 1 .947 2.474c0 3.54-2.155 4.32-4.208 4.548a2.195 2.195 0 0 1 .625 1.706c0 1.232-.011 2.227-.011 2.529a.694.694 0 0 1-.272.587z">
-                  </path>
-                </svg>
-                <span>GitHub</span>
-              </a>
-              <a href="https://www.linkedin.com/in/nattapat2002/" class="social-button linkedin"
-                aria-label="LinkedIn Profile">
-                <svg viewBox="0 -2 44 44" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                  xmlns:xlink="http://www.w3.org/1999/xlink">
-                  <g id="Icons" stroke="none" stroke-width="1">
-                    <g transform="translate(-702.000000, -265.000000)">
-                      <path
-                        d="M746,305 L736.2754,305 L736.2754,290.9384 C736.2754,287.257796 734.754233,284.74515 731.409219,284.74515 C728.850659,284.74515 727.427799,286.440738 726.765522,288.074854 C726.517168,288.661395 726.555974,289.478453 726.555974,290.295511 L726.555974,305 L716.921919,305 C716.921919,305 717.046096,280.091247 716.921919,277.827047 L726.555974,277.827047 L726.555974,282.091631 C727.125118,280.226996 730.203669,277.565794 735.116416,277.565794 C741.21143,277.565794 746,281.474355 746,289.890824 L746,305 L746,305 Z M707.17921,274.428187 L707.117121,274.428187 C704.0127,274.428187 702,272.350964 702,269.717936 C702,267.033681 704.072201,265 707.238711,265 C710.402634,265 712.348071,267.028559 712.41016,269.710252 C712.41016,272.34328 710.402634,274.428187 707.17921,274.428187 L707.17921,274.428187 L707.17921,274.428187 Z M703.109831,277.827047 L711.685795,277.827047 L711.685795,305 L703.109831,305 L703.109831,277.827047 L703.109831,277.827047 Z"
-                        id="LinkedIn"></path>
-                    </g>
-                  </g>
-                </svg>
-                <span>LinkedIn</span>
-              </a>
-              <a href="https://www.facebook.com/aomzinboy/" class="social-button facebook"
-                aria-label="Read more about Seminole tax hike">
-                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-                  xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 310 310" xml:space="preserve">
-                  <g id="XMLID_834_">
-                    <path id="XMLID_835_"
-                      d="M81.703,165.106h33.981V305c0,2.762,2.238,5,5,5h57.616c2.762,0,5-2.238,5-5V165.765h39.064
-                                                  c2.54,0,4.677-1.906,4.967-4.429l5.933-51.502c0.163-1.417-0.286-2.836-1.234-3.899c-0.949-1.064-2.307-1.673-3.732-1.673h-44.996
-                                                  V71.978c0-9.732,5.24-14.667,15.576-14.667c1.473,0,29.42,0,29.42,0c2.762,0,5-2.239,5-5V5.037c0-2.762-2.238-5-5-5h-40.545
-                                                  C187.467,0.023,186.832,0,185.896,0c-7.035,0-31.488,1.381-50.804,19.151c-21.402,19.692-18.427,43.27-17.716,47.358v37.752H81.703
-                                                  c-2.762,0-5,2.238-5,5v50.844C76.703,162.867,78.941,165.106,81.703,165.106z"></path>
-                  </g>
-                </svg>
-                <span>Facebook</span>
-              </a>
-              <a href="https://www.instagram.com/nattazxin/" class="social-button instagram"
-                aria-label="Read more about Seminole tax hike">
-                <svg width="800px" height="800px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                  xmlns:xlink="http://www.w3.org/1999/xlink">
-                  <g id="Page-1" stroke="none" stroke-width="1">
-                    <g id="Dribbble-Light-Preview" transform="translate(-340.000000, -7439.000000)">
-                      <g id="icons" transform="translate(56.000000, 160.000000)">
-                        <path
-                          d="M289.869652,7279.12273 C288.241769,7279.19618 286.830805,7279.5942 285.691486,7280.72871 C284.548187,7281.86918 284.155147,7283.28558 284.081514,7284.89653 C284.035742,7285.90201 283.768077,7293.49818 284.544207,7295.49028 C285.067597,7296.83422 286.098457,7297.86749 287.454694,7298.39256 C288.087538,7298.63872 288.809936,7298.80547 289.869652,7298.85411 C298.730467,7299.25511 302.015089,7299.03674 303.400182,7295.49028 C303.645956,7294.859 303.815113,7294.1374 303.86188,7293.08031 C304.26686,7284.19677 303.796207,7282.27117 302.251908,7280.72871 C301.027016,7279.50685 299.5862,7278.67508 289.869652,7279.12273 M289.951245,7297.06748 C288.981083,7297.0238 288.454707,7296.86201 288.103459,7296.72603 C287.219865,7296.3826 286.556174,7295.72155 286.214876,7294.84312 C285.623823,7293.32944 285.819846,7286.14023 285.872583,7284.97693 C285.924325,7283.83745 286.155174,7282.79624 286.959165,7281.99226 C287.954203,7280.99968 289.239792,7280.51332 297.993144,7280.90837 C299.135448,7280.95998 300.179243,7281.19026 300.985224,7281.99226 C301.980262,7282.98483 302.473801,7284.28014 302.071806,7292.99991 C302.028024,7293.96767 301.865833,7294.49274 301.729513,7294.84312 C300.829003,7297.15085 298.757333,7297.47145 289.951245,7297.06748 M298.089663,7283.68956 C298.089663,7284.34665 298.623998,7284.88065 299.283709,7284.88065 C299.943419,7284.88065 300.47875,7284.34665 300.47875,7283.68956 C300.47875,7283.03248 299.943419,7282.49847 299.283709,7282.49847 C298.623998,7282.49847 298.089663,7283.03248 298.089663,7283.68956 M288.862673,7288.98792 C288.862673,7291.80286 291.150266,7294.08479 293.972194,7294.08479 C296.794123,7294.08479 299.081716,7291.80286 299.081716,7288.98792 C299.081716,7286.17298 296.794123,7283.89205 293.972194,7283.89205 C291.150266,7283.89205 288.862673,7286.17298 288.862673,7288.98792 M290.655732,7288.98792 C290.655732,7287.16159 292.140329,7285.67967 293.972194,7285.67967 C295.80406,7285.67967 297.288657,7287.16159 297.288657,7288.98792 C297.288657,7290.81525 295.80406,7292.29716 293.972194,7292.29716 C292.140329,7292.29716 290.655732,7290.81525 290.655732,7288.98792"
-                          id="instagram-[#167]"></path>
-                      </g>
-                    </g>
-                  </g>
-                </svg>
-                <span>Instagram</span>
-              </a>
-              <a href="https://medium.com/@bigboyzin88/about" class="social-button medium"
-                aria-label="Medium Profile">
-                <svg width="800px" height="800px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/>
-                </svg>
-                <span>Medium</span>
-              </a>
-              <a href="https://www.tiktok.com/@nattazxin" class="social-button tiktok"
-                aria-label="TikTok Profile">
-                <img src="Photo/optimized/Icon/TikTok_Icon_Black_Circle.png" alt="TikTok" width="48" height="48" loading="lazy">
-                <span>TikTok</span>
-              </a>
-              <a href="https://www.youtube.com/@NATTAZXIN" class="social-button youtube"
-                aria-label="YouTube Channel" target="_blank" rel="noopener noreferrer">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                </svg>
-                <span>YouTube</span>
-              </a>
             </div>
           </div>
           <div class="col-md-7" data-aos="fade-left" data-aos-delay="100">
@@ -1035,10 +1134,6 @@
               <div class="app-name">PostgreSQL</div>
             </div>
             <div class="app-item">
-              <div class="app-icon" title="REST API"><img src="https://cdn.simpleicons.org/openapiinitiative/6BA539" alt="REST API" class="app-icon-img" width="48" height="48" loading="lazy"></div>
-              <div class="app-name">REST API</div>
-            </div>
-            <div class="app-item">
               <div class="app-icon" title="C#"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#" class="app-icon-img" width="48" height="48" loading="lazy"></div>
               <div class="app-name">C#</div>
             </div>
@@ -1131,14 +1226,6 @@
             <div class="skill-card-info">
               <div class="skill-card-name">PostgreSQL</div>
               <div class="skill-card-level">Intermediate</div>
-            </div>
-          </div>
-          <!-- REST API -->
-          <div class="skill-card">
-            <div class="skill-card-icon"><img src="https://cdn.simpleicons.org/openapiinitiative/6BA539" alt="REST API"></div>
-            <div class="skill-card-info">
-              <div class="skill-card-name">REST API</div>
-              <div class="skill-card-level">Advanced</div>
             </div>
           </div>
           <!-- C# -->
@@ -1319,86 +1406,120 @@
       </div>
     </div>
   </section>
-  <!-- UI/UX Projects -->
-  <section class="container-fluid"
-    style="background-color: #f8f8ff; padding-top: 0; padding-bottom: 0; transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);">
-    <div class="container" style="padding-top: 3rem; padding-bottom: 3rem; max-width: 1200px;">
-      <!-- OLIF APP SECTION -->
-      <section class="mb-5">
-        <h2 class="dm-serif-display-regular text-center mb-2" style="font-size: clamp(32px, 6vw, 56px); color: #2c2c2c">
-          UX/UI Project – OLIF App
-        </h2>
-        <p class="text-muted text-center mb-4" style="max-width: 680px; margin: auto">
-          A relaxing companion app designed for emotional wellbeing.
-          Collaborated with peers to design the UI/UX experience, ensuring
-          delightful interactions and gentle visuals.
-        </p>
-        <div class="row g-4 align-items-center">
-          <div class="col-12 col-md-4 text-center">
-            <img src="Photo/optimized/Mockup/9.jpg" alt="OLIF Logo" class="img-fluid rounded-4 shadow-sm"
-              style="aspect-ratio: 16/9" / width="800" height="600" loading="lazy">
-          </div>
-          <div class="col-12 col-md-8">
-            <div class="row g-3">
-              <div class="col-12 col-md-6">
-                <div class="rounded-4 shadow-sm overflow-hidden" style="aspect-ratio: 16/9; background-color: #fff">
-                  <img src="Photo/optimized/Mockup/5.jpg" class="img-fluid w-100 h-100" style="object-fit: cover"
-                    alt="OLIF UI 1" / width="800" height="600" loading="lazy">
-                </div>
-              </div>
-              <div class="col-12 col-md-6">
-                <div class="rounded-4 shadow-sm overflow-hidden" style="aspect-ratio: 16/9; background-color: #fff">
-                  <img src="Photo/optimized/Mockup/7.jpg" class="img-fluid w-100 h-100" style="object-fit: cover"
-                    alt="OLIF UI 2" / width="800" height="600" loading="lazy">
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- TRIPLE C APP SECTION -->
-      <section>
-        <h2 class="dm-serif-display-regular text-center mb-2" style="font-size: clamp(32px, 6vw, 56px); color: #2c2c2c">
-          Triple C App
-        </h2>
-        <p class="text-muted text-center mb-4" style="max-width: 680px; margin: auto">
-          Triple C is a healthcare app designed for the HUAWEI Seeds for the
-          Future competition. I contributed to the UI/UX design, shaping
-          wireframes and visuals for features like clinic search and queue
-          booking — all as part of a collaborative team effort.
-        </p>
-        <div class="row g-4 align-items-center">
-          <div class="col-12 col-md-4 text-center">
-            <img src="Photo/optimized/Mockup/13.jpg" alt="Triple C Logo" class="img-fluid rounded-4 shadow-sm"
-              style="aspect-ratio: 16/9" / width="800" height="600" loading="lazy">
-          </div>
-          <div class="col-12 col-md-8">
-            <div class="row g-3">
-              <div class="col-12 col-md-6">
-                <div class="rounded-4 shadow-sm overflow-hidden" style="aspect-ratio: 16/9; background-color: #fff">
-                  <img src="Photo/optimized/Mockup/11.jpg" class="img-fluid w-100 h-100" style="object-fit: cover"
-                    alt="Triple C UI 1" / width="800" height="600" loading="lazy">
-                </div>
-              </div>
-              <div class="col-12 col-md-6">
-                <div class="rounded-4 shadow-sm overflow-hidden" style="aspect-ratio: 16/9; background-color: #fff">
-                  <img src="Photo/optimized/Mockup/12.jpg" class="img-fluid w-100 h-100" style="object-fit: cover"
-                    alt="Triple C UI 2" / width="800" height="600" loading="lazy">
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Footnote -->
-        <div class="text-center mt-4">
-          <small class="fst-italic" style="font-size: 14px; color: #a30000">
-            * This project was collaboratively designed and developed with my
-            peers as part of a team effort.
-          </small>
-        </div>
-      </section>
+  <!-- UI/UX Projects Drag Strip -->
+<section id="uiux-projects" class="uiux-drag-section">
+  <div class="container-fluid uiux-drag-wrap">
+    <div class="uiux-drag-copy text-center">
+      <p class="uiux-drag-kicker">Selected UI/UX Work</p>
+      <h2 class="dm-serif-display-regular uiux-drag-title">
+        UI/UX Project Gallery
+      </h2>
+      <p class="uiux-drag-description">
+        A small gallery of collaborative UI/UX projects. Drag horizontally to
+        explore branding, interface flows, and product screens from OLIF and
+        Triple C.
+      </p>
     </div>
-  </section>
+
+    <div class="uiux-drag-hint">
+      <span class="uiux-drag-hint-pill">
+        <i class="fas fa-arrows-left-right"></i>
+        Drag to explore
+      </span>
+    </div>
+
+    <div
+      class="uiux-drag-shell"
+      data-uiux-drag-shell
+      aria-label="UI and UX projects gallery"
+    >
+      <div class="uiux-drag-track" data-uiux-drag-track>
+        <article class="uiux-drag-card uiux-drag-card-logo">
+          <figure class="uiux-drag-media uiux-drag-media-logo">
+            <img
+              src="Photo/optimized/Mockup/9.jpg"
+              alt="OLIF App logo"
+              width="800"
+              height="600"
+              loading="eager"
+              decoding="async"
+            />
+          </figure>
+        </article>
+
+        <article class="uiux-drag-card">
+          <figure class="uiux-drag-media">
+            <img
+              src="Photo/optimized/Mockup/5.jpg"
+              alt="OLIF App interface set one"
+              width="800"
+              height="600"
+              loading="eager"
+              decoding="async"
+            />
+          </figure>
+        </article>
+
+        <article class="uiux-drag-card">
+          <figure class="uiux-drag-media">
+            <img
+              src="Photo/optimized/Mockup/7.jpg"
+              alt="OLIF App interface set two"
+              width="800"
+              height="600"
+              loading="eager"
+              decoding="async"
+            />
+          </figure>
+        </article>
+
+        <article class="uiux-drag-card uiux-drag-card-logo">
+          <figure class="uiux-drag-media uiux-drag-media-logo">
+            <img
+              src="Photo/optimized/Mockup/13.jpg"
+              alt="Triple C App logo"
+              width="800"
+              height="600"
+              loading="eager"
+              decoding="async"
+            />
+          </figure>
+        </article>
+
+        <article class="uiux-drag-card">
+          <figure class="uiux-drag-media">
+            <img
+              src="Photo/optimized/Mockup/11.jpg"
+              alt="Triple C App interface set one"
+              width="800"
+              height="600"
+              loading="eager"
+              decoding="async"
+            />
+          </figure>
+        </article>
+
+        <article class="uiux-drag-card">
+          <figure class="uiux-drag-media">
+            <img
+              src="Photo/optimized/Mockup/12.jpg"
+              alt="Triple C App interface set two"
+              width="800"
+              height="600"
+              loading="eager"
+              decoding="async"
+            />
+          </figure>
+        </article>
+      </div>
+    </div>
+
+    <p class="uiux-drag-footnote">
+      * These projects were collaboratively designed and developed with my peers
+      as part of a team effort.
+    </p>
+  </div>
+</section>
   <!-- Automation & Integration Tools Section -->
   <section id="automation-tools" class="container-fluid automation-section"
     style="background-color: #f8f8ff; padding-top: 0; padding-bottom: 3rem; transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);">
@@ -1676,145 +1797,11 @@
     }
   })();
 </script>
-  <!-- Portfolio Project List -->
-  <section class="container-fluid" style="background-color: #f8f8ff; padding-top: 0; padding-bottom: 0;" id="portfolio-list">
-    <div class="container px-3 px-md-4" style="max-width: 1200px;">
-      <div class="py-4 py-md-5">
-        <h2 class="playfair-400 text-center text-md-start mb-4 mb-md-5"
-          style="color: #2c2c2c; font-size: clamp(32px, 6vw, 72px); line-height: 1.1; padding-bottom: 1rem; border-bottom: 1px solid rgba(0, 0, 0, 0.15);">
-          <span class="portfolio-heading-word" data-i18n="portfolioList.portfolio">Portfolio</span>
-          <span class="portfolio-heading-word" data-i18n="portfolioList.project">PROJECT</span>
-        </h2>
-        <!-- Project Rows -->
-        <a href="projects/olaf.html" class="text-decoration-none project-list-row-link">
-          <div class="row py-3 py-md-4 align-items-center g-3 g-md-4">
-            <div class="col-12 col-md-3 text-center text-md-start">
-              <img class="shadow-sm img-fluid" src="Photo/optimized/olafbanner.png" alt="OLAF Logo"
-                style="max-width: 100%; width: 100%; max-width: 300px; border-radius: 20px; object-fit: cover; aspect-ratio: 16/9;" / loading="lazy">
-            </div>
-            <div class="col-12 col-md-8">
-              <h3 class="mb-2 mb-md-3 playfair-400"
-                style="font-size: clamp(18px, 2.5vw, 22px); line-height: 1.4; color: #1d1d1f">
-                OLAF® – Modern Social Media Platform
-              </h3>
-              <p class="text-muted mb-0" style="font-size: clamp(14px, 1.8vw, 16px); line-height: 1.6">
-                Modern React social media platform with secure authentication, post management, comments, and user
-                profiles. Built with React 18, HTTP-only cookies, and Cloudinary integration.
-              </p>
-            </div>
-            <div class="col-12 col-md-1 text-center text-md-end d-none d-md-block">
-              <span style="font-size: clamp(20px, 2.5vw, 28px); color: #6b6b6b">→</span>
-            </div>
-          </div>
-        </a>
-        <hr style="border: none; border-top: 1px solid rgba(0, 0, 0, 0.15); margin: 0;">
-        
-        <a href="projects/asm.html" class="text-decoration-none project-list-row-link">
-          <div class="row py-3 py-md-4 align-items-center g-3 g-md-4">
-            <div class="col-12 col-md-3 text-center text-md-start">
-              <img class="shadow-sm img-fluid" src="Photo/optimized/AMS..jpg" alt="Assetix Logo"
-                style="max-width: 100%; width: 100%; max-width: 300px; border-radius: 20px" / loading="lazy">
-            </div>
-            <div class="col-12 col-md-8">
-              <h5 class="mb-2 mb-md-3 playfair-400"
-                style="font-size: clamp(18px, 2.5vw, 22px); line-height: 1.4; color: #1d1d1f">
-                ASM.® – Asset Management System for ECT
-              </h5>
-              <p class="text-muted mb-0" style="font-size: clamp(14px, 1.8vw, 16px); line-height: 1.6">
-                Asset management system for the Election Commission of Thailand. Features include CRUD operations,
-                automated depreciation, and inventory audits. Built with Angular, ASP.NET Core, PostgreSQL.
-              </p>
-            </div>
-            <div class="col-12 col-md-1 text-center text-md-end d-none d-md-block">
-              <span style="font-size: clamp(20px, 2.5vw, 28px); color: #6b6b6b">→</span>
-            </div>
-          </div>
-        </a>
-        <hr style="border: none; border-top: 1px solid rgba(0, 0, 0, 0.15); margin: 0;">
-
-        <a href="projects/votemai.html" class="text-decoration-none project-list-row-link">
-          <div class="row py-3 py-md-4 align-items-center g-3 g-md-4">
-            <div class="col-12 col-md-3 text-center text-md-start">
-              <img class="shadow-sm img-fluid" src="Photo/optimized/votemaiLogo.jpg" alt="Votemai Logo"
-                style="max-width: 100%; width: 100%; max-width: 300px; border-radius: 20px" / loading="lazy">
-            </div>
-            <div class="col-12 col-md-8">
-              <h5 class="mb-2 mb-md-3 playfair-400"
-                style="font-size: clamp(18px, 2.5vw, 22px); line-height: 1.4; color: #1d1d1f">
-                VOTEMAI® – Decentralized Voting Application
-              </h5>
-              <p class="text-muted mb-0" style="font-size: clamp(14px, 1.8vw, 16px); line-height: 1.6">
-                Blockchain-based voting platform using <strong>MERN Stack, Solidity, and IPFS</strong>. Features smart
-                contracts on <strong>MATIC (Polygon)</strong> network and secure voting via <strong>Metamask</strong>. Led
-                full-stack development with <strong>Hardhat</strong> and <strong>React.js</strong>.
-              </p>
-            </div>
-            <div class="col-12 col-md-1 text-center text-md-end d-none d-md-block">
-              <span style="font-size: clamp(20px, 2.5vw, 28px); color: #6b6b6b">→</span>
-            </div>
-          </div>
-        </a>
-        <hr style="border: none; border-top: 1px solid rgba(0, 0, 0, 0.15); margin: 0;">
-
-        <a href="projects/homema.html" class="text-decoration-none project-list-row-link">
-          <div class="row py-3 py-md-4 align-items-center g-3 g-md-4">
-            <div class="col-12 col-md-3 text-center text-md-start">
-              <img class="shadow-sm img-fluid" src="Photo/optimized/6.jpg" alt="HOMEMA Logo"
-                style="max-width: 100%; width: 100%; max-width: 300px; border-radius: 20px" / loading="lazy">
-            </div>
-            <div class="col-12 col-md-8">
-              <h5 class="mb-2 mb-md-3 playfair-400"
-                style="font-size: clamp(18px, 2.5vw, 22px); line-height: 1.4; color: #1d1d1f">
-                HOMEMA® – Technician Hiring Platform
-              </h5>
-              <p class="text-muted mb-0" style="font-size: clamp(14px, 1.8vw, 16px); line-height: 1.6">
-                Web platform connecting users with qualified technicians. Features secure authentication, CRUD operations,
-                and RESTful API integration. Responsive Bootstrap UI with mobile-first design. Led team as project leader.
-                <br />
-                <span class="fw-semibold">Tech stack:</span> React.js, Node.js, MySQL, Bootstrap
-              </p>
-            </div>
-            <div class="col-12 col-md-1 text-center text-md-end d-none d-md-block">
-              <span style="font-size: clamp(20px, 2.5vw, 28px); color: #6b6b6b">→</span>
-            </div>
-          </div>
-        </a>
-        <hr style="border: none; border-top: 1px solid rgba(0, 0, 0, 0.15); margin: 0;">
-
-        <div class="row py-3 py-md-4 align-items-center g-3 g-md-4">
-          <div class="col-12 col-md-3 text-center text-md-start">
-            <img class="shadow-sm img-fluid" src="Photo/optimized/5.jpg" alt="ZSELL Logo"
-              style="max-width: 100%; width: 100%; max-width: 300px; border-radius: 20px" / loading="lazy">
-          </div>
-          <div class="col-12 col-md-8">
-            <h5 class="mb-2 mb-md-3 playfair-400"
-              style="font-size: clamp(18px, 2.5vw, 22px); line-height: 1.4; color: #1d1d1f">
-              ZSELL® – Point of Sale Web Application
-            </h5>
-            <p class="text-muted mb-0" style="font-size: clamp(14px, 1.8vw, 16px); line-height: 1.6">
-              Personal POS system with real-time sales analytics via Chart.js. Optimized backend with custom database
-              schema supporting 125+ daily transactions. Features itemized sales logs and business reporting.
-              <br />
-              <span class="fw-semibold">Tech stack:</span> React.js, Node.js, MySQL, Bootstrap<br />
-              <span class="fw-semibold">Duration:</span> May – Jun 2022
-            </p>
-          </div>
-          <div class="col-12 col-md-1 text-center text-md-end d-none d-md-block">
-            <span style="font-size: clamp(20px, 2.5vw, 28px); color: #6b6b6b">→</span>
-          </div>
-        </div>
-        <div class="text-end mt-3 mt-md-4">
-          <a href="#portfolio" class="portfolio-more-nav-link" data-i18n="portfolioList.moreProjects">More projects</a>
-        </div>
-      </div>
-    </div>
-  </section>
   <!-- Experience & Internship -->
   <section id="experience" class="container-fluid" style="background-color: #f8f8ff; padding-top: 0; padding-bottom: 3rem;">
     <div class="container" style="max-width: 1200px;">
-      <!-- Section Header -->
       <div class="text-center mb-5" data-aos="fade-up">
-        <h1 class="dm-serif-display-regular mb-3" style="color: #2c2c2c; font-size: clamp(40px, 8vw, 80px)" data-i18n="experience.title">
+        <h1 class="dm-serif-display-regular mb-3" style="color: #2c2c2c; font-size: clamp(34px, 6.4vw, 64px)" data-i18n="experience.title">
           EXPERIENCE & INTERNSHIP
         </h1>
         <p class="playfair-400 text-muted mx-auto" style="max-width: 600px; font-size: 1.1rem" data-i18n="experience.description">
@@ -1822,251 +1809,129 @@
           building real-world solutions and growing with each opportunity.
         </p>
       </div>
+      <div class="experience-showcase-grid" data-aos="fade-up" data-aos-delay="90">
+        <button type="button" class="experience-showcase-card experience-card-red" data-experience-target="exp-fulltime" aria-pressed="false" aria-controls="exp-fulltime" aria-label="Software Developer at Business ALive Co.,Ltd">
+          <span class="experience-showcase-icon-shell">
+            <span class="experience-showcase-logo experience-showcase-logo-wide">
+              <img src="Photo/optimized/business-alive-logo.png" alt="Business ALive Logo" loading="lazy">
+            </span>
+          </span>
+          <span class="experience-showcase-card-text">
+            <span class="experience-showcase-label">Business ALive</span>
+            <span class="experience-showcase-caption">Current Role</span>
+          </span>
+        </button>
 
-      <!-- Timeline Container -->
-      <div class="position-relative" style="max-width: 100%; overflow-x: hidden;">
-        <!-- Experience Cards -->
-        <div class="row g-5" style="margin-left: 0; margin-right: 0;">
-          <!-- Business ALive Co.,Ltd -->
-          <div class="col-12" data-aos="fade-up" data-aos-delay="100">
-            <div class="experience-card-minimal experience-card-red">
-              <div class="experience-card-header" onclick="toggleExperience(this)">
-                <div class="row g-3 align-items-center">
-                  <div class="col-auto">
-                    <div class="experience-logo-minimal">
-                      <img src="Photo/optimized/Logo BAALIVE.jfif" alt="Business ALive Logo" / loading="lazy">
-                    </div>
-                  </div>
-                  <div class="col">
-                    <div class="d-flex flex-wrap align-items-center gap-3 mb-2">
-                      <h3 class="playfair-400 mb-0 experience-title">Software Developer</h3>
-                      <div class="d-flex gap-2">
-                        <span class="badge rounded-pill tech-badge-minimal playfair-400">
-                          <i class="fas fa-briefcase me-1"></i> Full-time
-                        </span>
-                        <span class="badge rounded-pill tech-badge-minimal playfair-400">
-                          <i class="fas fa-home me-1"></i> Hybrid
-                        </span>
-                      </div>
-                    </div>
-                    <h4 class="playfair-400 mb-2 experience-company">
-                      <a href="https://www.balives.com/" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;">
-                        Business ALive Co.,Ltd (Thailand)
-                        <i class="fas fa-external-link-alt ms-1" style="font-size: 0.8rem; opacity: 0.7;"></i>
-                      </a>
-                    </h4>
-                    <div class="d-flex flex-wrap gap-2">
-                      <span class="badge rounded-pill tech-badge-minimal playfair-400">
-                        <i class="fas fa-calendar-alt me-1"></i> Aug 2025 - Present
-                      </span>
-                      <span class="badge rounded-pill tech-badge-minimal playfair-400">
-                        <i class="fas fa-map-marker-alt me-1"></i> Bangkok, Thailand
-                      </span>
-                    </div>
-                  </div>
-                  <div class="col-auto">
-                    <i class="fas fa-chevron-down experience-toggle-icon"></i>
-                  </div>
-                </div>
-              </div>
-              <div class="experience-card-details">
-                <div class="experience-details-content">
-                  <div class="row g-3 mb-4">
-                    <div class="col-12 col-md-6">
-                      <div class="d-flex align-items-center mb-2">
-                        <i class="fas fa-check-circle me-2 experience-check-icon"></i>
-                        <span class="playfair-400">Frontend development with backend contributions</span>
-                      </div>
-                      <div class="d-flex align-items-center mb-2">
-                        <i class="fas fa-check-circle me-2 experience-check-icon"></i>
-                        <span class="playfair-400">Next.js platform development</span>
-                      </div>
-                    </div>
-                    <div class="col-12 col-md-6">
-                      <div class="d-flex align-items-center mb-2">
-                        <i class="fas fa-check-circle me-2 experience-check-icon"></i>
-                        <span class="playfair-400">Azure DevOps collaboration</span>
-                      </div>
-                      <div class="d-flex align-items-center mb-2">
-                        <i class="fas fa-check-circle me-2 experience-check-icon"></i>
-                        <span class="playfair-400">Sprint planning & code reviews</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="d-flex flex-wrap gap-2">
-                    <span class="badge rounded-pill tech-badge-minimal playfair-400">
-                      <i class="fab fa-react me-1"></i> Next.js
-                    </span>
-                    <span class="badge rounded-pill tech-badge-minimal playfair-400">
-                      <i class="fab fa-vuejs me-1"></i> Nuxt.js
-                    </span>
-                    <span class="badge rounded-pill tech-badge-minimal playfair-400">
-                      <i class="fab fa-docker me-1"></i> Docker Swarm
-                    </span>
-                  </div>
-                </div>
+        <button type="button" class="experience-showcase-card experience-card-blue" data-experience-target="exp-parttime" aria-pressed="false" aria-controls="exp-parttime" aria-label="Next.js Developer at Business ALive Co.,Ltd">
+          <span class="experience-showcase-icon-shell">
+            <span class="experience-showcase-logo experience-showcase-logo-wide">
+              <img src="Photo/optimized/business-alive-logo.png" alt="Business ALive Logo" loading="lazy">
+            </span>
+          </span>
+          <span class="experience-showcase-card-text">
+            <span class="experience-showcase-label">Business ALive</span>
+            <span class="experience-showcase-caption">Previous Role</span>
+          </span>
+        </button>
+
+        <button type="button" class="experience-showcase-card experience-card-purple" data-experience-target="exp-intern" aria-pressed="false" aria-controls="exp-intern" aria-label="Developer Intern at Election Commission of Thailand">
+          <span class="experience-showcase-icon-shell">
+            <span class="experience-showcase-logo">
+              <img src="https://www.ect.go.th/ect_th/app/images/Logo-ect-2.png" alt="ECT Logo" loading="lazy">
+            </span>
+          </span>
+          <span class="experience-showcase-card-text">
+            <span class="experience-showcase-label">ECT</span>
+            <span class="experience-showcase-caption">Internship</span>
+          </span>
+        </button>
+      </div>
+
+      <div class="experience-showcase-hint" data-aos="fade-up" data-aos-delay="120">
+        <span class="experience-showcase-hint-pill">
+          <i class="fas fa-hand-pointer" aria-hidden="true"></i>
+          <span data-i18n="experience.hint">Click a widget to view details</span>
+        </span>
+      </div>
+
+      <div class="experience-showcase-panels" data-aos="fade-up" data-aos-delay="140" hidden>
+        <article id="exp-fulltime" class="experience-showcase-panel experience-card-red" hidden>
+          <div class="experience-panel-surface">
+            <div class="experience-panel-head">
+              <div class="experience-panel-title-wrap">
+                <p class="experience-panel-kicker mb-2">Current Role</p>
+                <p class="experience-panel-company mb-2">
+                  <a href="https://www.balives.com/" target="_blank" rel="noopener noreferrer">Business ALive Co.,Ltd (Thailand)</a>
+                </p>
+                <h3 class="playfair-400 experience-panel-title mb-0">Software Developer</h3>
               </div>
             </div>
-          </div>
-
-          <!-- Next.js Developer Part-time -->
-          <div class="col-12" data-aos="fade-up" data-aos-delay="100">
-            <div class="experience-card-minimal experience-card-blue">
-              <div class="experience-card-header" onclick="toggleExperience(this)">
-                <div class="row g-3 align-items-center">
-                  <div class="col-auto">
-                    <div class="experience-logo-minimal">
-                      <img src="Photo/optimized/Logo BAALIVE.jfif" alt="Business ALive Logo" / loading="lazy">
-                    </div>
-                  </div>
-                  <div class="col">
-                    <div class="d-flex flex-wrap align-items-center gap-3 mb-2">
-                      <h3 class="playfair-400 mb-0 experience-title">Next.js Developer</h3>
-                      <span class="badge rounded-pill tech-badge-minimal playfair-400">
-                        <i class="fas fa-clock me-1"></i> Part-time
-                      </span>
-                    </div>
-                    <h4 class="playfair-400 mb-2 experience-company">
-                      <a href="https://www.balives.com/" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;">
-                        Business ALive Co.,Ltd (Thailand)
-                        <i class="fas fa-external-link-alt ms-1" style="font-size: 0.8rem; opacity: 0.7;"></i>
-                      </a>
-                    </h4>
-                    <div class="d-flex flex-wrap gap-2">
-                      <span class="badge rounded-pill tech-badge-minimal playfair-400">
-                        <i class="fas fa-calendar-alt me-1"></i> Jul 2025 - Aug 2025
-                      </span>
-                      <span class="badge rounded-pill tech-badge-minimal playfair-400">
-                        <i class="fas fa-map-marker-alt me-1"></i> Bangkok City, Thailand
-                      </span>
-                    </div>
-                  </div>
-                  <div class="col-auto">
-                    <i class="fas fa-chevron-down experience-toggle-icon"></i>
-                  </div>
-                </div>
-              </div>
-              <div class="experience-card-details">
-                <div class="experience-details-content">
-                  <div class="row g-3 mb-4">
-                    <div class="col-12 col-md-6">
-                      <div class="d-flex align-items-center mb-2">
-                        <i class="fas fa-check-circle me-2 experience-check-icon"></i>
-                        <span class="playfair-400">Feature implementation & bug fixes</span>
-                      </div>
-                      <div class="d-flex align-items-center mb-2">
-                        <i class="fas fa-check-circle me-2 experience-check-icon"></i>
-                        <span class="playfair-400">Agile development environment</span>
-                      </div>
-                    </div>
-                    <div class="col-12 col-md-6">
-                      <div class="d-flex align-items-center mb-2">
-                        <i class="fas fa-check-circle me-2 experience-check-icon"></i>
-                        <span class="playfair-400">Collaboration with full-time developers</span>
-                      </div>
-                      <div class="d-flex align-items-center mb-2">
-                        <i class="fas fa-check-circle me-2 experience-check-icon"></i>
-                        <span class="playfair-400">Task-based development workflow</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="d-flex flex-wrap gap-2">
-                    <span class="badge rounded-pill tech-badge-minimal playfair-400">
-                      <i class="fab fa-react me-1"></i> Next.js
-                    </span>
-                    <span class="badge rounded-pill tech-badge-minimal playfair-400">
-                      <i class="fab fa-vuejs me-1"></i> Nuxt.js
-                    </span>
-                  </div>
-                </div>
-              </div>
+            <ul class="experience-panel-list">
+              <li><span class="experience-panel-list-bullet"></span><span class="playfair-400">Lead frontend delivery while contributing to backend implementation for complete feature flows.</span></li>
+              <li><span class="experience-panel-list-bullet"></span><span class="playfair-400">Build product features for a Next.js platform based on real client requirements and workflow discussions.</span></li>
+              <li><span class="experience-panel-list-bullet"></span><span class="playfair-400">Work inside Azure DevOps, sprint planning, and code review cycles with the engineering team.</span></li>
+              <li><span class="experience-panel-list-bullet"></span><span class="playfair-400">Balance UI quality, API thinking, and maintainable implementation choices for production use.</span></li>
+            </ul>
+            <div class="experience-stack-strip">
+              <span class="badge rounded-pill tech-badge-minimal playfair-400"><i class="fab fa-react me-1"></i> Next.js</span>
+              <span class="badge rounded-pill tech-badge-minimal playfair-400"><i class="fab fa-vuejs me-1"></i> Nuxt.js</span>
+              <span class="badge rounded-pill tech-badge-minimal playfair-400"><i class="fas fa-server me-1"></i> NestJS</span>
+              <span class="badge rounded-pill tech-badge-minimal playfair-400"><i class="fab fa-docker me-1"></i> Docker Swarm</span>
+              <span class="badge rounded-pill tech-badge-minimal playfair-400"><i class="fas fa-code-branch me-1"></i> Azure DevOps</span>
             </div>
           </div>
+        </article>
 
-          <!-- Election Commission Internship -->
-          <div class="col-12" data-aos="fade-up" data-aos-delay="150">
-            <div class="experience-card-minimal experience-card-purple">
-              <div class="experience-card-header" onclick="toggleExperience(this)">
-                <div class="row g-3 align-items-center">
-                  <div class="col-auto">
-                    <div class="experience-logo-minimal">
-                      <img src="https://www.ect.go.th/ect_th/app/images/Logo-ect-2.png" alt="ECT Logo" />
-                    </div>
-                  </div>
-                  <div class="col">
-                    <div class="d-flex flex-wrap align-items-center gap-3 mb-2">
-                      <h3 class="playfair-400 mb-0 experience-title">Developer Intern</h3>
-                      <div class="d-flex gap-2">
-                        <span class="badge rounded-pill tech-badge-minimal playfair-400">
-                          <i class="fas fa-graduation-cap me-1"></i> Internship
-                        </span>
-                        <span class="badge rounded-pill tech-badge-minimal playfair-400">
-                          <i class="fas fa-building me-1"></i> On-site
-                        </span>
-                      </div>
-                    </div>
-                    <h4 class="playfair-400 mb-2 experience-company">Election Commission of Thailand</h4>
-                    <div class="d-flex flex-wrap gap-2">
-                      <span class="badge rounded-pill tech-badge-minimal playfair-400">
-                        <i class="fas fa-calendar-alt me-1"></i> May 2024 - Jul 2024
-                      </span>
-                      <span class="badge rounded-pill tech-badge-minimal playfair-400">
-                        <i class="fas fa-map-marker-alt me-1"></i> Bangkok, Thailand
-                      </span>
-                    </div>
-                  </div>
-                  <div class="col-auto">
-                    <i class="fas fa-chevron-down experience-toggle-icon"></i>
-                  </div>
-                </div>
-              </div>
-              <div class="experience-card-details">
-                <div class="experience-details-content">
-                  <div class="experience-project-highlight mb-4">
-                    <div class="d-flex align-items-center">
-                      <i class="fas fa-project-diagram me-2"></i>
-                      <strong class="playfair-400">Capstone Project:</strong>
-                      <span class="playfair-400 ms-2">"Asset Management System"</span>
-                    </div>
-                  </div>
-                  <div class="row g-3 mb-4">
-                    <div class="col-12 col-md-6">
-                      <div class="d-flex align-items-center mb-2">
-                        <i class="fas fa-check-circle me-2 experience-check-icon"></i>
-                        <span class="playfair-400">C# & Microsoft SQL Server development</span>
-                      </div>
-                      <div class="d-flex align-items-center mb-2">
-                        <i class="fas fa-check-circle me-2 experience-check-icon"></i>
-                        <span class="playfair-400">Web application design & implementation</span>
-                      </div>
-                    </div>
-                    <div class="col-12 col-md-6">
-                      <div class="d-flex align-items-center mb-2">
-                        <i class="fas fa-check-circle me-2 experience-check-icon"></i>
-                        <span class="playfair-400">IT officer collaboration</span>
-                      </div>
-                      <div class="d-flex align-items-center mb-2">
-                        <i class="fas fa-check-circle me-2 experience-check-icon"></i>
-                        <span class="playfair-400">System testing & enhancement</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="d-flex flex-wrap gap-2">
-                    <span class="badge rounded-pill tech-badge-minimal playfair-400">
-                      <i class="fab fa-microsoft me-1"></i> C#
-                    </span>
-                    <span class="badge rounded-pill tech-badge-minimal playfair-400">
-                      <i class="fas fa-database me-1"></i> SQL Server
-                    </span>
-                    <span class="badge rounded-pill tech-badge-minimal playfair-400">
-                      <i class="fab fa-angular me-1"></i> AngularJS
-                    </span>
-                  </div>
-                </div>
+        <article id="exp-parttime" class="experience-showcase-panel experience-card-blue" hidden>
+          <div class="experience-panel-surface">
+            <div class="experience-panel-head">
+              <div class="experience-panel-title-wrap">
+                <p class="experience-panel-kicker mb-2">Previous Role</p>
+                <p class="experience-panel-company mb-2">
+                  <a href="https://www.balives.com/" target="_blank" rel="noopener noreferrer">Business ALive Co.,Ltd (Thailand)</a>
+                </p>
+                <h3 class="playfair-400 experience-panel-title mb-0">Next.js Developer</h3>
               </div>
             </div>
+            <ul class="experience-panel-list">
+              <li><span class="experience-panel-list-bullet"></span><span class="playfair-400">Implemented requested features and resolved bugs in active product work.</span></li>
+              <li><span class="experience-panel-list-bullet"></span><span class="playfair-400">Worked in an Agile setup with task-based handoff and iteration from senior developers.</span></li>
+              <li><span class="experience-panel-list-bullet"></span><span class="playfair-400">Collaborated closely with full-time engineers and learned how priorities shape implementation decisions.</span></li>
+              <li><span class="experience-panel-list-bullet"></span><span class="playfair-400">Built confidence working cleanly inside an existing structure instead of starting from scratch.</span></li>
+            </ul>
+            <div class="experience-stack-strip">
+              <span class="badge rounded-pill tech-badge-minimal playfair-400"><i class="fab fa-react me-1"></i> Next.js</span>
+              <span class="badge rounded-pill tech-badge-minimal playfair-400"><i class="fab fa-vuejs me-1"></i> Nuxt.js</span>
+              <span class="badge rounded-pill tech-badge-minimal playfair-400"><i class="fas fa-bug me-1"></i> Bug Fixing</span>
+              <span class="badge rounded-pill tech-badge-minimal playfair-400"><i class="fas fa-list-check me-1"></i> Agile Tasks</span>
+            </div>
           </div>
-        </div>
+        </article>
+
+        <article id="exp-intern" class="experience-showcase-panel experience-card-purple" hidden>
+          <div class="experience-panel-surface">
+            <div class="experience-panel-head">
+              <div class="experience-panel-title-wrap">
+                <p class="experience-panel-kicker mb-2">Internship</p>
+                <p class="experience-panel-company mb-2">Election Commission of Thailand</p>
+                <h3 class="playfair-400 experience-panel-title mb-0">Developer Intern</h3>
+              </div>
+            </div>
+            <ul class="experience-panel-list">
+              <li><span class="experience-panel-list-bullet"></span><span class="playfair-400">Capstone project: Asset Management System.</span></li>
+              <li><span class="experience-panel-list-bullet"></span><span class="playfair-400">Built an Asset Management System for internal use at the Election Commission.</span></li>
+              <li><span class="experience-panel-list-bullet"></span><span class="playfair-400">Worked with C#, Microsoft SQL Server, and web application structure for asset tracking workflows.</span></li>
+              <li><span class="experience-panel-list-bullet"></span><span class="playfair-400">Collaborated with IT officers to test, refine, and improve the system for real organizational use.</span></li>
+              <li><span class="experience-panel-list-bullet"></span><span class="playfair-400">The project later became a strong academic and practical milestone, including public showcase recognition.</span></li>
+            </ul>
+            <div class="experience-stack-strip">
+              <span class="badge rounded-pill tech-badge-minimal playfair-400"><i class="fab fa-microsoft me-1"></i> C#</span>
+              <span class="badge rounded-pill tech-badge-minimal playfair-400"><i class="fas fa-database me-1"></i> SQL Server</span>
+              <span class="badge rounded-pill tech-badge-minimal playfair-400"><i class="fab fa-angular me-1"></i> AngularJS</span>
+              <span class="badge rounded-pill tech-badge-minimal playfair-400"><i class="fas fa-sitemap me-1"></i> Internal Systems</span>
+            </div>
+          </div>
+        </article>
       </div>
     </div>
   </section>
@@ -2268,16 +2133,61 @@
           <p class="playfair-400 footer-brand-copy" data-i18n="footer.brandCopy">
             Full-stack developer crafting beautiful interfaces and dependable systems across web, cloud, and mobile.
           </p>
-          <div class="footer-social">
-            <a href="https://www.linkedin.com/in/nattapat2002" target="_blank" aria-label="LinkedIn">
-              <i class="fab fa-linkedin"></i>
-            </a>
-            <a href="https://github.com/ZXINNATTAPAT" target="_blank" aria-label="GitHub">
-              <i class="fab fa-github"></i>
-            </a>
-            <a href="https://www.instagram.com/nattazxin/" target="_blank" aria-label="Instagram">
-              <i class="fab fa-instagram"></i>
-            </a>
+          <div class="footer-social-panel">
+            <div class="hero-social-buttons">
+              <a href="https://github.com/ZXINNATTAPAT" class="social-button github" aria-label="GitHub Profile" target="_blank" rel="noopener noreferrer">
+                <svg class="cf-icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="-2.5 0 19 19">
+                  <path d="M9.464 17.178a4.506 4.506 0 0 1-2.013.317 4.29 4.29 0 0 1-2.007-.317.746.746 0 0 1-.277-.587c0-.22-.008-.798-.012-1.567-2.564.557-3.105-1.236-3.105-1.236a2.44 2.44 0 0 0-1.024-1.348c-.836-.572.063-.56.063-.56a1.937 1.937 0 0 1 1.412.95 1.962 1.962 0 0 0 2.682.765 1.971 1.971 0 0 1 .586-1.233c-2.046-.232-4.198-1.023-4.198-4.554a3.566 3.566 0 0 1 .948-2.474 3.313 3.313 0 0 1 .091-2.438s.773-.248 2.534.945a8.727 8.727 0 0 1 4.615 0c1.76-1.193 2.532-.945 2.532-.945a3.31 3.31 0 0 1 .092 2.438 3.562 3.562 0 0 1 .947 2.474c0 3.54-2.155 4.32-4.208 4.548a2.195 2.195 0 0 1 .625 1.706c0 1.232-.011 2.227-.011 2.529a.694.694 0 0 1-.272.587z"></path>
+                </svg>
+                <span>GitHub</span>
+              </a>
+              <a href="https://www.linkedin.com/in/nattapat2002/" class="social-button linkedin" aria-label="LinkedIn Profile" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 -2 44 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                  <g id="Icons" stroke="none" stroke-width="1">
+                    <g transform="translate(-702.000000, -265.000000)">
+                      <path d="M746,305 L736.2754,305 L736.2754,290.9384 C736.2754,287.257796 734.754233,284.74515 731.409219,284.74515 C728.850659,284.74515 727.427799,286.440738 726.765522,288.074854 C726.517168,288.661395 726.555974,289.478453 726.555974,290.295511 L726.555974,305 L716.921919,305 C716.921919,305 717.046096,280.091247 716.921919,277.827047 L726.555974,277.827047 L726.555974,282.091631 C727.125118,280.226996 730.203669,277.565794 735.116416,277.565794 C741.21143,277.565794 746,281.474355 746,289.890824 L746,305 L746,305 Z M707.17921,274.428187 L707.117121,274.428187 C704.0127,274.428187 702,272.350964 702,269.717936 C702,267.033681 704.072201,265 707.238711,265 C710.402634,265 712.348071,267.028559 712.41016,269.710252 C712.41016,272.34328 710.402634,274.428187 707.17921,274.428187 L707.17921,274.428187 L707.17921,274.428187 Z M703.109831,277.827047 L711.685795,277.827047 L711.685795,305 L703.109831,305 L703.109831,277.827047 L703.109831,277.827047 Z" id="LinkedIn"></path>
+                    </g>
+                  </g>
+                </svg>
+                <span>LinkedIn</span>
+              </a>
+              <a href="https://www.facebook.com/aomzinboy/" class="social-button facebook" aria-label="Facebook Profile" target="_blank" rel="noopener noreferrer">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 310 310" xml:space="preserve">
+                  <g id="XMLID_834_">
+                    <path id="XMLID_835_" d="M81.703,165.106h33.981V305c0,2.762,2.238,5,5,5h57.616c2.762,0,5-2.238,5-5V165.765h39.064 c2.54,0,4.677-1.906,4.967-4.429l5.933-51.502c0.163-1.417-0.286-2.836-1.234-3.899c-0.949-1.064-2.307-1.673-3.732-1.673h-44.996 V71.978c0-9.732,5.24-14.667,15.576-14.667c1.473,0,29.42,0,29.42,0c2.762,0,5-2.239,5-5V5.037c0-2.762-2.238-5-5-5h-40.545 C187.467,0.023,186.832,0,185.896,0c-7.035,0-31.488,1.381-50.804,19.151c-21.402,19.692-18.427,43.27-17.716,47.358v37.752H81.703 c-2.762,0-5,2.238-5,5v50.844C76.703,162.867,78.941,165.106,81.703,165.106z"></path>
+                  </g>
+                </svg>
+                <span>Facebook</span>
+              </a>
+              <a href="https://www.instagram.com/nattazxin/" class="social-button instagram" aria-label="Instagram Profile" target="_blank" rel="noopener noreferrer">
+                <svg width="800px" height="800px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                  <g id="Page-1" stroke="none" stroke-width="1">
+                    <g id="Dribbble-Light-Preview" transform="translate(-340.000000, -7439.000000)">
+                      <g id="icons" transform="translate(56.000000, 160.000000)">
+                        <path d="M289.869652,7279.12273 C288.241769,7279.19618 286.830805,7279.5942 285.691486,7280.72871 C284.548187,7281.86918 284.155147,7283.28558 284.081514,7284.89653 C284.035742,7285.90201 283.768077,7293.49818 284.544207,7295.49028 C285.067597,7296.83422 286.098457,7297.86749 287.454694,7298.39256 C288.087538,7298.63872 288.809936,7298.80547 289.869652,7298.85411 C298.730467,7299.25511 302.015089,7299.03674 303.400182,7295.49028 C303.645956,7294.859 303.815113,7294.1374 303.86188,7293.08031 C304.26686,7284.19677 303.796207,7282.27117 302.251908,7280.72871 C301.027016,7279.50685 299.5862,7278.67508 289.869652,7279.12273 M289.951245,7297.06748 C288.981083,7297.0238 288.454707,7296.86201 288.103459,7296.72603 C287.219865,7296.3826 286.556174,7295.72155 286.214876,7294.84312 C285.623823,7293.32944 285.819846,7286.14023 285.872583,7284.97693 C285.924325,7283.83745 286.155174,7282.79624 286.959165,7281.99226 C287.954203,7280.99968 289.239792,7280.51332 297.993144,7280.90837 C299.135448,7280.95998 300.179243,7281.19026 300.985224,7281.99226 C301.980262,7282.98483 302.473801,7284.28014 302.071806,7292.99991 C302.028024,7293.96767 301.865833,7294.49274 301.729513,7294.84312 C300.829003,7297.15085 298.757333,7297.47145 289.951245,7297.06748 M298.089663,7283.68956 C298.089663,7284.34665 298.623998,7284.88065 299.283709,7284.88065 C299.943419,7284.88065 300.47875,7284.34665 300.47875,7283.68956 C300.47875,7283.03248 299.943419,7282.49847 299.283709,7282.49847 C298.623998,7282.49847 298.089663,7283.03248 298.089663,7283.68956 M288.862673,7288.98792 C288.862673,7291.80286 291.150266,7294.08479 293.972194,7294.08479 C296.794123,7294.08479 299.081716,7291.80286 299.081716,7288.98792 C299.081716,7286.17298 296.794123,7283.89205 293.972194,7283.89205 C291.150266,7283.89205 288.862673,7286.17298 288.862673,7288.98792 M290.655732,7288.98792 C290.655732,7287.16159 292.140329,7285.67967 293.972194,7285.67967 C295.80406,7285.67967 297.288657,7287.16159 297.288657,7288.98792 C297.288657,7290.81525 295.80406,7292.29716 293.972194,7292.29716 C292.140329,7292.29716 290.655732,7290.81525 290.655732,7288.98792" id="instagram-[#167]"></path>
+                      </g>
+                    </g>
+                  </g>
+                </svg>
+                <span>Instagram</span>
+              </a>
+              <a href="https://medium.com/@bigboyzin88/about" class="social-button medium" aria-label="Medium Profile" target="_blank" rel="noopener noreferrer">
+                <svg width="800px" height="800px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"></path>
+                </svg>
+                <span>Medium</span>
+              </a>
+              <a href="https://www.tiktok.com/@nattazxin" class="social-button tiktok" aria-label="TikTok Profile" target="_blank" rel="noopener noreferrer">
+                <img src="Photo/optimized/Icon/TikTok_Icon_Black_Circle.png" alt="TikTok" width="48" height="48" loading="lazy">
+                <span>TikTok</span>
+              </a>
+              <a href="https://www.youtube.com/@NATTAZXIN" class="social-button youtube" aria-label="YouTube Channel" target="_blank" rel="noopener noreferrer">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path>
+                </svg>
+                <span>YouTube</span>
+              </a>
+            </div>
           </div>
         </div>
         <div class="col-6 col-md-2">
@@ -2476,18 +2386,293 @@
     });
   </script>
 
-  <!-- Experience Accordion Toggle -->
+  <!-- UI/UX Project Drag Strip -->
   <script>
-    function toggleExperience(header) {
-      const card = header.closest('.experience-card-minimal');
-      const isExpanded = card.classList.contains('expanded');
+    document.addEventListener('DOMContentLoaded', () => {
+      const section = document.getElementById('uiux-projects');
+      if (!section) return;
 
-      if (isExpanded) {
-        card.classList.remove('expanded');
-      } else {
-        card.classList.add('expanded');
+      const shell = section.querySelector('[data-uiux-drag-shell]');
+      const track = section.querySelector('[data-uiux-drag-track]');
+      if (!shell || !track) {
+        return;
       }
-    }
+
+      const cards = Array.from(track.querySelectorAll('.uiux-drag-card'));
+
+      shell.querySelectorAll('img').forEach((image) => {
+        image.draggable = false;
+      });
+
+      let isDragging = false;
+      let pointerId = null;
+      let startX = 0;
+      let startScrollLeft = 0;
+      let moved = false;
+      let rafId = 0;
+      let snapTimerId = 0;
+
+      const scheduleCardUpdate = () => {
+        if (rafId) {
+          return;
+        }
+
+        rafId = window.requestAnimationFrame(() => {
+          rafId = 0;
+          updateCards();
+        });
+      };
+
+      const getCardTargetScroll = (card) => {
+        const cardCenter = card.offsetLeft + (card.offsetWidth / 2);
+        return Math.max(0, cardCenter - (shell.clientWidth / 2));
+      };
+
+      const updateCards = () => {
+        if (!cards.length) {
+          return;
+        }
+
+        const shellCenter = shell.scrollLeft + (shell.clientWidth / 2);
+        const maxDistance = shell.clientWidth * 0.42;
+        let nearestCard = cards[0];
+        let nearestDistance = Number.POSITIVE_INFINITY;
+
+        cards.forEach((card) => {
+          const cardCenter = card.offsetLeft + (card.offsetWidth / 2);
+          const distance = Math.abs(cardCenter - shellCenter);
+          const progress = Math.min(distance / maxDistance, 1);
+          const scale = 1 - (progress * 0.18);
+          const blur = progress * 3.2;
+
+          card.style.setProperty('--uiux-card-scale', scale.toFixed(3));
+          card.style.setProperty('--uiux-card-blur', `${blur.toFixed(2)}px`);
+          card.style.setProperty('--uiux-card-z', String(Math.round((1 - progress) * 10) + 1));
+
+          if (distance < nearestDistance) {
+            nearestDistance = distance;
+            nearestCard = card;
+          }
+        });
+
+        cards.forEach((card) => {
+          card.classList.toggle('is-active', card === nearestCard);
+          if (card === nearestCard) {
+            card.style.setProperty('--uiux-card-scale', '1.03');
+            card.style.setProperty('--uiux-card-blur', '0px');
+            card.style.setProperty('--uiux-card-z', '18');
+          }
+        });
+      };
+
+      const snapToNearestCard = () => {
+        if (!cards.length) {
+          return;
+        }
+
+        const shellCenter = shell.scrollLeft + (shell.clientWidth / 2);
+        let nearestCard = cards[0];
+        let nearestDistance = Number.POSITIVE_INFINITY;
+
+        cards.forEach((card) => {
+          const cardCenter = card.offsetLeft + (card.offsetWidth / 2);
+          const distance = Math.abs(cardCenter - shellCenter);
+          if (distance < nearestDistance) {
+            nearestDistance = distance;
+            nearestCard = card;
+          }
+        });
+
+        shell.scrollTo({
+          left: getCardTargetScroll(nearestCard),
+          behavior: 'smooth'
+        });
+      };
+
+      const endDrag = () => {
+        if (pointerId !== null && shell.hasPointerCapture(pointerId)) {
+          shell.releasePointerCapture(pointerId);
+        }
+
+        isDragging = false;
+        pointerId = null;
+        startX = 0;
+        startScrollLeft = 0;
+        shell.classList.remove('is-dragging');
+        snapToNearestCard();
+
+        window.setTimeout(() => {
+          moved = false;
+        }, 0);
+      };
+
+      shell.addEventListener('dragstart', (event) => {
+        event.preventDefault();
+      });
+
+      shell.addEventListener('pointerdown', (event) => {
+        if (event.pointerType === 'mouse' && event.button !== 0) {
+          return;
+        }
+
+        isDragging = true;
+        pointerId = event.pointerId;
+        startX = event.clientX;
+        startScrollLeft = shell.scrollLeft;
+        moved = false;
+        shell.setPointerCapture(event.pointerId);
+        shell.classList.add('is-dragging');
+        event.preventDefault();
+      });
+
+      shell.addEventListener('pointermove', (event) => {
+        if (!isDragging || pointerId !== event.pointerId) {
+          return;
+        }
+
+        const delta = event.clientX - startX;
+        if (Math.abs(delta) > 4) {
+          moved = true;
+        }
+
+        shell.scrollLeft = startScrollLeft - delta;
+        scheduleCardUpdate();
+      });
+
+      const handlePointerEnd = (event) => {
+        if (pointerId !== event.pointerId) {
+          return;
+        }
+
+        endDrag();
+      };
+
+      shell.addEventListener('pointerup', handlePointerEnd);
+      shell.addEventListener('pointercancel', handlePointerEnd);
+      shell.addEventListener('lostpointercapture', () => {
+        if (!isDragging) {
+          return;
+        }
+
+        endDrag();
+      });
+
+      shell.addEventListener('click', (event) => {
+        if (!moved) {
+          return;
+        }
+
+        event.preventDefault();
+        event.stopPropagation();
+      }, true);
+
+      shell.addEventListener('scroll', () => {
+        scheduleCardUpdate();
+
+        if (isDragging) {
+          return;
+        }
+
+        window.clearTimeout(snapTimerId);
+        snapTimerId = window.setTimeout(() => {
+          snapToNearestCard();
+        }, 90);
+      }, { passive: true });
+
+      window.addEventListener('resize', () => {
+        scheduleCardUpdate();
+        window.clearTimeout(snapTimerId);
+        snapTimerId = window.setTimeout(() => {
+          snapToNearestCard();
+        }, 90);
+      });
+
+      window.requestAnimationFrame(() => {
+        snapToNearestCard();
+        scheduleCardUpdate();
+      });
+    });
+  </script>
+
+  <!-- Experience Showcase Toggle -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const section = document.getElementById('experience');
+      if (!section) return;
+
+      const cards = Array.from(section.querySelectorAll('.experience-showcase-card'));
+      const panels = Array.from(section.querySelectorAll('.experience-showcase-panel'));
+      const panelWrap = section.querySelector('.experience-showcase-panels');
+      const hint = section.querySelector('.experience-showcase-hint');
+      if (!cards.length || !panels.length || !panelWrap) return;
+
+      const clearExperience = () => {
+        cards.forEach((card) => {
+          card.classList.remove('is-active');
+          card.setAttribute('aria-pressed', 'false');
+        });
+
+        panels.forEach((panel) => {
+          panel.classList.remove('is-active');
+          panel.hidden = true;
+        });
+
+        panelWrap.hidden = true;
+        if (hint) {
+          hint.hidden = false;
+        }
+      };
+
+      const activateExperience = (targetId, options = {}) => {
+        const nextCard = cards.find((card) => card.dataset.experienceTarget === targetId);
+        if (!nextCard) {
+          clearExperience();
+          return;
+        }
+
+        if (options.toggle && nextCard.classList.contains('is-active')) {
+          clearExperience();
+          return;
+        }
+
+        panelWrap.hidden = false;
+        if (hint) {
+          hint.hidden = true;
+        }
+
+        cards.forEach((card) => {
+          const isActive = card.dataset.experienceTarget === targetId;
+          card.classList.toggle('is-active', isActive);
+          card.setAttribute('aria-pressed', String(isActive));
+        });
+
+        panels.forEach((panel) => {
+          const isActive = panel.id === targetId;
+          panel.classList.toggle('is-active', isActive);
+          panel.hidden = !isActive;
+        });
+      };
+
+      cards.forEach((card, index) => {
+        card.addEventListener('click', () => {
+          activateExperience(card.dataset.experienceTarget, { toggle: true });
+        });
+
+        card.addEventListener('keydown', (event) => {
+          if (!['ArrowRight', 'ArrowLeft', 'ArrowDown', 'ArrowUp'].includes(event.key)) {
+            return;
+          }
+
+          event.preventDefault();
+          const direction = event.key === 'ArrowRight' || event.key === 'ArrowDown' ? 1 : -1;
+          const nextIndex = (index + direction + cards.length) % cards.length;
+          cards[nextIndex].focus();
+          activateExperience(cards[nextIndex].dataset.experienceTarget);
+        });
+      });
+
+      clearExperience();
+    });
   </script>
 
   <!-- Lightweight Visual Highlights Animation - Vanilla JS + CSS -->

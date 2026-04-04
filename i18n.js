@@ -13,7 +13,8 @@ const translations = {
     },
     hero: {
       hi: "Hi, I'm",
-      developer: "a Developer Based in",
+      developer: "A Software Developer",
+      location: "Based in",
       thailand: "Thailand",
       education: "B.Sc. in Computer and Information Science — Faculty of Applied Science"
     },
@@ -148,7 +149,8 @@ const translations = {
     },
     experience: {
       title: "EXPERIENCE & INTERNSHIP",
-      description: "My professional journey from internship to full-time developer, building real-world solutions and growing with each opportunity."
+      description: "My professional journey from internship to full-time developer, building real-world solutions and growing with each opportunity.",
+      hint: "Click a widget to view details"
     },
     extracurricular: {
       title: "EXTRACURRICULAR & COMMUNITY"
@@ -203,7 +205,8 @@ const translations = {
     },
     hero: {
       hi: "สวัสดีครับ ผมคือ",
-      developer: "นักพัฒนาที่อยู่ใน",
+      developer: "ซอฟต์แวร์ดีเวลลอปเปอร์",
+      location: "ที่ทำงานอยู่ใน",
       thailand: "ประเทศไทย",
       education: "วท.บ. วิทยาการคอมพิวเตอร์และสารสนเทศ — คณะวิทยาศาสตร์ประยุกต์"
     },
@@ -340,7 +343,8 @@ const translations = {
     },
     experience: {
       title: "ประสบการณ์และการฝึกงาน",
-      description: "เส้นทางการทำงานของผมตั้งแต่ฝึกงานจนถึงนักพัฒนาเต็มเวลา พร้อมการเติบโตจากงานจริงในแต่ละโอกาส"
+      description: "เส้นทางการทำงานของผมตั้งแต่ฝึกงานจนถึงนักพัฒนาเต็มเวลา พร้อมการเติบโตจากงานจริงในแต่ละโอกาส",
+      hint: "กดที่วิดเจ็ตเพื่อดูรายละเอียด"
     },
     extracurricular: {
       title: "กิจกรรมนอกหลักสูตรและชุมชน"
@@ -395,7 +399,8 @@ const translations = {
     },
     hero: {
       hi: "こんにちは、私は",
-      developer: "タイを拠点に活動する",
+      developer: "ソフトウェア開発者",
+      location: "活動拠点は",
       thailand: "タイ",
       education: "応用科学部 コンピュータ・情報科学 学士"
     },
@@ -499,7 +504,8 @@ const translations = {
     },
     experience: {
       title: "経験とインターンシップ",
-      description: "インターンからフルタイム開発者まで、実務を通じて成長してきたプロフェッショナルの歩みです。"
+      description: "インターンからフルタイム開発者まで、実務を通じて成長してきたプロフェッショナルの歩みです。",
+      hint: "ウィジェットをクリックして詳細を見る"
     },
     extracurricular: {
       title: "課外活動とコミュニティ"
@@ -554,7 +560,8 @@ const translations = {
     },
     hero: {
       hi: "你好，我是",
-      developer: "一名常驻",
+      developer: "一名软件开发者",
+      location: "常驻",
       thailand: "泰国",
       education: "计算机与信息科学学士 — 应用科学学院"
     },
@@ -658,7 +665,8 @@ const translations = {
     },
     experience: {
       title: "经验与实习",
-      description: "从实习到全职开发者的成长路径，在每一次真实项目中持续进步。"
+      description: "从实习到全职开发者的成长路径，在每一次真实项目中持续进步。",
+      hint: "点击卡片查看详情"
     },
     extracurricular: {
       title: "课外活动与社区"
@@ -713,7 +721,8 @@ const translations = {
     },
     hero: {
       hi: "Hallo, ich bin",
-      developer: "ein Entwickler mit Standort in",
+      developer: "Ein Softwareentwickler",
+      location: "mit Standort in",
       thailand: "Thailand",
       education: "B.Sc. in Informatik und Informationswissenschaft — Fakultät für Angewandte Wissenschaften"
     },
@@ -817,7 +826,8 @@ const translations = {
     },
     experience: {
       title: "ERFAHRUNG & PRAKTIKUM",
-      description: "Mein beruflicher Weg vom Praktikum bis zur Vollzeit-Entwicklung, mit Wachstum durch reale Projekte."
+      description: "Mein beruflicher Weg vom Praktikum bis zur Vollzeit-Entwicklung, mit Wachstum durch reale Projekte.",
+      hint: "Klicke auf ein Widget, um Details zu sehen"
     },
     extracurricular: {
       title: "AUSSERSCHULISCHE AKTIVITÄTEN & COMMUNITY"
@@ -872,8 +882,9 @@ const translations = {
     },
     hero: {
       hi: "안녕하세요, 저는",
-      developer: "태국을 기반으로 활동하는",
-      thailand: "개발자입니다",
+      developer: "소프트웨어 개발자",
+      location: "활동 기반은",
+      thailand: "태국",
       education: "컴퓨터 및 정보과학 학사 — 응용과학부"
     },
     profile: {
@@ -976,7 +987,8 @@ const translations = {
     },
     experience: {
       title: "경력 및 인턴십",
-      description: "인턴에서 풀타임 개발자로 성장해 온 과정과 실제 프로젝트를 통한 발전 기록입니다."
+      description: "인턴에서 풀타임 개발자로 성장해 온 과정과 실제 프로젝트를 통한 발전 기록입니다.",
+      hint: "위젯을 눌러 상세 정보를 확인하세요"
     },
     extracurricular: {
       title: "비교과 활동 및 커뮤니티"
@@ -1160,6 +1172,7 @@ function updateLanguage() {
   syncLanguageSelectors();
 
   localStorage.setItem('language', currentLang);
+  window.dispatchEvent(new CustomEvent('i18n:updated', { detail: { lang: currentLang } }));
 }
 
 function setLanguage(lang) {
