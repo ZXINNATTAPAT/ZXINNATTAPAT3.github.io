@@ -1085,9 +1085,15 @@
     <div class="container">
       <div class="skills-shell">
         <div class="skills-heading-row">
-          <h2 class="profile-heading playfair-400 mb-0 text-start" style="color: #2c2c2c" data-i18n="skills.title">
-            Tech Stack
-          </h2>
+          <div class="skills-heading-copy">
+            <h2 class="profile-heading playfair-400 mb-0 text-center" style="color: #767676" data-i18n="skills.title">
+              Tech Stack
+            </h2>
+            <p class="skills-core-hint mb-0">
+              <span class="skills-core-hint-badge" aria-hidden="true"><i class="fas fa-star"></i></span>
+              <span data-i18n="skills.coreHint">Yellow star = Core skills</span>
+            </p>
+          </div>
           <!-- <button class="skills-heading-btn mb-0" id="showAllSkillsBtn">
             <span data-i18n="skills.listAll">List all skills</span>
             <i class="fas fa-external-link-alt ms-2"></i>
@@ -1097,45 +1103,106 @@
         <div class="app-dock-wrapper my-2" data-aos="fade-up">
           <div class="app-dock" aria-label="Skills marquee">
             <!-- Original List -->
-            <div class="app-item">
-              <div class="app-icon" title="SQL Server"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg" alt="SQL Server" class="app-icon-img" width="48" height="48" loading="lazy"></div>
-              <div class="app-name">SQL Server</div>
-            </div>
-            <div class="app-item">
-              <div class="app-icon" title="React"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" class="app-icon-img" width="48" height="48" loading="lazy"></div>
+            <div class="app-item" data-tooltip="React">
+              <div class="app-icon">
+                <span class="app-core-badge" aria-hidden="true"><i class="fas fa-star"></i></span>
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" class="app-icon-img" width="48" height="48" loading="lazy">
+              </div>
               <div class="app-name">React</div>
             </div>
-            <div class="app-item">
-              <div class="app-icon" title="Angular"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg" alt="Angular" class="app-icon-img" width="48" height="48" loading="lazy"></div>
-              <div class="app-name">Angular</div>
-            </div>
-            <div class="app-item">
-              <div class="app-icon" title="Node.js"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" class="app-icon-img" width="48" height="48" loading="lazy"></div>
-              <div class="app-name">Node.js</div>
-            </div>
-            <div class="app-item">
-              <div class="app-icon" title="Next.js"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js" class="app-icon-img" width="48" height="48" loading="lazy"></div>
+            <div class="app-item" data-tooltip="Next.js">
+              <div class="app-icon">
+                <span class="app-core-badge" aria-hidden="true"><i class="fas fa-star"></i></span>
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js" class="app-icon-img" width="48" height="48" loading="lazy">
+              </div>
               <div class="app-name">Next.js</div>
             </div>
-            <div class="app-item">
-              <div class="app-icon" title="JavaScript"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" class="app-icon-img" width="48" height="48" loading="lazy"></div>
+            <div class="app-item" data-tooltip="Angular">
+              <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg" alt="Angular" class="app-icon-img" width="48" height="48" loading="lazy"></div>
+              <div class="app-name">Angular</div>
+            </div>
+            <div class="app-item" data-tooltip="Vue.js">
+              <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" alt="Vue.js" class="app-icon-img" width="48" height="48" loading="lazy"></div>
+              <div class="app-name">Vue.js</div>
+            </div>
+            <div class="app-item" data-tooltip="JavaScript">
+              <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" class="app-icon-img" width="48" height="48" loading="lazy"></div>
               <div class="app-name">JavaScript</div>
             </div>
-            <div class="app-item">
-              <div class="app-icon" title="TypeScript"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript" class="app-icon-img" width="48" height="48" loading="lazy"></div>
+            <div class="app-item" data-tooltip="TypeScript">
+              <div class="app-icon">
+                <span class="app-core-badge" aria-hidden="true"><i class="fas fa-star"></i></span>
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript" class="app-icon-img" width="48" height="48" loading="lazy">
+              </div>
               <div class="app-name">TypeScript</div>
             </div>
-            <div class="app-item">
-              <div class="app-icon" title="MySQL"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" class="app-icon-img" width="48" height="48" loading="lazy"></div>
-              <div class="app-name">MySQL</div>
+            <div class="app-item" data-tooltip="Tailwind CSS">
+              <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind CSS" class="app-icon-img" width="48" height="48" loading="lazy"></div>
+              <div class="app-name">Tailwind CSS</div>
             </div>
-            <div class="app-item">
-              <div class="app-icon" title="PostgreSQL"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" class="app-icon-img" width="48" height="48" loading="lazy"></div>
+            <div class="app-item" data-tooltip="Node.js">
+              <div class="app-icon">
+                <span class="app-core-badge" aria-hidden="true"><i class="fas fa-star"></i></span>
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" class="app-icon-img" width="48" height="48" loading="lazy">
+              </div>
+              <div class="app-name">Node.js</div>
+            </div>
+            <div class="app-item" data-tooltip="Python">
+              <div class="app-icon">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" class="app-icon-img" width="48" height="48" loading="lazy">
+              </div>
+              <div class="app-name">Python</div>
+            </div>
+            <div class="app-item" data-tooltip="Django">
+              <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" alt="Django" class="app-icon-img" width="48" height="48" loading="lazy"></div>
+              <div class="app-name">Django</div>
+            </div>
+            <div class="app-item" data-tooltip="C#">
+              <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#" class="app-icon-img" width="48" height="48" loading="lazy"></div>
+              <div class="app-name">C#</div>
+            </div>
+            <div class="app-item" data-tooltip="Docker">
+              <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" class="app-icon-img" width="48" height="48" loading="lazy"></div>
+              <div class="app-name">Docker</div>
+            </div>
+            <div class="app-item" data-tooltip="Git">
+              <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" class="app-icon-img" width="48" height="48" loading="lazy"></div>
+              <div class="app-name">Git</div>
+            </div>
+            <div class="app-item" data-tooltip="GitHub">
+              <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" class="app-icon-img" width="48" height="48" loading="lazy"></div>
+              <div class="app-name">GitHub</div>
+            </div>
+            <div class="app-item" data-tooltip="PostgreSQL">
+              <div class="app-icon">
+                <span class="app-core-badge" aria-hidden="true"><i class="fas fa-star"></i></span>
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" class="app-icon-img" width="48" height="48" loading="lazy">
+              </div>
               <div class="app-name">PostgreSQL</div>
             </div>
-            <div class="app-item">
-              <div class="app-icon" title="C#"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#" class="app-icon-img" width="48" height="48" loading="lazy"></div>
-              <div class="app-name">C#</div>
+            <div class="app-item" data-tooltip="MySQL">
+              <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" class="app-icon-img" width="48" height="48" loading="lazy"></div>
+              <div class="app-name">MySQL</div>
+            </div>
+            <div class="app-item" data-tooltip="MongoDB">
+              <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" class="app-icon-img" width="48" height="48" loading="lazy"></div>
+              <div class="app-name">MongoDB</div>
+            </div>
+            <div class="app-item" data-tooltip="SQL Server">
+              <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg" alt="SQL Server" class="app-icon-img" width="48" height="48" loading="lazy"></div>
+              <div class="app-name">SQL Server</div>
+            </div>
+            <div class="app-item" data-tooltip="GitLab">
+              <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gitlab/gitlab-original.svg" alt="GitLab" class="app-icon-img" width="48" height="48" loading="lazy"></div>
+              <div class="app-name">GitLab</div>
+            </div>
+            <div class="app-item" data-tooltip="Solidity">
+              <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/solidity/solidity-original.svg" alt="Solidity" class="app-icon-img" width="48" height="48" loading="lazy"></div>
+              <div class="app-name">Solidity</div>
+            </div>
+            <div class="app-item" data-tooltip="MinIO">
+              <div class="app-icon"><img src="https://cdn.simpleicons.org/minio/C72E49" alt="MinIO" class="app-icon-img" width="48" height="48" loading="lazy"></div>
+              <div class="app-name">MinIO</div>
             </div>
 
           </div>
@@ -1156,20 +1223,20 @@
       </div>
       <div class="skills-modal-body">
         <div class="skills-grid">
-          <!-- SQL Server -->
-          <div class="skill-card">
-            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg" alt="SQL Server"></div>
-            <div class="skill-card-info">
-              <div class="skill-card-name">SQL Server</div>
-              <div class="skill-card-level">Advanced</div>
-            </div>
-          </div>
           <!-- React -->
           <div class="skill-card">
             <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React"></div>
             <div class="skill-card-info">
               <div class="skill-card-name">React</div>
               <div class="skill-card-level">Advanced</div>
+            </div>
+          </div>
+          <!-- Next.js -->
+          <div class="skill-card">
+            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js"></div>
+            <div class="skill-card-info">
+              <div class="skill-card-name">Next.js</div>
+              <div class="skill-card-level">Intermediate</div>
             </div>
           </div>
           <!-- Angular -->
@@ -1180,19 +1247,11 @@
               <div class="skill-card-level">Intermediate</div>
             </div>
           </div>
-          <!-- Node.js -->
+          <!-- Vue.js -->
           <div class="skill-card">
-            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js"></div>
+            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" alt="Vue.js"></div>
             <div class="skill-card-info">
-              <div class="skill-card-name">Node.js</div>
-              <div class="skill-card-level">Intermediate</div>
-            </div>
-          </div>
-          <!-- Next.js -->
-          <div class="skill-card">
-            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js"></div>
-            <div class="skill-card-info">
-              <div class="skill-card-name">Next.js</div>
+              <div class="skill-card-name">Vue.js</div>
               <div class="skill-card-level">Intermediate</div>
             </div>
           </div>
@@ -1212,11 +1271,67 @@
               <div class="skill-card-level">Advanced</div>
             </div>
           </div>
-          <!-- MySQL -->
+          <!-- Tailwind CSS -->
           <div class="skill-card">
-            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL"></div>
+            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind CSS"></div>
             <div class="skill-card-info">
-              <div class="skill-card-name">MySQL</div>
+              <div class="skill-card-name">Tailwind CSS</div>
+              <div class="skill-card-level">Intermediate</div>
+            </div>
+          </div>
+          <!-- Node.js -->
+          <div class="skill-card">
+            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js"></div>
+            <div class="skill-card-info">
+              <div class="skill-card-name">Node.js</div>
+              <div class="skill-card-level">Intermediate</div>
+            </div>
+          </div>
+          <!-- Python -->
+          <div class="skill-card">
+            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python"></div>
+            <div class="skill-card-info">
+              <div class="skill-card-name">Python</div>
+              <div class="skill-card-level">Intermediate</div>
+            </div>
+          </div>
+          <!-- Django -->
+          <div class="skill-card">
+            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" alt="Django"></div>
+            <div class="skill-card-info">
+              <div class="skill-card-name">Django</div>
+              <div class="skill-card-level">Intermediate</div>
+            </div>
+          </div>
+          <!-- C# -->
+          <div class="skill-card">
+            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#"></div>
+            <div class="skill-card-info">
+              <div class="skill-card-name">C#</div>
+              <div class="skill-card-level">Intermediate</div>
+            </div>
+          </div>
+          <!-- Docker -->
+          <div class="skill-card">
+            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker"></div>
+            <div class="skill-card-info">
+              <div class="skill-card-name">Docker</div>
+              <div class="skill-card-level">Intermediate</div>
+            </div>
+          </div>
+          <!-- Git -->
+          <div class="skill-card">
+            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git"></div>
+            <div class="skill-card-info">
+              <div class="skill-card-name">Git</div>
+              <div class="skill-card-level">Advanced</div>
+            </div>
+          </div>
+          <!-- GitHub -->
+          <div class="skill-card">
+            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub"></div>
+            <div class="skill-card-info">
+              <div class="skill-card-name">GitHub</div>
               <div class="skill-card-level">Advanced</div>
             </div>
           </div>
@@ -1228,11 +1343,51 @@
               <div class="skill-card-level">Intermediate</div>
             </div>
           </div>
-          <!-- C# -->
+          <!-- MySQL -->
           <div class="skill-card">
-            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#"></div>
+            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL"></div>
             <div class="skill-card-info">
-              <div class="skill-card-name">C#</div>
+              <div class="skill-card-name">MySQL</div>
+              <div class="skill-card-level">Advanced</div>
+            </div>
+          </div>
+          <!-- MongoDB -->
+          <div class="skill-card">
+            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB"></div>
+            <div class="skill-card-info">
+              <div class="skill-card-name">MongoDB</div>
+              <div class="skill-card-level">Intermediate</div>
+            </div>
+          </div>
+          <!-- SQL Server -->
+          <div class="skill-card">
+            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg" alt="SQL Server"></div>
+            <div class="skill-card-info">
+              <div class="skill-card-name">SQL Server</div>
+              <div class="skill-card-level">Advanced</div>
+            </div>
+          </div>
+          <!-- GitLab -->
+          <div class="skill-card">
+            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gitlab/gitlab-original.svg" alt="GitLab"></div>
+            <div class="skill-card-info">
+              <div class="skill-card-name">GitLab</div>
+              <div class="skill-card-level">Intermediate</div>
+            </div>
+          </div>
+          <!-- Solidity -->
+          <div class="skill-card">
+            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/solidity/solidity-original.svg" alt="Solidity"></div>
+            <div class="skill-card-info">
+              <div class="skill-card-name">Solidity</div>
+              <div class="skill-card-level">Intermediate</div>
+            </div>
+          </div>
+          <!-- MinIO -->
+          <div class="skill-card">
+            <div class="skill-card-icon"><img src="https://cdn.simpleicons.org/minio/C72E49" alt="MinIO"></div>
+            <div class="skill-card-info">
+              <div class="skill-card-name">MinIO</div>
               <div class="skill-card-level">Intermediate</div>
             </div>
           </div>
@@ -1246,7 +1401,11 @@
       const modal = document.getElementById('skillsModal');
       const btn = document.getElementById('showAllSkillsBtn');
       const closeBtn = document.getElementById('closeSkillsModal');
-      const overlay = modal.querySelector('.skills-modal-overlay');
+      const overlay = modal ? modal.querySelector('.skills-modal-overlay') : null;
+
+      if (!modal || !closeBtn || !overlay) {
+        return;
+      }
 
       function openModal() {
         modal.style.display = 'flex';
@@ -1262,7 +1421,9 @@
         }, 300);
       }
 
-      btn.addEventListener('click', openModal);
+      if (btn) {
+        btn.addEventListener('click', openModal);
+      }
       closeBtn.addEventListener('click', closeModal);
       overlay.addEventListener('click', closeModal);
 

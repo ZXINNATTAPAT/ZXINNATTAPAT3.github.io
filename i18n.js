@@ -56,7 +56,8 @@ const translations = {
     },
     skills: {
       title: "Tech Stack",
-      listAll: "List all skills"
+      listAll: "List all skills",
+      coreHint: "Yellow star = Core skills"
     },
     cloud: {
       kicker: "Deployment Picks",
@@ -253,7 +254,8 @@ const translations = {
     },
     skills: {
       title: "Tech Stack",
-      listAll: "สกิลทั้งหมด"
+      listAll: "สกิลทั้งหมด",
+      coreHint: "ดาวสีเหลือง = Core Skills"
     },
     cloud: {
       kicker: "Deployment Picks",
@@ -452,7 +454,8 @@ const translations = {
     },
     skills: {
       title: "Tech Stack",
-      listAll: "全スキル"
+      listAll: "全スキル",
+      coreHint: "黄色の星 = コアスキル"
     },
     cloud: {
       kicker: "Deployment Picks",
@@ -618,7 +621,8 @@ const translations = {
     },
     skills: {
       title: "Tech Stack",
-      listAll: "全部技能"
+      listAll: "全部技能",
+      coreHint: "黄色星标 = 核心技能"
     },
     cloud: {
       kicker: "Deployment Picks",
@@ -784,7 +788,8 @@ const translations = {
     },
     skills: {
       title: "Tech Stack",
-      listAll: "Alle Skills"
+      listAll: "Alle Skills",
+      coreHint: "Gelber Stern = Core Skills"
     },
     cloud: {
       kicker: "Deployment Picks",
@@ -950,7 +955,8 @@ const translations = {
     },
     skills: {
       title: "Tech Stack",
-      listAll: "전체 스킬"
+      listAll: "전체 스킬",
+      coreHint: "노란 별 = 코어 스킬"
     },
     cloud: {
       kicker: "Deployment Picks",
