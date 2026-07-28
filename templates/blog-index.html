@@ -12,17 +12,19 @@
     gtag('config', 'G-NNJBFHP6S8');
   </script>
   <meta charset="UTF-8" />
-  <title>Blog for testing | Nattapat Phungphugdee</title>
+  <title>Blog | รีวิววิชา Computer Science มจพ และบทความสายเดฟ | Nattapat Phungphugdee</title>
   <link rel="icon" href="Photo/Logo.png" type="image/png">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description"
-    content="Blog for testing - บทความเกี่ยวกับการพัฒนาเว็บ, เทคโนโลยี, และประสบการณ์การทำงานของ Nattapat Phungphugdee" />
+    content="บทความและรีวิววิชา Computer Science มจพ รวมถึงคู่มือพัฒนาเว็บ เทคโนโลยี และประสบการณ์ทำงานของ Nattapat Phungphugdee" />
+  <meta name="keywords"
+    content="รีวิววิชา computer science มจพ, วิทยาการคอมพิวเตอร์ มจพ, วิทย์คอม มจพ, Computer Science KMUTNB, Next.js, Clean Code, blog developer Thailand" />
   <meta name="robots" content="index, follow" />
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Blog for testing | Nattapat Phungphugdee" />
-  <meta property="og:description" content="Blog for testing - บทความเกี่ยวกับการพัฒนาเว็บ, เทคโนโลยี, และประสบการณ์การทำงาน" />
+  <meta property="og:title" content="Blog | รีวิววิชา Computer Science มจพ | Nattapat Phungphugdee" />
+  <meta property="og:description" content="บทความและรีวิววิชา Computer Science มจพ รวมถึงคู่มือพัฒนาเว็บและประสบการณ์สายเดฟ" />
   <meta property="og:url" content="https://zxinnattapat3.github.io/blog.html" />
   <meta property="og:locale" content="th_TH" />
 
@@ -75,30 +77,67 @@
 
     .articles-list {
       display: grid;
-      gap: 2rem;
+      gap: 1.25rem;
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 1rem;
     }
 
     .article-preview {
+      display: flex;
+      align-items: stretch;
+      gap: 1.5rem;
       background: white;
       border-radius: 16px;
-      padding: 2.5rem;
+      padding: 1.25rem 1.5rem;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       border: 1px solid rgba(0, 0, 0, 0.05);
     }
 
     .article-preview:hover {
-      transform: translateY(-6px);
+      transform: translateY(-4px);
       box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
     }
 
+    .article-preview-media {
+      flex: 0 0 160px;
+      width: 160px;
+      align-self: stretch;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fafafa;
+      border: 1px solid #ececec;
+      border-radius: 12px;
+      overflow: hidden;
+      text-decoration: none;
+    }
+
+    .preview-image {
+      width: 100%;
+      height: 100%;
+      max-height: 160px;
+      object-fit: contain;
+      display: block;
+      margin: 0;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    .article-preview-body {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
     .article-preview h2 {
-      margin: 0 0 1rem 0;
-      font-size: 1.8rem;
+      margin: 0;
+      font-size: 1.35rem;
       font-weight: 600;
+      line-height: 1.35;
     }
 
     .article-preview h2 a {
@@ -111,6 +150,32 @@
       color: #667eea;
     }
 
+    .article-preview-meta-list,
+    .article-preview-tags {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1rem;
+    }
+
+    .article-preview-meta-list {
+      color: #666;
+      font-size: 0.9rem;
+    }
+
+    .article-preview-meta-list li {
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .article-preview-meta-list li + li::before {
+      content: "·";
+      margin-right: 1rem;
+      color: #bbb;
+    }
+
     .article-meta {
       display: flex;
       flex-wrap: wrap;
@@ -120,18 +185,19 @@
       margin: 1rem 0;
     }
 
-    .preview-image {
-      width: 100%;
-      border-radius: 12px;
-      margin: 1.5rem 0;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
-
     .description {
       color: #555;
-      line-height: 1.8;
-      margin: 1rem 0;
-      font-size: 1.05rem;
+      line-height: 1.7;
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    .article-preview-tags {
+      gap: 0.45rem;
+    }
+
+    .article-preview-tags li {
+      display: inline-flex;
     }
 
     .tags {
@@ -145,9 +211,9 @@
       display: inline-block;
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       color: white;
-      padding: 0.4rem 1rem;
+      padding: 0.35rem 0.85rem;
       border-radius: 20px;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       font-weight: 500;
     }
 
@@ -155,7 +221,7 @@
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      margin-top: 1rem;
+      margin-top: auto;
       color: #667eea;
       text-decoration: none;
       font-weight: 600;
@@ -177,7 +243,23 @@
       }
 
       .article-preview {
-        padding: 1.5rem;
+        flex-direction: column;
+        padding: 1.25rem;
+        gap: 1rem;
+      }
+
+      .article-preview-media {
+        flex: none;
+        width: 100%;
+        min-height: 140px;
+      }
+
+      .preview-image {
+        max-height: 140px;
+      }
+
+      .article-preview h2 {
+        font-size: 1.2rem;
       }
     }
   </style>
@@ -241,8 +323,8 @@
   <!-- Blog Section -->
   <section id="blog" class="blog-section">
     <div class="blog-header" data-aos="fade-up">
-      <h1>Blog for testing</h1>
-      <p>บทความเกี่ยวกับการพัฒนาเว็บ, เทคโนโลยี, และประสบการณ์การทำงาน</p>
+      <h1>Blog</h1>
+      <p>รีวิววิชา Computer Science มจพ บทความสายเดฟ และประสบการณ์ทำงาน</p>
     </div>
 
     <div class="articles-list">

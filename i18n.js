@@ -70,6 +70,10 @@ const translations = {
       title: "Tech Content Creator",
       description: "",
       cards: {
+        csReview: {
+          title: "CS Course Review",
+          description: "KMUTNB Computer Science course review — real subjects from the CS track."
+        },
         teamwork: {
           title: "Teamwork & Git",
           description: "First team project shipped with Git—messy process, solid lesson learned together."
@@ -270,6 +274,10 @@ const translations = {
         "ติดตามชีวิตการโค้ดและสายเดฟของผมบน TikTok 💻🎥<br class=\"d-md-none\" />" +
         "ผมแชร์ทั้งเทคนิคโค้ด บันทึกการพัฒนา และเรื่องราวคอมมูนิตี้ทั้งไทยและอังกฤษ",
       cards: {
+        csReview: {
+          title: "รีวิววิชา CS มจพ",
+          description: "รีวิววิชา Computer Science มจพ — สรุปวิชาที่เรียนจริงในสายวิทย์คอม"
+        },
         teamwork: {
           title: "การทำงานเป็นทีมและ Git",
           description: "โปรเจกต์ทีมครั้งแรกที่ส่งงานด้วย Git แม้กระบวนการจะยังไม่เป๊ะ แต่ได้บทเรียนที่ดีมาก"
@@ -470,6 +478,10 @@ const translations = {
         "TikTokで私のコーディングと開発ライフをフォローしてください 💻🎥<br class=\"d-md-none\" />" +
         "コードのコツ、開発ログ、コミュニティの話題をタイ語と英語で発信しています。",
       cards: {
+        csReview: {
+          title: "CS科目レビュー",
+          description: "KMUTNBのコンピュータサイエンス科目レビュー — 実際に学んだ科目をまとめました。"
+        },
         teamwork: {
           title: "チームワーク & Git",
           description: "Gitで出荷した初めてのチーム開発。プロセスは荒削りでも、確かな学びが得られました。"
@@ -637,6 +649,10 @@ const translations = {
         "欢迎在 TikTok 关注我的编程与开发生活 💻🎥<br class=\"d-md-none\" />" +
         "我会分享代码技巧、构建日志，以及泰语与英语社区内容。",
       cards: {
+        csReview: {
+          title: "CS 课程评测",
+          description: "KMUTNB 计算机科学课程评测 — 总结实际学过的科目。"
+        },
         teamwork: {
           title: "团队协作与 Git",
           description: "首次团队项目通过 Git 交付。过程不完美，但收获了扎实经验。"
@@ -804,6 +820,10 @@ const translations = {
         "Folge meinem Coding- und Dev-Lifestyle auf TikTok 💻🎥<br class=\"d-md-none\" />" +
         "Ich teile Code-Tipps, Build-Logs und Community-Stories auf Thai und Englisch.",
       cards: {
+        csReview: {
+          title: "CS-Kursreview",
+          description: "KMUTNB Computer-Science-Kursreview — echte Fächer aus dem CS-Studium."
+        },
         teamwork: {
           title: "Teamwork & Git",
           description: "Erstes Teamprojekt mit Git ausgeliefert – chaotischer Prozess, aber starke Lernerfahrung."
@@ -971,6 +991,10 @@ const translations = {
         "TikTok에서 제 코딩 및 개발 라이프를 팔로우해 보세요 💻🎥<br class=\"d-md-none\" />" +
         "코드 팁, 빌드 로그, 커뮤니티 이야기를 태국어와 영어로 공유합니다.",
       cards: {
+        csReview: {
+          title: "CS 과목 리뷰",
+          description: "KMUTNB 컴퓨터과학 과목 리뷰 — 실제로 배운 과목을 정리했습니다."
+        },
         teamwork: {
           title: "팀워크 & Git",
           description: "Git으로 첫 팀 프로젝트를 배포했습니다. 과정은 거칠었지만 확실한 배움을 얻었습니다."

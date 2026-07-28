@@ -2,15 +2,6 @@
 <html lang="en" data-i18n-lang="en">
 
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NNJBFHP6S8"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-NNJBFHP6S8');
-  </script>
   <meta charset="UTF-8" />
   <title>
     Nattapat Phungphugdee (ณัฐภัทร พึ่งภักดี) | Full Stack Developer Portfolio
@@ -116,11 +107,9 @@
       }
     </script>
 
-  <!-- Loading Screen CSS - Critical, loaded first -->
-  <link rel="stylesheet" href="./stylesheets/skeleton.css" />
-  <!-- Main Stylesheets - Critical CSS loaded first -->
-  <link rel="stylesheet" href="./stylesheets/index.css" />
+  <!-- Critical: font utilities + main layout; below-fold sheets deferred -->
   <link rel="stylesheet" href="./stylesheets/fontsex.css" />
+  <link rel="stylesheet" href="./stylesheets/index.css" />
   <!-- Non-critical CSS deferred -->
   <link rel="stylesheet" href="./stylesheets/cardblock2.css" media="print" onload="this.media='all'" />
   <noscript><link rel="stylesheet" href="./stylesheets/cardblock2.css" /></noscript>
@@ -139,8 +128,12 @@
       scroll-behavior: smooth;
     }
 
+    body.body-bg {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
     html[lang="th"] body {
-      font-family: "Inter", "Anuphan", "Noto Sans Thai", sans-serif;
+      font-family: "Anuphan", "Noto Sans Thai", system-ui, sans-serif;
       font-size: 16px;
       line-height: 1.68;
     }
@@ -198,7 +191,7 @@
 
     html[lang="th"] .nav-link-ux,
     html[lang="th"] .mobile-nav-link {
-      font-family: "Inter", "Anuphan", "Noto Sans Thai", sans-serif !important;
+      font-family: "Anuphan", "Noto Sans Thai", system-ui, sans-serif !important;
       font-size: 0.95rem;
       font-weight: 600;
       text-transform: none !important;
@@ -210,7 +203,7 @@
     html[lang="th"] .nav-lang-select,
     html[lang="th"] .mobile-lang-select,
     html[lang="th"] .mobile-lang-label {
-      font-family: "Inter", "Anuphan", "Noto Sans Thai", sans-serif !important;
+      font-family: "Anuphan", "Noto Sans Thai", system-ui, sans-serif !important;
       text-transform: none !important;
       letter-spacing: 0 !important;
       font-weight: 600;
@@ -218,7 +211,7 @@
 
     html[lang="th"] .nav-lang-select,
     html[lang="th"] .mobile-lang-select {
-      font-family: "Inter", Arial, sans-serif !important;
+      font-family: system-ui, Arial, sans-serif !important;
       font-weight: 600;
       letter-spacing: 0.02em;
     }
@@ -255,7 +248,7 @@
     }
 
     html[lang="ja"] body {
-      font-family: "Inter", "Noto Sans JP", sans-serif;
+      font-family: "Noto Sans JP", system-ui, sans-serif;
       font-size: 16px;
       line-height: 1.72;
     }
@@ -295,7 +288,7 @@
 
     html[lang="ja"] .nav-link-ux,
     html[lang="ja"] .mobile-nav-link {
-      font-family: "Inter", "Noto Sans JP", sans-serif !important;
+      font-family: "Noto Sans JP", system-ui, sans-serif !important;
       font-weight: 600;
       text-transform: none !important;
       letter-spacing: 0 !important;
@@ -306,7 +299,7 @@
     html[lang="ja"] .nav-lang-select,
     html[lang="ja"] .mobile-lang-select,
     html[lang="ja"] .mobile-lang-label {
-      font-family: "Inter", "Noto Sans JP", sans-serif !important;
+      font-family: "Noto Sans JP", system-ui, sans-serif !important;
       text-transform: none !important;
       letter-spacing: 0 !important;
       font-weight: 600;
@@ -314,7 +307,7 @@
 
     html[lang="ja"] .nav-lang-select,
     html[lang="ja"] .mobile-lang-select {
-      font-family: "Inter", Arial, sans-serif !important;
+      font-family: system-ui, Arial, sans-serif !important;
       font-weight: 600;
       letter-spacing: 0.02em;
     }
@@ -327,7 +320,7 @@
     }
 
     html[lang="zh"] body {
-      font-family: "Inter", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+      font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
       font-size: 16px;
       line-height: 1.72;
     }
@@ -367,7 +360,7 @@
 
     html[lang="zh"] .nav-link-ux,
     html[lang="zh"] .mobile-nav-link {
-      font-family: "Inter", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif !important;
+      font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif !important;
       font-weight: 600;
       text-transform: none !important;
       letter-spacing: 0 !important;
@@ -378,7 +371,7 @@
     html[lang="zh"] .nav-lang-select,
     html[lang="zh"] .mobile-lang-select,
     html[lang="zh"] .mobile-lang-label {
-      font-family: "Inter", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif !important;
+      font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif !important;
       text-transform: none !important;
       letter-spacing: 0 !important;
       font-weight: 600;
@@ -386,7 +379,7 @@
 
     html[lang="zh"] .nav-lang-select,
     html[lang="zh"] .mobile-lang-select {
-      font-family: "Inter", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif !important;
+      font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif !important;
       font-weight: 600;
       letter-spacing: 0.02em;
     }
@@ -399,7 +392,7 @@
     }
 
     html[lang="ko"] body {
-      font-family: "Inter", "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+      font-family: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
       font-size: 16px;
       line-height: 1.72;
     }
@@ -439,7 +432,7 @@
 
     html[lang="ko"] .nav-link-ux,
     html[lang="ko"] .mobile-nav-link {
-      font-family: "Inter", "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif !important;
+      font-family: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif !important;
       font-weight: 600;
       text-transform: none !important;
       letter-spacing: 0 !important;
@@ -450,7 +443,7 @@
     html[lang="ko"] .nav-lang-select,
     html[lang="ko"] .mobile-lang-select,
     html[lang="ko"] .mobile-lang-label {
-      font-family: "Inter", "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif !important;
+      font-family: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif !important;
       text-transform: none !important;
       letter-spacing: 0 !important;
       font-weight: 600;
@@ -458,7 +451,7 @@
 
     html[lang="ko"] .nav-lang-select,
     html[lang="ko"] .mobile-lang-select {
-      font-family: "Inter", "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif !important;
+      font-family: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif !important;
       font-weight: 600;
       letter-spacing: 0.02em;
     }
@@ -501,41 +494,22 @@
       -moz-osx-font-smoothing: grayscale;
     }
 
-    /* Prevent FOUC and Layout Shift */
-    body:not(.loaded) {
-      overflow: hidden;
-    }
-
-    body:not(.loaded) > *:not(.loading-screen) {
-      opacity: 0;
-      visibility: hidden;
-    }
-
-    body.loaded > *:not(.loading-screen) {
-      opacity: 1;
-      visibility: visible;
-      transition: opacity 0.3s ease-in;
-    }
   </style>
   <!-- Animation & UI Libraries -->
   <link rel="stylesheet" href="https://unpkg.com/transition-style" media="print" onload="this.media='all'" />
   <noscript><link rel="stylesheet" href="https://unpkg.com/transition-style" /></noscript>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" media="print" onload="this.media='all'" />
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" /></noscript>
-  <!-- Fonts -->
+  <!-- Fonts: hero critical + deferred section/locale fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200&display=swap" rel="stylesheet" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Parisienne&family=Playfair+Display:wght@400&display=swap" />
+  <link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Playfair+Display:wght@400&display=swap" rel="stylesheet" />
   <link
-    href="https://fonts.googleapis.com/css2?family=Kenia&family=Libre+Bodoni&family=Noto+Sans+Thai+Looped:wght@600&family=Noto+Sans+Thai:wght@500&display=swap"
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap"
     rel="stylesheet" media="print" onload="this.media='all'" />
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Kenia&family=Libre+Bodoni&family=Noto+Sans+Thai+Looped:wght@600&family=Noto+Sans+Thai:wght@500&display=swap" rel="stylesheet" /></noscript>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Anuphan:wght@100..700&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=DM+Serif+Display:ital@0;1&family=Noto+Sans+JP:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&family=Parisienne&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
-    rel="stylesheet" media="print" onload="this.media='all'" />
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@100..700&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=DM+Serif+Display:ital@0;1&family=Noto+Sans+JP:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&family=Parisienne&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet" /></noscript>
+  <noscript><link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" /></noscript>
+    <!-- No extra locale fonts for EN -->
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
     integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous" media="print" onload="this.media='all'" />
@@ -579,56 +553,6 @@
   <!-- Scroll Progress Bar -->
   <div id="scroll-progress-container">
     <div id="scroll-progress-bar"></div>
-  </div>
-    <!-- Loading Screen -->
-  <div class="loading-screen" id="loadingScreen" aria-label="Loading page content">
-    <div class="loading-skeleton-wrapper">
-      <div class="loading-skeleton-container">
-        <!-- Skeleton Navbar -->
-        <div class="skeleton-navbar">
-          <div class="skeleton skeleton-text" style="width: 140px; height: 28px;"></div>
-          <div style="flex: 1;"></div>
-          <div class="d-flex align-items-center gap-2">
-            <div class="skeleton skeleton-text d-none d-md-block" style="width: 80px; height: 20px;"></div>
-            <div class="skeleton skeleton-box d-lg-none" style="width: 32px; height: 32px; border-radius: 4px;"></div>
-          </div>
-        </div>
-
-        <!-- Skeleton Hero Section -->
-        <div class="skeleton-hero">
-          <!-- Large Title 1: "Hi, I'm Nattapat" -->
-          <div class="skeleton-hero-title">
-            <div class="skeleton skeleton-text" style="width: 200px; height: 60px; margin: 0 auto 0.5rem; display: inline-block;"></div>
-            <div class="skeleton skeleton-text" style="width: 280px; height: 70px; margin: 0 auto 1rem; display: inline-block;"></div>
-          </div>
-          
-          <!-- Large Title 2: "a Developer Based in Thailand" -->
-          <div class="skeleton-hero-title">
-            <div class="skeleton skeleton-text" style="width: 320px; height: 55px; margin: 0 auto 0.5rem; display: inline-block;"></div>
-            <div class="skeleton skeleton-text" style="width: 180px; height: 60px; margin: 0 auto 1.5rem; display: inline-block;"></div>
-          </div>
-          
-          <!-- Subtitle: "B.Sc. in Computer..." -->
-          <div class="skeleton skeleton-text" style="width: 65%; max-width: 500px; height: 22px; margin: 0 auto 3rem;"></div>
-          
-          <!-- Skeleton Social Icons (7 icons) -->
-          <div class="skeleton-social">
-            <div class="skeleton skeleton-circle" style="width: 56px; height: 56px;"></div>
-            <div class="skeleton skeleton-circle" style="width: 56px; height: 56px;"></div>
-            <div class="skeleton skeleton-circle" style="width: 56px; height: 56px;"></div>
-            <div class="skeleton skeleton-circle" style="width: 56px; height: 56px;"></div>
-            <div class="skeleton skeleton-circle" style="width: 56px; height: 56px;"></div>
-            <div class="skeleton skeleton-circle" style="width: 56px; height: 56px;"></div>
-            <div class="skeleton skeleton-circle" style="width: 56px; height: 56px;"></div>
-          </div>
-        </div>
-
-        <!-- Skeleton Profile Image -->
-        <div class="skeleton-profile-image">
-          <div class="skeleton skeleton-box" style="height: 500px; max-width: 800px; margin: 3rem auto 0; border-radius: 24px;"></div>
-        </div>
-      </div>
-    </div>
   </div>
   <!-- Navigation and Hero with background wrapper -->
 <div class="hero-visual-wrapper">
@@ -704,16 +628,14 @@
   <header id="home">
     <div class="card border-0 rounded-0" style="background-color: transparent">
       <div class="container-fluid py-5">
-        <div class="text-center px-3" data-aos="fade-up" data-aos-delay="50">
-          <h1 class="playfair-400 sh-x mb-2" style="color: #2c2c2c; font-size: clamp(48px, 7vw, 100px)"
-            data-aos="fade-up" data-aos-delay="100">
+        <div class="text-center px-3">
+          <h1 class="playfair-400 sh-x mb-2" style="color: #2c2c2c; font-size: clamp(48px, 7vw, 100px)">
             <span data-i18n="hero.hi">Hi, I'm</span>
             <span class="parisienne-regular" style="color: #a30000; font-size: clamp(52px, 8vw, 110px)">
               Nattapat
             </span>
           </h1>
-          <h1 class="playfair-400 sh-x mb-3" style="color: #2c2c2c; font-size: clamp(36px, 6vw, 90px)"
-            data-aos="fade-up" data-aos-delay="150">
+          <h1 class="playfair-400 sh-x mb-3" style="color: #2c2c2c; font-size: clamp(36px, 6vw, 90px)">
             <span data-i18n="hero.developer">A Software Developer</span>
             <span style="display: block;">
               <span data-i18n="hero.location">Based in</span>
@@ -725,8 +647,7 @@
               </span>
             </span>
           </h1>
-          <p class="playfair-400 hero-decode-text" style="opacity: 0.7; font-size: clamp(14px, 2.5vw, 18px)" data-aos="fade-up"
-            data-aos-delay="100" data-i18n="hero.education">
+          <p class="playfair-400 hero-decode-text" style="opacity: 0.7; font-size: clamp(14px, 2.5vw, 18px)" data-i18n="hero.education">
             B.Sc. in Computer and Information Science — Faculty of Applied Science
           </p>
 
@@ -969,7 +890,10 @@
                   <div class="airdrop-card shadow">
                     <div class="airdrop-header" data-i18n="profile.airdrop">AirDrop</div>
                     <div class="airdrop-photo">
-                      <img src="Photo/optimized/20230220_005806.jpg" alt="profile" width="300" height="400" loading="lazy" / width="300" height="400" loading="lazy">
+                      <picture>
+                        <source srcset="Photo/optimized/20230220_005806.webp" type="image/webp" />
+                        <img src="Photo/optimized/20230220_005806.jpg" alt="profile" width="300" height="400" loading="lazy" decoding="async">
+                      </picture>
                     </div>
                     <div class="airdrop-input">
                       <span data-i18n="profile.myProfile">MY PROFILE</span>
@@ -1597,79 +1521,97 @@
       <div class="uiux-drag-track" data-uiux-drag-track>
         <article class="uiux-drag-card uiux-drag-card-logo">
           <figure class="uiux-drag-media uiux-drag-media-logo">
-            <img
-              src="Photo/optimized/Mockup/9.jpg"
-              alt="OLIF App logo"
-              width="800"
-              height="600"
-              loading="eager"
-              decoding="async"
-            />
+            <picture>
+              <source srcset="Photo/optimized/Mockup/9.webp" type="image/webp" />
+              <img
+                src="Photo/optimized/Mockup/9.jpg"
+                alt="OLIF App logo"
+                width="800"
+                height="600"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
           </figure>
         </article>
 
         <article class="uiux-drag-card">
           <figure class="uiux-drag-media">
-            <img
-              src="Photo/optimized/Mockup/5.jpg"
-              alt="OLIF App interface set one"
-              width="800"
-              height="600"
-              loading="eager"
-              decoding="async"
-            />
+            <picture>
+              <source srcset="Photo/optimized/Mockup/5.webp" type="image/webp" />
+              <img
+                src="Photo/optimized/Mockup/5.jpg"
+                alt="OLIF App interface set one"
+                width="800"
+                height="600"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
           </figure>
         </article>
 
         <article class="uiux-drag-card">
           <figure class="uiux-drag-media">
-            <img
-              src="Photo/optimized/Mockup/7.jpg"
-              alt="OLIF App interface set two"
-              width="800"
-              height="600"
-              loading="eager"
-              decoding="async"
-            />
+            <picture>
+              <source srcset="Photo/optimized/Mockup/7.webp" type="image/webp" />
+              <img
+                src="Photo/optimized/Mockup/7.jpg"
+                alt="OLIF App interface set two"
+                width="800"
+                height="600"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
           </figure>
         </article>
 
         <article class="uiux-drag-card uiux-drag-card-logo">
           <figure class="uiux-drag-media uiux-drag-media-logo">
-            <img
-              src="Photo/optimized/Mockup/13.jpg"
-              alt="Triple C App logo"
-              width="800"
-              height="600"
-              loading="eager"
-              decoding="async"
-            />
+            <picture>
+              <source srcset="Photo/optimized/Mockup/13.webp" type="image/webp" />
+              <img
+                src="Photo/optimized/Mockup/13.jpg"
+                alt="Triple C App logo"
+                width="800"
+                height="600"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
           </figure>
         </article>
 
         <article class="uiux-drag-card">
           <figure class="uiux-drag-media">
-            <img
-              src="Photo/optimized/Mockup/11.jpg"
-              alt="Triple C App interface set one"
-              width="800"
-              height="600"
-              loading="eager"
-              decoding="async"
-            />
+            <picture>
+              <source srcset="Photo/optimized/Mockup/11.webp" type="image/webp" />
+              <img
+                src="Photo/optimized/Mockup/11.jpg"
+                alt="Triple C App interface set one"
+                width="800"
+                height="600"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
           </figure>
         </article>
 
         <article class="uiux-drag-card">
           <figure class="uiux-drag-media">
-            <img
-              src="Photo/optimized/Mockup/12.jpg"
-              alt="Triple C App interface set two"
-              width="800"
-              height="600"
-              loading="eager"
-              decoding="async"
-            />
+            <picture>
+              <source srcset="Photo/optimized/Mockup/12.webp" type="image/webp" />
+              <img
+                src="Photo/optimized/Mockup/12.jpg"
+                alt="Triple C App interface set two"
+                width="800"
+                height="600"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
           </figure>
         </article>
       </div>
@@ -1707,6 +1649,38 @@
     </div>
 
     <div class="row g-4">
+      <div class="col-12 col-lg-4">
+        <div class="card border-0 h-100 creator-glass-card">
+          <div class="card-body pb-0 creator-glass-body">
+            <span class="d-inline-block text-uppercase mb-2 creator-card-label" data-i18n="creator.cards.csReview.title">
+              CS Course Review
+            </span>
+            <p class="playfair-400 mb-3 creator-card-description" data-i18n="creator.cards.csReview.description">
+              รีวิววิชา Computer Science มจพ — สรุปวิชาที่เรียนจริงในสายวิทย์คอม
+            </p>
+            <p class="mb-3">
+              <a href="articles/cs-kmutnb-course-review.html" class="creator-card-link" style="color:#a30000; font-weight:600; text-decoration:none;">
+                อ่านบทความเต็ม →
+              </a>
+            </p>
+          </div>
+          <div class="px-3 pb-3 creator-glass-embed">
+            <blockquote class="tiktok-embed mb-0" cite="https://www.tiktok.com/@nattazxin/video/7624066985374092565"
+              data-video-id="7624066985374092565" data-embed-from="embed_page" style="max-width: 100%; min-width: 100%;">
+              <section>
+                <a target="_blank" title="@nattazxin" href="https://www.tiktok.com/@nattazxin?refer=embed">@nattazxin</a>
+                <p>รีวิววิชา computer science มจพ
+                  <a title="computerscience" target="_blank" href="https://www.tiktok.com/tag/computerscience?refer=embed">#computerscience</a>
+                  <a title="มจพ" target="_blank" href="https://www.tiktok.com/tag/%E0%B8%A1%E0%B8%88%E0%B8%9E?refer=embed">#มจพ</a>
+                  <a title="วิทย์คอม" target="_blank" href="https://www.tiktok.com/tag/%E0%B8%A7%E0%B8%B4%E0%B8%97%E0%B8%A2%E0%B9%8C%E0%B8%84%E0%B8%AD%E0%B8%A1?refer=embed">#วิทย์คอม</a>
+                  <a title="cskmutnb" target="_blank" href="https://www.tiktok.com/tag/cskmutnb?refer=embed">#cskmutnb</a>
+                </p>
+                <a target="_blank" title="♬ original sound" href="https://www.tiktok.com/@nattazxin/video/7624066985374092565?refer=embed">♬ Watch on TikTok</a>
+              </section>
+            </blockquote>
+          </div>
+        </div>
+      </div>
       <div class="col-12 col-lg-4">
         <div class="card border-0 h-100 creator-glass-card">
           <div class="card-body pb-0 creator-glass-body">
@@ -1754,32 +1728,6 @@
                   <a title="dev" target="_blank" href="https://www.tiktok.com/tag/dev?refer=embed">#dev</a>
                 </p>
                 <a target="_blank" title="♬ MUTT - Leon Thomas" href="https://www.tiktok.com/music/MUTT-7400513247046453264?refer=embed">♬ MUTT - Leon Thomas</a>
-              </section>
-            </blockquote>
-          </div>
-        </div>
-      </div>
-      <div class="col-12 col-lg-4">
-        <div class="card border-0 h-100 creator-glass-card">
-          <div class="card-body pb-0 creator-glass-body">
-            <span class="d-inline-block text-uppercase mb-2 creator-card-label" data-i18n="creator.cards.ui.title">
-              UI Components
-            </span>
-            <p class="playfair-400 mb-3 creator-card-description" data-i18n="creator.cards.ui.description">
-              Sharing how I add motion and polish to Bootstrap card components.
-            </p>
-          </div>
-          <div class="px-3 pb-3 creator-glass-embed">
-            <blockquote class="tiktok-embed mb-0" cite="https://www.tiktok.com/@zxin_ntt/video/7544666852794879250"
-              data-video-id="7544666852794879250" data-embed-from="embed_page" style="max-width: 100%; min-width: 100%;">
-              <section>
-                <a target="_blank" title="@zxin_ntt" href="https://www.tiktok.com/@zxin_ntt?refer=embed">@zxin_ntt</a>
-                <p>มาลองสร้าง Card component ด้วย Bootstrap กัน
-                  <a title="dev" target="_blank" href="https://www.tiktok.com/tag/dev?refer=embed">#dev</a>
-                  <a title="computerscience" target="_blank" href="https://www.tiktok.com/tag/computerscience?refer=embed">#computerscience</a>
-                  <a title="cskmutnb" target="_blank" href="https://www.tiktok.com/tag/cskmutnb?refer=embed">#cskmutnb</a>
-                </p>
-                <a target="_blank" title="♬ Countless - Official Sound Studio" href="https://www.tiktok.com/music/Countless-6692683186809359108?refer=embed">♬ Countless - Official Sound Studio</a>
               </section>
             </blockquote>
           </div>
@@ -2878,87 +2826,7 @@
   </script>
 
 
-  <!-- Loading Screen Handler -->
-  <script>
-    (function() {
-      'use strict';
-      
-      const loadingScreen = document.getElementById('loadingScreen');
-      const body = document.body;
-      let resourcesLoaded = false;
-      let minDisplayTime = 800; // Minimum display time in ms
-      let startTime = Date.now();
-      
-      // Function to hide loading screen
-      function hideLoadingScreen() {
-        if (!loadingScreen) return;
-        
-        const elapsed = Date.now() - startTime;
-        const remaining = Math.max(0, minDisplayTime - elapsed);
-        
-        setTimeout(function() {
-          if (loadingScreen) {
-            loadingScreen.classList.add('fade-out');
-            setTimeout(function() {
-              if (loadingScreen && loadingScreen.parentNode) {
-                loadingScreen.style.display = 'none';
-              }
-              body.classList.add('loaded');
-              body.style.overflow = '';
-            }, 500); // Match CSS transition duration
-          }
-        }, remaining);
-      }
-      
-      // Check if critical resources are loaded
-      function checkResourcesLoaded() {
-        if (resourcesLoaded) return true;
-        
-        // Check if fonts are loaded (if using font-display: swap, this helps)
-        if (document.fonts && document.fonts.ready) {
-          document.fonts.ready.then(function() {
-            resourcesLoaded = true;
-            hideLoadingScreen();
-          }).catch(function() {
-            // Fallback if fonts.ready fails
-            resourcesLoaded = true;
-            hideLoadingScreen();
-          });
-        } else {
-          // Fallback for browsers without font loading API
-          resourcesLoaded = true;
-          hideLoadingScreen();
-        }
-      }
-      
-      // Hide loading screen when DOM and resources are ready
-      if (document.readyState === 'complete') {
-        checkResourcesLoaded();
-      } else {
-        window.addEventListener('load', function() {
-          checkResourcesLoaded();
-        });
-        
-        // Fallback: hide after maximum wait time
-        setTimeout(function() {
-          if (!resourcesLoaded) {
-            resourcesLoaded = true;
-            hideLoadingScreen();
-          }
-        }, 3000); // Maximum 3 seconds
-      }
-      
-      // Also hide on DOMContentLoaded as fallback
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', function() {
-          // Wait a bit for styles to apply
-          setTimeout(checkResourcesLoaded, 100);
-        });
-      } else {
-        setTimeout(checkResourcesLoaded, 100);
-      }
-    })();
-  </script>
+  <!-- Loading screen removed: content paints immediately for LCP -->
 
   <!-- Mobile Menu Script -->
   <script>
@@ -3136,7 +3004,29 @@
     }
   </script>
 
-  <script src="i18n.js"></script>
+  <script src="i18n.js" defer></script>
+
+  <script>
+    // Defer Google Analytics until after load so it does not compete with LCP fonts
+    window.addEventListener('load', function () {
+      var loadGtag = function () {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-NNJBFHP6S8';
+        document.head.appendChild(s);
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        window.gtag = gtag;
+        gtag('js', new Date());
+        gtag('config', 'G-NNJBFHP6S8');
+      };
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(loadGtag, { timeout: 3000 });
+      } else {
+        setTimeout(loadGtag, 1);
+      }
+    });
+  </script>
 
   <script>
     // Scroll Progress Bar Logic

@@ -85,7 +85,7 @@
   justify-content:center;
   gap:.48rem;
   color:#9a9a9a;
-  font-family:"Inter","Anuphan",sans-serif;
+  font-family:system-ui, "Anuphan",sans-serif;
   font-size:.88rem;
   font-weight:500;
   letter-spacing:-0.01em;
@@ -112,7 +112,7 @@
 
 .skills-heading-side{
   color:#7b7f88;
-  font-family:"Inter","Anuphan",sans-serif;
+  font-family:system-ui, "Anuphan",sans-serif;
   font-size:.95rem;
   font-weight:600;
   letter-spacing:-0.01em;
@@ -201,7 +201,7 @@
   border-radius: 999px;
   background: rgba(34, 34, 38, 0.92);
   color: #ffffff;
-  font-family: "Inter","Anuphan",sans-serif;
+  font-family: system-ui, "Anuphan",sans-serif;
   font-size: 0.74rem;
   font-weight: 600;
   line-height: 1;
@@ -340,7 +340,7 @@
   color: #a30000;
   padding: 8px 16px;
   border-radius: 999px;
-  font-family: 'Inter', sans-serif;
+  font-family: system-ui, sans-serif;
   font-size: 13px;
   font-weight: 600;
   cursor: pointer;
@@ -480,14 +480,14 @@
 }
 
 .skill-card-name {
-  font-family: 'Inter', sans-serif;
+  font-family: system-ui, sans-serif;
   font-size: 15px;
   font-weight: 700;
   color: #1e293b;
 }
 
 .skill-card-level {
-  font-family: 'Inter', sans-serif;
+  font-family: system-ui, sans-serif;
   font-size: 12px;
   font-weight: 500;
   color: #64748b;
@@ -1405,7 +1405,7 @@ img:hover {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  font-family: 'Inter', sans-serif;
+  font-family: system-ui, sans-serif;
   font-size: 0.82rem;
   font-weight: 700;
   color: #7a1010;
@@ -1624,7 +1624,7 @@ footer[id] {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  font-family: 'Inter', sans-serif;
+  font-family: system-ui, sans-serif;
   font-size: 0.82rem;
   font-weight: 700;
   color: #7a1010;
@@ -2026,7 +2026,7 @@ body.menu-open {
   background: rgba(255, 255, 255, 0.88);
   border: 1px solid rgba(255, 255, 255, 0.96);
   box-shadow: 0 8px 14px rgba(15, 23, 42, 0.06);
-  font-family: "Inter", sans-serif;
+  font-family: system-ui, sans-serif;
   font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -2045,7 +2045,7 @@ body.menu-open {
 .automation-mini-card-make .automation-card-title {
   margin-bottom: 12px;
   color: #241634;
-  font-family: "Inter", sans-serif;
+  font-family: system-ui, sans-serif;
   font-size: clamp(1.6rem, 2.3vw, 2.05rem);
   font-weight: 800;
   line-height: 1.02;
@@ -2071,7 +2071,7 @@ body.menu-open {
   background: rgba(95, 47, 255, 0.08);
   border: 1px solid rgba(95, 47, 255, 0.08);
   color: #6a53c1;
-  font-family: "Inter", sans-serif;
+  font-family: system-ui, sans-serif;
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.03em;
@@ -2299,7 +2299,7 @@ body.menu-open {
   justify-content: center;
   background: linear-gradient(135deg, #34c759 0%, #74d35e 100%);
   color: #ffffff;
-  font-family: "Inter", sans-serif;
+  font-family: system-ui, sans-serif;
   font-size: 1rem;
   font-weight: 800;
   letter-spacing: -0.04em;
@@ -2914,7 +2914,7 @@ body.menu-open {
 
 /* Portfolio PROJECT list — subtle nav link to visual highlights */
 #portfolio-list .portfolio-more-nav-link {
-  font-family: 'Inter', sans-serif;
+  font-family: system-ui, sans-serif;
   font-size: 0.75rem;
   font-weight: 500;
   color: #6b7280;
@@ -3198,7 +3198,7 @@ img.float-item{
 
 #contact .contact-mail-eyebrow {
   margin: 0 0 0.6rem;
-  font-family: "Inter", sans-serif;
+  font-family: system-ui, sans-serif;
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -3256,7 +3256,7 @@ img.float-item{
   border-radius: 999px;
   background: rgba(151, 113, 214, 0.1);
   color: #7860b8;
-  font-family: "Inter", sans-serif;
+  font-family: system-ui, sans-serif;
   font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.04em;
@@ -3409,7 +3409,7 @@ img.float-item{
 #contact .contact-mail-search {
   padding: 0 0.95rem;
   color: rgba(77, 77, 86, 0.58);
-  font-family: "Inter", sans-serif;
+  font-family: system-ui, sans-serif;
   font-size: 0.86rem;
 }
 
@@ -3417,7 +3417,7 @@ img.float-item{
   gap: 0.2rem;
   padding: 0 0.8rem;
   color: #6a53c1;
-  font-family: "Inter", sans-serif;
+  font-family: system-ui, sans-serif;
   font-size: 0.82rem;
   font-weight: 700;
 }
@@ -3442,7 +3442,7 @@ img.float-item{
   background: rgba(255, 255, 255, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.26);
   color: rgba(70, 70, 78, 0.68);
-  font-family: "Inter", sans-serif;
+  font-family: system-ui, sans-serif;
   font-size: 0.76rem;
   font-weight: 700;
 }
@@ -3493,7 +3493,7 @@ img.float-item{
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  font-family: "Inter", sans-serif;
+  font-family: system-ui, sans-serif;
   font-size: 0.76rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -3513,7 +3513,7 @@ img.float-item{
   border-radius: 999px;
   background: rgba(151, 113, 214, 0.1);
   color: #7860b8;
-  font-family: "Inter", sans-serif;
+  font-family: system-ui, sans-serif;
   font-size: 0.66rem;
   font-weight: 700;
   letter-spacing: 0.04em;
@@ -3582,7 +3582,7 @@ img.float-item{
   align-items: center;
   margin-bottom: 0.35rem;
   color: #1d1d1f;
-  font-family: "Inter", sans-serif;
+  font-family: system-ui, sans-serif;
   font-size: 0.88rem;
 }
 
@@ -5183,7 +5183,7 @@ textarea.form-control-minimal:focus {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  font-family: "Inter", "Anuphan", sans-serif;
+  font-family: system-ui, "Anuphan", sans-serif;
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -5221,7 +5221,7 @@ textarea.form-control-minimal:focus {
   background: rgba(255, 255, 255, 0.7);
   border: 1px solid rgba(15, 23, 42, 0.08);
   box-shadow: 0 8px 16px rgba(15, 23, 42, 0.04);
-  font-family: "Inter", "Anuphan", sans-serif;
+  font-family: system-ui, "Anuphan", sans-serif;
   font-size: 0.8rem;
   font-weight: 600;
   color: rgba(44, 44, 50, 0.8);
@@ -5229,7 +5229,7 @@ textarea.form-control-minimal:focus {
 
 .experience-showcase-period {
   margin-top: auto;
-  font-family: "Inter", "Anuphan", sans-serif;
+  font-family: system-ui, "Anuphan", sans-serif;
   font-size: 0.88rem;
   font-weight: 600;
   color: rgba(44, 44, 50, 0.72);
@@ -5275,7 +5275,7 @@ textarea.form-control-minimal:focus {
 }
 
 .experience-panel-kicker {
-  font-family: "Inter", "Anuphan", sans-serif;
+  font-family: system-ui, "Anuphan", sans-serif;
   font-size: 0.76rem;
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -6277,7 +6277,7 @@ textarea.form-control-minimal:focus {
 }
 
 .project-modal-tech p {
-  font-family: 'Inter', 'Anuphan', sans-serif;
+  font-family: system-ui, 'Anuphan', sans-serif;
   font-size: 0.95rem;
   color: #555;
   margin: 0;
@@ -6653,7 +6653,7 @@ section.container-fluid {
   display: inline-block;
   margin-bottom: 0.55rem;
   color: #7b7f88;
-  font-family: "Inter", "Anuphan", sans-serif;
+  font-family: system-ui, "Anuphan", sans-serif;
   font-size: 0.88rem;
   font-weight: 700;
   letter-spacing: 0.12em;
@@ -6662,7 +6662,7 @@ section.container-fluid {
 
 .cloud-platforms-description {
   color: #61636c;
-  font-family: "Inter", "Anuphan", sans-serif;
+  font-family: system-ui, "Anuphan", sans-serif;
   font-size: 1rem;
   line-height: 1.7;
 }
@@ -6729,7 +6729,7 @@ section.container-fluid {
 }
 
 .cloud-platform-name {
-  font-family: "Inter", "Anuphan", sans-serif;
+  font-family: system-ui, "Anuphan", sans-serif;
   font-size: clamp(1.9rem, 2.2vw, 2.5rem);
   font-weight: 700;
   letter-spacing: -0.04em;
@@ -6817,7 +6817,7 @@ section.container-fluid {
 
 .uiux-slider-kicker {
   margin: 0 0 0.55rem;
-  font-family: "Inter", "Anuphan", sans-serif;
+  font-family: system-ui, "Anuphan", sans-serif;
   font-size: 0.76rem;
   font-weight: 700;
   letter-spacing: 0.18em;
@@ -6835,7 +6835,7 @@ section.container-fluid {
 .uiux-slider-description {
   max-width: 700px;
   margin: 1rem auto 0;
-  font-family: "Inter", "Anuphan", sans-serif;
+  font-family: system-ui, "Anuphan", sans-serif;
   font-size: clamp(1rem, 1.6vw, 1.14rem);
   line-height: 1.72;
   color: rgba(74, 74, 86, 0.72);
@@ -7134,7 +7134,7 @@ section.container-fluid {
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.82);
   border: 1px solid rgba(15, 23, 42, 0.06);
-  font-family: "Inter", "Anuphan", sans-serif;
+  font-family: system-ui, "Anuphan", sans-serif;
   font-size: 0.76rem;
   font-weight: 600;
   letter-spacing: 0.06em;
@@ -7290,7 +7290,7 @@ section.container-fluid {
 
 .uiux-drag-kicker {
   margin: 0 0 0.6rem;
-  font-family: "Inter", "Anuphan", sans-serif;
+  font-family: system-ui, "Anuphan", sans-serif;
   font-size: 0.76rem;
   font-weight: 700;
   letter-spacing: 0.18em;
@@ -7308,7 +7308,7 @@ section.container-fluid {
 .uiux-drag-description {
   max-width: 760px;
   margin: 1rem auto 0;
-  font-family: "Inter", "Anuphan", sans-serif;
+  font-family: system-ui, "Anuphan", sans-serif;
   font-size: clamp(1rem, 1.5vw, 1.14rem);
   line-height: 1.72;
   color: rgba(74, 74, 86, 0.74);
@@ -7331,7 +7331,7 @@ section.container-fluid {
   box-shadow:
     0 10px 28px rgba(15, 23, 42, 0.05),
     inset 0 1px 0 rgba(255, 255, 255, 0.92);
-  font-family: "Inter", "Anuphan", sans-serif;
+  font-family: system-ui, "Anuphan", sans-serif;
   font-size: 0.82rem;
   font-weight: 600;
   letter-spacing: 0.04em;

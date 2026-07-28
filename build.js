@@ -21,6 +21,34 @@ const COMPONENTS_DIR = path.join(__dirname, 'components');
 const PHOTO_DIR = path.join(__dirname, 'Photo');
 const OPTIMIZED_PHOTO_DIR = path.join(__dirname, 'Photo', 'optimized');
 const BASE_URL = 'https://zxinnattapat3.github.io';
+
+function localeFontLinks(lang) {
+  const deferred = (href) =>
+    `  <link href="${href}" rel="stylesheet" media="print" onload="this.media='all'" />\n` +
+    `  <noscript><link href="${href}" rel="stylesheet" /></noscript>`;
+
+  switch (lang) {
+    case 'th':
+      return deferred(
+        'https://fonts.googleapis.com/css2?family=Anuphan:wght@400;500;600;700&family=Noto+Sans+Thai:wght@500&display=swap'
+      );
+    case 'ja':
+      return deferred(
+        'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap'
+      );
+    case 'zh':
+      return deferred(
+        'https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&display=swap'
+      );
+    case 'ko':
+      return deferred(
+        'https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap'
+      );
+    default:
+      return '  <!-- No extra locale fonts for EN -->';
+  }
+}
+
 const STATIC_PAGES = [
   {
     template: path.join(TEMPLATE_DIR, 'index.template.html'),
@@ -32,7 +60,8 @@ const STATIC_PAGES = [
       '{{pageUrl}}': `${BASE_URL}/`,
       '{{ogLocale}}': 'en_US',
       '{{canonicalUrl}}': `${BASE_URL}/`,
-      '{{root}}': ''
+      '{{root}}': '',
+      '{{localeFonts}}': localeFontLinks('en')
     }
   },
   {
@@ -44,7 +73,8 @@ const STATIC_PAGES = [
       '{{dataI18nLangAttr}}': ' data-i18n-lang="th"',
       '{{pageUrl}}': `${BASE_URL}/th.html`,
       '{{ogLocale}}': 'th_TH',
-      '{{canonicalUrl}}': `${BASE_URL}/th.html`
+      '{{canonicalUrl}}': `${BASE_URL}/th.html`,
+      '{{localeFonts}}': localeFontLinks('th')
     }
   },
   {
@@ -56,7 +86,8 @@ const STATIC_PAGES = [
       '{{dataI18nLangAttr}}': ' data-i18n-lang="ja"',
       '{{pageUrl}}': `${BASE_URL}/ja.html`,
       '{{ogLocale}}': 'ja_JP',
-      '{{canonicalUrl}}': `${BASE_URL}/ja.html`
+      '{{canonicalUrl}}': `${BASE_URL}/ja.html`,
+      '{{localeFonts}}': localeFontLinks('ja')
     }
   },
   {
@@ -68,7 +99,8 @@ const STATIC_PAGES = [
       '{{dataI18nLangAttr}}': ' data-i18n-lang="zh"',
       '{{pageUrl}}': `${BASE_URL}/zh.html`,
       '{{ogLocale}}': 'zh_CN',
-      '{{canonicalUrl}}': `${BASE_URL}/zh.html`
+      '{{canonicalUrl}}': `${BASE_URL}/zh.html`,
+      '{{localeFonts}}': localeFontLinks('zh')
     }
   },
   {
@@ -80,7 +112,8 @@ const STATIC_PAGES = [
       '{{dataI18nLangAttr}}': ' data-i18n-lang="ko"',
       '{{pageUrl}}': `${BASE_URL}/ko.html`,
       '{{ogLocale}}': 'ko_KR',
-      '{{canonicalUrl}}': `${BASE_URL}/ko.html`
+      '{{canonicalUrl}}': `${BASE_URL}/ko.html`,
+      '{{localeFonts}}': localeFontLinks('ko')
     }
   }
 ];
@@ -207,7 +240,8 @@ function buildArticle(markdownFile) {
     author = 'Nattapat Phungphugdee',
     tags = [],
     image = '',
-    slug = path.basename(markdownFile, '.md')
+    slug = path.basename(markdownFile, '.md'),
+    keywords = ''
   } = attributes;
 
   // Convert markdown body to HTML
@@ -219,6 +253,7 @@ function buildArticle(markdownFile) {
   // Prepare image HTML
   const imageHtml = image ? `<img src="../${escapeHtml(image)}" alt="${escapeHtml(title)}" class="article-image">` : '';
   const ogImage = image ? `https://zxinnattapat3.github.io/${escapeHtml(image)}` : 'https://zxinnattapat3.github.io/Photo/DSCF2374.jpg';
+  const keywordsMeta = keywords || (Array.isArray(tags) ? tags.join(', ') : '');
 
   // Prepare all replacements at once for better performance
   const replacements = {
@@ -231,6 +266,7 @@ function buildArticle(markdownFile) {
     '{{ogImage}}': ogImage,
     '{{content}}': htmlContent,
     '{{slug}}': slug,
+    '{{keywords}}': escapeHtml(keywordsMeta),
     '{{canonical}}': `https://zxinnattapat3.github.io/articles/${slug}.html`
   };
 
@@ -325,15 +361,22 @@ function buildBlogIndex(articles) {
   
   const articlesList = articles.map(article => `
     <article class="article-preview">
-      <h2><a href="articles/${article.slug}.html">${escapeHtml(article.title)}</a></h2>
-      <div class="article-meta">
-        <span class="date">${formatDate(article.date)}</span>
-        <span class="author">${escapeHtml(article.author)}</span>
+      ${article.image ? `
+      <a href="articles/${article.slug}.html" class="article-preview-media" aria-hidden="true" tabindex="-1">
+        <img src="${escapeHtml(article.image)}" alt="" class="preview-image" width="200" height="200" loading="lazy">
+      </a>` : ''}
+      <div class="article-preview-body">
+        <h2><a href="articles/${article.slug}.html">${escapeHtml(article.title)}</a></h2>
+        <ul class="article-preview-meta-list">
+          <li><span class="date">${formatDate(article.date)}</span></li>
+          <li><span class="author">${escapeHtml(article.author)}</span></li>
+        </ul>
+        <p class="description">${escapeHtml(article.description)}</p>
+        <ul class="article-preview-tags">
+          ${article.tags.map(tag => `<li><span class="tag">${escapeHtml(tag)}</span></li>`).join('')}
+        </ul>
+        <a href="articles/${article.slug}.html" class="read-more">อ่านต่อ →</a>
       </div>
-      ${article.image ? `<img src="${escapeHtml(article.image)}" alt="${escapeHtml(article.title)}" class="preview-image">` : ''}
-      <p class="description">${escapeHtml(article.description)}</p>
-      <div class="tags">${article.tags.map(tag => `<span class="tag">${escapeHtml(tag)}</span>`).join('')}</div>
-      <a href="articles/${article.slug}.html" class="read-more">อ่านต่อ →</a>
     </article>
   `).join('\n');
 
@@ -598,10 +641,27 @@ async function optimizeAllImages() {
       successCount++;
       const sizeMB = (result.optimizedSize / 1024 / 1024).toFixed(2);
       console.log(`✅ (${sizeMB}MB, -${result.savings}%)`);
+
+      // Also emit WebP alongside the optimized original format
+      const webpOutput = output.replace(/\.(jpe?g|png|jfif)$/i, '.webp');
+      if (webpOutput !== output) {
+        const webpResult = await optimizeImage(input, webpOutput, {
+          quality: 80,
+          maxWidth: 1920,
+          maxHeight: 1920,
+          format: 'webp'
+        });
+        if (webpResult.success) {
+          console.log(`     + webp ${(webpResult.optimizedSize / 1024).toFixed(0)}KB`);
+        }
+      }
     } else {
       console.log(`❌`);
     }
   }
+
+  // Also convert already-optimized gallery assets that live under Photo/optimized
+  await emitWebpForOptimizedDir();
 
   const totalSavings = ((1 - totalOptimizedSize / totalOriginalSize) * 100).toFixed(1);
   const totalOriginalMB = (totalOriginalSize / 1024 / 1024).toFixed(2);
@@ -612,6 +672,48 @@ async function optimizeAllImages() {
   console.log(`   📦 ขนาดเดิม: ${totalOriginalMB}MB`);
   console.log(`   📦 ขนาดใหม่: ${totalOptimizedMB}MB`);
   console.log(`   💾 ประหยัด: ${totalSavings}%`);
+}
+
+async function emitWebpForOptimizedDir() {
+  if (!sharp || !fs.existsSync(OPTIMIZED_PHOTO_DIR)) {
+    return;
+  }
+
+  const targets = [];
+  function walk(dir) {
+    for (const file of fs.readdirSync(dir)) {
+      const fullPath = path.join(dir, file);
+      const stat = fs.statSync(fullPath);
+      if (stat.isDirectory()) {
+        walk(fullPath);
+        continue;
+      }
+      const ext = path.extname(file).toLowerCase();
+      if (!['.jpg', '.jpeg', '.png'].includes(ext)) continue;
+      const webpPath = fullPath.replace(/\.(jpe?g|png)$/i, '.webp');
+      if (!fs.existsSync(webpPath) || fs.statSync(webpPath).mtimeMs < stat.mtimeMs) {
+        targets.push({ input: fullPath, output: webpPath });
+      }
+    }
+  }
+
+  walk(OPTIMIZED_PHOTO_DIR);
+  if (!targets.length) {
+    console.log('🖼️  WebP for optimized/ already up to date');
+    return;
+  }
+
+  console.log(`🖼️  Generating ${targets.length} WebP files from optimized/...`);
+  for (const { input, output } of targets) {
+    const result = await optimizeImage(input, output, {
+      quality: 80,
+      maxWidth: 1920,
+      maxHeight: 1920,
+      format: 'webp'
+    });
+    const rel = path.relative(OPTIMIZED_PHOTO_DIR, output);
+    console.log(result.success ? `  ✅ ${rel}` : `  ❌ ${rel}`);
+  }
 }
 
 // Default templates
@@ -791,6 +893,8 @@ if (process.argv.includes('--watch')) {
 } else if (process.argv.includes('--optimize-images')) {
   // Optimize images only
   optimizeAllImages().catch(console.error);
+} else if (process.argv.includes('--webp-only')) {
+  emitWebpForOptimizedDir().catch(console.error);
 } else {
   build();
 }

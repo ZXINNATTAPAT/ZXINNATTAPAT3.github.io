@@ -3,11 +3,11 @@
     display: inline-block;
   }
 .font-add{
-    font-family: 'Inter ', sans-serif;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
     font-size: 18px;
 }
 .font-add2{
-    font-family: 'Inter ', sans-serif;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
     font-size: 18px;
 }
 .playfair-400{
