@@ -23,25 +23,25 @@ const OPTIMIZED_PHOTO_DIR = path.join(__dirname, 'Photo', 'optimized');
 const BASE_URL = 'https://zxinnattapat3.github.io';
 
 function localeFontLinks(lang) {
-  const deferred = (href) =>
-    `  <link href="${href}" rel="stylesheet" media="print" onload="this.media='all'" />\n` +
-    `  <noscript><link href="${href}" rel="stylesheet" /></noscript>`;
+  // Locale fonts are used above-the-fold on non-EN pages; load critically to avoid CLS
+  const critical = (href) =>
+    `  <link href="${href}" rel="stylesheet" />`;
 
   switch (lang) {
     case 'th':
-      return deferred(
+      return critical(
         'https://fonts.googleapis.com/css2?family=Anuphan:wght@400;500;600;700&family=Noto+Sans+Thai:wght@500&display=swap'
       );
     case 'ja':
-      return deferred(
+      return critical(
         'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap'
       );
     case 'zh':
-      return deferred(
+      return critical(
         'https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&display=swap'
       );
     case 'ko':
-      return deferred(
+      return critical(
         'https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap'
       );
     default:

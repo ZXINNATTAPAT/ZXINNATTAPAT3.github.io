@@ -62,17 +62,20 @@
         if (!inner) return;
 
         word.classList.remove('hero-writing-active');
-        inner.style.width = 'auto';
+        // Measure full text while unclipped, then reserve that width (no layout shift)
+        inner.style.clipPath = 'none';
+        inner.style.filter = 'none';
 
-        const fullWidth = inner.scrollWidth;
+        const fullWidth = Math.ceil(inner.scrollWidth);
         word.style.setProperty('--hero-write-width', `${fullWidth}px`);
 
         if (!animate || prefersReducedMotion) {
-          inner.style.width = 'auto';
+          inner.style.clipPath = 'inset(0 0 0 0)';
           return;
         }
 
-        inner.style.width = '0px';
+        inner.style.clipPath = '';
+        inner.style.filter = '';
         void inner.offsetWidth;
         word.classList.add('hero-writing-active');
       });

@@ -132,6 +132,15 @@
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
 
+    /* Stabilize hero CTA / text block height while fonts/icons settle */
+    header#home .profile-cta-row {
+      min-height: 3.2rem;
+    }
+
+    header#home h1 {
+      line-height: 1.15;
+    }
+
     html[lang="th"] body {
       font-family: "Anuphan", "Noto Sans Thai", system-ui, sans-serif;
       font-size: 16px;
@@ -509,16 +518,12 @@
     href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap"
     rel="stylesheet" media="print" onload="this.media='all'" />
   <noscript><link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" /></noscript>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet" /></noscript>
-  <!-- Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Font Awesome: critical for hero CTA icons (avoids icon pop-in CLS) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-    integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous" media="print" onload="this.media='all'" />
-  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-    integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous" /></noscript>
-  <!-- Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" media="print" onload="this.media='all'" />
-  <noscript><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" /></noscript>
+    integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous" />
+  <!-- Bootstrap: critical layout CSS — deferred load caused large CLS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <!-- AOS Animation -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" media="print" onload="this.media='all'" />
   <noscript><link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" /></noscript>
@@ -689,17 +694,20 @@
         if (!inner) return;
 
         word.classList.remove('hero-writing-active');
-        inner.style.width = 'auto';
+        // Measure full text while unclipped, then reserve that width (no layout shift)
+        inner.style.clipPath = 'none';
+        inner.style.filter = 'none';
 
-        const fullWidth = inner.scrollWidth;
+        const fullWidth = Math.ceil(inner.scrollWidth);
         word.style.setProperty('--hero-write-width', `${fullWidth}px`);
 
         if (!animate || prefersReducedMotion) {
-          inner.style.width = 'auto';
+          inner.style.clipPath = 'inset(0 0 0 0)';
           return;
         }
 
-        inner.style.width = '0px';
+        inner.style.clipPath = '';
+        inner.style.filter = '';
         void inner.offsetWidth;
         word.classList.add('hero-writing-active');
       });
@@ -947,7 +955,7 @@
                 <div class="d-flex align-items-center gap-3 mb-3">
                   <img
                     src="https://upload.wikimedia.org/wikipedia/en/a/ab/Logo_of_King_Mongkut%27s_University_of_Technology_North_Bangkok.svg"
-                    alt="KMUTNB Logo" class="edu-logo img-fluid" />
+                    alt="KMUTNB Logo" class="edu-logo img-fluid" width="48" height="48" loading="lazy" decoding="async" />
                   <div class="flex-grow-1">
                     <strong class="playfair-400">King Mongkut's University of Technology North Bangkok (KMUTNB)</strong><br />
                     <small class="edu-year playfair-400" data-i18n="education.kmutnb.year">2021 - Present</small>
@@ -982,7 +990,7 @@
               <!-- Wat Suthiwararam -->
               <div class="edu-item mb-4 d-flex align-items-center gap-3">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/0/03/Wat_Suthiwararam_School_Crest.png"
-                  alt="Wat Suthiwararam Logo" class="edu-logo img-fluid" />
+                  alt="Wat Suthiwararam Logo" class="edu-logo img-fluid" width="48" height="48" loading="lazy" decoding="async" />
                 <div class="flex-grow-1">
                   <strong class="playfair-400">Wat Suthiwararam School</strong><br />
                   <small class="edu-year playfair-400">2015 - 2021</small>
@@ -991,7 +999,7 @@
               <!-- Sarasas Pittaya School -->
               <div class="edu-item mb-2 d-flex align-items-center gap-3">
                 <img src="https://www.ssps.ac.th/wp-content/uploads/2024/08/%E0%B8%94%E0%B8%B5%E0%B9%84%E0%B8%8B%E0%B8%99%E0%B9%8C%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%A2%E0%B8%B1%E0%B8%87%E0%B9%84%E0%B8%A1%E0%B9%88%E0%B9%84%E0%B8%94%E0%B9%89%E0%B8%95%E0%B8%B1%E0%B9%89%E0%B8%87%E0%B8%8A%E0%B8%B7%E0%B9%88%E0%B8%AD-1024x724.png"
-                  alt="Sarasas Pittaya Logo" class="edu-logo img-fluid" style="border-radius: 50%; object-fit: cover;" />
+                  alt="Sarasas Pittaya Logo" class="edu-logo img-fluid" width="48" height="48" loading="lazy" decoding="async" style="border-radius: 50%; object-fit: cover;" />
                 <div class="flex-grow-1">
                   <strong class="playfair-400">Sarasas Pittaya School</strong><br />
                   <small class="edu-year playfair-400" data-i18n="education.sarasas.year">2009 - 2015 (Elementary)</small>
@@ -1150,7 +1158,7 @@
         <div class="skills-grid">
           <!-- React -->
           <div class="skill-card">
-            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React"></div>
+            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" width="48" height="48" loading="lazy" decoding="async"></div>
             <div class="skill-card-info">
               <div class="skill-card-name">React</div>
               <div class="skill-card-level">Advanced</div>
@@ -1158,7 +1166,7 @@
           </div>
           <!-- Next.js -->
           <div class="skill-card">
-            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js"></div>
+            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js" width="48" height="48" loading="lazy" decoding="async"></div>
             <div class="skill-card-info">
               <div class="skill-card-name">Next.js</div>
               <div class="skill-card-level">Intermediate</div>
@@ -1166,7 +1174,7 @@
           </div>
           <!-- Angular -->
           <div class="skill-card">
-            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg" alt="Angular"></div>
+            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg" alt="Angular" width="48" height="48" loading="lazy" decoding="async"></div>
             <div class="skill-card-info">
               <div class="skill-card-name">Angular</div>
               <div class="skill-card-level">Intermediate</div>
@@ -1174,7 +1182,7 @@
           </div>
           <!-- Vue.js -->
           <div class="skill-card">
-            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" alt="Vue.js"></div>
+            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" alt="Vue.js" width="48" height="48" loading="lazy" decoding="async"></div>
             <div class="skill-card-info">
               <div class="skill-card-name">Vue.js</div>
               <div class="skill-card-level">Intermediate</div>
@@ -1182,7 +1190,7 @@
           </div>
           <!-- JavaScript -->
           <div class="skill-card">
-            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"></div>
+            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" width="48" height="48" loading="lazy" decoding="async"></div>
             <div class="skill-card-info">
               <div class="skill-card-name">JavaScript</div>
               <div class="skill-card-level">Advanced</div>
@@ -1190,7 +1198,7 @@
           </div>
           <!-- TypeScript -->
           <div class="skill-card">
-            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript"></div>
+            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript" width="48" height="48" loading="lazy" decoding="async"></div>
             <div class="skill-card-info">
               <div class="skill-card-name">TypeScript</div>
               <div class="skill-card-level">Advanced</div>
@@ -1198,7 +1206,7 @@
           </div>
           <!-- Tailwind CSS -->
           <div class="skill-card">
-            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind CSS"></div>
+            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind CSS" width="48" height="48" loading="lazy" decoding="async"></div>
             <div class="skill-card-info">
               <div class="skill-card-name">Tailwind CSS</div>
               <div class="skill-card-level">Intermediate</div>
@@ -1206,7 +1214,7 @@
           </div>
           <!-- Node.js -->
           <div class="skill-card">
-            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js"></div>
+            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" width="48" height="48" loading="lazy" decoding="async"></div>
             <div class="skill-card-info">
               <div class="skill-card-name">Node.js</div>
               <div class="skill-card-level">Intermediate</div>
@@ -1214,7 +1222,7 @@
           </div>
           <!-- Python -->
           <div class="skill-card">
-            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python"></div>
+            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" width="48" height="48" loading="lazy" decoding="async"></div>
             <div class="skill-card-info">
               <div class="skill-card-name">Python</div>
               <div class="skill-card-level">Intermediate</div>
@@ -1222,7 +1230,7 @@
           </div>
           <!-- Django -->
           <div class="skill-card">
-            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" alt="Django"></div>
+            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" alt="Django" width="48" height="48" loading="lazy" decoding="async"></div>
             <div class="skill-card-info">
               <div class="skill-card-name">Django</div>
               <div class="skill-card-level">Intermediate</div>
@@ -1230,7 +1238,7 @@
           </div>
           <!-- C# -->
           <div class="skill-card">
-            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#"></div>
+            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#" width="48" height="48" loading="lazy" decoding="async"></div>
             <div class="skill-card-info">
               <div class="skill-card-name">C#</div>
               <div class="skill-card-level">Intermediate</div>
@@ -1238,7 +1246,7 @@
           </div>
           <!-- Docker -->
           <div class="skill-card">
-            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker"></div>
+            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" width="48" height="48" loading="lazy" decoding="async"></div>
             <div class="skill-card-info">
               <div class="skill-card-name">Docker</div>
               <div class="skill-card-level">Intermediate</div>
@@ -1246,7 +1254,7 @@
           </div>
           <!-- Git -->
           <div class="skill-card">
-            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git"></div>
+            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" width="48" height="48" loading="lazy" decoding="async"></div>
             <div class="skill-card-info">
               <div class="skill-card-name">Git</div>
               <div class="skill-card-level">Advanced</div>
@@ -1254,7 +1262,7 @@
           </div>
           <!-- GitHub -->
           <div class="skill-card">
-            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub"></div>
+            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" width="48" height="48" loading="lazy" decoding="async"></div>
             <div class="skill-card-info">
               <div class="skill-card-name">GitHub</div>
               <div class="skill-card-level">Advanced</div>
@@ -1262,7 +1270,7 @@
           </div>
           <!-- PostgreSQL -->
           <div class="skill-card">
-            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL"></div>
+            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" width="48" height="48" loading="lazy" decoding="async"></div>
             <div class="skill-card-info">
               <div class="skill-card-name">PostgreSQL</div>
               <div class="skill-card-level">Intermediate</div>
@@ -1270,7 +1278,7 @@
           </div>
           <!-- MySQL -->
           <div class="skill-card">
-            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL"></div>
+            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" width="48" height="48" loading="lazy" decoding="async"></div>
             <div class="skill-card-info">
               <div class="skill-card-name">MySQL</div>
               <div class="skill-card-level">Advanced</div>
@@ -1278,7 +1286,7 @@
           </div>
           <!-- MongoDB -->
           <div class="skill-card">
-            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB"></div>
+            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" width="48" height="48" loading="lazy" decoding="async"></div>
             <div class="skill-card-info">
               <div class="skill-card-name">MongoDB</div>
               <div class="skill-card-level">Intermediate</div>
@@ -1286,7 +1294,7 @@
           </div>
           <!-- SQL Server -->
           <div class="skill-card">
-            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg" alt="SQL Server"></div>
+            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg" alt="SQL Server" width="48" height="48" loading="lazy" decoding="async"></div>
             <div class="skill-card-info">
               <div class="skill-card-name">SQL Server</div>
               <div class="skill-card-level">Advanced</div>
@@ -1294,7 +1302,7 @@
           </div>
           <!-- GitLab -->
           <div class="skill-card">
-            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gitlab/gitlab-original.svg" alt="GitLab"></div>
+            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gitlab/gitlab-original.svg" alt="GitLab" width="48" height="48" loading="lazy" decoding="async"></div>
             <div class="skill-card-info">
               <div class="skill-card-name">GitLab</div>
               <div class="skill-card-level">Intermediate</div>
@@ -1302,7 +1310,7 @@
           </div>
           <!-- Solidity -->
           <div class="skill-card">
-            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/solidity/solidity-original.svg" alt="Solidity"></div>
+            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/solidity/solidity-original.svg" alt="Solidity" width="48" height="48" loading="lazy" decoding="async"></div>
             <div class="skill-card-info">
               <div class="skill-card-name">Solidity</div>
               <div class="skill-card-level">Intermediate</div>
@@ -1310,7 +1318,7 @@
           </div>
           <!-- MinIO -->
           <div class="skill-card">
-            <div class="skill-card-icon"><img src="https://cdn.simpleicons.org/minio/C72E49" alt="MinIO"></div>
+            <div class="skill-card-icon"><img src="https://cdn.simpleicons.org/minio/C72E49" alt="MinIO" width="48" height="48" loading="lazy" decoding="async"></div>
             <div class="skill-card-info">
               <div class="skill-card-name">MinIO</div>
               <div class="skill-card-level">Intermediate</div>
@@ -1377,7 +1385,7 @@
         <article class="cloud-platform-card cloud-platform-railway" data-aos="fade-up" data-aos-delay="0" aria-label="Railway">
           <div class="cloud-platform-brand">
             <span class="cloud-platform-mark">
-              <img src="https://cdn.simpleicons.org/railway/0B0D0E" alt="Railway" loading="lazy" />
+              <img src="https://cdn.simpleicons.org/railway/0B0D0E" alt="Railway" width="38" height="38" loading="lazy" decoding="async" />
             </span>
             <span class="cloud-platform-name">Railway</span>
           </div>
@@ -1386,7 +1394,7 @@
         <article class="cloud-platform-card cloud-platform-vercel" data-aos="fade-up" data-aos-delay="50" aria-label="Vercel">
           <div class="cloud-platform-brand">
             <span class="cloud-platform-mark">
-              <img src="https://cdn.simpleicons.org/vercel/FFFFFF" alt="Vercel" loading="lazy" />
+              <img src="https://cdn.simpleicons.org/vercel/FFFFFF" alt="Vercel" width="38" height="38" loading="lazy" decoding="async" />
             </span>
             <span class="cloud-platform-name">Vercel</span>
           </div>
@@ -1395,7 +1403,7 @@
         <article class="cloud-platform-card cloud-platform-netlify" data-aos="fade-up" data-aos-delay="100" aria-label="Netlify">
           <div class="cloud-platform-brand">
             <span class="cloud-platform-mark">
-              <img src="https://cdn.simpleicons.org/netlify/FFFFFF" alt="Netlify" loading="lazy" />
+              <img src="https://cdn.simpleicons.org/netlify/FFFFFF" alt="Netlify" width="38" height="38" loading="lazy" decoding="async" />
             </span>
             <span class="cloud-platform-name">Netlify</span>
           </div>
@@ -1404,7 +1412,7 @@
         <article class="cloud-platform-card cloud-platform-render" data-aos="fade-up" data-aos-delay="150" aria-label="Render">
           <div class="cloud-platform-brand">
             <span class="cloud-platform-mark">
-              <img src="https://cdn.simpleicons.org/render/000000" alt="Render" loading="lazy" />
+              <img src="https://cdn.simpleicons.org/render/000000" alt="Render" width="38" height="38" loading="lazy" decoding="async" />
             </span>
             <span class="cloud-platform-name">Render</span>
           </div>
@@ -1632,7 +1640,7 @@
       <div class="col-12 col-lg-8">
         <div class="d-flex align-items-center gap-3 mb-3">
           <div class="p-2 rounded-circle creator-mode-badge">
-            <img src="Photo/optimized/Logozxin-removebg-preview.png" alt="ZXIN mini logo" style="width: 48px; height: 48px; object-fit: contain" / width="200" height="200" loading="lazy">
+            <img src="Photo/optimized/Logozxin-removebg-preview.png" alt="ZXIN mini logo" width="48" height="48" loading="lazy" decoding="async" style="width: 48px; height: 48px; object-fit: contain">
           </div>
           <div class="creator-mode-copy">
             <p class="text-uppercase mb-1 creator-mode-label" data-i18n="creator.mode">
@@ -1798,7 +1806,7 @@
         <button type="button" class="experience-showcase-card experience-card-red" data-experience-target="exp-fulltime" aria-pressed="false" aria-controls="exp-fulltime" aria-label="Software Developer at Business ALive Co.,Ltd">
           <span class="experience-showcase-icon-shell">
             <span class="experience-showcase-logo experience-showcase-logo-wide">
-              <img src="Photo/optimized/business-alive-logo.png" alt="Business ALive Logo" loading="lazy">
+              <img src="Photo/optimized/business-alive-logo.png" alt="Business ALive Logo" width="231" height="94" loading="lazy" decoding="async">
             </span>
           </span>
           <span class="experience-showcase-card-text">
@@ -1810,7 +1818,7 @@
         <button type="button" class="experience-showcase-card experience-card-blue" data-experience-target="exp-parttime" aria-pressed="false" aria-controls="exp-parttime" aria-label="Next.js Developer at Business ALive Co.,Ltd">
           <span class="experience-showcase-icon-shell">
             <span class="experience-showcase-logo experience-showcase-logo-wide">
-              <img src="Photo/optimized/business-alive-logo.png" alt="Business ALive Logo" loading="lazy">
+              <img src="Photo/optimized/business-alive-logo.png" alt="Business ALive Logo" width="231" height="94" loading="lazy" decoding="async">
             </span>
           </span>
           <span class="experience-showcase-card-text">
@@ -1822,7 +1830,7 @@
         <button type="button" class="experience-showcase-card experience-card-purple" data-experience-target="exp-intern" aria-pressed="false" aria-controls="exp-intern" aria-label="Developer Intern at Election Commission of Thailand">
           <span class="experience-showcase-icon-shell">
             <span class="experience-showcase-logo">
-              <img src="https://www.ect.go.th/ect_th/app/images/Logo-ect-2.png" alt="ECT Logo" loading="lazy">
+              <img src="https://www.ect.go.th/ect_th/app/images/Logo-ect-2.png" alt="ECT Logo" width="150" height="150" loading="lazy" decoding="async">
             </span>
           </span>
           <span class="experience-showcase-card-text">
@@ -1940,7 +1948,7 @@
           <div class="certificate-logo">
             <img
               src="https://b2dmain-ruk.cdn.jelastic.net/wp-content/uploads/2022/05/38033354_1904287879629496_1565701761929314304_n-3.png"
-              alt="BorntoDev Logo" />
+              alt="BorntoDev Logo" width="64" height="64" loading="lazy" decoding="async" />
           </div>
           <div class="certificate-content">
             <div class="certificate-title">
@@ -1957,7 +1965,7 @@
         <div class="certificate-row" data-aos="fade-up" data-aos-delay="100">
           <div class="certificate-logo">
             <img src="https://design-style-guide.freecodecamp.org/img/fcc_secondary_small.svg"
-              alt="freeCodeCamp Logo" />
+              alt="freeCodeCamp Logo" width="64" height="64" loading="lazy" decoding="async" />
           </div>
           <div class="certificate-content">
             <div class="certificate-title">
@@ -1974,7 +1982,7 @@
         <div class="certificate-row" data-aos="fade-up" data-aos-delay="100">
           <div class="certificate-logo">
             <img src="https://design-style-guide.freecodecamp.org/img/fcc_secondary_small.svg"
-              alt="freeCodeCamp Logo" />
+              alt="freeCodeCamp Logo" width="64" height="64" loading="lazy" decoding="async" />
           </div>
           <div class="certificate-content">
             <div class="certificate-title">
@@ -1990,7 +1998,7 @@
         </div>
         <div class="certificate-row" data-aos="fade-up" data-aos-delay="150">
           <div class="certificate-logo">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/6/65/HackerRank_logo.png" alt="HackerRank Logo" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/65/HackerRank_logo.png" alt="HackerRank Logo" width="64" height="64" loading="lazy" decoding="async" />
           </div>
           <div class="certificate-content">
             <div class="certificate-title">

@@ -723,18 +723,23 @@ sh-x2{
   align-items: baseline;
   vertical-align: baseline;
   white-space: nowrap;
+  /* Reserve final width so centered text does not shift (CLS) */
+  width: var(--hero-write-width, auto);
+  max-width: 100%;
 }
 
 .hero-writing-word-inner{
   position: relative;
   display: inline-flex;
   align-items: baseline;
-  width: 0;
+  width: max-content;
+  max-width: 100%;
   overflow: hidden;
   white-space: nowrap;
   padding-right: 0.05em;
   filter: blur(1px);
-  will-change: width, filter;
+  clip-path: inset(0 100% 0 0);
+  will-change: clip-path, filter;
 }
 
 .hero-writing-word.hero-writing-active .hero-writing-word-inner{
@@ -778,14 +783,14 @@ sh-x2{
 
 @keyframes hero-writing-reveal {
   0% {
-    width: 0;
+    clip-path: inset(0 100% 0 0);
     filter: blur(1.2px);
   }
   18% {
     filter: blur(0.65px);
   }
   100% {
-    width: var(--hero-write-width, 100%);
+    clip-path: inset(0 0 0 0);
     filter: blur(0);
   }
 }
@@ -3017,9 +3022,14 @@ img.float-item{
     inset 0 1px 1px rgba(255, 255, 255, 0.3);
 }
 
-.profile-cta-button-primary i{
-  color: #ffffff;
-  font-size: 1.05rem;
+.profile-cta-button i{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.05em;
+  height: 1.05em;
+  flex-shrink: 0;
+  line-height: 1;
 }
 
 .profile-cta-button-primary:hover,
@@ -3042,8 +3052,8 @@ img.float-item{
   -webkit-backdrop-filter: blur(10px) saturate(135%);
 }
 
-.profile-cta-button-secondary i{
-  color: #2c2c2c;
+.profile-cta-button-primary i{
+  color: #ffffff;
   font-size: 1.05rem;
 }
 
@@ -3056,6 +3066,11 @@ img.float-item{
     0 18px 38px rgba(15, 23, 42, 0.12),
     0 6px 18px rgba(255, 255, 255, 0.66),
     inset 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+.profile-cta-button-secondary i{
+  color: #2c2c2c;
+  font-size: 1.05rem;
 }
 
 .profile-cta-button-secondary:hover i,
@@ -3074,6 +3089,15 @@ img.float-item{
 }
 .edu-item{ align-items: flex-start; }
 .edu-item .edu-logo{ height: 48px; width: 48px; object-fit: contain; }
+
+.portfolio-list-thumb {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 20px;
+}
 .edu-list{ position: relative; padding-left: 22px; }
 .edu-list::before{
   content: ""; position: absolute; left: 8px; top: 4px; bottom: 4px;
@@ -3736,7 +3760,7 @@ textarea.form-control-minimal:focus {
   .hero-writing-word.hero-writing-active .hero-writing-word-inner::after {
     animation: none !important;
     filter: none !important;
-    width: auto !important;
+    clip-path: none !important;
     opacity: 1 !important;
   }
 

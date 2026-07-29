@@ -2,6 +2,35 @@
     color: #FFFFFF;
     display: inline-block;
   }
+
+/* Fallback faces with metrics close to webfonts — reduces CLS on font swap */
+@font-face {
+  font-family: "Playfair Display Fallback";
+  src: local("Times New Roman"), local("Times"), local("Liberation Serif");
+  size-adjust: 112%;
+  ascent-override: 90%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: "Parisienne Fallback";
+  src: local("Segoe Script"), local("Apple Chancery"), local("Comic Sans MS");
+  size-adjust: 115%;
+  ascent-override: 95%;
+  descent-override: 25%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: "DM Serif Fallback";
+  src: local("Times New Roman"), local("Times"), local("Liberation Serif");
+  size-adjust: 105%;
+  ascent-override: 92%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+}
+
 .font-add{
     font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
     font-size: 18px;
@@ -11,36 +40,36 @@
     font-size: 18px;
 }
 .playfair-400{
-  font-family: "Playfair Display", serif;
+  font-family: "Playfair Display", "Playfair Display Fallback", "Times New Roman", Times, serif;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
 }
 
 .playfair-500{
-  font-family: "Playfair Display", serif;
+  font-family: "Playfair Display", "Playfair Display Fallback", "Times New Roman", Times, serif;
   font-optical-sizing: auto;
   font-weight: 500;
 }
 .playfair-600{
-  font-family: "Playfair Display", serif;
+  font-family: "Playfair Display", "Playfair Display Fallback", "Times New Roman", Times, serif;
   font-optical-sizing: auto;
   font-weight: 600;
 }
 .parisienne-regular {
-  font-family: "Parisienne", cursive;
+  font-family: "Parisienne", "Parisienne Fallback", "Segoe Script", "Apple Chancery", cursive;
   font-weight: 400;
   font-style: normal;
 }
 
 .dm-serif-display-regular {
-  font-family: "DM Serif Display", serif;
+  font-family: "DM Serif Display", "DM Serif Fallback", "Times New Roman", Times, serif;
   font-weight: 400;
   font-style: normal;
 }
 
 .dm-serif-display-regular-italic {
-  font-family: "DM Serif Display", serif;
+  font-family: "DM Serif Display", "DM Serif Fallback", "Times New Roman", Times, serif;
   font-weight: 400;
   font-style: italic;
 }
