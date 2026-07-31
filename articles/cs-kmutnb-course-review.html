@@ -46,8 +46,20 @@
   <link rel="stylesheet" href="../stylesheets/buttonprofile.css" />
   <link rel="stylesheet" href="../stylesheets/baseblock.css" />
 
-  <!-- Smooth Transitions -->
+  <!-- Article Bento Layout -->
   <style>
+    :root {
+      --blog-bg: #f5f5f5;
+      --blog-surface: #ffffff;
+      --blog-muted: #ebebeb;
+      --blog-text: #111111;
+      --blog-secondary: #6b6b6b;
+      --blog-line: #e8e8e8;
+      --blog-radius: 20px;
+      --blog-radius-lg: 24px;
+      --blog-font: "Anuphan", "Noto Sans Thai", system-ui, sans-serif;
+    }
+
     html {
       scroll-behavior: smooth;
     }
@@ -57,154 +69,224 @@
       -moz-osx-font-smoothing: grayscale;
     }
 
+    body.body-bg.blog-bento-page {
+      background-color: var(--blog-bg) !important;
+      font-family: var(--blog-font);
+      color: var(--blog-text);
+    }
+
     .article-section {
-      padding: 6rem 0 4rem;
+      padding: 2.5rem 0 5rem;
       min-height: 80vh;
     }
 
-    .article-wrapper {
-      max-width: 900px;
+    .article-shell {
+      max-width: 1120px;
       margin: 0 auto;
-      padding: 0 1rem;
+      padding: 0 1.25rem;
     }
 
-    .back-link {
+    .article-hero {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1.5rem;
+      margin-bottom: 1.75rem;
+      padding-top: 1rem;
+    }
+
+    .article-hero-text {
+      min-width: 0;
+      flex: 1;
+    }
+
+    .article-hero h1 {
+      font-family: "DM Serif Display", Georgia, serif;
+      font-size: clamp(1.85rem, 4.2vw, 2.85rem);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin: 0 0 0.75rem;
+      color: var(--blog-text);
+    }
+
+    .article-hero-sub {
+      display: inline-flex;
+      align-items: flex-start;
+      gap: 0.55rem;
+      margin: 0;
+      color: var(--blog-secondary);
+      font-size: 0.98rem;
+      line-height: 1.55;
+    }
+
+    .article-hero-sub i {
+      width: 1.35rem;
+      height: 1.35rem;
+      border-radius: 50%;
+      background: var(--blog-text);
+      color: #fff;
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      color: #667eea;
-      text-decoration: none;
-      margin-bottom: 2rem;
-      font-size: 0.95rem;
-      transition: all 0.3s;
-      font-weight: 500;
+      justify-content: center;
+      font-size: 0.65rem;
+      flex-shrink: 0;
+      margin-top: 0.15rem;
     }
 
-    .back-link:hover {
-      color: #764ba2;
-      gap: 0.8rem;
-    }
-
-    .article-header {
-      background: white;
-      padding: 3rem;
-      border-radius: 16px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-      margin-bottom: 2rem;
-      border: 1px solid rgba(0, 0, 0, 0.05);
-    }
-
-    .article-header h1 {
-      font-size: 2.8rem;
-      margin: 0 0 1.5rem 0;
-      color: #2c2c2c;
-      line-height: 1.3;
-      font-weight: 700;
-    }
-
-    .article-meta {
+    .article-hero-actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 1.5rem;
-      color: #666;
-      font-size: 0.95rem;
-      margin: 1.5rem 0;
-      padding-bottom: 1.5rem;
-      border-bottom: 1px solid #e0e0e0;
+      gap: 0.65rem;
+      flex-shrink: 0;
+      padding-top: 0.35rem;
     }
 
-    .article-meta span {
-      display: flex;
+    .blog-btn {
+      display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 0.7rem 1.35rem;
+      border-radius: 999px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+      white-space: nowrap;
     }
 
-    .article-image {
-      width: 100%;
-      border-radius: 12px;
-      margin: 2rem 0;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    .blog-btn:hover {
+      transform: translateY(-1px);
     }
 
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 1rem;
+    .blog-btn-ghost {
+      background: transparent;
+      color: var(--blog-text);
+      border: 1.5px solid #cfcfcf;
     }
 
-    .tag {
-      display: inline-block;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      padding: 0.4rem 1rem;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      font-weight: 500;
+    .blog-btn-ghost:hover {
+      border-color: var(--blog-text);
+      color: var(--blog-text);
+    }
+
+    .blog-btn-solid {
+      background: var(--blog-text);
+      color: #fff;
+      border: 1.5px solid var(--blog-text);
+    }
+
+    .blog-btn-solid:hover {
+      background: #2a2a2a;
+      color: #fff;
+    }
+
+    .blog-bento-stage {
+      display: grid;
+      grid-template-columns: 1.7fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 0.85rem;
+      min-height: clamp(220px, 32vw, 360px);
+      margin-bottom: 2.5rem;
+    }
+
+    .bento-slot {
+      background: linear-gradient(145deg, #eaeaea 0%, #dedede 55%, #e8e8e8 100%);
+      border-radius: var(--blog-radius-lg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .bento-slot::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.45), transparent 55%);
+      pointer-events: none;
+    }
+
+    .bento-slot--lg {
+      grid-row: 1 / span 2;
+    }
+
+    .article-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.65fr) minmax(240px, 0.85fr);
+      gap: 2.75rem;
+      align-items: start;
+    }
+
+    .blog-overview-label {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin: 0 0 1rem;
+      color: var(--blog-text);
     }
 
     .article-content {
-      background: white;
-      padding: 3rem;
-      border-radius: 16px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-      border: 1px solid rgba(0, 0, 0, 0.05);
+      background: transparent;
+      padding: 0;
+      border: none;
+      box-shadow: none;
     }
 
     .article-content h2 {
-      font-size: 2rem;
-      margin-top: 2.5rem;
-      margin-bottom: 1.2rem;
-      color: #2c2c2c;
-      border-left: 4px solid #667eea;
-      padding-left: 1.2rem;
-      font-weight: 600;
+      font-size: 1.45rem;
+      margin-top: 2rem;
+      margin-bottom: 0.9rem;
+      color: var(--blog-text);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .article-content h2:first-child {
+      margin-top: 0;
     }
 
     .article-content h3 {
-      font-size: 1.5rem;
-      margin-top: 2rem;
-      margin-bottom: 1rem;
-      color: #333;
-      font-weight: 600;
+      font-size: 1.15rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.7rem;
+      color: #222;
+      font-weight: 700;
     }
 
     .article-content p {
-      margin-bottom: 1.5rem;
-      color: #555;
-      line-height: 1.9;
-      font-size: 1.05rem;
+      margin-bottom: 1.25rem;
+      color: #444;
+      line-height: 1.85;
+      font-size: 1.02rem;
     }
 
     .article-content ul,
     .article-content ol {
-      margin: 1.5rem 0;
-      padding-left: 2rem;
+      margin: 1.25rem 0;
+      padding-left: 1.4rem;
     }
 
     .article-content li {
-      margin-bottom: 0.8rem;
-      line-height: 1.8;
-      color: #555;
+      margin-bottom: 0.55rem;
+      line-height: 1.75;
+      color: #444;
     }
 
     .article-content code {
-      background: #f4f4f4;
-      padding: 0.2rem 0.5rem;
-      border-radius: 4px;
-      font-family: 'Courier New', monospace;
-      font-size: 0.9em;
-      color: #e83e8c;
+      background: var(--blog-muted);
+      padding: 0.15rem 0.45rem;
+      border-radius: 6px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.88em;
+      color: #222;
     }
 
     .article-content pre {
-      background: #1e1e1e;
-      color: #d4d4d4;
-      padding: 1.5rem;
-      border-radius: 12px;
+      background: #1a1a1a;
+      color: #e8e8e8;
+      padding: 1.25rem 1.35rem;
+      border-radius: 16px;
       overflow-x: auto;
-      margin: 2rem 0;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      margin: 1.5rem 0;
     }
 
     .article-content pre code {
@@ -214,40 +296,238 @@
     }
 
     .article-content blockquote {
-      border-left: 4px solid #667eea;
-      padding-left: 1.5rem;
-      margin: 2rem 0;
-      color: #666;
-      font-style: italic;
-      background: #f8f9fa;
-      padding: 1.5rem;
-      border-radius: 8px;
+      border-left: 3px solid var(--blog-text);
+      padding: 1rem 1.25rem;
+      margin: 1.5rem 0;
+      color: var(--blog-secondary);
+      background: var(--blog-surface);
+      border-radius: 0 14px 14px 0;
     }
 
     .article-content a {
-      color: #667eea;
+      color: var(--blog-text);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .article-content img,
+    .article-image {
+      width: 100%;
+      border-radius: var(--blog-radius);
+      margin: 1.5rem 0;
+    }
+
+    .article-aside {
+      position: sticky;
+      top: 5.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.75rem;
+    }
+
+    .blog-highlights {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      background: var(--blog-surface);
+      border-radius: var(--blog-radius);
+      overflow: hidden;
+      border: 1px solid rgba(0, 0, 0, 0.04);
+    }
+
+    .blog-highlights li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 1rem 1.15rem;
+      border-bottom: 1px solid var(--blog-line);
+      color: var(--blog-text);
+      font-size: 0.9rem;
+      font-weight: 560;
+      line-height: 1.4;
+    }
+
+    .blog-highlights li:last-child {
+      border-bottom: none;
+    }
+
+    .blog-highlights .check {
+      width: 1.25rem;
+      height: 1.25rem;
+      border-radius: 50%;
+      background: var(--blog-text);
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 0.6rem;
+      margin-top: 0.1rem;
+    }
+
+    .blog-author {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .blog-author-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: var(--blog-muted);
+      flex-shrink: 0;
+    }
+
+    .blog-author-handle {
+      display: block;
+      font-weight: 700;
+      font-size: 0.98rem;
+      color: var(--blog-text);
       text-decoration: none;
-      border-bottom: 1px solid transparent;
-      transition: all 0.3s;
     }
 
-    .article-content a:hover {
-      border-bottom-color: #667eea;
-      color: #764ba2;
+    .blog-author-name {
+      display: block;
+      color: var(--blog-secondary);
+      font-size: 0.88rem;
+      margin-top: 0.1rem;
     }
 
-    @media (max-width: 768px) {
-      .article-header h1 {
-        font-size: 2rem;
+    .blog-author-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      margin-top: 0.85rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--blog-line);
+    }
+
+    .blog-author-stats > div {
+      padding: 0.15rem 0.85rem;
+      text-align: center;
+    }
+
+    .blog-author-stats > div:first-child {
+      border-right: 1px solid var(--blog-line);
+      padding-left: 0;
+    }
+
+    .blog-author-stats > div:last-child {
+      padding-right: 0;
+    }
+
+    .blog-author-stats strong {
+      display: block;
+      font-size: 0.92rem;
+      color: var(--blog-text);
+      font-weight: 700;
+    }
+
+    .blog-author-stats span {
+      font-size: 0.8rem;
+      color: var(--blog-secondary);
+    }
+
+    .article-comments {
+      margin-top: 3rem;
+      background: var(--blog-surface);
+      border-radius: var(--blog-radius-lg) var(--blog-radius-lg) 0 0;
+      padding: 1.75rem 1.5rem 2.5rem;
+      border: 1px solid rgba(0, 0, 0, 0.04);
+      border-bottom: none;
+    }
+
+    .article-comments-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .article-comments-header h2 {
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+
+    .article-comments-filters {
+      display: flex;
+      gap: 0.85rem;
+      font-size: 0.88rem;
+      color: var(--blog-secondary);
+    }
+
+    .article-comments-filters span.is-active {
+      color: var(--blog-text);
+      font-weight: 700;
+    }
+
+    .article-comments-empty {
+      color: var(--blog-secondary);
+      font-size: 0.95rem;
+      margin: 0;
+      padding: 0.5rem 0 0.25rem;
+    }
+
+    @media (max-width: 900px) {
+      .article-layout {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .article-aside {
+        position: static;
+      }
+
+      .blog-bento-stage {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 160px 120px;
+        min-height: 0;
+      }
+
+      .bento-slot--lg {
+        grid-column: 1 / -1;
+        grid-row: auto;
+        min-height: 160px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .article-hero {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .article-hero-actions {
+        width: 100%;
+      }
+
+      .blog-btn {
+        flex: 1;
+      }
+
+      .blog-bento-stage {
+        grid-template-columns: 1fr;
+        gap: 0.7rem;
+      }
+
+      .bento-slot,
+      .bento-slot--lg {
+        min-height: 110px;
+        grid-column: auto;
       }
 
       .article-section {
-        padding: 4rem 0 2rem;
+        padding: 1.5rem 0 3rem;
       }
 
-      .article-header,
-      .article-content {
-        padding: 1.5rem;
+      .article-comments {
+        margin-left: -1.25rem;
+        margin-right: -1.25rem;
+        border-radius: 20px 20px 0 0;
       }
     }
   </style>
@@ -281,7 +561,7 @@
     crossorigin="anonymous"></script>
 </head>
 
-<body class="body-bg" style="background-color: #f8f8ff" data-aos-easing="ease" data-aos-duration="800"
+<body class="body-bg blog-bento-page" style="background-color: #f5f5f5" data-aos-easing="ease" data-aos-duration="800"
   data-aos-delay="0">
 
   <!-- Navigation -->
@@ -310,25 +590,33 @@
 
   <!-- Article Section -->
   <section class="article-section">
-    <div class="article-wrapper">
-      <a href="../blog.html" class="back-link">
-        <i class="fas fa-arrow-left"></i>
-        <span>กลับไปหน้า Blog for testing</span>
-      </a>
-
-      <article>
-        <header class="article-header" data-aos="fade-up">
+    <div class="article-shell">
+      <header class="article-hero" data-aos="fade-up">
+        <div class="article-hero-text">
           <h1>รีวิววิชา Computer Science มจพ — สรุปวิชาที่เรียนจริงในสายวิทย์คอม</h1>
-          <div class="article-meta">
-            <span><i class="far fa-calendar-alt"></i> 27 กรกฎาคม 2569</span>
-            <span><i class="far fa-user"></i> Nattapat Phungphugdee</span>
-          </div>
-          
-          <div class="tags"><span class="tag">รีวิววิชา computer science มจพ</span><span class="tag">Computer Science</span><span class="tag">มจพ</span><span class="tag">KMUTNB</span><span class="tag">วิทยาการคอมพิวเตอร์</span><span class="tag">รีวิววิชา</span></div>
-        </header>
+          <p class="article-hero-sub">
+            <i class="fas fa-book-open" aria-hidden="true"></i>
+            <span>รีวิววิชา Computer Science มจพ (วิทยาการคอมพิวเตอร์ มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าพระนครเหนือ) จากประสบการณ์เรียนจริง พร้อมคลิป TikTok สรุปวิชาที่เจอระหว่างเรียน</span>
+          </p>
+        </div>
+        <div class="article-hero-actions">
+          <a href="../blog.html" class="blog-btn blog-btn-ghost">← Blog</a>
+          <a href="../index.html#footer" class="blog-btn blog-btn-solid">Contact</a>
+        </div>
+      </header>
 
-        <div class="article-content" data-aos="fade-up" data-aos-delay="100">
-          <h1>รีวิววิชา Computer Science มจพ</h1>
+      <!-- Image slots reserved for later -->
+      <div class="blog-bento-stage" aria-hidden="true" data-aos="fade-up" data-aos-delay="80">
+        <div class="bento-slot bento-slot--lg"></div>
+        <div class="bento-slot"></div>
+        <div class="bento-slot"></div>
+      </div>
+
+      <div class="article-layout">
+        <div class="article-main" data-aos="fade-up" data-aos-delay="100">
+          <h2 class="blog-overview-label">Overview</h2>
+          <div class="article-content">
+            <h1>รีวิววิชา Computer Science มจพ</h1>
 <p>ถ้ากำลังหา <strong>รีวิววิชา Computer Science มจพ</strong> หรืออยากรู้ว่าเรียน <strong>วิทยาการคอมพิวเตอร์ มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าพระนครเหนือ (มจพ.)</strong> แล้วเจอวิชาประมาณไหน บทความนี้สรุปจากประสบการณ์เรียนจริงของผม พร้อมคลิปรีวิวบน TikTok</p>
 <h2>คลิปรีวิวบน TikTok</h2>
 <p>ดูคลิปเต็มได้ที่ <a href="https://www.tiktok.com/@nattazxin/video/7624066985374092565">รีวิววิชา Computer Science มจพ บน TikTok</a></p>
@@ -353,8 +641,46 @@
 <li>Portfolio: <a href="https://nattazxin.com/">nattazxin.com</a></li>
 </ul>
 
+          </div>
         </div>
-      </article>
+
+        <aside class="article-aside" data-aos="fade-up" data-aos-delay="140">
+          <ul class="blog-highlights">
+            <li><span class="check" aria-hidden="true"><i class="fas fa-check"></i></span>รีวิววิชา computer science มจพ</li><li><span class="check" aria-hidden="true"><i class="fas fa-check"></i></span>Computer Science</li><li><span class="check" aria-hidden="true"><i class="fas fa-check"></i></span>มจพ</li><li><span class="check" aria-hidden="true"><i class="fas fa-check"></i></span>KMUTNB</li><li><span class="check" aria-hidden="true"><i class="fas fa-check"></i></span>วิทยาการคอมพิวเตอร์</li><li><span class="check" aria-hidden="true"><i class="fas fa-check"></i></span>รีวิววิชา</li>
+          </ul>
+
+          <div>
+            <div class="blog-author">
+              <img class="blog-author-avatar" src="../Photo/optimized/DSCF2374.jpg" alt="Nattapat Phungphugdee" width="52" height="52" loading="lazy" />
+              <div class="blog-author-meta">
+                <span class="blog-author-handle">Nattapat Phungphugdee</span>
+                <span class="blog-author-name">28 กรกฎาคม 2569</span>
+              </div>
+            </div>
+            <div class="blog-author-stats">
+              <div>
+                <strong>Author</strong>
+                <span>Writer</span>
+              </div>
+              <div>
+                <strong>Blog</strong>
+                <span>Article</span>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <div class="article-comments" data-aos="fade-up">
+        <div class="article-comments-header">
+          <h2>Comments</h2>
+          <div class="article-comments-filters">
+            <span class="is-active">Newest</span>
+            <span>Top comment</span>
+          </div>
+        </div>
+        <p class="article-comments-empty">ยังไม่มีความคิดเห็น — กลับมาใหม่ได้เร็วๆ นี้</p>
+      </div>
     </div>
   </section>
 
