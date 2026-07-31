@@ -358,13 +358,18 @@ function buildBlogIndex(articles) {
   
   // Sort articles by date (newest first)
   articles.sort((a, b) => new Date(b.date) - new Date(a.date));
-  
-  const articlesList = articles.map(article => `
+
+  // Fallback image used when an article has no image or its image fails to load,
+  // so the blog cards never show a broken thumbnail.
+  const DEFAULT_PREVIEW_IMAGE = 'Photo/optimized/DSCF2374.jpg';
+
+  const articlesList = articles.map(article => {
+    const previewImage = article.image ? escapeHtml(article.image) : DEFAULT_PREVIEW_IMAGE;
+    return `
     <article class="article-preview">
-      ${article.image ? `
       <a href="articles/${article.slug}.html" class="article-preview-media" aria-hidden="true" tabindex="-1">
-        <img src="${escapeHtml(article.image)}" alt="" class="preview-image" width="200" height="200" loading="lazy">
-      </a>` : ''}
+        <img src="${previewImage}" alt="" class="preview-image" width="200" height="200" loading="lazy" onerror="this.onerror=null;this.src='${DEFAULT_PREVIEW_IMAGE}';">
+      </a>
       <div class="article-preview-body">
         <h2><a href="articles/${article.slug}.html">${escapeHtml(article.title)}</a></h2>
         <ul class="article-preview-meta-list">
@@ -378,7 +383,8 @@ function buildBlogIndex(articles) {
         <a href="articles/${article.slug}.html" class="read-more">อ่านต่อ →</a>
       </div>
     </article>
-  `).join('\n');
+  `;
+  }).join('\n');
 
   const html = template.replace(/\{\{articles\}\}/g, articlesList);
   

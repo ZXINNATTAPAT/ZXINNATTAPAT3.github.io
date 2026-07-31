@@ -4,7 +4,7 @@ description: "เรียนรู้พื้นฐานการพัฒน
 date: "2025-01-27"
 author: "Nattapat Phungphugdee"
 tags: ["Next.js", "React", "Web Development", "Tutorial"]
-image: "Photo/Logo.png"
+image: "Photo/optimized/Logo.png"
 slug: "nextjs-beginner-guide"
 ---
 
