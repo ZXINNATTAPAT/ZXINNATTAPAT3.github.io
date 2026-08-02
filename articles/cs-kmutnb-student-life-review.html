@@ -25,14 +25,14 @@
   <meta property="og:title" content="รีวิวเรียน Computer Science มจพ — ปี 1 ถึงปี 3 สายวิทย์คอมจริง ๆ" />
   <meta property="og:description" content="รีวิวเรียน Computer Science มจพ จากประสบการณ์จริง ตั้งแต่ปี 1–ปี 3 วิชาที่เจอ การแยกสาย Fullstack สิ่งอำนวยความสะดวกในมอ. และบรรยากาศส่งโปรเจค" />
   <meta property="og:url" content="https://zxinnattapat3.github.io/articles/cs-kmutnb-student-life-review.html" />
-  <meta property="og:image" content="https://zxinnattapat3.github.io/Photo/DSCF2374.jpg" />
+  <meta property="og:image" content="https://zxinnattapat3.github.io/Photo/optimized/cs-kmutnb-review/01-cover.jpg" />
   <meta property="og:locale" content="th_TH" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="รีวิวเรียน Computer Science มจพ — ปี 1 ถึงปี 3 สายวิทย์คอมจริง ๆ" />
   <meta name="twitter:description" content="รีวิวเรียน Computer Science มจพ จากประสบการณ์จริง ตั้งแต่ปี 1–ปี 3 วิชาที่เจอ การแยกสาย Fullstack สิ่งอำนวยความสะดวกในมอ. และบรรยากาศส่งโปรเจค" />
-  <meta name="twitter:image" content="https://zxinnattapat3.github.io/Photo/DSCF2374.jpg" />
+  <meta name="twitter:image" content="https://zxinnattapat3.github.io/Photo/optimized/cs-kmutnb-review/01-cover.jpg" />
 
   <!-- Canonical URL -->
   <link rel="canonical" href="https://zxinnattapat3.github.io/articles/cs-kmutnb-student-life-review.html" />
@@ -185,9 +185,9 @@
     .blog-bento-stage {
       display: grid;
       grid-template-columns: 1.7fr 1fr;
-      grid-template-rows: 1fr 1fr;
+      grid-template-rows: repeat(2, minmax(0, 1fr));
       gap: 0.85rem;
-      min-height: clamp(220px, 32vw, 360px);
+      height: clamp(260px, 38vw, 440px);
       margin-bottom: 2.5rem;
     }
 
@@ -196,9 +196,10 @@
       border-radius: var(--blog-radius-lg);
       position: relative;
       overflow: hidden;
+      min-height: 0;
     }
 
-    .bento-slot::after {
+    .bento-slot:not(.bento-slot--photo)::after {
       content: "";
       position: absolute;
       inset: 0;
@@ -208,6 +209,15 @@
 
     .bento-slot--lg {
       grid-row: 1 / span 2;
+    }
+
+    .bento-slot--photo img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
     .article-layout {
@@ -315,6 +325,14 @@
       width: 100%;
       border-radius: var(--blog-radius);
       margin: 1.5rem 0;
+      display: block;
+      background: var(--blog-muted);
+    }
+
+    .article-content img.article-inline-portrait {
+      max-width: min(100%, 420px);
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .article-aside {
@@ -605,11 +623,10 @@
         </div>
       </header>
 
-      <!-- Image slots reserved for later -->
-      <div class="blog-bento-stage" aria-hidden="true" data-aos="fade-up" data-aos-delay="80">
-        <div class="bento-slot bento-slot--lg"></div>
-        <div class="bento-slot"></div>
-        <div class="bento-slot"></div>
+      <div class="blog-bento-stage" data-aos="fade-up" data-aos-delay="80">
+        <div class="bento-slot bento-slot--lg bento-slot--photo"><img src="../Photo/optimized/cs-kmutnb-review/01-cover.jpg" alt="รีวิวเรียน Computer Science มจพ — ปี 1 ถึงปี 3 สายวิทย์คอมจริง ๆ" loading="eager"></div>
+        <div class="bento-slot bento-slot--photo"><img src="../Photo/optimized/cs-kmutnb-review/02-faculty.jpg" alt="" loading="lazy"></div>
+        <div class="bento-slot bento-slot--photo"><img src="../Photo/optimized/cs-kmutnb-review/11-facilities.jpg" alt="" loading="lazy"></div>
       </div>
 
       <div class="article-layout">
@@ -620,9 +637,11 @@
 <p>ถ้ากำลังหา <strong>รีวิวเรียน Computer Science มจพ</strong> หรืออยากรู้ว่าเรียน <strong>วิทยาการคอมพิวเตอร์ มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าพระนครเหนือ (มจพ.)</strong> แล้วเจออะไรบ้าง ทั้งวิชา บรรยากาศ และการใช้ชีวิตในมอ. บทความนี้สรุปจากประสบการณ์เรียนจริงของผมแบบครบ ๆ จากคลิปรีวิวบน TikTok</p>
 <p>ดูโพสต์ต้นทางได้ที่ <a href="https://www.tiktok.com/@nattazxin/photo/7332778988907121922">Review CS KMUTNB บน TikTok</a> หรือ <a href="https://vt.tiktok.com/ZS4S97J44/">ลิงก์สั้น</a></p>
 <h2>คณะ / ตึกที่เรียน</h2>
+<p><img src="../Photo/optimized/cs-kmutnb-review/02-faculty.jpg" alt="คณะวิทยาศาสตร์ประยุกต์ มจพ — ตึกที่เรียนสาขา Computer Science"></p>
 <p>สาขาอยู่ที่ <strong>คณะวิทยาศาสตร์ประยุกต์ (Faculty of Applied Science)</strong><br>ห้องเรียนหลักของสาขาอยู่ประมาณ <strong>ชั้น 6</strong></p>
 <p>จุดที่อยากบอกเพิ่ม: จะมีบางวิชาที่เรียนเป็นภาษาอังกฤษล้วน ถ้าเพิ่งเข้ามาอาจต้องปรับตัวนิดหน่อย แต่ก็เป็นโอกาสฝึกคำศัพท์สายคอมไปในตัว</p>
 <h2>การเรียนปี 1</h2>
+<p><img src="../Photo/optimized/cs-kmutnb-review/03-year1.jpg" alt="สรุปการเรียนปี 1 Computer Science มจพ — Python คณิต และโปรเจคพื้นฐาน"></p>
 <p>ปีแรกเน้นวางพื้นฐานค่อนข้างชัด</p>
 <ul>
 <li>เรียน <strong>พื้นฐานการเขียนโปรแกรม</strong></li>
@@ -639,6 +658,7 @@
 </ul>
 <p>สรุปสั้น ๆ ของปี 1: ยังไม่โหดแบบโค้ดทั้งวัน แต่ต้องทนคณิตและทฤษฎีให้ได้ แล้วค่อยสะสมพื้นฐานไปปีถัดไป</p>
 <h2>การเรียนปี 2</h2>
+<p><img src="../Photo/optimized/cs-kmutnb-review/04-year2.jpg" alt="สรุปการเรียนปี 2 — Data Structure Algorithm และภาษา C/C++ Java JS"></p>
 <p>ปี 2 เริ่มเขียนโค้ดมากขึ้นชัดเจน ภาษาที่เจอเยอะขึ้น เช่น</p>
 <ul>
 <li><strong>C / C++</strong></li>
@@ -662,6 +682,7 @@
 <p>ส่วนตัวชอบ <strong>SA</strong> กับ <strong>Software Engineering</strong> มาก เพราะเริ่มเห็นภาพการทำระบบจริงมากขึ้น</p>
 <p>ปี 2 งานกลุ่มเพิ่ม และมีโปรเจคเพิ่มอีกประมาณ 2 ตัว</p>
 <h2>ก่อนขึ้นปี 3 — แยกสายเรียน</h2>
+<p><img src="../Photo/optimized/cs-kmutnb-review/05-tracks.jpg" alt="แยกสายเรียนก่อนปี 3 — AI Fullstack Smart Tech Network Security"></p>
 <p>ก่อนเข้าปี 3 จะมีการ <strong>แยกสาย</strong> ให้เลือกโฟกัส เช่น</p>
 <ol>
 <li><strong>AI</strong></li>
@@ -673,6 +694,7 @@
 <p>ถ้าเรียนครบตามสาย จะได้ <strong>ใบ Cer เพิ่มตอนจบ</strong> รับรองว่าเรียนสายนั้นจริง</p>
 <p>อีกจุดที่น่าสนใจคือมีโอกาส <strong>ฝึกงานสหกิจต่างประเทศ</strong> เช่น ไต้หวัน / เกาหลีใต้</p>
 <h2>การเรียนปี 3</h2>
+<p><img src="../Photo/optimized/cs-kmutnb-review/06-year3.jpg" alt="การเรียนปี 3 — เลือกวิชาและโฟกัสเขียนเว็บ"></p>
 <p>ตอนนี้ผมยังอยู่ปี 3<br>ปีนี้จะเป็นวิชาที่เลือกเรียนมากขึ้น ส่วนตัวลงประมาณนี้:</p>
 <ul>
 <li>Computer Graphics</li>
@@ -683,6 +705,7 @@
 </ul>
 <p>ทิศทางปี 3 ของผมจะหนักไปทาง <strong>เขียนเว็บ</strong> ค่อนข้างชัด ทั้งลงวิชาและทำงานที่เกี่ยวกับเว็บ / UI</p>
 <h2>บรรยากาศส่งโปรเจค</h2>
+<p><img src="../Photo/optimized/cs-kmutnb-review/10-project.jpg" alt="บรรยากาศส่งโปรเจคมหาภัย — ส่งทุกครั้งแก้ทุกครั้ง"></p>
 <p>บรรยากาศส่งโปรเจคแบบมหาภัยจริง:</p>
 <ul>
 <li>ส่งทุกครั้ง</li>
@@ -694,7 +717,12 @@
 <p>“ผมรู้ว่าคุณมีของ”</p>
 </blockquote>
 <p>คือได้ยินแล้วภูมิใจนะ… แต่ก็รู้ว่ายังต้องแก้ต่ออีกแน่ ๆ</p>
+<h2>สังคมเพื่อนในสาขา</h2>
+<p><img src="../Photo/optimized/cs-kmutnb-review/08-friends.jpg" alt="สังคมเพื่อนวิทย์คอม — ช่วยกันรอดก่อนสอบและติวด้วยกัน"></p>
+<p>สังคมดีมาก เพื่อน ๆ อยู่กันแบบช่วยกันรอด<br>ก่อนสอบมักนัดติว / นัดอ่านหนังสือด้วยกัน และเวลาเจอบัคก็ช่วยกันดูเป็นทีม</p>
+<p>เวลาทำงานกลุ่มก็ดี แต่ต้องเลือกคนเข้ากลุ่มดี ๆ ด้วย เพราะบางคนอาจไม่เอางานเลย</p>
 <h2>สิ่งอำนวยความสะดวกในมอ.</h2>
+<p><img src="../Photo/optimized/cs-kmutnb-review/11-facilities.jpg" alt="สิ่งอำนวยความสะดวกในมอ. — หอสมุด โรงอาหาร ห้องคอม และยิม"></p>
 <h3>หอสมุด</h3>
 <ul>
 <li>มีแยกห้องส่วนตัว</li>
@@ -710,8 +738,9 @@
 <li>มีคาเฟ่ในมหาวิทยาลัยหลายจุด นั่งทำงาน / นั่งพักได้สะดวก</li>
 </ul>
 <h3>ห้องคอมพิวเตอร์</h3>
-<p>คอมมหาวิทยาลัยแรงมาก<br>แรงจะแรงแรงจนดับเองบ้าง… แต่โดยรวมใช้ทำงาน / ทำแล็บได้สบาย</p>
+<p>คอมมหาวิทยาลัยแรงมาก<br>แรงจะแรงอาจจนดับเองบ้าง… แต่โดยรวมใช้ทำงาน / ทำแล็บได้สบาย</p>
 <h3>กีฬา / กิจกรรม</h3>
+<p><img src="../Photo/optimized/cs-kmutnb-review/12-campus-life.jpg" alt="กิจกรรมในมอ. คาเฟ่ และที่เที่ยวแถวมจพ"></p>
 <ul>
 <li>มียิมและสนามกีฬา</li>
 <li>มีกิจกรรมบ่อย เช่น ค่ายอาสา, แข่ง Esport, แข่งกีฬาสี และอีกเพียบ</li>
@@ -719,9 +748,11 @@
 <h3>ที่เที่ยวแถวมอ.</h3>
 <p>แถวมจพ. มีที่เที่ยวให้พักสมองได้<br>ส่วนตัวไป <strong>ตึกแดง</strong> บ่อยสุด</p>
 <h2>อาหารหลังมอ.</h2>
+<p><img src="../Photo/optimized/cs-kmutnb-review/13-food.jpg" alt="อาหารหลังมอ. เพียบ — ส่วนมากกินก๋วยเตี๋ยว"></p>
 <p>อาหารหลังมอ. เพียบและอร่อยมาก<br>มีทั้งก๋วยเตี๋ยว ข้าวผัด ลาบ ส้มตำ ทอมยำ ฯลฯ</p>
 <p>แต่พูดตามตรง… ส่วนมากผมกินแต่ก๋วยเตี๋ยว</p>
 <h2>สรุปสั้น ๆ</h2>
+<p><img src="../Photo/optimized/cs-kmutnb-review/14-survive.jpg" alt="ชีวิตเอาตัวรอดจาก Computer Science"></p>
 <table>
 <thead>
 <tr>
@@ -750,6 +781,7 @@
 <li>มีทั้งสิ่งอำนวยความสะดวก กิจกรรม และอาหารหลังมอ. ให้ใช้ชีวิตได้ครบ</li>
 </ul>
 <p>รายละเอียดวิชาอาจปรับตามปีที่เข้าเรียน แนะนำเช็กหลักสูตรล่าสุดของสาขาเพิ่มเติมด้วย</p>
+<p><img src="../Photo/optimized/cs-kmutnb-review/15-nap.jpg" alt="นอนต่อละ — ปิดท้ายรีวิวเรียน CS มจพ"></p>
 <hr>
 <p><strong>ติดตามเพิ่มเติม</strong></p>
 <ul>
