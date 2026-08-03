@@ -240,6 +240,7 @@ function buildArticle(markdownFile) {
     author = 'Nattapat Phungphugdee',
     tags = [],
     image = '',
+    gallery = [],
     slug = path.basename(markdownFile, '.md'),
     keywords = ''
   } = attributes;
@@ -298,6 +299,26 @@ function buildArticle(markdownFile) {
       `<li><span class="check" aria-hidden="true"><i class="fas fa-check"></i></span>${escapeHtml(tag)}</li>`
     ).join('');
 
+  const galleryImages = Array.isArray(gallery) ? gallery.filter(Boolean) : [];
+  const renderBentoSlot = (src, { large = false, alt = '', eager = false } = {}) => {
+    const sizeClass = large ? ' bento-slot--lg' : '';
+    if (!src) {
+      return `<div class="bento-slot${sizeClass}"></div>`;
+    }
+    return `<div class="bento-slot${sizeClass} bento-slot--photo"><img src="../${escapeHtml(src)}" alt="${escapeHtml(alt)}" loading="${eager ? 'eager' : 'lazy'}"></div>`;
+  };
+  const bentoSlots = galleryImages.length > 0
+    ? [
+        renderBentoSlot(galleryImages[0], { large: true, alt: title, eager: true }),
+        renderBentoSlot(galleryImages[1] || galleryImages[0]),
+        renderBentoSlot(galleryImages[2] || galleryImages[1] || galleryImages[0])
+      ].join('\n        ')
+    : [
+        renderBentoSlot('', { large: true }),
+        renderBentoSlot(''),
+        renderBentoSlot('')
+      ].join('\n        ');
+
   // Prepare all replacements at once for better performance
   const replacements = {
     '{{title}}': escapeHtml(title),
@@ -307,6 +328,7 @@ function buildArticle(markdownFile) {
     '{{tags}}': tags.map(tag => `<span class="tag">${escapeHtml(tag)}</span>`).join(''),
     '{{highlights}}': highlightItems,
     '{{image}}': imageHtml,
+    '{{bentoSlots}}': bentoSlots,
     '{{ogImage}}': ogImage,
     '{{content}}': htmlContent,
     '{{slug}}': slug,

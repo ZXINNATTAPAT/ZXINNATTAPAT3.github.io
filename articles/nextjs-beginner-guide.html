@@ -221,9 +221,9 @@
     .blog-bento-stage {
       display: grid;
       grid-template-columns: 1.7fr 1fr;
-      grid-template-rows: 1fr 1fr;
+      grid-template-rows: repeat(2, minmax(0, 1fr));
       gap: 0.85rem;
-      min-height: clamp(220px, 32vw, 360px);
+      height: clamp(260px, 38vw, 440px);
       margin-bottom: 2.5rem;
     }
 
@@ -232,9 +232,10 @@
       border-radius: var(--blog-radius-lg);
       position: relative;
       overflow: hidden;
+      min-height: 0;
     }
 
-    .bento-slot::after {
+    .bento-slot:not(.bento-slot--photo)::after {
       content: "";
       position: absolute;
       inset: 0;
@@ -244,6 +245,15 @@
 
     .bento-slot--lg {
       grid-row: 1 / span 2;
+    }
+
+    .bento-slot--photo img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
     .article-layout {
@@ -351,6 +361,14 @@
       width: 100%;
       border-radius: var(--blog-radius);
       margin: 1.5rem 0;
+      display: block;
+      background: var(--blog-muted);
+    }
+
+    .article-content img.article-inline-portrait {
+      max-width: min(100%, 420px);
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .article-aside {
@@ -641,8 +659,7 @@
         </div>
       </header>
 
-      <!-- Image slots reserved for later -->
-      <div class="blog-bento-stage" aria-hidden="true" data-aos="fade-up" data-aos-delay="80">
+      <div class="blog-bento-stage" data-aos="fade-up" data-aos-delay="80">
         <div class="bento-slot bento-slot--lg"></div>
         <div class="bento-slot"></div>
         <div class="bento-slot"></div>
