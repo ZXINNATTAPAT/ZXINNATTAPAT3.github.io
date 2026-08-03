@@ -252,8 +252,46 @@ function buildArticle(markdownFile) {
 
   // Prepare image HTML
   const imageHtml = image ? `<img src="../${escapeHtml(image)}" alt="${escapeHtml(title)}" class="article-image">` : '';
-  const ogImage = image ? `https://zxinnattapat3.github.io/${escapeHtml(image)}` : 'https://zxinnattapat3.github.io/Photo/DSCF2374.jpg';
+  const ogImage = image ? `https://zxinnattapat3.github.io/${escapeHtml(image)}` : 'https://zxinnattapat3.github.io/Photo/optimized/DSCF2374.jpg';
   const keywordsMeta = keywords || (Array.isArray(tags) ? tags.join(', ') : '');
+
+  // ISO timestamps for Open Graph article tags and structured data
+  const publishedIso = (() => {
+    const d = new Date(date);
+    return isNaN(d.getTime()) ? new Date().toISOString() : d.toISOString();
+  })();
+  const canonicalUrl = `https://zxinnattapat3.github.io/articles/${slug}.html`;
+
+  // BlogPosting JSON-LD so Google understands this is an article (rich results).
+  // JSON.stringify handles escaping; values are the raw (un-HTML-escaped) strings.
+  const articleSchema = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: title,
+    description,
+    image: [ogImage],
+    datePublished: publishedIso,
+    dateModified: publishedIso,
+    inLanguage: 'th-TH',
+    author: {
+      '@type': 'Person',
+      name: author,
+      url: 'https://zxinnattapat3.github.io/'
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Nattapat Phungphugdee',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://zxinnattapat3.github.io/Photo/optimized/Logo.png'
+      }
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': canonicalUrl
+    },
+    ...(keywordsMeta ? { keywords: keywordsMeta } : {})
+  }, null, 2);
   const highlightItems = (Array.isArray(tags) && tags.length > 0
     ? tags
     : ['บทความสายเดฟ', 'ประสบการณ์จริง', 'อ่านง่าย ใช้ได้']).map(tag =>
@@ -273,7 +311,10 @@ function buildArticle(markdownFile) {
     '{{content}}': htmlContent,
     '{{slug}}': slug,
     '{{keywords}}': escapeHtml(keywordsMeta),
-    '{{canonical}}': `https://zxinnattapat3.github.io/articles/${slug}.html`
+    '{{canonical}}': canonicalUrl,
+    '{{publishedTime}}': publishedIso,
+    '{{modifiedTime}}': publishedIso,
+    '{{articleSchema}}': articleSchema
   };
 
   // Replace all variables in one pass
