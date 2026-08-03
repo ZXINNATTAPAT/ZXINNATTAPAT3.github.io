@@ -20,7 +20,7 @@ const TEMPLATE_DIR = path.join(__dirname, 'templates');
 const COMPONENTS_DIR = path.join(__dirname, 'components');
 const PHOTO_DIR = path.join(__dirname, 'Photo');
 const OPTIMIZED_PHOTO_DIR = path.join(__dirname, 'Photo', 'optimized');
-const BASE_URL = 'https://zxinnattapat3.github.io';
+const BASE_URL = 'https://nattazxin.com';
 
 function localeFontLinks(lang) {
   // Locale fonts are used above-the-fold on non-EN pages; load critically to avoid CLS
@@ -253,7 +253,7 @@ function buildArticle(markdownFile) {
 
   // Prepare image HTML
   const imageHtml = image ? `<img src="../${escapeHtml(image)}" alt="${escapeHtml(title)}" class="article-image">` : '';
-  const ogImage = image ? `https://zxinnattapat3.github.io/${escapeHtml(image)}` : 'https://zxinnattapat3.github.io/Photo/optimized/DSCF2374.jpg';
+  const ogImage = image ? `${BASE_URL}/${escapeHtml(image)}` : `${BASE_URL}/Photo/optimized/DSCF2374.jpg`;
   const keywordsMeta = keywords || (Array.isArray(tags) ? tags.join(', ') : '');
 
   // ISO timestamps for Open Graph article tags and structured data
@@ -261,7 +261,7 @@ function buildArticle(markdownFile) {
     const d = new Date(date);
     return isNaN(d.getTime()) ? new Date().toISOString() : d.toISOString();
   })();
-  const canonicalUrl = `https://zxinnattapat3.github.io/articles/${slug}.html`;
+  const canonicalUrl = `${BASE_URL}/articles/${slug}.html`;
 
   // BlogPosting JSON-LD so Google understands this is an article (rich results).
   // JSON.stringify handles escaping; values are the raw (un-HTML-escaped) strings.
@@ -277,14 +277,14 @@ function buildArticle(markdownFile) {
     author: {
       '@type': 'Person',
       name: author,
-      url: 'https://zxinnattapat3.github.io/'
+      url: `${BASE_URL}/`
     },
     publisher: {
       '@type': 'Organization',
       name: 'Nattapat Phungphugdee',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://zxinnattapat3.github.io/Photo/optimized/Logo.png'
+        url: `${BASE_URL}/Photo/optimized/Logo.png`
       }
     },
     mainEntityOfPage: {
@@ -380,7 +380,7 @@ function buildProject(markdownFile) {
   const template = getTemplate('project.template') || getTemplate('project') || getDefaultTemplate();
 
   const imageHtml = image ? `<img src="{{root}}${escapeHtml(image)}" alt="${escapeHtml(title)}" class="project-showcase-img">` : '';
-  const ogImage = image ? `https://zxinnattapat3.github.io/${escapeHtml(image)}` : 'https://zxinnattapat3.github.io/Photo/DSCF2374.jpg';
+  const ogImage = image ? `${BASE_URL}/${escapeHtml(image)}` : `${BASE_URL}/Photo/optimized/DSCF2374.jpg`;
 
   const replacements = {
     '{{title}}': escapeHtml(title),
@@ -392,7 +392,7 @@ function buildProject(markdownFile) {
     '{{ogImage}}': ogImage,
     '{{content}}': htmlContent,
     '{{slug}}': slug,
-    '{{canonical}}': `https://zxinnattapat3.github.io/projects/${slug}.html`,
+    '{{canonical}}': `${BASE_URL}/projects/${slug}.html`,
     '{{root}}': '../'
   };
 
@@ -837,7 +837,7 @@ function getDefaultBlogIndexTemplate() {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>บทความ | Nattapat Phungphugdee</title>
   <meta name="description" content="บทความเกี่ยวกับการพัฒนาเว็บ, เทคโนโลยี, และประสบการณ์การทำงาน">
-  <link rel="canonical" href="https://zxinnattapat3.github.io/blog.html">
+  <link rel="canonical" href="https://nattazxin.com/blog.html">
   <link rel="stylesheet" href="stylesheets/index.css">
   <style>
     .blog-container { max-width: 1000px; margin: 0 auto; padding: 2rem; }
