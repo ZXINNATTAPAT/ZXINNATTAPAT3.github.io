@@ -253,7 +253,7 @@ function buildArticle(markdownFile) {
 
   // Prepare image HTML
   const imageHtml = image ? `<img src="../${escapeHtml(image)}" alt="${escapeHtml(title)}" class="article-image">` : '';
-  const ogImage = image ? `${BASE_URL}/${escapeHtml(image)}` : `${BASE_URL}/Photo/optimized/DSCF2374.jpg`;
+  const ogImage = image ? `${BASE_URL}/${escapeHtml(image)}` : `${BASE_URL}/Photo/optimized/portrait-nattapat.jpg`;
   const keywordsMeta = keywords || (Array.isArray(tags) ? tags.join(', ') : '');
 
   // ISO timestamps for Open Graph article tags and structured data
@@ -380,7 +380,7 @@ function buildProject(markdownFile) {
   const template = getTemplate('project.template') || getTemplate('project') || getDefaultTemplate();
 
   const imageHtml = image ? `<img src="{{root}}${escapeHtml(image)}" alt="${escapeHtml(title)}" class="project-showcase-img">` : '';
-  const ogImage = image ? `${BASE_URL}/${escapeHtml(image)}` : `${BASE_URL}/Photo/optimized/DSCF2374.jpg`;
+  const ogImage = image ? `${BASE_URL}/${escapeHtml(image)}` : `${BASE_URL}/Photo/optimized/portrait-nattapat.jpg`;
 
   const replacements = {
     '{{title}}': escapeHtml(title),

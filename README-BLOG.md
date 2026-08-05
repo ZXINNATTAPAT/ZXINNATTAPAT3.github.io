@@ -33,7 +33,7 @@ description: "คำอธิบายสั้นๆ"
 date: "2025-01-27"
 author: "Nattapat Phungphugdee"
 tags: ["Tag1", "Tag2"]
-image: "Photo/Logo.png"  # (optional)
+image: "Photo/optimized/Logo.png"  # (optional)
 slug: "article-slug"      # (optional, จะใช้ชื่อไฟล์ถ้าไม่ระบุ)
 ---
 
