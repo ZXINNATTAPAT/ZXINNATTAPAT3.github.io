@@ -1,5 +1,5 @@
 ---
-title: "รีวิวเรียน Computer Science มจพ — ปี 1 ถึงปี 3 สายวิทย์คอมจริง ๆ"
+title: "รีวิวเรียน Computer Science มจพ — ปี 1 ถึงปี 3"
 description: "รีวิวเรียน Computer Science มจพ จากประสบการณ์จริง ตั้งแต่ปี 1–ปี 3 วิชาที่เจอ การแยกสาย Fullstack สิ่งอำนวยความสะดวกในมอ. และบรรยากาศส่งโปรเจค"
 date: "2026-08-02"
 author: "Nattapat Phungphugdee"

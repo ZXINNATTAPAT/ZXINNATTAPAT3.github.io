@@ -4,7 +4,7 @@ description: "เรียนรู้หลักการและเทคน
 date: "2025-01-26"
 author: "Nattapat Phungphugdee"
 tags: ["Clean Code", "Best Practices", "Programming", "Software Engineering"]
-image: ""
+image: "Photo/optimized/Logo.png"
 slug: "clean-code-techniques"
 ---
 

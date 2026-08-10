@@ -12,7 +12,7 @@
     gtag('config', 'G-NNJBFHP6S8');
   </script>
   <meta charset="UTF-8" />
-  <title>รีวิวเรียน Computer Science มจพ — ปี 1 ถึงปี 3 สายวิทย์คอมจริง ๆ | Nattapat Phungphugdee</title>
+  <title>รีวิวเรียน Computer Science มจพ — ปี 1 ถึงปี 3 | Nattapat Phungphugdee</title>
   <link rel="icon" href="../Photo/optimized/Logo.png" type="image/png">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="รีวิวเรียน Computer Science มจพ จากประสบการณ์จริง ตั้งแต่ปี 1–ปี 3 วิชาที่เจอ การแยกสาย Fullstack สิ่งอำนวยความสะดวกในมอ. และบรรยากาศส่งโปรเจค" />
@@ -22,7 +22,7 @@
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="รีวิวเรียน Computer Science มจพ — ปี 1 ถึงปี 3 สายวิทย์คอมจริง ๆ" />
+  <meta property="og:title" content="รีวิวเรียน Computer Science มจพ — ปี 1 ถึงปี 3" />
   <meta property="og:description" content="รีวิวเรียน Computer Science มจพ จากประสบการณ์จริง ตั้งแต่ปี 1–ปี 3 วิชาที่เจอ การแยกสาย Fullstack สิ่งอำนวยความสะดวกในมอ. และบรรยากาศส่งโปรเจค" />
   <meta property="og:url" content="https://nattazxin.com/articles/cs-kmutnb-student-life-review.html" />
   <meta property="og:image" content="https://nattazxin.com/Photo/optimized/cs-kmutnb-review/01-cover.jpg" />
@@ -32,7 +32,7 @@
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="รีวิวเรียน Computer Science มจพ — ปี 1 ถึงปี 3 สายวิทย์คอมจริง ๆ" />
+  <meta name="twitter:title" content="รีวิวเรียน Computer Science มจพ — ปี 1 ถึงปี 3" />
   <meta name="twitter:description" content="รีวิวเรียน Computer Science มจพ จากประสบการณ์จริง ตั้งแต่ปี 1–ปี 3 วิชาที่เจอ การแยกสาย Fullstack สิ่งอำนวยความสะดวกในมอ. และบรรยากาศส่งโปรเจค" />
   <meta name="twitter:image" content="https://nattazxin.com/Photo/optimized/cs-kmutnb-review/01-cover.jpg" />
 
@@ -44,7 +44,7 @@
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "รีวิวเรียน Computer Science มจพ — ปี 1 ถึงปี 3 สายวิทย์คอมจริง ๆ",
+  "headline": "รีวิวเรียน Computer Science มจพ — ปี 1 ถึงปี 3",
   "description": "รีวิวเรียน Computer Science มจพ จากประสบการณ์จริง ตั้งแต่ปี 1–ปี 3 วิชาที่เจอ การแยกสาย Fullstack สิ่งอำนวยความสะดวกในมอ. และบรรยากาศส่งโปรเจค",
   "image": [
     "https://nattazxin.com/Photo/optimized/cs-kmutnb-review/01-cover.jpg"
@@ -137,11 +137,11 @@
     }
 
     .article-hero h1 {
-      font-family: "DM Serif Display", Georgia, serif;
-      font-size: clamp(1.85rem, 4.2vw, 2.85rem);
-      font-weight: 400;
+      font-family: "Anuphan", "Noto Sans Thai", system-ui, sans-serif;
+      font-size: clamp(1.75rem, 4vw, 2.55rem);
+      font-weight: 700;
       letter-spacing: -0.02em;
-      line-height: 1.2;
+      line-height: 1.25;
       margin: 0 0 0.75rem;
       color: var(--blog-text);
     }
@@ -218,38 +218,17 @@
       color: #fff;
     }
 
-    .blog-bento-stage {
-      display: grid;
-      grid-template-columns: 1.7fr 1fr;
-      grid-template-rows: repeat(2, minmax(0, 1fr));
-      gap: 0.85rem;
-      height: clamp(260px, 38vw, 440px);
-      margin-bottom: 2.5rem;
-    }
-
-    .bento-slot {
-      background: linear-gradient(145deg, #eaeaea 0%, #dedede 55%, #e8e8e8 100%);
+    .article-highlight {
+      margin: 0 0 2.25rem;
       border-radius: var(--blog-radius-lg);
-      position: relative;
       overflow: hidden;
-      min-height: 0;
+      background: var(--blog-muted);
+      border: 1px solid rgba(0, 0, 0, 0.04);
+      aspect-ratio: 16 / 9;
+      max-height: 420px;
     }
 
-    .bento-slot:not(.bento-slot--photo)::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.45), transparent 55%);
-      pointer-events: none;
-    }
-
-    .bento-slot--lg {
-      grid-row: 1 / span 2;
-    }
-
-    .bento-slot--photo img {
-      position: absolute;
-      inset: 0;
+    .article-highlight img {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -536,16 +515,8 @@
         position: static;
       }
 
-      .blog-bento-stage {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 160px 120px;
-        min-height: 0;
-      }
-
-      .bento-slot--lg {
-        grid-column: 1 / -1;
-        grid-row: auto;
-        min-height: 160px;
+      .article-highlight {
+        max-height: 320px;
       }
     }
 
@@ -563,15 +534,10 @@
         flex: 1;
       }
 
-      .blog-bento-stage {
-        grid-template-columns: 1fr;
-        gap: 0.7rem;
-      }
-
-      .bento-slot,
-      .bento-slot--lg {
-        min-height: 110px;
-        grid-column: auto;
+      .article-highlight {
+        margin-bottom: 1.75rem;
+        border-radius: 18px;
+        max-height: 240px;
       }
 
       .article-section {
@@ -647,7 +613,7 @@
     <div class="article-shell">
       <header class="article-hero" data-aos="fade-up">
         <div class="article-hero-text">
-          <h1>รีวิวเรียน Computer Science มจพ — ปี 1 ถึงปี 3 สายวิทย์คอมจริง ๆ</h1>
+          <h1>รีวิวเรียน Computer Science มจพ — ปี 1 ถึงปี 3</h1>
           <p class="article-hero-sub">
             <i class="fas fa-book-open" aria-hidden="true"></i>
             <span>รีวิวเรียน Computer Science มจพ จากประสบการณ์จริง ตั้งแต่ปี 1–ปี 3 วิชาที่เจอ การแยกสาย Fullstack สิ่งอำนวยความสะดวกในมอ. และบรรยากาศส่งโปรเจค</span>
@@ -659,11 +625,7 @@
         </div>
       </header>
 
-      <div class="blog-bento-stage" data-aos="fade-up" data-aos-delay="80">
-        <div class="bento-slot bento-slot--lg bento-slot--photo"><img src="../Photo/optimized/cs-kmutnb-review/01-cover.jpg" alt="รีวิวเรียน Computer Science มจพ — ปี 1 ถึงปี 3 สายวิทย์คอมจริง ๆ" loading="eager"></div>
-        <div class="bento-slot bento-slot--photo"><img src="../Photo/optimized/cs-kmutnb-review/02-faculty.jpg" alt="" loading="lazy"></div>
-        <div class="bento-slot bento-slot--photo"><img src="../Photo/optimized/cs-kmutnb-review/11-facilities.jpg" alt="" loading="lazy"></div>
-      </div>
+      <div class="article-highlight" data-aos="fade-up" data-aos-delay="80"><img src="../Photo/optimized/cs-kmutnb-review/01-cover.jpg" alt="รีวิวเรียน Computer Science มจพ — ปี 1 ถึงปี 3" loading="eager"></div>
 
       <div class="article-layout">
         <div class="article-main" data-aos="fade-up" data-aos-delay="100">

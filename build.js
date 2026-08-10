@@ -240,7 +240,6 @@ function buildArticle(markdownFile) {
     author = 'Nattapat Phungphugdee',
     tags = [],
     image = '',
-    gallery = [],
     slug = path.basename(markdownFile, '.md'),
     keywords = ''
   } = attributes;
@@ -253,6 +252,9 @@ function buildArticle(markdownFile) {
 
   // Prepare image HTML
   const imageHtml = image ? `<img src="../${escapeHtml(image)}" alt="${escapeHtml(title)}" class="article-image">` : '';
+  const highlightImage = image
+    ? `<div class="article-highlight" data-aos="fade-up" data-aos-delay="80"><img src="../${escapeHtml(image)}" alt="${escapeHtml(title)}" loading="eager"></div>`
+    : '';
   const ogImage = image ? `${BASE_URL}/${escapeHtml(image)}` : `${BASE_URL}/Photo/optimized/portrait-nattapat.jpg`;
   const keywordsMeta = keywords || (Array.isArray(tags) ? tags.join(', ') : '');
 
@@ -299,26 +301,6 @@ function buildArticle(markdownFile) {
       `<li><span class="check" aria-hidden="true"><i class="fas fa-check"></i></span>${escapeHtml(tag)}</li>`
     ).join('');
 
-  const galleryImages = Array.isArray(gallery) ? gallery.filter(Boolean) : [];
-  const renderBentoSlot = (src, { large = false, alt = '', eager = false } = {}) => {
-    const sizeClass = large ? ' bento-slot--lg' : '';
-    if (!src) {
-      return `<div class="bento-slot${sizeClass}"></div>`;
-    }
-    return `<div class="bento-slot${sizeClass} bento-slot--photo"><img src="../${escapeHtml(src)}" alt="${escapeHtml(alt)}" loading="${eager ? 'eager' : 'lazy'}"></div>`;
-  };
-  const bentoSlots = galleryImages.length > 0
-    ? [
-        renderBentoSlot(galleryImages[0], { large: true, alt: title, eager: true }),
-        renderBentoSlot(galleryImages[1] || galleryImages[0]),
-        renderBentoSlot(galleryImages[2] || galleryImages[1] || galleryImages[0])
-      ].join('\n        ')
-    : [
-        renderBentoSlot('', { large: true }),
-        renderBentoSlot(''),
-        renderBentoSlot('')
-      ].join('\n        ');
-
   // Prepare all replacements at once for better performance
   const replacements = {
     '{{title}}': escapeHtml(title),
@@ -328,7 +310,7 @@ function buildArticle(markdownFile) {
     '{{tags}}': tags.map(tag => `<span class="tag">${escapeHtml(tag)}</span>`).join(''),
     '{{highlights}}': highlightItems,
     '{{image}}': imageHtml,
-    '{{bentoSlots}}': bentoSlots,
+    '{{highlightImage}}': highlightImage,
     '{{ogImage}}': ogImage,
     '{{content}}': htmlContent,
     '{{slug}}': slug,
@@ -430,8 +412,14 @@ function buildBlogIndex(articles) {
 
   const articlesList = articles.map((article, index) => {
     const featuredClass = index === 0 ? ' featured' : '';
+    const mediaHtml = article.image
+      ? `<a class="article-preview-media" href="articles/${article.slug}.html" tabindex="-1" aria-hidden="true">
+        <img src="${escapeHtml(article.image)}" alt="" loading="${index < 2 ? 'eager' : 'lazy'}">
+      </a>`
+      : '';
     return `
     <article class="article-preview${featuredClass}" data-aos="fade-up" data-aos-delay="${Math.min(index * 60, 240)}">
+      ${mediaHtml}
       <div class="article-preview-body">
         <h2><a href="articles/${article.slug}.html">${escapeHtml(article.title)}</a></h2>
         <ul class="article-preview-meta-list">

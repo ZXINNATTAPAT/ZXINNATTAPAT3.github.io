@@ -4,7 +4,7 @@ description: "รีวิววิชา Computer Science มจพ (วิท�
 date: "2026-07-28"
 author: "Nattapat Phungphugdee"
 tags: ["รีวิววิชา computer science มจพ", "Computer Science", "มจพ", "KMUTNB", "วิทยาการคอมพิวเตอร์", "รีวิววิชา"]
-image: ""
+image: "Photo/optimized/cs-kmutnb-review/02-faculty.jpg"
 slug: "cs-kmutnb-course-review"
 keywords: "รีวิววิชา computer science มจพ, รีวิววิชาวิทยาการคอมพิวเตอร์ มจพ, computer science มจพ, วิทย์คอม มจพ, KMUTNB CS"
 ---

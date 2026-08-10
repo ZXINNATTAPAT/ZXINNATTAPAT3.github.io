@@ -193,38 +193,6 @@
       color: #fff;
     }
 
-    /* Bento placeholders (images later) */
-    .blog-bento-stage {
-      display: grid;
-      grid-template-columns: 1.7fr 1fr;
-      grid-template-rows: 1fr 1fr;
-      gap: 0.85rem;
-      min-height: clamp(260px, 38vw, 420px);
-      margin-bottom: 2.5rem;
-      opacity: 0;
-      transform: translateY(16px);
-      animation: blog-rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.35s forwards;
-    }
-
-    .bento-slot {
-      background: linear-gradient(145deg, #eaeaea 0%, #dedede 55%, #e8e8e8 100%);
-      border-radius: var(--blog-radius-lg);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .bento-slot::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.45), transparent 55%);
-      pointer-events: none;
-    }
-
-    .bento-slot--lg {
-      grid-row: 1 / span 2;
-    }
-
     /* Main two-column content */
     .blog-layout {
       display: grid;
@@ -254,10 +222,13 @@
     }
 
     .article-preview {
-      display: block;
+      display: grid;
+      grid-template-columns: 148px minmax(0, 1fr);
+      gap: 1.15rem;
+      align-items: stretch;
       background: var(--blog-surface);
       border-radius: var(--blog-radius);
-      padding: 1.35rem 1.45rem;
+      padding: 1rem;
       border: 1px solid rgba(0, 0, 0, 0.04);
       box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
       transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
@@ -271,8 +242,36 @@
     }
 
     .article-preview.featured {
-      padding: 1.6rem 1.7rem;
+      padding: 1.1rem;
       background: var(--blog-surface);
+      grid-template-columns: 200px minmax(0, 1fr);
+    }
+
+    .article-preview:not(:has(.article-preview-media)),
+    .article-preview.featured:not(:has(.article-preview-media)) {
+      grid-template-columns: 1fr;
+      padding: 1.35rem 1.45rem;
+    }
+
+    .article-preview-media {
+      display: block;
+      border-radius: 14px;
+      overflow: hidden;
+      background: var(--blog-muted);
+      min-height: 112px;
+      align-self: stretch;
+    }
+
+    .article-preview-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .article-preview:hover .article-preview-media img {
+      transform: scale(1.04);
     }
 
     .article-preview-body {
@@ -280,10 +279,12 @@
       flex-direction: column;
       gap: 0.55rem;
       min-width: 0;
+      padding: 0.35rem 0.45rem 0.35rem 0;
     }
 
     .article-preview h2 {
       margin: 0;
+      font-family: "Anuphan", "Noto Sans Thai", system-ui, sans-serif;
       font-size: 1.2rem;
       font-weight: 700;
       line-height: 1.35;
@@ -291,7 +292,7 @@
     }
 
     .article-preview.featured h2 {
-      font-size: 1.45rem;
+      font-size: 1.4rem;
     }
 
     .article-preview h2 a {
@@ -500,10 +501,11 @@
       .blog-hero h1,
       .blog-hero-sub,
       .blog-hero-actions,
-      .blog-bento-stage {
+      .article-preview-media img {
         animation: none;
         opacity: 1;
         transform: none;
+        transition: none;
       }
     }
 
@@ -517,16 +519,9 @@
         position: static;
       }
 
-      .blog-bento-stage {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 180px 140px;
-        min-height: 0;
-      }
-
-      .bento-slot--lg {
-        grid-column: 1 / -1;
-        grid-row: auto;
-        min-height: 180px;
+      .article-preview,
+      .article-preview.featured {
+        grid-template-columns: 132px minmax(0, 1fr);
       }
     }
 
@@ -545,16 +540,20 @@
         flex: 1;
       }
 
-      .blog-bento-stage {
+      .article-preview,
+      .article-preview.featured {
         grid-template-columns: 1fr;
-        grid-template-rows: none;
-        gap: 0.7rem;
+        gap: 0.85rem;
+        padding: 0.85rem;
       }
 
-      .bento-slot,
-      .bento-slot--lg {
-        min-height: 120px;
-        grid-column: auto;
+      .article-preview-media {
+        min-height: 160px;
+        aspect-ratio: 16 / 9;
+      }
+
+      .article-preview-body {
+        padding: 0 0.15rem 0.2rem;
       }
 
       .article-preview.featured h2,
@@ -640,13 +639,6 @@
           <a href="index.html#footer" class="blog-btn blog-btn-solid">Contact</a>
         </div>
       </header>
-
-      <!-- Image slots reserved for later — empty placeholders for now -->
-      <div class="blog-bento-stage" aria-hidden="true">
-        <div class="bento-slot bento-slot--lg"></div>
-        <div class="bento-slot"></div>
-        <div class="bento-slot"></div>
-      </div>
 
       <div class="blog-layout">
         <div class="blog-main">

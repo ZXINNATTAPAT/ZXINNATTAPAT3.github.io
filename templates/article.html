@@ -108,11 +108,11 @@
     }
 
     .article-hero h1 {
-      font-family: "DM Serif Display", Georgia, serif;
-      font-size: clamp(1.85rem, 4.2vw, 2.85rem);
-      font-weight: 400;
+      font-family: "Anuphan", "Noto Sans Thai", system-ui, sans-serif;
+      font-size: clamp(1.75rem, 4vw, 2.55rem);
+      font-weight: 700;
       letter-spacing: -0.02em;
-      line-height: 1.2;
+      line-height: 1.25;
       margin: 0 0 0.75rem;
       color: var(--blog-text);
     }
@@ -189,38 +189,17 @@
       color: #fff;
     }
 
-    .blog-bento-stage {
-      display: grid;
-      grid-template-columns: 1.7fr 1fr;
-      grid-template-rows: repeat(2, minmax(0, 1fr));
-      gap: 0.85rem;
-      height: clamp(260px, 38vw, 440px);
-      margin-bottom: 2.5rem;
-    }
-
-    .bento-slot {
-      background: linear-gradient(145deg, #eaeaea 0%, #dedede 55%, #e8e8e8 100%);
+    .article-highlight {
+      margin: 0 0 2.25rem;
       border-radius: var(--blog-radius-lg);
-      position: relative;
       overflow: hidden;
-      min-height: 0;
+      background: var(--blog-muted);
+      border: 1px solid rgba(0, 0, 0, 0.04);
+      aspect-ratio: 16 / 9;
+      max-height: 420px;
     }
 
-    .bento-slot:not(.bento-slot--photo)::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.45), transparent 55%);
-      pointer-events: none;
-    }
-
-    .bento-slot--lg {
-      grid-row: 1 / span 2;
-    }
-
-    .bento-slot--photo img {
-      position: absolute;
-      inset: 0;
+    .article-highlight img {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -507,16 +486,8 @@
         position: static;
       }
 
-      .blog-bento-stage {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 160px 120px;
-        min-height: 0;
-      }
-
-      .bento-slot--lg {
-        grid-column: 1 / -1;
-        grid-row: auto;
-        min-height: 160px;
+      .article-highlight {
+        max-height: 320px;
       }
     }
 
@@ -534,15 +505,10 @@
         flex: 1;
       }
 
-      .blog-bento-stage {
-        grid-template-columns: 1fr;
-        gap: 0.7rem;
-      }
-
-      .bento-slot,
-      .bento-slot--lg {
-        min-height: 110px;
-        grid-column: auto;
+      .article-highlight {
+        margin-bottom: 1.75rem;
+        border-radius: 18px;
+        max-height: 240px;
       }
 
       .article-section {
@@ -630,9 +596,7 @@
         </div>
       </header>
 
-      <div class="blog-bento-stage" data-aos="fade-up" data-aos-delay="80">
-        {{bentoSlots}}
-      </div>
+      {{highlightImage}}
 
       <div class="article-layout">
         <div class="article-main" data-aos="fade-up" data-aos-delay="100">
