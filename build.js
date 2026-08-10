@@ -241,7 +241,8 @@ function buildArticle(markdownFile) {
     tags = [],
     image = '',
     slug = path.basename(markdownFile, '.md'),
-    keywords = ''
+    keywords = '',
+    hidden = false
   } = attributes;
 
   // Convert markdown body to HTML
@@ -257,6 +258,8 @@ function buildArticle(markdownFile) {
     : '';
   const ogImage = image ? `${BASE_URL}/${escapeHtml(image)}` : `${BASE_URL}/Photo/optimized/portrait-nattapat.jpg`;
   const keywordsMeta = keywords || (Array.isArray(tags) ? tags.join(', ') : '');
+  const isHidden = Boolean(hidden);
+  const robotsMeta = isHidden ? 'noindex, nofollow' : 'index, follow';
 
   // ISO timestamps for Open Graph article tags and structured data
   const publishedIso = (() => {
@@ -315,6 +318,7 @@ function buildArticle(markdownFile) {
     '{{content}}': htmlContent,
     '{{slug}}': slug,
     '{{keywords}}': escapeHtml(keywordsMeta),
+    '{{robots}}': robotsMeta,
     '{{canonical}}': canonicalUrl,
     '{{publishedTime}}': publishedIso,
     '{{modifiedTime}}': publishedIso,
@@ -338,7 +342,8 @@ function buildArticle(markdownFile) {
     date,
     author,
     tags,
-    image
+    image,
+    hidden: isHidden
   };
 }
 
@@ -408,9 +413,10 @@ function buildBlogIndex(articles) {
   const template = getTemplate('blog-index') || getDefaultBlogIndexTemplate();
   
   // Sort articles by date (newest first)
-  articles.sort((a, b) => new Date(b.date) - new Date(a.date));
+  const visibleArticles = articles.filter(article => !article.hidden);
+  visibleArticles.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-  const articlesList = articles.map((article, index) => {
+  const articlesList = visibleArticles.map((article, index) => {
     const featuredClass = index === 0 ? ' featured' : '';
     const mediaHtml = article.image
       ? `<a class="article-preview-media" href="articles/${article.slug}.html" tabindex="-1" aria-hidden="true">
@@ -459,6 +465,7 @@ function updateSitemap(articles, projects) {
   ];
 
   articles.forEach(article => {
+    if (article.hidden) return;
     urls.push({
       loc: `${BASE_URL}/articles/${article.slug}.html`,
       lastmod: article.date,

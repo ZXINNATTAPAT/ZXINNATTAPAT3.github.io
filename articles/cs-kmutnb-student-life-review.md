@@ -204,5 +204,4 @@ keywords: "รีวิวเรียน computer science มจพ, รีว�
 **ติดตามเพิ่มเติม**
 - TikTok: [@nattazxin](https://www.tiktok.com/@nattazxin)
 - โพสต์รีวิวนี้: [Review CS KMUTNB](https://www.tiktok.com/@nattazxin/photo/7332778988907121922)
-- บทความก่อนหน้า: [รีวิววิชา Computer Science มจพ](cs-kmutnb-course-review.html)
 - Portfolio: [nattazxin.com](https://nattazxin.com/)

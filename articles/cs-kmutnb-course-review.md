@@ -7,6 +7,7 @@ tags: ["รีวิววิชา computer science มจพ", "Computer Scien
 image: "Photo/optimized/cs-kmutnb-review/02-faculty.jpg"
 slug: "cs-kmutnb-course-review"
 keywords: "รีวิววิชา computer science มจพ, รีวิววิชาวิทยาการคอมพิวเตอร์ มจพ, computer science มจพ, วิทย์คอม มจพ, KMUTNB CS"
+hidden: true
 ---
 
 # รีวิววิชา Computer Science มจพ

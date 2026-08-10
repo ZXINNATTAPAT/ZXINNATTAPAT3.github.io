@@ -71,8 +71,8 @@ const translations = {
       description: "",
       cards: {
         csReview: {
-          title: "CS Course Review",
-          description: "KMUTNB Computer Science course review — real subjects from the CS track."
+          title: "CS Student Life Review",
+          description: "KMUTNB Computer Science student life review — year 1 to year 3."
         },
         teamwork: {
           title: "Teamwork & Git",
@@ -275,8 +275,8 @@ const translations = {
         "ผมแชร์ทั้งเทคนิคโค้ด บันทึกการพัฒนา และเรื่องราวคอมมูนิตี้ทั้งไทยและอังกฤษ",
       cards: {
         csReview: {
-          title: "รีวิววิชา CS มจพ",
-          description: "รีวิววิชา Computer Science มจพ — สรุปวิชาที่เรียนจริงในสายวิทย์คอม"
+          title: "รีวิวเรียน CS มจพ",
+          description: "รีวิวเรียน Computer Science มจพ — ปี 1 ถึงปี 3"
         },
         teamwork: {
           title: "การทำงานเป็นทีมและ Git",
@@ -479,8 +479,8 @@ const translations = {
         "コードのコツ、開発ログ、コミュニティの話題をタイ語と英語で発信しています。",
       cards: {
         csReview: {
-          title: "CS科目レビュー",
-          description: "KMUTNBのコンピュータサイエンス科目レビュー — 実際に学んだ科目をまとめました。"
+          title: "CS学生生活レビュー",
+          description: "KMUTNBのコンピュータサイエンス学生生活レビュー — 1年次から3年次まで。"
         },
         teamwork: {
           title: "チームワーク & Git",
@@ -650,8 +650,8 @@ const translations = {
         "我会分享代码技巧、构建日志，以及泰语与英语社区内容。",
       cards: {
         csReview: {
-          title: "CS 课程评测",
-          description: "KMUTNB 计算机科学课程评测 — 总结实际学过的科目。"
+          title: "CS 学生生活评测",
+          description: "KMUTNB 计算机科学学生生活评测 — 从一年级到三年级。"
         },
         teamwork: {
           title: "团队协作与 Git",
@@ -821,8 +821,8 @@ const translations = {
         "Ich teile Code-Tipps, Build-Logs und Community-Stories auf Thai und Englisch.",
       cards: {
         csReview: {
-          title: "CS-Kursreview",
-          description: "KMUTNB Computer-Science-Kursreview — echte Fächer aus dem CS-Studium."
+          title: "CS-Campusleben",
+          description: "KMUTNB Computer-Science-Campusleben — vom 1. bis zum 3. Studienjahr."
         },
         teamwork: {
           title: "Teamwork & Git",
@@ -992,8 +992,8 @@ const translations = {
         "코드 팁, 빌드 로그, 커뮤니티 이야기를 태국어와 영어로 공유합니다.",
       cards: {
         csReview: {
-          title: "CS 과목 리뷰",
-          description: "KMUTNB 컴퓨터과학 과목 리뷰 — 실제로 배운 과목을 정리했습니다."
+          title: "CS 캠퍼스 라이프 리뷰",
+          description: "KMUTNB 컴퓨터과학 캠퍼스 라이프 리뷰 — 1학년부터 3학년까지."
         },
         teamwork: {
           title: "팀워크 & Git",
