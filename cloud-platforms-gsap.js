@@ -37,9 +37,11 @@
 
     gsap.registerPlugin(ScrollTrigger);
 
+    var header = section.querySelector('.cloud-platforms-header');
+    var grid = section.querySelector('.cloud-platforms-grid');
     var headerBits = gsap.utils.toArray(
-      '.cloud-platforms-kicker, .cloud-platforms-header .profile-heading, .cloud-platforms-description',
-      section
+      '.cloud-platforms-kicker, .profile-heading, .cloud-platforms-description',
+      header || section
     );
     var cards = gsap.utils.toArray('.cloud-platform-card', section);
     if (!cards.length) return;
@@ -56,10 +58,10 @@
       return;
     }
 
-    gsap.set(headerBits, { autoAlpha: 0, y: 32 });
+    gsap.set(headerBits, { autoAlpha: 0, y: 28 });
     gsap.set(cards, {
       autoAlpha: 0,
-      y: 64,
+      y: 56,
       scale: 0.92,
       transformOrigin: '50% 80%',
     });
@@ -68,43 +70,50 @@
       card.style.setProperty('--accent-thickness', '1');
     });
 
-    var tl = gsap.timeline({
-      defaults: { ease: 'power3.out' },
+    // Header reveals when the heading block enters — not the whole section top,
+    // so the motion is still on-screen.
+    gsap.to(headerBits, {
+      autoAlpha: 1,
+      y: 0,
+      duration: 0.7,
+      stagger: 0.12,
+      ease: 'power3.out',
       scrollTrigger: {
-        trigger: section,
-        start: 'top 80%',
+        trigger: header || section,
+        start: 'top 85%',
         toggleActions: 'play none none none',
         invalidateOnRefresh: true,
       },
     });
 
-    tl.to(headerBits, {
-      autoAlpha: 1,
-      y: 0,
-      duration: 0.7,
-      stagger: 0.12,
-    })
-      .to(
-        cards,
-        {
-          autoAlpha: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.85,
-          stagger: { each: 0.12, from: 'start' },
-          ease: 'power3.out',
-        },
-        '-=0.35'
-      )
+    // Cards stagger when the grid itself enters the viewport.
+    var cardsTl = gsap.timeline({
+      defaults: { ease: 'power3.out' },
+      scrollTrigger: {
+        trigger: grid || section,
+        start: 'top 88%',
+        toggleActions: 'play none none none',
+        invalidateOnRefresh: true,
+      },
+    });
+
+    cardsTl
+      .to(cards, {
+        autoAlpha: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.8,
+        stagger: { each: 0.12, from: 'start' },
+      })
       .to(
         cards,
         {
           '--accent-progress': 1,
-          duration: 0.6,
-          stagger: { each: 0.09, from: 'start' },
+          duration: 0.55,
+          stagger: { each: 0.08, from: 'start' },
           ease: 'power2.out',
         },
-        '-=0.6'
+        '-=0.55'
       );
 
     cards.forEach(function (card) {
@@ -118,9 +127,10 @@
           .to(
             card,
             {
-              y: -10,
+              y: -14,
+              scale: 1.02,
               boxShadow:
-                '0 30px 60px rgba(15, 23, 42, 0.12), 0 12px 24px rgba(15, 23, 42, 0.07)',
+                '0 34px 64px rgba(15, 23, 42, 0.14), 0 14px 28px rgba(15, 23, 42, 0.08)',
               duration: 0.4,
               ease: 'power2.out',
               overwrite: 'auto',
@@ -130,7 +140,7 @@
           .to(
             brand,
             {
-              scale: 1.05,
+              scale: 1.06,
               duration: 0.4,
               ease: 'power2.out',
               overwrite: 'auto',
@@ -140,7 +150,7 @@
           .to(
             card,
             {
-              '--accent-thickness': 2.6,
+              '--accent-thickness': 3,
               duration: 0.4,
               ease: 'power2.out',
               overwrite: 'auto',
@@ -157,6 +167,7 @@
             card,
             {
               y: 0,
+              scale: 1,
               boxShadow:
                 '0 24px 48px rgba(15, 23, 42, 0.06), 0 8px 18px rgba(15, 23, 42, 0.04)',
               duration: 0.45,
