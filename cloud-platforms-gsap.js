@@ -1,6 +1,6 @@
 /**
  * GSAP animations for the Cloud & Hosting section.
- * Scroll-triggered header + card entrance, accent bar reveal, hover lift.
+ * Scroll-scrubbed card reveal, header fade-up, and hover lift.
  */
 (function () {
   'use strict';
@@ -61,8 +61,8 @@
     gsap.set(headerBits, { autoAlpha: 0, y: 28 });
     gsap.set(cards, {
       autoAlpha: 0,
-      y: 56,
-      scale: 0.92,
+      y: 72,
+      scale: 0.9,
       transformOrigin: '50% 80%',
     });
     cards.forEach(function (card) {
@@ -70,50 +70,45 @@
       card.style.setProperty('--accent-thickness', '1');
     });
 
-    // Header reveals when the heading block enters — not the whole section top,
-    // so the motion is still on-screen.
     gsap.to(headerBits, {
       autoAlpha: 1,
       y: 0,
-      duration: 0.7,
+      duration: 0.75,
       stagger: 0.12,
       ease: 'power3.out',
       scrollTrigger: {
         trigger: header || section,
-        start: 'top 85%',
-        toggleActions: 'play none none none',
-        invalidateOnRefresh: true,
-      },
-    });
-
-    // Cards stagger when the grid itself enters the viewport.
-    var cardsTl = gsap.timeline({
-      defaults: { ease: 'power3.out' },
-      scrollTrigger: {
-        trigger: grid || section,
         start: 'top 88%',
         toggleActions: 'play none none none',
         invalidateOnRefresh: true,
       },
     });
 
-    cardsTl
+    // Scrub so the stagger stays visible while scrolling the cards into frame.
+    gsap
+      .timeline({
+        defaults: { ease: 'none' },
+        scrollTrigger: {
+          trigger: grid || section,
+          start: 'top 92%',
+          end: 'top 42%',
+          scrub: 0.65,
+          invalidateOnRefresh: true,
+        },
+      })
       .to(cards, {
         autoAlpha: 1,
         y: 0,
         scale: 1,
-        duration: 0.8,
         stagger: { each: 0.12, from: 'start' },
       })
       .to(
         cards,
         {
           '--accent-progress': 1,
-          duration: 0.55,
           stagger: { each: 0.08, from: 'start' },
-          ease: 'power2.out',
         },
-        '-=0.55'
+        0.15
       );
 
     cards.forEach(function (card) {
