@@ -6643,6 +6643,8 @@ section.container-fluid {
 }
 
 .cloud-platform-card {
+  --accent-progress: 1;
+  --accent-thickness: 1;
   min-height: 158px;
   border-radius: 28px;
   padding: 1.5rem;
@@ -6655,7 +6657,7 @@ section.container-fluid {
   box-shadow:
     0 24px 48px rgba(15, 23, 42, 0.06),
     0 8px 18px rgba(15, 23, 42, 0.04);
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  will-change: transform;
 }
 
 .cloud-platform-card::after {
@@ -6664,15 +6666,11 @@ section.container-fluid {
   left: 0;
   right: 0;
   bottom: 0;
-  height: 3px;
+  height: calc(3px * var(--accent-thickness));
   background: var(--cloud-accent, rgba(163, 0, 0, 0.2));
-}
-
-.cloud-platform-card:hover {
-  transform: translateY(-6px);
-  box-shadow:
-    0 28px 56px rgba(15, 23, 42, 0.1),
-    0 10px 22px rgba(15, 23, 42, 0.06);
+  transform: scaleX(var(--accent-progress));
+  transform-origin: left center;
+  will-change: transform;
 }
 
 .cloud-platform-brand {
@@ -6680,6 +6678,16 @@ section.container-fluid {
   align-items: center;
   gap: 0.95rem;
   color: var(--cloud-color, #121316);
+  transform-origin: center center;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cloud-platform-card,
+  .cloud-platform-brand,
+  .cloud-platform-card::after {
+    will-change: auto;
+  }
 }
 
 .cloud-platform-mark {
