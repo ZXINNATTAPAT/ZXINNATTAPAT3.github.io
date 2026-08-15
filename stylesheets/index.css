@@ -6682,6 +6682,14 @@ section.container-fluid {
   will-change: transform;
 }
 
+.cloud-platforms-section.is-cloud-gsap-ready .cloud-platforms-kicker,
+.cloud-platforms-section.is-cloud-gsap-ready .cloud-platforms-header .profile-heading,
+.cloud-platforms-section.is-cloud-gsap-ready .cloud-platforms-description,
+.cloud-platforms-section.is-cloud-gsap-ready .cloud-platform-card {
+  /* GSAP owns visibility via inline styles after init */
+  visibility: inherit;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .cloud-platform-card,
   .cloud-platform-brand,
