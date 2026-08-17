@@ -30,12 +30,9 @@ const translations = {
       letsWork: "Let's Work together",
       resume: "Resume",
       description:
-        "My name is Nattapat Phungphugdee.<br/>" +
-        "I'm a <strong>frontend-focused full stack developer</strong> currently working full-time on real-world web applications.<br/><br/>" +
-        "My primary focus is <strong>frontend development</strong>. I build clean, reliable user interfaces with attention to usability, consistency, and long-term maintainability. I prefer simple and clear solutions that work well in production, rather than overly complex designs.<br/><br/>" +
-        "On the backend side, I work comfortably at an intermediate level. I regularly integrate APIs, handle data flows, and understand system logic well enough to design frontend features that fit properly into the overall system.<br/><br/>" +
-        "In my daily work, I value readable code, practical design decisions, and teamwork. I'm used to working in real development environments—collaborating with others, handling feedback, and improving existing systems over time.<br/><br/>" +
-        "I'm open to opportunities as a <strong>Frontend Developer</strong> or <strong>Full Stack Developer</strong>, where I can continue delivering production-level frontend work while growing deeper in backend engineering and system design."
+        "Hello, my name is <strong>Nattapat Phungphugdee</strong>. I have been working as a <strong>Software Developer</strong> for a little over 1 year.<br/><br/>" +
+        "My main strength is <strong>frontend development</strong>, and I enjoy designing systems that are easy to use and look good. I mainly work with <strong>React and Next.js</strong>, but I also have backend experience with <strong>Node.js, NestJS, and .NET API</strong>, including other technologies such as <strong>Angular</strong>.<br/><br/>" +
+        "Besides coding, I also work with clients to understand their requirements, such as specific report formats or design needs. I can prepare different design options, discuss ideas with clients, and improve the work based on their feedback."
     },
     education: {
       title: "Education",

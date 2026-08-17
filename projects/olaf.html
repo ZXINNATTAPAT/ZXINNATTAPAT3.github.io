@@ -64,9 +64,46 @@
   <!-- AOS Animation -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
+  <script>
+    (function() {
+      try {
+        if (new URLSearchParams(window.location.search).has('embed')) {
+          document.documentElement.classList.add('project-embed');
+        }
+      } catch (error) {
+        // Ignore URL parsing errors
+      }
+    })();
+  </script>
+
   <style>
     html {
       scroll-behavior: smooth;
+    }
+
+    html.project-embed nav.sticky-top,
+    html.project-embed .mobile-menu,
+    html.project-embed .mobile-menu-toggle,
+    html.project-embed .scroll-progress,
+    html.project-embed #loadingScreen,
+    html.project-embed #contact,
+    html.project-embed footer.site-footer,
+    html.project-embed footer {
+      display: none !important;
+    }
+
+    html.project-embed body {
+      background: #f8f8ff;
+    }
+
+    html.project-embed .project-page-content {
+      padding-top: 1.25rem;
+      padding-bottom: 1.5rem;
+    }
+
+    html.project-embed .project-shell {
+      padding-left: 1rem;
+      padding-right: 1rem;
     }
 
     body {
@@ -664,7 +701,7 @@
         <p class="project-summary-text">Built with Django + React. Personal tech journal for developers. A modern blogging platform designed for developers to share their technical journey and project insights.</p>
 
         <div class="project-meta-inline" data-aos="fade-up" data-aos-delay="100">
-          <span class="project-hero-pill">24 มกราคม 2568</span>
+          <span class="project-hero-pill">23 มกราคม 2568</span>
           <span class="project-hero-pill">Full Stack Developer</span>
         </div>
 
@@ -968,8 +1005,15 @@
   <script>
     (function() {
       'use strict';
+      const isEmbed = document.documentElement.classList.contains('project-embed');
       const loadingScreen = document.getElementById('loadingScreen');
       const body = document.body;
+
+      if (isEmbed && loadingScreen) {
+        loadingScreen.style.display = 'none';
+        body.classList.add('loaded');
+        return;
+      }
       
       function hideLoadingScreen() {
         if (!loadingScreen) return;

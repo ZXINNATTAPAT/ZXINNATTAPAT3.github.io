@@ -1,135 +1,120 @@
-<!-- Skills Section -->
-  <section id="skills" class="container-fluid" style="background-color: #f8f8ff; padding-top: 0; padding-bottom: 3rem; transition: background-color 0.6s ease;">
-    <div class="container">
-      <div class="skills-shell">
-        <div class="skills-heading-row">
-          <div class="skills-heading-copy">
-            <h2 class="profile-heading playfair-400 mb-0 text-center" style="color: #767676" data-i18n="skills.title">
-              Tech Stack
-            </h2>
-            <p class="skills-core-hint mb-0">
-              <span class="skills-core-hint-badge" aria-hidden="true"><i class="fas fa-star"></i></span>
-              <span data-i18n="skills.coreHint">Yellow star = Core skills</span>
-            </p>
+<!-- Tech Stack -->
+<section id="skills" class="container-fluid skills-section" style="background-color: #f8f8ff;">
+  <div class="container py-4">
+    <div class="skills-heading-copy text-center mb-3">
+      <h2 class="profile-heading playfair-400 mb-0" style="color: #767676" data-i18n="skills.title">Tech Stack</h2>
+      <p class="skills-core-hint mb-0 justify-content-center">
+        <span class="skills-core-hint-badge" aria-hidden="true"><i class="fas fa-star"></i></span>
+        <span data-i18n="skills.coreHint">Yellow star = Core skills</span>
+      </p>
+    </div>
+    <div class="app-dock-wrapper my-0">
+      <div class="app-dock" aria-label="Skills marquee">
+        <div class="app-item" data-tooltip="React">
+          <div class="app-icon">
+            <span class="app-core-badge" aria-hidden="true"><i class="fas fa-star"></i></span>
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" class="app-icon-img" width="48" height="48" loading="lazy">
           </div>
-          <!-- <button class="skills-heading-btn mb-0" id="showAllSkillsBtn">
-            <span data-i18n="skills.listAll">List all skills</span>
-            <i class="fas fa-external-link-alt ms-2"></i>
-          </button> -->
+          <div class="app-name">React</div>
         </div>
-
-        <div class="app-dock-wrapper my-2" data-aos="fade-up">
-          <div class="app-dock" aria-label="Skills marquee">
-            <!-- Original List -->
-            <div class="app-item" data-tooltip="React">
-              <div class="app-icon">
-                <span class="app-core-badge" aria-hidden="true"><i class="fas fa-star"></i></span>
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" class="app-icon-img" width="48" height="48" loading="lazy">
-              </div>
-              <div class="app-name">React</div>
-            </div>
-            <div class="app-item" data-tooltip="Next.js">
-              <div class="app-icon">
-                <span class="app-core-badge" aria-hidden="true"><i class="fas fa-star"></i></span>
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js" class="app-icon-img" width="48" height="48" loading="lazy">
-              </div>
-              <div class="app-name">Next.js</div>
-            </div>
-            <div class="app-item" data-tooltip="Angular">
-              <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg" alt="Angular" class="app-icon-img" width="48" height="48" loading="lazy"></div>
-              <div class="app-name">Angular</div>
-            </div>
-            <div class="app-item" data-tooltip="Vue.js">
-              <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" alt="Vue.js" class="app-icon-img" width="48" height="48" loading="lazy"></div>
-              <div class="app-name">Vue.js</div>
-            </div>
-            <div class="app-item" data-tooltip="JavaScript">
-              <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" class="app-icon-img" width="48" height="48" loading="lazy"></div>
-              <div class="app-name">JavaScript</div>
-            </div>
-            <div class="app-item" data-tooltip="TypeScript">
-              <div class="app-icon">
-                <span class="app-core-badge" aria-hidden="true"><i class="fas fa-star"></i></span>
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript" class="app-icon-img" width="48" height="48" loading="lazy">
-              </div>
-              <div class="app-name">TypeScript</div>
-            </div>
-            <div class="app-item" data-tooltip="Tailwind CSS">
-              <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind CSS" class="app-icon-img" width="48" height="48" loading="lazy"></div>
-              <div class="app-name">Tailwind CSS</div>
-            </div>
-            <div class="app-item" data-tooltip="Node.js">
-              <div class="app-icon">
-                <span class="app-core-badge" aria-hidden="true"><i class="fas fa-star"></i></span>
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" class="app-icon-img" width="48" height="48" loading="lazy">
-              </div>
-              <div class="app-name">Node.js</div>
-            </div>
-            <div class="app-item" data-tooltip="Python">
-              <div class="app-icon">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" class="app-icon-img" width="48" height="48" loading="lazy">
-              </div>
-              <div class="app-name">Python</div>
-            </div>
-            <div class="app-item" data-tooltip="Django">
-              <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" alt="Django" class="app-icon-img" width="48" height="48" loading="lazy"></div>
-              <div class="app-name">Django</div>
-            </div>
-            <div class="app-item" data-tooltip="C#">
-              <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#" class="app-icon-img" width="48" height="48" loading="lazy"></div>
-              <div class="app-name">C#</div>
-            </div>
-            <div class="app-item" data-tooltip="Docker">
-              <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" class="app-icon-img" width="48" height="48" loading="lazy"></div>
-              <div class="app-name">Docker</div>
-            </div>
-            <div class="app-item" data-tooltip="Git">
-              <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" class="app-icon-img" width="48" height="48" loading="lazy"></div>
-              <div class="app-name">Git</div>
-            </div>
-            <div class="app-item" data-tooltip="GitHub">
-              <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" class="app-icon-img" width="48" height="48" loading="lazy"></div>
-              <div class="app-name">GitHub</div>
-            </div>
-            <div class="app-item" data-tooltip="PostgreSQL">
-              <div class="app-icon">
-                <span class="app-core-badge" aria-hidden="true"><i class="fas fa-star"></i></span>
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" class="app-icon-img" width="48" height="48" loading="lazy">
-              </div>
-              <div class="app-name">PostgreSQL</div>
-            </div>
-            <div class="app-item" data-tooltip="MySQL">
-              <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" class="app-icon-img" width="48" height="48" loading="lazy"></div>
-              <div class="app-name">MySQL</div>
-            </div>
-            <div class="app-item" data-tooltip="MongoDB">
-              <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" class="app-icon-img" width="48" height="48" loading="lazy"></div>
-              <div class="app-name">MongoDB</div>
-            </div>
-            <div class="app-item" data-tooltip="SQL Server">
-              <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg" alt="SQL Server" class="app-icon-img" width="48" height="48" loading="lazy"></div>
-              <div class="app-name">SQL Server</div>
-            </div>
-            <div class="app-item" data-tooltip="GitLab">
-              <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gitlab/gitlab-original.svg" alt="GitLab" class="app-icon-img" width="48" height="48" loading="lazy"></div>
-              <div class="app-name">GitLab</div>
-            </div>
-            <div class="app-item" data-tooltip="Solidity">
-              <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/solidity/solidity-original.svg" alt="Solidity" class="app-icon-img" width="48" height="48" loading="lazy"></div>
-              <div class="app-name">Solidity</div>
-            </div>
-            <div class="app-item" data-tooltip="MinIO">
-              <div class="app-icon"><img src="https://cdn.simpleicons.org/minio/C72E49" alt="MinIO" class="app-icon-img" width="48" height="48" loading="lazy"></div>
-              <div class="app-name">MinIO</div>
-            </div>
-
+        <div class="app-item" data-tooltip="Next.js">
+          <div class="app-icon">
+            <span class="app-core-badge" aria-hidden="true"><i class="fas fa-star"></i></span>
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js" class="app-icon-img" width="48" height="48" loading="lazy">
           </div>
+          <div class="app-name">Next.js</div>
+        </div>
+        <div class="app-item" data-tooltip="Angular">
+          <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg" alt="Angular" class="app-icon-img" width="48" height="48" loading="lazy"></div>
+          <div class="app-name">Angular</div>
+        </div>
+        <div class="app-item" data-tooltip="Vue.js">
+          <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" alt="Vue.js" class="app-icon-img" width="48" height="48" loading="lazy"></div>
+          <div class="app-name">Vue.js</div>
+        </div>
+        <div class="app-item" data-tooltip="JavaScript">
+          <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" class="app-icon-img" width="48" height="48" loading="lazy"></div>
+          <div class="app-name">JavaScript</div>
+        </div>
+        <div class="app-item" data-tooltip="TypeScript">
+          <div class="app-icon">
+            <span class="app-core-badge" aria-hidden="true"><i class="fas fa-star"></i></span>
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript" class="app-icon-img" width="48" height="48" loading="lazy">
+          </div>
+          <div class="app-name">TypeScript</div>
+        </div>
+        <div class="app-item" data-tooltip="Tailwind CSS">
+          <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind CSS" class="app-icon-img" width="48" height="48" loading="lazy"></div>
+          <div class="app-name">Tailwind CSS</div>
+        </div>
+        <div class="app-item" data-tooltip="Node.js">
+          <div class="app-icon">
+            <span class="app-core-badge" aria-hidden="true"><i class="fas fa-star"></i></span>
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" class="app-icon-img" width="48" height="48" loading="lazy">
+          </div>
+          <div class="app-name">Node.js</div>
+        </div>
+        <div class="app-item" data-tooltip="Python">
+          <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" class="app-icon-img" width="48" height="48" loading="lazy"></div>
+          <div class="app-name">Python</div>
+        </div>
+        <div class="app-item" data-tooltip="Django">
+          <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" alt="Django" class="app-icon-img" width="48" height="48" loading="lazy"></div>
+          <div class="app-name">Django</div>
+        </div>
+        <div class="app-item" data-tooltip="C#">
+          <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#" class="app-icon-img" width="48" height="48" loading="lazy"></div>
+          <div class="app-name">C#</div>
+        </div>
+        <div class="app-item" data-tooltip="Docker">
+          <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" class="app-icon-img" width="48" height="48" loading="lazy"></div>
+          <div class="app-name">Docker</div>
+        </div>
+        <div class="app-item" data-tooltip="Git">
+          <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" class="app-icon-img" width="48" height="48" loading="lazy"></div>
+          <div class="app-name">Git</div>
+        </div>
+        <div class="app-item" data-tooltip="GitHub">
+          <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" class="app-icon-img" width="48" height="48" loading="lazy"></div>
+          <div class="app-name">GitHub</div>
+        </div>
+        <div class="app-item" data-tooltip="PostgreSQL">
+          <div class="app-icon">
+            <span class="app-core-badge" aria-hidden="true"><i class="fas fa-star"></i></span>
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" class="app-icon-img" width="48" height="48" loading="lazy">
+          </div>
+          <div class="app-name">PostgreSQL</div>
+        </div>
+        <div class="app-item" data-tooltip="MySQL">
+          <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" class="app-icon-img" width="48" height="48" loading="lazy"></div>
+          <div class="app-name">MySQL</div>
+        </div>
+        <div class="app-item" data-tooltip="MongoDB">
+          <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" class="app-icon-img" width="48" height="48" loading="lazy"></div>
+          <div class="app-name">MongoDB</div>
+        </div>
+        <div class="app-item" data-tooltip="SQL Server">
+          <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg" alt="SQL Server" class="app-icon-img" width="48" height="48" loading="lazy"></div>
+          <div class="app-name">SQL Server</div>
+        </div>
+        <div class="app-item" data-tooltip="GitLab">
+          <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gitlab/gitlab-original.svg" alt="GitLab" class="app-icon-img" width="48" height="48" loading="lazy"></div>
+          <div class="app-name">GitLab</div>
+        </div>
+        <div class="app-item" data-tooltip="Solidity">
+          <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/solidity/solidity-original.svg" alt="Solidity" class="app-icon-img" width="48" height="48" loading="lazy"></div>
+          <div class="app-name">Solidity</div>
+        </div>
+        <div class="app-item" data-tooltip="MinIO">
+          <div class="app-icon"><img src="https://cdn.simpleicons.org/minio/C72E49" alt="MinIO" class="app-icon-img" width="48" height="48" loading="lazy"></div>
+          <div class="app-name">MinIO</div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- All Skills Modal -->
+<!-- All Skills Modal -->
   <div id="skillsModal" class="skills-modal" style="display: none;">
     <div class="skills-modal-overlay"></div>
     <div class="skills-modal-content">
