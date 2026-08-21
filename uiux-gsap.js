@@ -29,6 +29,100 @@
     );
   }
 
+  function isCompactGallery() {
+    var queryMatch =
+      window.matchMedia && window.matchMedia('(max-width: 1024px)').matches;
+    return queryMatch || window.innerWidth <= 1024;
+  }
+
+  function collapseToOriginalCards(board) {
+    var cards = Array.from(board.querySelectorAll('.uiux-drag-card'));
+    var seen = {};
+    var unique = [];
+
+    cards.forEach(function (card) {
+      var image = card.querySelector('img');
+      var key = image
+        ? image.getAttribute('src') || image.getAttribute('alt') || ''
+        : '';
+      if (!key || seen[key]) return;
+      seen[key] = true;
+      unique.push(card.cloneNode(true));
+    });
+
+    if (!unique.length) {
+      unique = cards.slice(0, 6).map(function (card) {
+        return card.cloneNode(true);
+      });
+    }
+
+    board.classList.remove('is-tiled');
+    board.style.transform = '';
+    board.style.removeProperty('--uiux-cover-scale');
+    board.innerHTML = '';
+    unique.forEach(function (card) {
+      card.removeAttribute('style');
+      card.querySelectorAll('img').forEach(function (image) {
+        image.draggable = false;
+      });
+      board.appendChild(card);
+    });
+  }
+
+  function setupCompactRow(section, board) {
+    var shell = section.querySelector('.uiux-tilt-stage');
+    var cards = Array.from(board.querySelectorAll('.uiux-drag-card'));
+    if (!shell || !cards.length) return;
+
+    var rafId = 0;
+
+    function cardCenter(card) {
+      return card.offsetLeft + card.offsetWidth / 2;
+    }
+
+    function updateCards() {
+      var shellCenter = shell.scrollLeft + shell.clientWidth / 2;
+      var maxDistance = Math.max(shell.clientWidth * 0.42, 1);
+      var nearest = cards[0];
+      var nearestDistance = Infinity;
+
+      cards.forEach(function (card) {
+        var distance = Math.abs(cardCenter(card) - shellCenter);
+        var progress = Math.min(distance / maxDistance, 1);
+        card.style.setProperty('--uiux-card-scale', (1 - progress * 0.18).toFixed(3));
+        card.style.setProperty('--uiux-card-blur', (progress * 3.2).toFixed(2) + 'px');
+        card.style.setProperty('--uiux-card-z', String(Math.round((1 - progress) * 10) + 1));
+        if (distance < nearestDistance) {
+          nearestDistance = distance;
+          nearest = card;
+        }
+      });
+
+      cards.forEach(function (card) {
+        var isActive = card === nearest;
+        card.classList.toggle('is-active', isActive);
+        if (isActive) {
+          card.style.setProperty('--uiux-card-scale', '1.03');
+          card.style.setProperty('--uiux-card-blur', '0px');
+          card.style.setProperty('--uiux-card-z', '18');
+        }
+      });
+    }
+
+    function scheduleUpdate() {
+      if (rafId) return;
+      rafId = window.requestAnimationFrame(function () {
+        rafId = 0;
+        updateCards();
+      });
+    }
+
+    shell.addEventListener('scroll', scheduleUpdate, { passive: true });
+    window.addEventListener('resize', scheduleUpdate);
+    whenImagesReady(board, updateCards);
+    updateCards();
+  }
+
   function whenImagesReady(root, callback) {
     var images = Array.from(root.querySelectorAll('img'));
     var pending = images.filter(function (image) {
@@ -97,6 +191,15 @@
     if (!board) return;
 
     section.dataset.uiuxReady = '1';
+
+    if (isCompactGallery()) {
+      section.classList.add('is-uiux-static');
+      collapseToOriginalCards(board);
+      section.classList.add('is-uiux-gsap-ready');
+      setupCompactRow(section, board);
+      return;
+    }
+
     var rows = buildRows(board);
     var cards = Array.from(board.querySelectorAll('.uiux-drag-card'));
     if (!cards.length) return;

@@ -7590,29 +7590,95 @@ html[lang="ko"] .hero-artist-link {
   z-index: 2;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1024px) {
   .uiux-drag-section {
-    padding: 3rem 0 3.5rem;
+    padding: 2.5rem 0 2.75rem;
+    overflow: visible;
   }
 
-  .uiux-tilt-stage {
-    min-height: clamp(480px, 72vh, 720px);
-  }
-
-  .uiux-tilt-board.is-tiled {
-    transform: translate(-50%, -50%) rotate(-45deg) scale(var(--uiux-cover-scale, 2.35));
-  }
-
-  .uiux-drag-card {
-    flex-basis: clamp(180px, 32vw, 260px);
-  }
-}
-
-@media (max-width: 767px) {
   .uiux-drag-copy {
     margin-bottom: 1.15rem;
   }
 
+  .uiux-tilt-stage {
+    min-height: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-snap-type: x proximity;
+    overscroll-behavior-x: contain;
+    -webkit-mask-image: none;
+    mask-image: none;
+    padding: 0.65rem 0 0.35rem;
+  }
+
+  .uiux-tilt-stage::-webkit-scrollbar {
+    display: none;
+  }
+
+  .uiux-tilt-board,
+  .uiux-tilt-board.is-tiled {
+    position: static;
+    left: auto;
+    top: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 1.1rem;
+    width: max-content;
+    max-width: none;
+    margin: 0;
+    padding:
+      0.35rem
+      max(1rem, calc((100% - min(45vw, 420px)) / 2))
+      1rem;
+    transform: none;
+  }
+
+  .uiux-tilt-row:nth-child(n + 2),
+  .uiux-tilt-track .uiux-drag-card:nth-child(n + 7),
+  .uiux-tilt-board > .uiux-drag-card:nth-child(n + 7) {
+    display: none;
+  }
+
+  .uiux-tilt-board.is-tiled .uiux-tilt-row:first-child .uiux-tilt-track {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 1.1rem;
+    width: max-content;
+  }
+
+  .uiux-drag-card,
+  .uiux-tilt-board:not(.is-tiled) .uiux-drag-card:nth-child(odd),
+  .uiux-tilt-board:not(.is-tiled) .uiux-drag-card:nth-child(even) {
+    flex: 0 0 min(45vw, 420px);
+    width: min(45vw, 420px);
+    max-width: min(45vw, 420px);
+    transform: scale(var(--uiux-card-scale, 0.9));
+    filter: blur(var(--uiux-card-blur, 0px));
+    z-index: var(--uiux-card-z, 1);
+    will-change: transform, filter;
+    scroll-snap-align: center;
+    transition:
+      transform 0.3s cubic-bezier(0.22, 0.7, 0.2, 1),
+      filter 0.28s ease-out;
+  }
+
+  .uiux-drag-card.is-active {
+    transform: scale(1.03);
+    filter: none;
+  }
+
+  .uiux-drag-footnote {
+    margin-top: 1.15rem;
+  }
+}
+
+@media (max-width: 767px) {
   .uiux-drag-title {
     font-size: clamp(2rem, 10vw, 3rem);
   }
@@ -7621,20 +7687,25 @@ html[lang="ko"] .hero-artist-link {
     font-size: 0.98rem;
   }
 
-  .uiux-tilt-board {
-    grid-template-columns: repeat(2, minmax(0, 140px));
-    gap: 3.5rem 3rem;
-    padding: 3.5rem 1rem;
-  }
-
+  .uiux-tilt-board,
   .uiux-tilt-board.is-tiled {
-    width: max-content;
-    transform: translate(-50%, -50%) rotate(-45deg) scale(var(--uiux-cover-scale, 2.5));
-    gap: 0.65rem;
+    gap: 0.95rem;
+    padding:
+      0.35rem
+      max(0.85rem, calc((100% - min(78vw, 320px)) / 2))
+      1rem;
   }
 
-  .uiux-drag-card {
-    flex-basis: clamp(160px, 42vw, 220px);
+  .uiux-tilt-board.is-tiled .uiux-tilt-row:first-child .uiux-tilt-track {
+    gap: 0.95rem;
+  }
+
+  .uiux-drag-card,
+  .uiux-tilt-board:not(.is-tiled) .uiux-drag-card:nth-child(odd),
+  .uiux-tilt-board:not(.is-tiled) .uiux-drag-card:nth-child(even) {
+    flex-basis: min(78vw, 320px);
+    width: min(78vw, 320px);
+    max-width: min(78vw, 320px);
   }
 }
 
