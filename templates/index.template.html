@@ -136,13 +136,16 @@
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
 
-    /* Stabilize hero CTA / text block height while fonts/icons settle */
-    header#home .profile-cta-row {
-      min-height: 3.2rem;
+    header#home .hero-artist-wordmark {
+      line-height: 0.82;
     }
 
-    header#home h1 {
-      line-height: 1.15;
+    html[lang="th"] h1.hero-artist-wordmark,
+    html[lang="ja"] h1.hero-artist-wordmark,
+    html[lang="zh"] h1.hero-artist-wordmark,
+    html[lang="ko"] h1.hero-artist-wordmark {
+      font-weight: 400 !important;
+      line-height: 0.82 !important;
     }
 
     html[lang="th"] body {
@@ -532,10 +535,14 @@
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" media="print" onload="this.media='all'" />
   <noscript><link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" /></noscript>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
-  <!-- GSAP (Cloud & Hosting section) -->
+  <!-- GSAP -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js" defer></script>
-  <script src="cloud-platforms-gsap.js?v=5" defer></script>
+  <script src="cloud-platforms-gsap.js?v=6" defer></script>
+  <script src="experience-gsap.js?v=1" defer></script>
+  <script src="uiux-gsap.js?v=5" defer></script>
+  <script src="projects-gsap.js?v=2" defer></script>
+  <script src="hero-gsap.js?v=7" defer></script>
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
@@ -571,13 +578,12 @@
   <!-- @include ../components/index/navigation.html -->
   <!-- @include ../components/index/hero.html -->
   <!-- @include ../components/index/profile.html -->
-  <!-- @include ../components/index/skills.html -->
   <!-- @include ../components/index/cloud-platforms.html -->
   <!-- @include ../components/index/visual-highlights.html -->
   <!-- @include ../components/index/uiux-projects.html -->
-  <!-- @include ../components/index/content-creator.html -->
   <!-- @include ../components/index/experience.html -->
   <!-- @include ../components/index/certificates.html -->
+  <!-- @include ../components/index/content-creator.html -->
   <!-- @include ../components/index/contact.html -->
   <!-- @include ../components/index/footer.html -->
   <!-- @include ../components/index/project-modal.html -->
@@ -591,7 +597,6 @@
       const modalClose = modal.querySelector('.project-modal-close');
       const modalFrame = document.getElementById('modalProjectFrame');
       const modalLoading = modal.querySelector('[data-project-modal-loading]');
-      const projectCards = document.querySelectorAll('.project-card-clickable');
 
       function showLoading(isLoading) {
         if (!modalLoading) return;
@@ -643,26 +648,26 @@
       window.openProjectModal = openModal;
       window.closeProjectModal = closeModal;
 
-      projectCards.forEach(card => {
-        card.style.cursor = 'pointer';
-        card.addEventListener('click', (e) => {
-          if (card.dataset.dragIgnore === '1') {
-            card.dataset.dragIgnore = '0';
-            return;
-          }
-          if (e.target.closest('a') || e.target.closest('button')) {
-            return;
-          }
-          e.preventDefault();
-          openModal(card);
-        });
+      document.addEventListener('click', (e) => {
+        const card = e.target.closest('.project-card-clickable');
+        if (!card) return;
+        if (card.dataset.dragIgnore === '1') {
+          card.dataset.dragIgnore = '0';
+          return;
+        }
+        if (e.target.closest('a') || e.target.closest('button')) {
+          return;
+        }
+        e.preventDefault();
+        openModal(card);
+      });
 
-        card.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            openModal(card);
-          }
-        });
+      document.addEventListener('keydown', (e) => {
+        if (e.key !== 'Enter' && e.key !== ' ') return;
+        const card = e.target.closest && e.target.closest('.project-card-clickable');
+        if (!card) return;
+        e.preventDefault();
+        openModal(card);
       });
 
       modalClose.addEventListener('click', closeModal);
@@ -732,295 +737,6 @@
 
       window.addEventListener('scroll', handleScrollState, { passive: true });
       window.addEventListener('resize', updateProgress);
-    });
-  </script>
-
-  <!-- UI/UX Project Drag Strip -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const section = document.getElementById('uiux-projects');
-      if (!section) return;
-
-      const shell = section.querySelector('[data-uiux-drag-shell]');
-      const track = section.querySelector('[data-uiux-drag-track]');
-      if (!shell || !track) {
-        return;
-      }
-
-      const cards = Array.from(track.querySelectorAll('.uiux-drag-card'));
-
-      shell.querySelectorAll('img').forEach((image) => {
-        image.draggable = false;
-      });
-
-      let isDragging = false;
-      let pointerId = null;
-      let startX = 0;
-      let startScrollLeft = 0;
-      let moved = false;
-      let rafId = 0;
-      let snapTimerId = 0;
-
-      const scheduleCardUpdate = () => {
-        if (rafId) {
-          return;
-        }
-
-        rafId = window.requestAnimationFrame(() => {
-          rafId = 0;
-          updateCards();
-        });
-      };
-
-      const getCardTargetScroll = (card) => {
-        const cardCenter = card.offsetLeft + (card.offsetWidth / 2);
-        return Math.max(0, cardCenter - (shell.clientWidth / 2));
-      };
-
-      const updateCards = () => {
-        if (!cards.length) {
-          return;
-        }
-
-        const shellCenter = shell.scrollLeft + (shell.clientWidth / 2);
-        const maxDistance = shell.clientWidth * 0.42;
-        let nearestCard = cards[0];
-        let nearestDistance = Number.POSITIVE_INFINITY;
-
-        cards.forEach((card) => {
-          const cardCenter = card.offsetLeft + (card.offsetWidth / 2);
-          const distance = Math.abs(cardCenter - shellCenter);
-          const progress = Math.min(distance / maxDistance, 1);
-          const scale = 1 - (progress * 0.18);
-          const blur = progress * 3.2;
-
-          card.style.setProperty('--uiux-card-scale', scale.toFixed(3));
-          card.style.setProperty('--uiux-card-blur', `${blur.toFixed(2)}px`);
-          card.style.setProperty('--uiux-card-z', String(Math.round((1 - progress) * 10) + 1));
-
-          if (distance < nearestDistance) {
-            nearestDistance = distance;
-            nearestCard = card;
-          }
-        });
-
-        cards.forEach((card) => {
-          card.classList.toggle('is-active', card === nearestCard);
-          if (card === nearestCard) {
-            card.style.setProperty('--uiux-card-scale', '1.03');
-            card.style.setProperty('--uiux-card-blur', '0px');
-            card.style.setProperty('--uiux-card-z', '18');
-          }
-        });
-      };
-
-      const snapToNearestCard = () => {
-        if (!cards.length) {
-          return;
-        }
-
-        const shellCenter = shell.scrollLeft + (shell.clientWidth / 2);
-        let nearestCard = cards[0];
-        let nearestDistance = Number.POSITIVE_INFINITY;
-
-        cards.forEach((card) => {
-          const cardCenter = card.offsetLeft + (card.offsetWidth / 2);
-          const distance = Math.abs(cardCenter - shellCenter);
-          if (distance < nearestDistance) {
-            nearestDistance = distance;
-            nearestCard = card;
-          }
-        });
-
-        shell.scrollTo({
-          left: getCardTargetScroll(nearestCard),
-          behavior: 'smooth'
-        });
-      };
-
-      const endDrag = () => {
-        if (pointerId !== null && shell.hasPointerCapture(pointerId)) {
-          shell.releasePointerCapture(pointerId);
-        }
-
-        isDragging = false;
-        pointerId = null;
-        startX = 0;
-        startScrollLeft = 0;
-        shell.classList.remove('is-dragging');
-        snapToNearestCard();
-
-        window.setTimeout(() => {
-          moved = false;
-        }, 0);
-      };
-
-      shell.addEventListener('dragstart', (event) => {
-        event.preventDefault();
-      });
-
-      shell.addEventListener('pointerdown', (event) => {
-        if (event.pointerType === 'mouse' && event.button !== 0) {
-          return;
-        }
-
-        isDragging = true;
-        pointerId = event.pointerId;
-        startX = event.clientX;
-        startScrollLeft = shell.scrollLeft;
-        moved = false;
-        shell.setPointerCapture(event.pointerId);
-        shell.classList.add('is-dragging');
-        event.preventDefault();
-      });
-
-      shell.addEventListener('pointermove', (event) => {
-        if (!isDragging || pointerId !== event.pointerId) {
-          return;
-        }
-
-        const delta = event.clientX - startX;
-        if (Math.abs(delta) > 4) {
-          moved = true;
-        }
-
-        shell.scrollLeft = startScrollLeft - delta;
-        scheduleCardUpdate();
-      });
-
-      const handlePointerEnd = (event) => {
-        if (pointerId !== event.pointerId) {
-          return;
-        }
-
-        endDrag();
-      };
-
-      shell.addEventListener('pointerup', handlePointerEnd);
-      shell.addEventListener('pointercancel', handlePointerEnd);
-      shell.addEventListener('lostpointercapture', () => {
-        if (!isDragging) {
-          return;
-        }
-
-        endDrag();
-      });
-
-      shell.addEventListener('click', (event) => {
-        if (!moved) {
-          return;
-        }
-
-        event.preventDefault();
-        event.stopPropagation();
-      }, true);
-
-      shell.addEventListener('scroll', () => {
-        scheduleCardUpdate();
-
-        if (isDragging) {
-          return;
-        }
-
-        window.clearTimeout(snapTimerId);
-        snapTimerId = window.setTimeout(() => {
-          snapToNearestCard();
-        }, 90);
-      }, { passive: true });
-
-      window.addEventListener('resize', () => {
-        scheduleCardUpdate();
-        window.clearTimeout(snapTimerId);
-        snapTimerId = window.setTimeout(() => {
-          snapToNearestCard();
-        }, 90);
-      });
-
-      window.requestAnimationFrame(() => {
-        snapToNearestCard();
-        scheduleCardUpdate();
-      });
-    });
-  </script>
-
-  <!-- Experience Showcase Toggle -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const section = document.getElementById('experience');
-      if (!section) return;
-
-      const cards = Array.from(section.querySelectorAll('.experience-showcase-card'));
-      const panels = Array.from(section.querySelectorAll('.experience-showcase-panel'));
-      const panelWrap = section.querySelector('.experience-showcase-panels');
-      const hint = section.querySelector('.experience-showcase-hint');
-      if (!cards.length || !panels.length || !panelWrap) return;
-
-      const clearExperience = () => {
-        cards.forEach((card) => {
-          card.classList.remove('is-active');
-          card.setAttribute('aria-pressed', 'false');
-        });
-
-        panels.forEach((panel) => {
-          panel.classList.remove('is-active');
-          panel.hidden = true;
-        });
-
-        panelWrap.hidden = true;
-        if (hint) {
-          hint.hidden = false;
-        }
-      };
-
-      const activateExperience = (targetId, options = {}) => {
-        const nextCard = cards.find((card) => card.dataset.experienceTarget === targetId);
-        if (!nextCard) {
-          clearExperience();
-          return;
-        }
-
-        if (options.toggle && nextCard.classList.contains('is-active')) {
-          clearExperience();
-          return;
-        }
-
-        panelWrap.hidden = false;
-        if (hint) {
-          hint.hidden = true;
-        }
-
-        cards.forEach((card) => {
-          const isActive = card.dataset.experienceTarget === targetId;
-          card.classList.toggle('is-active', isActive);
-          card.setAttribute('aria-pressed', String(isActive));
-        });
-
-        panels.forEach((panel) => {
-          const isActive = panel.id === targetId;
-          panel.classList.toggle('is-active', isActive);
-          panel.hidden = !isActive;
-        });
-      };
-
-      cards.forEach((card, index) => {
-        card.addEventListener('click', () => {
-          activateExperience(card.dataset.experienceTarget, { toggle: true });
-        });
-
-        card.addEventListener('keydown', (event) => {
-          if (!['ArrowRight', 'ArrowLeft', 'ArrowDown', 'ArrowUp'].includes(event.key)) {
-            return;
-          }
-
-          event.preventDefault();
-          const direction = event.key === 'ArrowRight' || event.key === 'ArrowDown' ? 1 : -1;
-          const nextIndex = (index + direction + cards.length) % cards.length;
-          cards[nextIndex].focus();
-          activateExperience(cards[nextIndex].dataset.experienceTarget);
-        });
-      });
-
-      clearExperience();
     });
   </script>
 

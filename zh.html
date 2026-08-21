@@ -136,13 +136,16 @@
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
 
-    /* Stabilize hero CTA / text block height while fonts/icons settle */
-    header#home .profile-cta-row {
-      min-height: 3.2rem;
+    header#home .hero-artist-wordmark {
+      line-height: 0.82;
     }
 
-    header#home h1 {
-      line-height: 1.15;
+    html[lang="th"] h1.hero-artist-wordmark,
+    html[lang="ja"] h1.hero-artist-wordmark,
+    html[lang="zh"] h1.hero-artist-wordmark,
+    html[lang="ko"] h1.hero-artist-wordmark {
+      font-weight: 400 !important;
+      line-height: 0.82 !important;
     }
 
     html[lang="th"] body {
@@ -532,10 +535,14 @@
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" media="print" onload="this.media='all'" />
   <noscript><link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" /></noscript>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
-  <!-- GSAP (Cloud & Hosting section) -->
+  <!-- GSAP -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js" defer></script>
-  <script src="cloud-platforms-gsap.js?v=5" defer></script>
+  <script src="cloud-platforms-gsap.js?v=6" defer></script>
+  <script src="experience-gsap.js?v=1" defer></script>
+  <script src="uiux-gsap.js?v=5" defer></script>
+  <script src="projects-gsap.js?v=2" defer></script>
+  <script src="hero-gsap.js?v=7" defer></script>
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
@@ -638,209 +645,51 @@
     </div>
   </nav>
   <div class="scroll-progress" role="presentation" aria-hidden="true"></div>
-  <!-- Hero Section -->
-  <header id="home">
-    <div class="card border-0 rounded-0" style="background-color: transparent">
-      <div class="container-fluid py-5">
-        <div class="text-center px-3">
-          <h1 class="playfair-400 sh-x mb-2" style="color: #2c2c2c; font-size: clamp(48px, 7vw, 100px)">
-            <span data-i18n="hero.hi">Hi, I'm</span>
-            <span class="parisienne-regular" style="color: #a30000; font-size: clamp(52px, 8vw, 110px)">
-              Nattapat
-            </span>
-          </h1>
-          <h1 class="playfair-400 sh-x mb-3" style="color: #2c2c2c; font-size: clamp(36px, 6vw, 90px)">
-            <span data-i18n="hero.developer">A Software Developer</span>
-            <span style="display: block;">
-              <span data-i18n="hero.location">Based in</span>
-              <span class="parisienne-regular hero-writing-word" style="color: #a30000; font-size: clamp(42px, 7vw, 95px)">
-                <span class="hero-writing-word-inner">
-                  <span data-i18n="hero.thailand">Thailand</span>
-                  <span class="hero-writing-dot">.</span>
-                </span>
-              </span>
-            </span>
-          </h1>
-          <p class="playfair-400 hero-decode-text" style="opacity: 0.7; font-size: clamp(14px, 2.5vw, 18px)" data-i18n="hero.education">
-            B.Sc. in Computer and Information Science — Faculty of Applied Science
-          </p>
-
-          <div class="profile-cta-row text-center align-items-center justify-content-center">
-            <a href="https://www.linkedin.com/in/nattapat2002/" class="profile-cta-button profile-cta-button-primary" target="_blank" rel="noopener noreferrer">
-              <i class="fas fa-handshake"></i>
-              <span data-i18n="about.letsWork">Let's Work together</span>
-            </a>
-            <a href="https://www.linkedin.com/in/nattapat2002/" class="profile-cta-button profile-cta-button-secondary" target="_blank" rel="noopener noreferrer">
-              <i class="fas fa-file-alt"></i>
-              <span data-i18n="about.resume">Resume</span>
-            </a>
-          </div>
-
-        </div>
-      </div>
+  <!-- Hero Section — editorial intro -->
+  <header id="home" class="hero-artist">
+    <figure class="hero-artist-figure">
+      <picture>
+        <source srcset="Photo/optimized/portrait-nattapat.webp" type="image/webp" />
+        <img
+          src="Photo/optimized/portrait-nattapat.jpg"
+          alt="Nattapat Phungphugdee"
+          width="1920"
+          height="1440"
+          decoding="async"
+          fetchpriority="high"
+          loading="eager"
+        />
+      </picture>
+    </figure>
+    <div class="hero-artist-stage">
+      <p class="hero-artist-lead" data-i18n="hero.lead">
+        Software Developer based in Thailand.
+      </p>
+      <h1 class="hero-artist-wordmark" aria-label="Nattapat Phungphugdee">
+        <span class="hero-artist-wordmark-given">NATTAPAT</span>
+        <span class="hero-artist-wordmark-family">PHUNGPHUGDEE</span>
+      </h1>
     </div>
   </header>
-
-  <!-- Animated Divider -->
-  <div class="container-fluid" style="background-color: transparent; padding: 2rem 0 0 0;">
-    <div class="container" style="padding-bottom: 0;">
-      <div
-        class="animate__fadeIn animate__animated shadow bg-cleanmain d-flex align-items-center justify-content-center text-center">
-      </div>
-    </div>
+  <div class="hero-artist-actions">
+    <a href="https://www.linkedin.com/in/nattapat2002/" class="hero-artist-link" target="_blank" rel="noopener noreferrer">
+      <span data-i18n="about.letsWork">Let's Work together</span>
+    </a>
+    <a href="https://www.linkedin.com/in/nattapat2002/" class="hero-artist-link" target="_blank" rel="noopener noreferrer">
+      <span data-i18n="about.resume">Resume</span>
+    </a>
   </div>
+  <noscript>
+    <style>
+      .hero-artist-lead,
+      .hero-artist-actions,
+      .hero-artist-wordmark,
+      .hero-artist-figure { opacity: 1 !important; }
+    </style>
+  </noscript>
 </div>
 
   <script>
-    const heroDecodeState = new WeakMap();
-
-    function syncHeroWritingWord(animate = true) {
-      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-      document.querySelectorAll('.hero-writing-word').forEach(function (word) {
-        const inner = word.querySelector('.hero-writing-word-inner');
-        if (!inner) return;
-
-        word.classList.remove('hero-writing-active');
-        // Measure full text while unclipped, then reserve that width (no layout shift)
-        inner.style.clipPath = 'none';
-        inner.style.filter = 'none';
-
-        const fullWidth = Math.ceil(inner.scrollWidth);
-        word.style.setProperty('--hero-write-width', `${fullWidth}px`);
-
-        if (!animate || prefersReducedMotion) {
-          inner.style.clipPath = 'inset(0 0 0 0)';
-          return;
-        }
-
-        inner.style.clipPath = '';
-        inner.style.filter = '';
-        void inner.offsetWidth;
-        word.classList.add('hero-writing-active');
-      });
-    }
-
-    function getHeroDecodeCharset(target) {
-      if (/[\u0E00-\u0E7F]/.test(target)) {
-        return 'กขคงจฉชซญฎฐฑฒดตถทธนบปผพฟภมยรลวศษสหอ0123456789';
-      }
-
-      if (/[\u3040-\u30FF\u4E00-\u9FFF]/.test(target)) {
-        return 'アイウエオカキクケコサシスセソタチツテトナニヌネノ0123456789';
-      }
-
-      if (/[\uAC00-\uD7AF]/.test(target)) {
-        return '가나다라마바사아자차카타파하0123456789';
-      }
-
-      return 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-    }
-
-    function isHeroDecodeEligible(char) {
-      return /[A-Za-z0-9\u0E00-\u0E7F\u3040-\u30FF\u4E00-\u9FFF\uAC00-\uD7AF]/.test(char);
-    }
-
-    function buildHeroDecodeFrame(target, progress, charset, tick) {
-      const chars = Array.from(target);
-      const eligibleIndexes = [];
-
-      chars.forEach(function (char, index) {
-        if (isHeroDecodeEligible(char)) {
-          eligibleIndexes.push(index);
-        }
-      });
-
-      if (!eligibleIndexes.length) {
-        return target;
-      }
-
-      const orderByIndex = new Map(
-        eligibleIndexes.map(function (charIndex, order) {
-          return [charIndex, order];
-        })
-      );
-
-      const totalEligible = eligibleIndexes.length;
-      const rawStep = progress * totalEligible;
-      const activeOrder = Math.min(Math.floor(rawStep), totalEligible - 1);
-      const activeProgress = rawStep - activeOrder;
-      const activeTick = Math.floor(tick / 52);
-
-      return chars
-        .map(function (char, index) {
-          if (char === ' ') {
-            return ' ';
-          }
-
-          if (!isHeroDecodeEligible(char)) {
-            return char;
-          }
-
-          const order = orderByIndex.get(index);
-
-          if (progress >= 1 || order < activeOrder) {
-            return char;
-          }
-
-          if (order === activeOrder) {
-            if (activeProgress > 0.78) {
-              return char;
-            }
-
-            return charset[(activeTick + order * 7) % charset.length];
-          }
-
-          return char;
-        })
-        .join('');
-    }
-
-    function syncHeroDecodeText(animate = true) {
-      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-      document.querySelectorAll('.hero-decode-text').forEach(function (element) {
-        const target = (element.textContent || '').trim();
-        const activeState = heroDecodeState.get(element);
-
-        if (activeState && activeState.frameId) {
-          window.cancelAnimationFrame(activeState.frameId);
-        }
-
-        element.classList.remove('hero-decode-active');
-        element.dataset.decodeTarget = target;
-
-        if (!animate || prefersReducedMotion || !target) {
-          element.textContent = target;
-          return;
-        }
-
-        const charset = getHeroDecodeCharset(target);
-        const duration = 3600;
-        const start = performance.now();
-
-        element.classList.add('hero-decode-active');
-
-        const render = function (now) {
-          const progress = Math.min((now - start) / duration, 1);
-          element.textContent = buildHeroDecodeFrame(target, progress, charset, now);
-
-          if (progress < 1) {
-            const frameId = window.requestAnimationFrame(render);
-            heroDecodeState.set(element, { frameId });
-            return;
-          }
-
-          element.textContent = target;
-          element.classList.remove('hero-decode-active');
-          heroDecodeState.delete(element);
-        };
-
-        const frameId = window.requestAnimationFrame(render);
-        heroDecodeState.set(element, { frameId });
-      });
-    }
-
     // Toggle sticky-open for skill folders
     document.addEventListener('DOMContentLoaded', function () {
       document.querySelectorAll('.skill-folder').forEach(function (el) {
@@ -848,95 +697,33 @@
         el.addEventListener('click', toggle);
         el.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
       });
-
-      window.requestAnimationFrame(function () {
-        syncHeroWritingWord(true);
-        syncHeroDecodeText(true);
-      });
-    });
-
-    window.addEventListener('i18n:updated', function () {
-      window.requestAnimationFrame(function () {
-        syncHeroWritingWord(true);
-        syncHeroDecodeText(true);
-      });
-    });
-
-    let heroWritingResizeFrame = null;
-    window.addEventListener('resize', function () {
-      if (heroWritingResizeFrame) {
-        window.cancelAnimationFrame(heroWritingResizeFrame);
-      }
-
-      heroWritingResizeFrame = window.requestAnimationFrame(function () {
-        syncHeroWritingWord(false);
-        syncHeroDecodeText(false);
-      });
     });
   </script>
   <!-- About Me -->
   <section id="profile" class="container-fluid mt-5" style="background-color: #f8f8ff; padding-top: 4rem; padding-bottom: 3rem;">
     <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <div class="row gy-5 align-items-center profile-hero-row">
-          <!-- Left Title (PROFILE) -->
-          <div class="col-md-5 text-center text-md-start profile-title-column" data-aos="fade-right">
-            <div class="profile-title-stack">
-              <h1 class="playfair-400 sh-x responsive-profile" data-i18n="profile.title">PROFILE</h1>
-              <h1 class="playfair-400 sh-x responsive-profile" style="
-                    color: transparent;
-                    -webkit-text-stroke: 1.5px #2c2c2c;
-                    text-transform: uppercase;
-                  " data-i18n="profile.title">
-                PROFILE
-              </h1>
-              <h1 class="playfair-400 sh-x responsive-profile" data-i18n="profile.title">PROFILE</h1>
-              <h1 class="playfair-400 sh-x responsive-profile" style="
-                    color: transparent;
-                    -webkit-text-stroke: 1.5px #2c2c2c;
-                    text-transform: uppercase;
-                  " data-i18n="profile.title">
-                PROFILE
-              </h1>
-            </div>
-          </div>
-          <div class="col-md-7" data-aos="fade-left" data-aos-delay="100">
-            <div class="row justify-content-center">
-              <!-- Image Box -->
-              <div class="col-md-10">
-                <div class="airdrop-collage">
-                  <div class="airdrop-card shadow">
-                    <div class="airdrop-header" data-i18n="profile.airdrop">AirDrop</div>
-                    <div class="airdrop-photo">
-                      <picture>
-                        <source srcset="Photo/optimized/profile-portrait.webp" type="image/webp" />
-                        <img src="Photo/optimized/profile-portrait.jpg" alt="profile" width="300" height="400" loading="lazy" decoding="async">
-                      </picture>
-                    </div>
-                    <div class="airdrop-input">
-                      <span data-i18n="profile.myProfile">MY PROFILE</span>
-                      <button class="mic" aria-label="voice">
-                        <i class="fas fa-microphone"></i>
-                      </button>
-                    </div>
-                    <div class="airdrop-actions">
-                      <button class="btn-decline" data-i18n="profile.decline">Decline</button>
-                      <button class="btn-accept" data-i18n="profile.accept">Accept</button>
-                    </div>
-                  </div>
-                  <img class="float-item fi-1" src="Photo/optimized/sticker-emoji-me.png" alt="sticker" width="100" height="100" loading="lazy" />
-                  <div class="float-item fi-2 chip">Ctrl</div>
-                  <div class="float-item fi-3 chip">Copy • Edit • Pin</div>
-                  <div class="float-item fi-4 chip">🍉</div>
-                  <img class="float-item fi-5" src="Photo/optimized/float-watch-gts4.jpg" alt="watch" width="150" height="150" loading="lazy" />
-                </div>
-              </div>
-            </div>
+      <div class="row gy-5 align-items-center profile-hero-row">
+        <div class="col-12 col-md-5 text-center text-md-start profile-title-column" data-aos="fade-right">
+          <div class="profile-title-stack">
+            <h1 class="playfair-400 sh-x responsive-profile" data-i18n="profile.title">PROFILE</h1>
+            <h1 class="playfair-400 sh-x responsive-profile" style="
+                  color: transparent;
+                  -webkit-text-stroke: 1.5px #2c2c2c;
+                  text-transform: uppercase;
+                " data-i18n="profile.title">
+              PROFILE
+            </h1>
+            <h1 class="playfair-400 sh-x responsive-profile" data-i18n="profile.title">PROFILE</h1>
+            <h1 class="playfair-400 sh-x responsive-profile" style="
+                  color: transparent;
+                  -webkit-text-stroke: 1.5px #2c2c2c;
+                  text-transform: uppercase;
+                " data-i18n="profile.title">
+              PROFILE
+            </h1>
           </div>
         </div>
-      <!-- Education & About -->
-
-      <div class="row mt-4 g-3">
-        <div class="col-12 col-lg-6">
+        <div class="col-12 col-md-7" data-aos="fade-left" data-aos-delay="80">
           <div class="profile-block h-100">
             <h3 class="profile-heading playfair-400 mb-3" data-i18n="about.title">About Me</h3>
             <p class="playfair-400 m-0" style="font-size: 16px; line-height: 1.8;" data-i18n-html="about.description">
@@ -944,16 +731,18 @@
               My main strength is <strong>frontend development</strong>, and I enjoy designing systems that are easy to use and look good. I mainly work with <strong>React and Next.js</strong>, but I also have backend experience with <strong>Node.js, NestJS, and .NET API</strong>, including other technologies such as <strong>Angular</strong>.<br/><br/>
               Besides coding, I also work with clients to understand their requirements, such as specific report formats or design needs. I can prepare different design options, discuss ideas with clients, and improve the work based on their feedback.
             </p>
-
           </div>
         </div>
+      </div>
+
+      <div class="row mt-4 g-3 profile-edu-skills-row">
         <div class="col-12 col-lg-6">
           <div class="profile-block h-100">
             <h3 class="profile-heading playfair-400 mb-3" data-i18n="education.title">Education</h3>
             <div class="edu-list">
               <!-- KMUTNB -->
               <div class="edu-item mb-4">
-                <div class="d-flex align-items-center gap-3 mb-3">
+                <div class="edu-item-head">
                   <img
                     src="https://upload.wikimedia.org/wikipedia/en/a/ab/Logo_of_King_Mongkut%27s_University_of_Technology_North_Bangkok.svg"
                     alt="KMUTNB Logo" class="edu-logo img-fluid" width="48" height="48" loading="lazy" decoding="async" />
@@ -962,15 +751,12 @@
                     <small class="edu-year playfair-400" data-i18n="education.kmutnb.year">2021 - Present</small>
                   </div>
                 </div>
-                
-                <!-- Achievements & Coursework under KMUTNB -->
-                <div class="ms-5">
+                <div class="edu-item-body">
                   <h4 class="playfair-400 mb-2" style="font-size: 13px; color: #666;" data-i18n="education.kmutnb.achievements">Achievements</h4>
                   <div class="mb-3">
                     <strong class="playfair-400" style="font-size: 13px;" data-i18n="education.kmutnb.scienceDay">Science Exhibition Day 2025</strong><br/>
                     <small class="playfair-400" style="color: #888; font-size: 12px;" data-i18n="education.kmutnb.goldAward">🥇 Gold Award Winner - Asset Management System for ECT Central Office</small>
                   </div>
-                  
                   <h4 class="playfair-400 mb-2" style="font-size: 13px; color: #666;" data-i18n="education.kmutnb.coursework">Key Coursework</h4>
                   <div class="d-flex flex-wrap gap-2">
                     <span class="badge rounded-pill" style="background: #f0f0f0; color: #333; font-weight: 400; padding: 4px 10px; font-size: 11px;" data-i18n="education.kmutnb.web">
@@ -989,42 +775,41 @@
                 </div>
               </div>
               <!-- Wat Suthiwararam -->
-              <div class="edu-item mb-4 d-flex align-items-center gap-3">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/0/03/Wat_Suthiwararam_School_Crest.png"
-                  alt="Wat Suthiwararam Logo" class="edu-logo img-fluid" width="48" height="48" loading="lazy" decoding="async" />
-                <div class="flex-grow-1">
-                  <strong class="playfair-400">Wat Suthiwararam School</strong><br />
-                  <small class="edu-year playfair-400">2015 - 2021</small>
+              <div class="edu-item mb-4">
+                <div class="edu-item-head">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/0/03/Wat_Suthiwararam_School_Crest.png"
+                    alt="Wat Suthiwararam Logo" class="edu-logo img-fluid" width="48" height="48" loading="lazy" decoding="async" />
+                  <div class="flex-grow-1">
+                    <strong class="playfair-400">Wat Suthiwararam School</strong><br />
+                    <small class="edu-year playfair-400">2015 - 2021</small>
+                  </div>
                 </div>
               </div>
               <!-- Sarasas Pittaya School -->
-              <div class="edu-item mb-2 d-flex align-items-center gap-3">
-                <img src="https://www.ssps.ac.th/wp-content/uploads/2024/08/%E0%B8%94%E0%B8%B5%E0%B9%84%E0%B8%8B%E0%B8%99%E0%B9%8C%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%A2%E0%B8%B1%E0%B8%87%E0%B9%84%E0%B8%A1%E0%B9%88%E0%B9%84%E0%B8%94%E0%B9%89%E0%B8%95%E0%B8%B1%E0%B9%89%E0%B8%87%E0%B8%8A%E0%B8%B7%E0%B9%88%E0%B8%AD-1024x724.png"
-                  alt="Sarasas Pittaya Logo" class="edu-logo img-fluid" width="48" height="48" loading="lazy" decoding="async" style="border-radius: 50%; object-fit: cover;" />
-                <div class="flex-grow-1">
-                  <strong class="playfair-400">Sarasas Pittaya School</strong><br />
-                  <small class="edu-year playfair-400" data-i18n="education.sarasas.year">2009 - 2015 (Elementary)</small>
+              <div class="edu-item mb-2">
+                <div class="edu-item-head">
+                  <img src="https://www.ssps.ac.th/wp-content/uploads/2024/08/%E0%B8%94%E0%B8%B5%E0%B9%84%E0%B8%8B%E0%B8%99%E0%B9%8C%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%A2%E0%B8%B1%E0%B8%87%E0%B9%84%E0%B8%A1%E0%B9%88%E0%B9%84%E0%B8%94%E0%B9%89%E0%B8%95%E0%B8%B1%E0%B9%89%E0%B8%87%E0%B8%8A%E0%B8%B7%E0%B9%88%E0%B8%AD-1024x724.png"
+                    alt="Sarasas Pittaya Logo" class="edu-logo img-fluid" width="48" height="48" loading="lazy" decoding="async" style="border-radius: 50%; object-fit: cover;" />
+                  <div class="flex-grow-1">
+                    <strong class="playfair-400">Sarasas Pittaya School</strong><br />
+                    <small class="edu-year playfair-400" data-i18n="education.sarasas.year">2009 - 2015 (Elementary)</small>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-
-
-    </div>
-  </section>
-  <!-- Tech Stack -->
-<section id="skills" class="container-fluid skills-section" style="background-color: #f8f8ff;">
-  <div class="container py-4">
-    <div class="skills-heading-copy text-center mb-3">
-      <h2 class="profile-heading playfair-400 mb-0" style="color: #767676" data-i18n="skills.title">Tech Stack</h2>
-      <p class="skills-core-hint mb-0 justify-content-center">
-        <span class="skills-core-hint-badge" aria-hidden="true"><i class="fas fa-star"></i></span>
-        <span data-i18n="skills.coreHint">Yellow star = Core skills</span>
-      </p>
-    </div>
-    <div class="app-dock-wrapper my-0">
+        <div class="col-12 col-lg-6" id="skills">
+          <!-- Tech Stack -->
+<div class="profile-block profile-skills-block h-100">
+  <div class="skills-heading-copy mb-3">
+    <h3 class="profile-heading playfair-400 mb-2" data-i18n="skills.title">Tech Stack</h3>
+    <p class="skills-core-hint mb-0">
+      <span class="skills-core-hint-badge" aria-hidden="true"><i class="fas fa-star"></i></span>
+      <span data-i18n="skills.coreHint">Yellow star = Core skills</span>
+    </p>
+  </div>
+  <div class="app-dock-wrapper my-0">
       <div class="app-dock" aria-label="Skills marquee">
         <div class="app-item" data-tooltip="React">
           <div class="app-icon">
@@ -1127,8 +912,7 @@
         </div>
       </div>
     </div>
-  </div>
-</section>
+</div>
 
 <!-- All Skills Modal -->
   <div id="skillsModal" class="skills-modal" style="display: none;">
@@ -1354,6 +1138,10 @@
       });
     });
   </script>
+        </div>
+      </div>
+    </div>
+  </section>
   <section id="cloud-platforms" class="container-fluid cloud-platforms-section">
   <div class="container">
     <div class="cloud-platforms-shell">
@@ -1371,7 +1159,7 @@
         <article class="cloud-platform-card cloud-platform-railway" aria-label="Railway">
           <div class="cloud-platform-brand">
             <span class="cloud-platform-mark">
-              <img src="https://cdn.simpleicons.org/railway/0B0D0E" alt="Railway" width="38" height="38" loading="lazy" decoding="async" />
+              <img src="https://cdn.simpleicons.org/railway/0B0D0E" alt="Railway" width="48" height="48" loading="lazy" decoding="async" />
             </span>
             <span class="cloud-platform-name">Railway</span>
           </div>
@@ -1380,7 +1168,7 @@
         <article class="cloud-platform-card cloud-platform-vercel" aria-label="Vercel">
           <div class="cloud-platform-brand">
             <span class="cloud-platform-mark">
-              <img src="https://cdn.simpleicons.org/vercel/FFFFFF" alt="Vercel" width="38" height="38" loading="lazy" decoding="async" />
+              <img src="https://cdn.simpleicons.org/vercel/111111" alt="Vercel" width="48" height="48" loading="lazy" decoding="async" />
             </span>
             <span class="cloud-platform-name">Vercel</span>
           </div>
@@ -1389,7 +1177,7 @@
         <article class="cloud-platform-card cloud-platform-netlify" aria-label="Netlify">
           <div class="cloud-platform-brand">
             <span class="cloud-platform-mark">
-              <img src="https://cdn.simpleicons.org/netlify/FFFFFF" alt="Netlify" width="38" height="38" loading="lazy" decoding="async" />
+              <img src="https://cdn.simpleicons.org/netlify/00AD9F" alt="Netlify" width="48" height="48" loading="lazy" decoding="async" />
             </span>
             <span class="cloud-platform-name">Netlify</span>
           </div>
@@ -1398,9 +1186,27 @@
         <article class="cloud-platform-card cloud-platform-render" aria-label="Render">
           <div class="cloud-platform-brand">
             <span class="cloud-platform-mark">
-              <img src="https://cdn.simpleicons.org/render/000000" alt="Render" width="38" height="38" loading="lazy" decoding="async" />
+              <img src="https://cdn.simpleicons.org/render/000000" alt="Render" width="48" height="48" loading="lazy" decoding="async" />
             </span>
             <span class="cloud-platform-name">Render</span>
+          </div>
+        </article>
+
+        <article class="cloud-platform-card cloud-platform-hostiger" aria-label="Hostiger">
+          <div class="cloud-platform-brand">
+            <span class="cloud-platform-mark">
+              <img src="https://www.google.com/s2/favicons?sz=128&domain=hostiger.com" alt="Hostiger" width="48" height="48" loading="lazy" decoding="async" />
+            </span>
+            <span class="cloud-platform-name">Hostiger</span>
+          </div>
+        </article>
+
+        <article class="cloud-platform-card cloud-platform-cloudflare" aria-label="Cloudflare">
+          <div class="cloud-platform-brand">
+            <span class="cloud-platform-mark">
+              <img src="https://cdn.simpleicons.org/cloudflare/F38020" alt="Cloudflare" width="48" height="48" loading="lazy" decoding="async" />
+            </span>
+            <span class="cloud-platform-name">Cloudflare</span>
           </div>
         </article>
       </div>
@@ -1412,9 +1218,9 @@
     style="background-color: #f8f8ff; padding-top: 0; padding-bottom: 0; transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);">
     <div class="container-fluid portfolio-visual-shell" style="padding-top: 3rem; padding-bottom: 3rem;">
       <div class="text-center mb-5 px-3">
-        <h2 class="playfair-400 mb-3"
-          style="font-size: clamp(32px, 6vw, 64px); color: #1d1d1f; font-weight: 600; letter-spacing: -0.5px">
-          <span data-i18n="visual.title">Projects</span>
+        <h2 class="dm-serif-display-regular mb-3"
+          style="font-size: clamp(32px, 6vw, 64px); color: #1d1d1f; font-weight: 400; letter-spacing: 0.04em; text-transform: uppercase;">
+          <span data-i18n="visual.title">PROJECTS</span>
         </h2>
         <p class="text-muted mx-auto" style="max-width: 680px; font-size: 17px; line-height: 1.6; color: #6b6b6b" data-i18n="visual.description">
           A curated selection of my featured projects. Each work blends elegant
@@ -1422,158 +1228,123 @@
         </p>
       </div>
 
-      <div class="visual-highlights-carousel-wrapper">
-        <div
-          class="visual-highlights-carousel"
-          data-portfolio-carousel
-          tabindex="0"
-          role="region"
-          aria-label="Featured projects"
-        >
-          <div class="carousel-track" data-portfolio-track>
-            <div class="carousel-slide">
-              <div
-                class="ios-project-card project-card-clickable"
-                role="button"
-                tabindex="0"
-                aria-label="View Asset Management System details"
-                data-aos="fade-up"
-                data-aos-delay="0"
-                data-project="asm"
-                data-page-url="projects/asm.html?embed=1"
-                data-title="Asset Management System"
-                data-subtitle="ASM®"
-                data-description="Government inventory system for ECT. A comprehensive asset management solution for inventory tracking, automated depreciation, and audits."
-                data-tech="Angular, ASP.NET Core, C#, SQL Server"
-                data-image="Photo/optimized/Mockup/ASM.png"
-              >
-                <div class="ios-project-image bg-asm">
-                  <img src="Photo/optimized/Mockup/ASM.png" alt="ASM" width="800" height="600" loading="lazy">
-                </div>
-                <div class="ios-project-overlay">
-                  <p class="ios-project-kicker playfair-400">ASM®</p>
-                  <h3 class="ios-project-heading playfair-400">Asset Management System</h3>
-                  <p class="ios-project-summary">Government inventory system for ECT</p>
-                </div>
-              </div>
+      <div class="projects-conveyor-stage" aria-label="Featured projects">
+        <div class="projects-conveyor-board" data-projects-board>
+          <div
+            class="ios-project-card project-card-clickable"
+            role="button"
+            tabindex="0"
+            aria-label="View Asset Management System details"
+            data-project="asm"
+            data-page-url="projects/asm.html?embed=1"
+            data-title="Asset Management System"
+            data-subtitle="ASM®"
+            data-description="Government inventory system for ECT. A comprehensive asset management solution for inventory tracking, automated depreciation, and audits."
+            data-tech="Angular, ASP.NET Core, C#, SQL Server"
+            data-image="Photo/optimized/Mockup/ASM.png"
+          >
+            <div class="ios-project-image bg-asm">
+              <img src="Photo/optimized/Mockup/ASM.png" alt="ASM" width="800" height="600" loading="lazy">
             </div>
-
-            <div class="carousel-slide">
-              <div
-                class="ios-project-card project-card-clickable"
-                role="button"
-                tabindex="0"
-                aria-label="View Hiring Platform details"
-                data-aos="fade-up"
-                data-aos-delay="50"
-                data-project="homema"
-                data-page-url="projects/homema.html?embed=1"
-                data-title="Hiring Platform"
-                data-subtitle="HOMEMA®"
-                data-description="Connects users with technicians via CRUD + API. A modern hiring platform bridging service seekers and skilled technicians."
-                data-tech="React, Node.js, Express, REST API, PostgreSQL"
-                data-image="Photo/optimized/Mockup/HOMEMA.png"
-                data-demo-url="https://homema.onrender.com/"
-              >
-                <div class="ios-project-image bg-homema">
-                  <img src="Photo/optimized/Mockup/HOMEMA.png" alt="HOMEMA" width="800" height="600" loading="lazy">
-                </div>
-                <div class="ios-project-overlay">
-                  <p class="ios-project-kicker playfair-400">HOMEMA®</p>
-                  <h3 class="ios-project-heading playfair-400">Hiring Platform</h3>
-                  <p class="ios-project-summary">Connects users with technicians via CRUD + API</p>
-                </div>
-              </div>
+            <div class="ios-project-overlay">
+              <p class="ios-project-kicker playfair-400">ASM®</p>
+              <h3 class="ios-project-heading playfair-400">Asset Management System</h3>
+              <p class="ios-project-summary">Government inventory system for ECT</p>
             </div>
+          </div>
 
-            <div class="carousel-slide">
-              <div
-                class="ios-project-card project-card-clickable"
-                role="button"
-                tabindex="0"
-                aria-label="View Blockchain Voting details"
-                data-aos="fade-up"
-                data-aos-delay="100"
-                data-project="votemai"
-                data-page-url="projects/votemai.html?embed=1"
-                data-title="Blockchain Voting"
-                data-subtitle="VOTEMAI™"
-                data-description="Solidity + IPFS on MERN. A decentralized voting platform ensuring transparency, immutability, and security."
-                data-tech="React, Node.js, MongoDB, Solidity, IPFS, Blockchain"
-                data-image="Photo/optimized/Mockup/VOTEMAI.png"
-                data-demo-url="https://votemai-kis6zaqh7-zxinnattapats-projects.vercel.app/"
-              >
-                <div class="ios-project-image bg-votemai">
-                  <img src="Photo/optimized/Mockup/VOTEMAI.png" alt="VOTEMAI" width="800" height="600" loading="lazy">
-                </div>
-                <div class="ios-project-overlay">
-                  <p class="ios-project-kicker playfair-400">VOTEMAI™</p>
-                  <h3 class="ios-project-heading playfair-400">Blockchain Voting</h3>
-                  <p class="ios-project-summary">Solidity + IPFS on MERN. Transparent elections</p>
-                </div>
-              </div>
+          <div
+            class="ios-project-card project-card-clickable"
+            role="button"
+            tabindex="0"
+            aria-label="View Hiring Platform details"
+            data-project="homema"
+            data-page-url="projects/homema.html?embed=1"
+            data-title="Hiring Platform"
+            data-subtitle="HOMEMA®"
+            data-description="Connects users with technicians via CRUD + API. A modern hiring platform bridging service seekers and skilled technicians."
+            data-tech="React, Node.js, Express, REST API, PostgreSQL"
+            data-image="Photo/optimized/Mockup/HOMEMA.png"
+            data-demo-url="https://homema.onrender.com/"
+          >
+            <div class="ios-project-image bg-homema">
+              <img src="Photo/optimized/Mockup/HOMEMA.png" alt="HOMEMA" width="800" height="600" loading="lazy">
             </div>
+            <div class="ios-project-overlay">
+              <p class="ios-project-kicker playfair-400">HOMEMA®</p>
+              <h3 class="ios-project-heading playfair-400">Hiring Platform</h3>
+              <p class="ios-project-summary">Connects users with technicians via CRUD + API</p>
+            </div>
+          </div>
 
-            <div class="carousel-slide">
-              <div
-                class="ios-project-card project-card-clickable"
-                role="button"
-                tabindex="0"
-                aria-label="View Dev Blog Platform details"
-                data-aos="fade-up"
-                data-aos-delay="150"
-                data-project="olaf"
-                data-page-url="projects/olaf.html?embed=1"
-                data-title="Dev Blog Platform"
-                data-subtitle="OLAF"
-                data-description="Built with Django + React. A personal tech journal for developers to share technical journeys and project insights."
-                data-tech="Django, Python, React, Markdown"
-                data-image="Photo/optimized/Mockup/OLAF.png"
-                data-demo-url="https://olafs.netlify.app/feed"
-              >
-                <div class="ios-project-image bg-olaf">
-                  <img src="Photo/optimized/Mockup/OLAF.png" alt="OLAF" width="800" height="600" loading="lazy">
-                </div>
-                <div class="ios-project-overlay">
-                  <p class="ios-project-kicker playfair-400">OLAF</p>
-                  <h3 class="ios-project-heading playfair-400">Dev Blog Platform</h3>
-                  <p class="ios-project-summary">Built with Django + React. Personal tech journal</p>
-                </div>
-              </div>
+          <div
+            class="ios-project-card project-card-clickable"
+            role="button"
+            tabindex="0"
+            aria-label="View Blockchain Voting details"
+            data-project="votemai"
+            data-page-url="projects/votemai.html?embed=1"
+            data-title="Blockchain Voting"
+            data-subtitle="VOTEMAI™"
+            data-description="Solidity + IPFS on MERN. A decentralized voting platform ensuring transparency, immutability, and security."
+            data-tech="React, Node.js, MongoDB, Solidity, IPFS, Blockchain"
+            data-image="Photo/optimized/Mockup/VOTEMAI.png"
+            data-demo-url="https://votemai-kis6zaqh7-zxinnattapats-projects.vercel.app/"
+          >
+            <div class="ios-project-image bg-votemai">
+              <img src="Photo/optimized/Mockup/VOTEMAI.png" alt="VOTEMAI" width="800" height="600" loading="lazy">
+            </div>
+            <div class="ios-project-overlay">
+              <p class="ios-project-kicker playfair-400">VOTEMAI™</p>
+              <h3 class="ios-project-heading playfair-400">Blockchain Voting</h3>
+              <p class="ios-project-summary">Solidity + IPFS on MERN. Transparent elections</p>
+            </div>
+          </div>
+
+          <div
+            class="ios-project-card project-card-clickable"
+            role="button"
+            tabindex="0"
+            aria-label="View Dev Blog Platform details"
+            data-project="olaf"
+            data-page-url="projects/olaf.html?embed=1"
+            data-title="Dev Blog Platform"
+            data-subtitle="OLAF"
+            data-description="Built with Django + React. A personal tech journal for developers to share technical journeys and project insights."
+            data-tech="Django, Python, React, Markdown"
+            data-image="Photo/optimized/Mockup/OLAF.png"
+            data-demo-url="https://olafs.netlify.app/feed"
+          >
+            <div class="ios-project-image bg-olaf">
+              <img src="Photo/optimized/Mockup/OLAF.png" alt="OLAF" width="800" height="600" loading="lazy">
+            </div>
+            <div class="ios-project-overlay">
+              <p class="ios-project-kicker playfair-400">OLAF</p>
+              <h3 class="ios-project-heading playfair-400">Dev Blog Platform</h3>
+              <p class="ios-project-summary">Built with Django + React. Personal tech journal</p>
             </div>
           </div>
         </div>
       </div>
     </div>
   </section>
-  <!-- UI/UX Projects Drag Strip -->
+  <!-- UI/UX Projects Tilted Gallery -->
 <section id="uiux-projects" class="uiux-drag-section">
-  <div class="container-fluid uiux-drag-wrap">
+  <div class="container uiux-drag-wrap">
     <div class="uiux-drag-copy text-center">
       <p class="uiux-drag-kicker">Selected UI/UX Work</p>
       <h2 class="dm-serif-display-regular uiux-drag-title">
         UI/UX Project Gallery
       </h2>
       <p class="uiux-drag-description">
-        A small gallery of collaborative UI/UX projects. Drag horizontally to
-        explore branding, interface flows, and product screens from OLIF and
-        Triple C.
+        A small gallery of collaborative UI/UX projects — branding, interface
+        flows, and product screens from OLIF and Triple C.
       </p>
     </div>
+  </div>
 
-    <div class="uiux-drag-hint">
-      <span class="uiux-drag-hint-pill">
-        <i class="fas fa-arrows-left-right"></i>
-        Drag to explore
-      </span>
-    </div>
-
-    <div
-      class="uiux-drag-shell"
-      data-uiux-drag-shell
-      aria-label="UI and UX projects gallery"
-    >
-      <div class="uiux-drag-track" data-uiux-drag-track>
+  <div class="uiux-tilt-stage" aria-label="UI and UX projects gallery">
+    <div class="uiux-tilt-board" data-uiux-tilt-board>
         <article class="uiux-drag-card uiux-drag-card-logo">
           <figure class="uiux-drag-media uiux-drag-media-logo">
             <picture>
@@ -1672,174 +1443,17 @@
       </div>
     </div>
 
+  <div class="container">
     <p class="uiux-drag-footnote">
       * These projects were collaboratively designed and developed with my peers
       as part of a team effort.
     </p>
   </div>
 </section>
-  <!-- TikTok Content Creator Section -->
-<section id="content-creator" class="container-fluid creator-showcase-section" style="background-color: #f8f8ff; padding-top: 0; padding-bottom: 3rem;">
-  <div class="container">
-    <div class="container px-4 creator-showcase-shell" style="max-width: 1200px;">
-      <div class="row align-items-center justify-content-between g-4 mb-4">
-      <div class="col-12 col-lg-8">
-        <div class="d-flex align-items-center gap-3 mb-3">
-          <div class="p-2 rounded-circle creator-mode-badge">
-            <img src="Photo/optimized/logo-zxin-mini.png" alt="ZXIN mini logo" width="48" height="48" loading="lazy" decoding="async" style="width: 48px; height: 48px; object-fit: contain">
-          </div>
-          <div class="creator-mode-copy">
-            <p class="text-uppercase mb-1 creator-mode-label" data-i18n="creator.mode">
-              Creator mode
-            </p>
-            <p class="mb-0 playfair-400 creator-mode-subtitle" data-i18n="creator.subtitle">
-              Quick snapshots from my dev-life TikTok channel.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="col-12 col-lg-4 text-center text-lg-end">
-       
-      </div>
-    </div>
-
-    <div class="row g-4">
-      <div class="col-12 col-lg-4">
-        <div class="card border-0 h-100 creator-glass-card">
-          <div class="card-body pb-0 creator-glass-body">
-            <span class="d-inline-block text-uppercase mb-2 creator-card-label" data-i18n="creator.cards.csReview.title">
-              CS Student Life Review
-            </span>
-            <p class="playfair-400 mb-3 creator-card-description" data-i18n="creator.cards.csReview.description">
-              รีวิวเรียน Computer Science มจพ — ปี 1 ถึงปี 3
-            </p>
-            <p class="mb-3">
-              <a href="articles/cs-kmutnb-student-life-review.html" class="creator-card-link" style="color:#a30000; font-weight:600; text-decoration:none;">
-                อ่านบทความเต็ม →
-              </a>
-            </p>
-          </div>
-          <div class="px-3 pb-3 creator-glass-embed">
-            <blockquote class="tiktok-embed mb-0" cite="https://www.tiktok.com/@nattazxin/video/7624066985374092565"
-              data-video-id="7624066985374092565" data-embed-from="embed_page" style="max-width: 100%; min-width: 100%;">
-              <section>
-                <a target="_blank" title="@nattazxin" href="https://www.tiktok.com/@nattazxin?refer=embed">@nattazxin</a>
-                <p>รีวิววิชา computer science มจพ
-                  <a title="computerscience" target="_blank" href="https://www.tiktok.com/tag/computerscience?refer=embed">#computerscience</a>
-                  <a title="มจพ" target="_blank" href="https://www.tiktok.com/tag/%E0%B8%A1%E0%B8%88%E0%B8%9E?refer=embed">#มจพ</a>
-                  <a title="วิทย์คอม" target="_blank" href="https://www.tiktok.com/tag/%E0%B8%A7%E0%B8%B4%E0%B8%97%E0%B8%A2%E0%B9%8C%E0%B8%84%E0%B8%AD%E0%B8%A1?refer=embed">#วิทย์คอม</a>
-                  <a title="cskmutnb" target="_blank" href="https://www.tiktok.com/tag/cskmutnb?refer=embed">#cskmutnb</a>
-                </p>
-                <a target="_blank" title="♬ original sound" href="https://www.tiktok.com/@nattazxin/video/7624066985374092565?refer=embed">♬ Watch on TikTok</a>
-              </section>
-            </blockquote>
-          </div>
-        </div>
-      </div>
-      <div class="col-12 col-lg-4">
-        <div class="card border-0 h-100 creator-glass-card">
-          <div class="card-body pb-0 creator-glass-body">
-            <span class="d-inline-block text-uppercase mb-2 creator-card-label" data-i18n="creator.cards.teamwork.title">
-              Teamwork & Git
-            </span>
-            <p class="playfair-400 mb-3 creator-card-description" data-i18n="creator.cards.teamwork.description">
-              First team project shipped with Git—messy process, solid lesson learned together.
-            </p>
-          </div>
-          <div class="px-3 pb-3 creator-glass-embed">
-            <blockquote class="tiktok-embed mb-0" cite="https://www.tiktok.com/@zxin_ntt/video/7540364208567831815"
-              data-video-id="7540364208567831815" data-embed-from="embed_page" style="max-width: 100%; min-width: 100%;">
-              <section>
-                <a target="_blank" title="@zxin_ntt" href="https://www.tiktok.com/@zxin_ntt?refer=embed">@zxin_ntt</a>
-                <p>ครั้งแรกที่ใช้ git ทำงานกับเพื่อนๆ ใช้แบบไม่ได้ถูกหลักสะเท่าไรแต่ก็หัดกันกับเพื่อนทำโปรเจคผ่านกันมาได้
-                  <a title="computerscience" target="_blank" href="https://www.tiktok.com/tag/computerscience?refer=embed">#computerscience</a>
-                  <a title="มจพ" target="_blank" href="https://www.tiktok.com/tag/%E0%B8%A1%E0%B8%88%E0%B8%9E?refer=embed">#มจพ</a>
-                  <a title="dev" target="_blank" href="https://www.tiktok.com/tag/dev?refer=embed">#dev</a>
-                </p>
-                <a target="_blank" title="♬ Beat - beaty" href="https://www.tiktok.com/music/Beat-7142169219956738050?refer=embed">♬ Beat - beaty</a>
-              </section>
-            </blockquote>
-          </div>
-        </div>
-      </div>
-      <div class="col-12 col-lg-4">
-        <div class="card border-0 h-100 creator-glass-card">
-          <div class="card-body pb-0 creator-glass-body">
-            <span class="d-inline-block text-uppercase mb-2 creator-card-label" data-i18n="creator.cards.framework.title">
-              Framework Experiments
-            </span>
-            <p class="playfair-400 mb-3 creator-card-description" data-i18n="creator.cards.framework.description">
-              Comparing Tailwind vs Bootstrap in real projects to find the right fit.
-            </p>
-          </div>
-          <div class="px-3 pb-3 creator-glass-embed">
-            <blockquote class="tiktok-embed mb-0" cite="https://www.tiktok.com/@zxin_ntt/video/7522462410179890450"
-              data-video-id="7522462410179890450" data-embed-from="embed_page" style="max-width: 100%; min-width: 100%;">
-              <section>
-                <a target="_blank" title="@zxin_ntt" href="https://www.tiktok.com/@zxin_ntt?refer=embed">@zxin_ntt</a>
-                <p>ฝึกใช้tailwind css ครั้งแรกปกติใช้แต่Bootstrapค่ายม่วง เขียนไปเขียนมาเริ่มชอบละ ใครแนะนำTipอะไรการใช้เม้นมาบอกกันได้น้าา
-                  <a title="computerscience" target="_blank" href="https://www.tiktok.com/tag/computerscience?refer=embed">#computerscience</a>
-                  <a title="frontend" target="_blank" href="https://www.tiktok.com/tag/frontend?refer=embed">#frontend</a>
-                  <a title="dev" target="_blank" href="https://www.tiktok.com/tag/dev?refer=embed">#dev</a>
-                </p>
-                <a target="_blank" title="♬ MUTT - Leon Thomas" href="https://www.tiktok.com/music/MUTT-7400513247046453264?refer=embed">♬ MUTT - Leon Thomas</a>
-              </section>
-            </blockquote>
-          </div>
-        </div>
-      </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- TikTok Embed Script - Lazy loaded with Intersection Observer -->
-<script>
-  // Lazy load TikTok embed script only when embeds are visible
-  (function() {
-    let tiktokScriptLoaded = false;
-    const tiktokEmbeds = document.querySelectorAll('.tiktok-embed');
-    
-    if (tiktokEmbeds.length === 0) return;
-    
-    const loadTiktokScript = function() {
-      if (tiktokScriptLoaded) return;
-      tiktokScriptLoaded = true;
-      
-      var script = document.createElement('script');
-      script.src = 'https://www.tiktok.com/embed.js';
-      script.async = true;
-      script.defer = true;
-      script.setAttribute('loading', 'lazy');
-      document.body.appendChild(script);
-    };
-    
-    // Use Intersection Observer for lazy loading
-    if ('IntersectionObserver' in window) {
-      const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-          if (entry.isIntersecting) {
-            loadTiktokScript();
-            observer.disconnect();
-          }
-        });
-      }, {
-        rootMargin: '200px' // Start loading 200px before visible
-      });
-      
-      tiktokEmbeds.forEach(function(embed) {
-        observer.observe(embed);
-      });
-    } else {
-      // Fallback: load after page load if IntersectionObserver not supported
-      window.addEventListener('load', loadTiktokScript);
-    }
-  })();
-</script>
   <!-- Experience & Internship -->
   <section id="experience" class="container-fluid" style="background-color: #f8f8ff; padding-top: 0; padding-bottom: 3rem;">
     <div class="container" style="max-width: 1200px;">
-      <div class="text-center mb-5" data-aos="fade-up">
+      <div class="text-center mb-5 experience-showcase-header">
         <h1 class="dm-serif-display-regular mb-3" style="color: #2c2c2c; font-size: clamp(34px, 6.4vw, 64px)" data-i18n="experience.title">
           EXPERIENCE & INTERNSHIP
         </h1>
@@ -1848,7 +1462,7 @@
           building real-world solutions and growing with each opportunity.
         </p>
       </div>
-      <div class="experience-showcase-grid" data-aos="fade-up" data-aos-delay="90">
+      <div class="experience-showcase-grid">
         <button type="button" class="experience-showcase-card experience-card-red" data-experience-target="exp-fulltime" aria-pressed="false" aria-controls="exp-fulltime" aria-label="Software Developer at Business ALive Co.,Ltd">
           <span class="experience-showcase-icon-shell">
             <span class="experience-showcase-logo experience-showcase-logo-wide">
@@ -1888,14 +1502,14 @@
         -->
       </div>
 
-      <div class="experience-showcase-hint" data-aos="fade-up" data-aos-delay="120">
+      <div class="experience-showcase-hint">
         <span class="experience-showcase-hint-pill">
           <i class="fas fa-hand-pointer" aria-hidden="true"></i>
           <span data-i18n="experience.hint">Click a widget to view details</span>
         </span>
       </div>
 
-      <div class="experience-showcase-panels" data-aos="fade-up" data-aos-delay="140" hidden>
+      <div class="experience-showcase-panels" hidden>
         <article id="exp-fulltime" class="experience-showcase-panel experience-card-red" hidden>
           <div class="experience-panel-surface">
             <div class="experience-panel-head">
@@ -2070,6 +1684,194 @@
     </div>
 
   </section>
+  <!-- TikTok Content Creator Section -->
+<section id="content-creator" class="container-fluid creator-showcase-section" style="background-color: #f8f8ff; padding-top: 0; padding-bottom: 2rem;">
+  <div class="container creator-showcase-shell">
+    <div class="d-flex align-items-center gap-2 mb-3 creator-mode-header">
+      <div class="creator-mode-badge">
+        <img src="Photo/optimized/logo-zxin-mini.png" alt="ZXIN mini logo" width="32" height="32" loading="lazy" decoding="async">
+      </div>
+      <div class="creator-mode-copy">
+        <p class="text-uppercase mb-0 creator-mode-label" data-i18n="creator.mode">
+          Creator mode
+        </p>
+        <p class="mb-0 playfair-400 creator-mode-subtitle" data-i18n="creator.subtitle">
+          Quick snapshots from my dev-life TikTok channel.
+        </p>
+      </div>
+    </div>
+
+    <div class="row g-3">
+      <div class="col-12 col-lg-4">
+        <div class="creator-glass-card">
+          <div class="creator-glass-body">
+            <span class="d-inline-block text-uppercase mb-1 creator-card-label" data-i18n="creator.cards.csReview.title">
+              CS Student Life Review
+            </span>
+            <p class="playfair-400 mb-2 creator-card-description" data-i18n="creator.cards.csReview.description">
+              รีวิวเรียน Computer Science มจพ — ปี 1 ถึงปี 3
+            </p>
+            <p class="mb-2">
+              <a href="articles/cs-kmutnb-student-life-review.html" class="creator-card-link" style="color:#a30000; font-weight:600; text-decoration:none;">
+                อ่านบทความเต็ม →
+              </a>
+            </p>
+          </div>
+          <div class="creator-glass-embed is-loading">
+            <div class="tiktok-skeleton" aria-hidden="true">
+              <span class="tiktok-skeleton-screen"></span>
+              <span class="tiktok-skeleton-play"></span>
+              <span class="tiktok-skeleton-meta"></span>
+            </div>
+            <blockquote class="tiktok-embed mb-0" cite="https://www.tiktok.com/@nattazxin/video/7624066985374092565"
+              data-video-id="7624066985374092565" data-embed-from="embed_page" style="max-width: 100%; min-width: 100%;">
+              <section>
+                <a target="_blank" title="@nattazxin" href="https://www.tiktok.com/@nattazxin?refer=embed">@nattazxin</a>
+                <p>รีวิววิชา computer science มจพ
+                  <a title="computerscience" target="_blank" href="https://www.tiktok.com/tag/computerscience?refer=embed">#computerscience</a>
+                  <a title="มจพ" target="_blank" href="https://www.tiktok.com/tag/%E0%B8%A1%E0%B8%88%E0%B8%9E?refer=embed">#มจพ</a>
+                  <a title="วิทย์คอม" target="_blank" href="https://www.tiktok.com/tag/%E0%B8%A7%E0%B8%B4%E0%B8%97%E0%B8%A2%E0%B9%8C%E0%B8%84%E0%B8%AD%E0%B8%A1?refer=embed">#วิทย์คอม</a>
+                  <a title="cskmutnb" target="_blank" href="https://www.tiktok.com/tag/cskmutnb?refer=embed">#cskmutnb</a>
+                </p>
+                <a target="_blank" title="♬ original sound" href="https://www.tiktok.com/@nattazxin/video/7624066985374092565?refer=embed">♬ Watch on TikTok</a>
+              </section>
+            </blockquote>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-lg-4">
+        <div class="creator-glass-card">
+          <div class="creator-glass-body">
+            <span class="d-inline-block text-uppercase mb-1 creator-card-label" data-i18n="creator.cards.teamwork.title">
+              Teamwork & Git
+            </span>
+            <p class="playfair-400 mb-2 creator-card-description" data-i18n="creator.cards.teamwork.description">
+              First team project shipped with Git—messy process, solid lesson learned together.
+            </p>
+          </div>
+          <div class="creator-glass-embed is-loading">
+            <div class="tiktok-skeleton" aria-hidden="true">
+              <span class="tiktok-skeleton-screen"></span>
+              <span class="tiktok-skeleton-play"></span>
+              <span class="tiktok-skeleton-meta"></span>
+            </div>
+            <blockquote class="tiktok-embed mb-0" cite="https://www.tiktok.com/@zxin_ntt/video/7540364208567831815"
+              data-video-id="7540364208567831815" data-embed-from="embed_page" style="max-width: 100%; min-width: 100%;">
+              <section>
+                <a target="_blank" title="@zxin_ntt" href="https://www.tiktok.com/@zxin_ntt?refer=embed">@zxin_ntt</a>
+                <p>ครั้งแรกที่ใช้ git ทำงานกับเพื่อนๆ ใช้แบบไม่ได้ถูกหลักสะเท่าไรแต่ก็หัดกันกับเพื่อนทำโปรเจคผ่านกันมาได้
+                  <a title="computerscience" target="_blank" href="https://www.tiktok.com/tag/computerscience?refer=embed">#computerscience</a>
+                  <a title="มจพ" target="_blank" href="https://www.tiktok.com/tag/%E0%B8%A1%E0%B8%88%E0%B8%9E?refer=embed">#มจพ</a>
+                  <a title="dev" target="_blank" href="https://www.tiktok.com/tag/dev?refer=embed">#dev</a>
+                </p>
+                <a target="_blank" title="♬ Beat - beaty" href="https://www.tiktok.com/music/Beat-7142169219956738050?refer=embed">♬ Beat - beaty</a>
+              </section>
+            </blockquote>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-lg-4">
+        <div class="creator-glass-card">
+          <div class="creator-glass-body">
+            <span class="d-inline-block text-uppercase mb-1 creator-card-label" data-i18n="creator.cards.framework.title">
+              Framework Experiments
+            </span>
+            <p class="playfair-400 mb-2 creator-card-description" data-i18n="creator.cards.framework.description">
+              Comparing Tailwind vs Bootstrap in real projects to find the right fit.
+            </p>
+          </div>
+          <div class="creator-glass-embed is-loading">
+            <div class="tiktok-skeleton" aria-hidden="true">
+              <span class="tiktok-skeleton-screen"></span>
+              <span class="tiktok-skeleton-play"></span>
+              <span class="tiktok-skeleton-meta"></span>
+            </div>
+            <blockquote class="tiktok-embed mb-0" cite="https://www.tiktok.com/@zxin_ntt/video/7522462410179890450"
+              data-video-id="7522462410179890450" data-embed-from="embed_page" style="max-width: 100%; min-width: 100%;">
+              <section>
+                <a target="_blank" title="@zxin_ntt" href="https://www.tiktok.com/@zxin_ntt?refer=embed">@zxin_ntt</a>
+                <p>ฝึกใช้tailwind css ครั้งแรกปกติใช้แต่Bootstrapค่ายม่วง เขียนไปเขียนมาเริ่มชอบละ ใครแนะนำTipอะไรการใช้เม้นมาบอกกันได้น้าา
+                  <a title="computerscience" target="_blank" href="https://www.tiktok.com/tag/computerscience?refer=embed">#computerscience</a>
+                  <a title="frontend" target="_blank" href="https://www.tiktok.com/tag/frontend?refer=embed">#frontend</a>
+                  <a title="dev" target="_blank" href="https://www.tiktok.com/tag/dev?refer=embed">#dev</a>
+                </p>
+                <a target="_blank" title="♬ MUTT - Leon Thomas" href="https://www.tiktok.com/music/MUTT-7400513247046453264?refer=embed">♬ MUTT - Leon Thomas</a>
+              </section>
+            </blockquote>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TikTok Embed Script - Lazy loaded with Intersection Observer -->
+<script>
+  (function() {
+    var tiktokScriptLoaded = false;
+    var tiktokEmbeds = document.querySelectorAll('#content-creator .tiktok-embed');
+    if (tiktokEmbeds.length === 0) return;
+
+    var markReady = function(wrap) {
+      wrap.classList.remove('is-loading');
+      wrap.classList.add('is-ready');
+    };
+
+    var watchEmbed = function(embed) {
+      var wrap = embed.closest('.creator-glass-embed');
+      if (!wrap) return;
+
+      wrap.classList.add('is-loading');
+
+      var hasPlayer = function() {
+        return !!wrap.querySelector('iframe');
+      };
+
+      if (hasPlayer()) {
+        markReady(wrap);
+        return;
+      }
+
+      var observer = new MutationObserver(function() {
+        if (hasPlayer()) {
+          observer.disconnect();
+          markReady(wrap);
+        }
+      });
+      observer.observe(wrap, { childList: true, subtree: true });
+    };
+
+    tiktokEmbeds.forEach(watchEmbed);
+
+    var loadTiktokScript = function() {
+      if (tiktokScriptLoaded) return;
+      tiktokScriptLoaded = true;
+
+      var script = document.createElement('script');
+      script.src = 'https://www.tiktok.com/embed.js';
+      script.async = true;
+      script.defer = true;
+      document.body.appendChild(script);
+    };
+
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            loadTiktokScript();
+            observer.disconnect();
+          }
+        });
+      }, { rootMargin: '200px' });
+
+      tiktokEmbeds.forEach(function(embed) {
+        observer.observe(embed);
+      });
+    } else {
+      window.addEventListener('load', loadTiktokScript);
+    }
+  })();
+</script>
   <!-- Contact Section -->
   <section id="contact" class="container-fluid" style="background-color: #f8f8ff; padding-top: 0; padding-bottom: 3rem;">
     <div class="container" style="max-width: 1200px;">
@@ -2308,7 +2110,6 @@
       const modalClose = modal.querySelector('.project-modal-close');
       const modalFrame = document.getElementById('modalProjectFrame');
       const modalLoading = modal.querySelector('[data-project-modal-loading]');
-      const projectCards = document.querySelectorAll('.project-card-clickable');
 
       function showLoading(isLoading) {
         if (!modalLoading) return;
@@ -2360,26 +2161,26 @@
       window.openProjectModal = openModal;
       window.closeProjectModal = closeModal;
 
-      projectCards.forEach(card => {
-        card.style.cursor = 'pointer';
-        card.addEventListener('click', (e) => {
-          if (card.dataset.dragIgnore === '1') {
-            card.dataset.dragIgnore = '0';
-            return;
-          }
-          if (e.target.closest('a') || e.target.closest('button')) {
-            return;
-          }
-          e.preventDefault();
-          openModal(card);
-        });
+      document.addEventListener('click', (e) => {
+        const card = e.target.closest('.project-card-clickable');
+        if (!card) return;
+        if (card.dataset.dragIgnore === '1') {
+          card.dataset.dragIgnore = '0';
+          return;
+        }
+        if (e.target.closest('a') || e.target.closest('button')) {
+          return;
+        }
+        e.preventDefault();
+        openModal(card);
+      });
 
-        card.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            openModal(card);
-          }
-        });
+      document.addEventListener('keydown', (e) => {
+        if (e.key !== 'Enter' && e.key !== ' ') return;
+        const card = e.target.closest && e.target.closest('.project-card-clickable');
+        if (!card) return;
+        e.preventDefault();
+        openModal(card);
       });
 
       modalClose.addEventListener('click', closeModal);
@@ -2449,295 +2250,6 @@
 
       window.addEventListener('scroll', handleScrollState, { passive: true });
       window.addEventListener('resize', updateProgress);
-    });
-  </script>
-
-  <!-- UI/UX Project Drag Strip -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const section = document.getElementById('uiux-projects');
-      if (!section) return;
-
-      const shell = section.querySelector('[data-uiux-drag-shell]');
-      const track = section.querySelector('[data-uiux-drag-track]');
-      if (!shell || !track) {
-        return;
-      }
-
-      const cards = Array.from(track.querySelectorAll('.uiux-drag-card'));
-
-      shell.querySelectorAll('img').forEach((image) => {
-        image.draggable = false;
-      });
-
-      let isDragging = false;
-      let pointerId = null;
-      let startX = 0;
-      let startScrollLeft = 0;
-      let moved = false;
-      let rafId = 0;
-      let snapTimerId = 0;
-
-      const scheduleCardUpdate = () => {
-        if (rafId) {
-          return;
-        }
-
-        rafId = window.requestAnimationFrame(() => {
-          rafId = 0;
-          updateCards();
-        });
-      };
-
-      const getCardTargetScroll = (card) => {
-        const cardCenter = card.offsetLeft + (card.offsetWidth / 2);
-        return Math.max(0, cardCenter - (shell.clientWidth / 2));
-      };
-
-      const updateCards = () => {
-        if (!cards.length) {
-          return;
-        }
-
-        const shellCenter = shell.scrollLeft + (shell.clientWidth / 2);
-        const maxDistance = shell.clientWidth * 0.42;
-        let nearestCard = cards[0];
-        let nearestDistance = Number.POSITIVE_INFINITY;
-
-        cards.forEach((card) => {
-          const cardCenter = card.offsetLeft + (card.offsetWidth / 2);
-          const distance = Math.abs(cardCenter - shellCenter);
-          const progress = Math.min(distance / maxDistance, 1);
-          const scale = 1 - (progress * 0.18);
-          const blur = progress * 3.2;
-
-          card.style.setProperty('--uiux-card-scale', scale.toFixed(3));
-          card.style.setProperty('--uiux-card-blur', `${blur.toFixed(2)}px`);
-          card.style.setProperty('--uiux-card-z', String(Math.round((1 - progress) * 10) + 1));
-
-          if (distance < nearestDistance) {
-            nearestDistance = distance;
-            nearestCard = card;
-          }
-        });
-
-        cards.forEach((card) => {
-          card.classList.toggle('is-active', card === nearestCard);
-          if (card === nearestCard) {
-            card.style.setProperty('--uiux-card-scale', '1.03');
-            card.style.setProperty('--uiux-card-blur', '0px');
-            card.style.setProperty('--uiux-card-z', '18');
-          }
-        });
-      };
-
-      const snapToNearestCard = () => {
-        if (!cards.length) {
-          return;
-        }
-
-        const shellCenter = shell.scrollLeft + (shell.clientWidth / 2);
-        let nearestCard = cards[0];
-        let nearestDistance = Number.POSITIVE_INFINITY;
-
-        cards.forEach((card) => {
-          const cardCenter = card.offsetLeft + (card.offsetWidth / 2);
-          const distance = Math.abs(cardCenter - shellCenter);
-          if (distance < nearestDistance) {
-            nearestDistance = distance;
-            nearestCard = card;
-          }
-        });
-
-        shell.scrollTo({
-          left: getCardTargetScroll(nearestCard),
-          behavior: 'smooth'
-        });
-      };
-
-      const endDrag = () => {
-        if (pointerId !== null && shell.hasPointerCapture(pointerId)) {
-          shell.releasePointerCapture(pointerId);
-        }
-
-        isDragging = false;
-        pointerId = null;
-        startX = 0;
-        startScrollLeft = 0;
-        shell.classList.remove('is-dragging');
-        snapToNearestCard();
-
-        window.setTimeout(() => {
-          moved = false;
-        }, 0);
-      };
-
-      shell.addEventListener('dragstart', (event) => {
-        event.preventDefault();
-      });
-
-      shell.addEventListener('pointerdown', (event) => {
-        if (event.pointerType === 'mouse' && event.button !== 0) {
-          return;
-        }
-
-        isDragging = true;
-        pointerId = event.pointerId;
-        startX = event.clientX;
-        startScrollLeft = shell.scrollLeft;
-        moved = false;
-        shell.setPointerCapture(event.pointerId);
-        shell.classList.add('is-dragging');
-        event.preventDefault();
-      });
-
-      shell.addEventListener('pointermove', (event) => {
-        if (!isDragging || pointerId !== event.pointerId) {
-          return;
-        }
-
-        const delta = event.clientX - startX;
-        if (Math.abs(delta) > 4) {
-          moved = true;
-        }
-
-        shell.scrollLeft = startScrollLeft - delta;
-        scheduleCardUpdate();
-      });
-
-      const handlePointerEnd = (event) => {
-        if (pointerId !== event.pointerId) {
-          return;
-        }
-
-        endDrag();
-      };
-
-      shell.addEventListener('pointerup', handlePointerEnd);
-      shell.addEventListener('pointercancel', handlePointerEnd);
-      shell.addEventListener('lostpointercapture', () => {
-        if (!isDragging) {
-          return;
-        }
-
-        endDrag();
-      });
-
-      shell.addEventListener('click', (event) => {
-        if (!moved) {
-          return;
-        }
-
-        event.preventDefault();
-        event.stopPropagation();
-      }, true);
-
-      shell.addEventListener('scroll', () => {
-        scheduleCardUpdate();
-
-        if (isDragging) {
-          return;
-        }
-
-        window.clearTimeout(snapTimerId);
-        snapTimerId = window.setTimeout(() => {
-          snapToNearestCard();
-        }, 90);
-      }, { passive: true });
-
-      window.addEventListener('resize', () => {
-        scheduleCardUpdate();
-        window.clearTimeout(snapTimerId);
-        snapTimerId = window.setTimeout(() => {
-          snapToNearestCard();
-        }, 90);
-      });
-
-      window.requestAnimationFrame(() => {
-        snapToNearestCard();
-        scheduleCardUpdate();
-      });
-    });
-  </script>
-
-  <!-- Experience Showcase Toggle -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const section = document.getElementById('experience');
-      if (!section) return;
-
-      const cards = Array.from(section.querySelectorAll('.experience-showcase-card'));
-      const panels = Array.from(section.querySelectorAll('.experience-showcase-panel'));
-      const panelWrap = section.querySelector('.experience-showcase-panels');
-      const hint = section.querySelector('.experience-showcase-hint');
-      if (!cards.length || !panels.length || !panelWrap) return;
-
-      const clearExperience = () => {
-        cards.forEach((card) => {
-          card.classList.remove('is-active');
-          card.setAttribute('aria-pressed', 'false');
-        });
-
-        panels.forEach((panel) => {
-          panel.classList.remove('is-active');
-          panel.hidden = true;
-        });
-
-        panelWrap.hidden = true;
-        if (hint) {
-          hint.hidden = false;
-        }
-      };
-
-      const activateExperience = (targetId, options = {}) => {
-        const nextCard = cards.find((card) => card.dataset.experienceTarget === targetId);
-        if (!nextCard) {
-          clearExperience();
-          return;
-        }
-
-        if (options.toggle && nextCard.classList.contains('is-active')) {
-          clearExperience();
-          return;
-        }
-
-        panelWrap.hidden = false;
-        if (hint) {
-          hint.hidden = true;
-        }
-
-        cards.forEach((card) => {
-          const isActive = card.dataset.experienceTarget === targetId;
-          card.classList.toggle('is-active', isActive);
-          card.setAttribute('aria-pressed', String(isActive));
-        });
-
-        panels.forEach((panel) => {
-          const isActive = panel.id === targetId;
-          panel.classList.toggle('is-active', isActive);
-          panel.hidden = !isActive;
-        });
-      };
-
-      cards.forEach((card, index) => {
-        card.addEventListener('click', () => {
-          activateExperience(card.dataset.experienceTarget, { toggle: true });
-        });
-
-        card.addEventListener('keydown', (event) => {
-          if (!['ArrowRight', 'ArrowLeft', 'ArrowDown', 'ArrowUp'].includes(event.key)) {
-            return;
-          }
-
-          event.preventDefault();
-          const direction = event.key === 'ArrowRight' || event.key === 'ArrowDown' ? 1 : -1;
-          const nextIndex = (index + direction + cards.length) % cards.length;
-          cards[nextIndex].focus();
-          activateExperience(cards[nextIndex].dataset.experienceTarget);
-        });
-      });
-
-      clearExperience();
     });
   </script>
 

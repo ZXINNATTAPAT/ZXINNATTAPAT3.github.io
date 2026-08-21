@@ -51,23 +51,14 @@
 
     if (prefersReducedMotion()) {
       gsap.set(headerBits.concat(cards), { clearProps: 'all' });
-      cards.forEach(function (card) {
-        card.style.setProperty('--accent-progress', '1');
-        card.style.setProperty('--accent-thickness', '1');
-      });
       return;
     }
 
-    gsap.set(headerBits, { autoAlpha: 0, y: 28 });
+    gsap.set(headerBits, { autoAlpha: 0, y: 22 });
     gsap.set(cards, {
       autoAlpha: 0,
-      y: 72,
-      scale: 0.9,
+      y: 36,
       transformOrigin: '50% 80%',
-    });
-    cards.forEach(function (card) {
-      card.style.setProperty('--accent-progress', '0');
-      card.style.setProperty('--accent-thickness', '1');
     });
 
     gsap.to(headerBits, {
@@ -99,17 +90,8 @@
       .to(cards, {
         autoAlpha: 1,
         y: 0,
-        scale: 1,
-        stagger: { each: 0.12, from: 'start' },
-      })
-      .to(
-        cards,
-        {
-          '--accent-progress': 1,
-          stagger: { each: 0.08, from: 'start' },
-        },
-        0.15
-      );
+        stagger: { each: 0.1, from: 'start' },
+      });
 
     cards.forEach(function (card) {
       var brand = card.querySelector('.cloud-platform-brand');
@@ -117,80 +99,24 @@
 
       function onEnter() {
         if (hoverTween) hoverTween.kill();
-        hoverTween = gsap
-          .timeline()
-          .to(
-            card,
-            {
-              y: -14,
-              scale: 1.02,
-              boxShadow:
-                '0 34px 64px rgba(15, 23, 42, 0.14), 0 14px 28px rgba(15, 23, 42, 0.08)',
-              duration: 0.4,
-              ease: 'power2.out',
-              overwrite: 'auto',
-            },
-            0
-          )
-          .to(
-            brand,
-            {
-              scale: 1.06,
-              duration: 0.4,
-              ease: 'power2.out',
-              overwrite: 'auto',
-            },
-            0
-          )
-          .to(
-            card,
-            {
-              '--accent-thickness': 3,
-              duration: 0.4,
-              ease: 'power2.out',
-              overwrite: 'auto',
-            },
-            0
-          );
+        hoverTween = gsap.to(brand, {
+          y: -6,
+          scale: 1.04,
+          duration: 0.45,
+          ease: 'power2.out',
+          overwrite: 'auto',
+        });
       }
 
       function onLeave() {
         if (hoverTween) hoverTween.kill();
-        hoverTween = gsap
-          .timeline()
-          .to(
-            card,
-            {
-              y: 0,
-              scale: 1,
-              boxShadow:
-                '0 24px 48px rgba(15, 23, 42, 0.06), 0 8px 18px rgba(15, 23, 42, 0.04)',
-              duration: 0.45,
-              ease: 'power2.out',
-              overwrite: 'auto',
-            },
-            0
-          )
-          .to(
-            brand,
-            {
-              scale: 1,
-              duration: 0.45,
-              ease: 'power2.out',
-              overwrite: 'auto',
-            },
-            0
-          )
-          .to(
-            card,
-            {
-              '--accent-thickness': 1,
-              duration: 0.45,
-              ease: 'power2.out',
-              overwrite: 'auto',
-            },
-            0
-          );
+        hoverTween = gsap.to(brand, {
+          y: 0,
+          scale: 1,
+          duration: 0.5,
+          ease: 'power2.out',
+          overwrite: 'auto',
+        });
       }
 
       card.addEventListener('pointerenter', onEnter);

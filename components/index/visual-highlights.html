@@ -3,9 +3,9 @@
     style="background-color: #f8f8ff; padding-top: 0; padding-bottom: 0; transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);">
     <div class="container-fluid portfolio-visual-shell" style="padding-top: 3rem; padding-bottom: 3rem;">
       <div class="text-center mb-5 px-3">
-        <h2 class="playfair-400 mb-3"
-          style="font-size: clamp(32px, 6vw, 64px); color: #1d1d1f; font-weight: 600; letter-spacing: -0.5px">
-          <span data-i18n="visual.title">Projects</span>
+        <h2 class="dm-serif-display-regular mb-3"
+          style="font-size: clamp(32px, 6vw, 64px); color: #1d1d1f; font-weight: 400; letter-spacing: 0.04em; text-transform: uppercase;">
+          <span data-i18n="visual.title">PROJECTS</span>
         </h2>
         <p class="text-muted mx-auto" style="max-width: 680px; font-size: 17px; line-height: 1.6; color: #6b6b6b" data-i18n="visual.description">
           A curated selection of my featured projects. Each work blends elegant
@@ -13,124 +13,100 @@
         </p>
       </div>
 
-      <div class="visual-highlights-carousel-wrapper">
-        <div
-          class="visual-highlights-carousel"
-          data-portfolio-carousel
-          tabindex="0"
-          role="region"
-          aria-label="Featured projects"
-        >
-          <div class="carousel-track" data-portfolio-track>
-            <div class="carousel-slide">
-              <div
-                class="ios-project-card project-card-clickable"
-                role="button"
-                tabindex="0"
-                aria-label="View Asset Management System details"
-                data-aos="fade-up"
-                data-aos-delay="0"
-                data-project="asm"
-                data-page-url="projects/asm.html?embed=1"
-                data-title="Asset Management System"
-                data-subtitle="ASM®"
-                data-description="Government inventory system for ECT. A comprehensive asset management solution for inventory tracking, automated depreciation, and audits."
-                data-tech="Angular, ASP.NET Core, C#, SQL Server"
-                data-image="Photo/optimized/Mockup/ASM.png"
-              >
-                <div class="ios-project-image bg-asm">
-                  <img src="Photo/optimized/Mockup/ASM.png" alt="ASM" width="800" height="600" loading="lazy">
-                </div>
-                <div class="ios-project-overlay">
-                  <p class="ios-project-kicker playfair-400">ASM®</p>
-                  <h3 class="ios-project-heading playfair-400">Asset Management System</h3>
-                  <p class="ios-project-summary">Government inventory system for ECT</p>
-                </div>
-              </div>
+      <div class="projects-conveyor-stage" aria-label="Featured projects">
+        <div class="projects-conveyor-board" data-projects-board>
+          <div
+            class="ios-project-card project-card-clickable"
+            role="button"
+            tabindex="0"
+            aria-label="View Asset Management System details"
+            data-project="asm"
+            data-page-url="projects/asm.html?embed=1"
+            data-title="Asset Management System"
+            data-subtitle="ASM®"
+            data-description="Government inventory system for ECT. A comprehensive asset management solution for inventory tracking, automated depreciation, and audits."
+            data-tech="Angular, ASP.NET Core, C#, SQL Server"
+            data-image="Photo/optimized/Mockup/ASM.png"
+          >
+            <div class="ios-project-image bg-asm">
+              <img src="Photo/optimized/Mockup/ASM.png" alt="ASM" width="800" height="600" loading="lazy">
             </div>
-
-            <div class="carousel-slide">
-              <div
-                class="ios-project-card project-card-clickable"
-                role="button"
-                tabindex="0"
-                aria-label="View Hiring Platform details"
-                data-aos="fade-up"
-                data-aos-delay="50"
-                data-project="homema"
-                data-page-url="projects/homema.html?embed=1"
-                data-title="Hiring Platform"
-                data-subtitle="HOMEMA®"
-                data-description="Connects users with technicians via CRUD + API. A modern hiring platform bridging service seekers and skilled technicians."
-                data-tech="React, Node.js, Express, REST API, PostgreSQL"
-                data-image="Photo/optimized/Mockup/HOMEMA.png"
-                data-demo-url="https://homema.onrender.com/"
-              >
-                <div class="ios-project-image bg-homema">
-                  <img src="Photo/optimized/Mockup/HOMEMA.png" alt="HOMEMA" width="800" height="600" loading="lazy">
-                </div>
-                <div class="ios-project-overlay">
-                  <p class="ios-project-kicker playfair-400">HOMEMA®</p>
-                  <h3 class="ios-project-heading playfair-400">Hiring Platform</h3>
-                  <p class="ios-project-summary">Connects users with technicians via CRUD + API</p>
-                </div>
-              </div>
+            <div class="ios-project-overlay">
+              <p class="ios-project-kicker playfair-400">ASM®</p>
+              <h3 class="ios-project-heading playfair-400">Asset Management System</h3>
+              <p class="ios-project-summary">Government inventory system for ECT</p>
             </div>
+          </div>
 
-            <div class="carousel-slide">
-              <div
-                class="ios-project-card project-card-clickable"
-                role="button"
-                tabindex="0"
-                aria-label="View Blockchain Voting details"
-                data-aos="fade-up"
-                data-aos-delay="100"
-                data-project="votemai"
-                data-page-url="projects/votemai.html?embed=1"
-                data-title="Blockchain Voting"
-                data-subtitle="VOTEMAI™"
-                data-description="Solidity + IPFS on MERN. A decentralized voting platform ensuring transparency, immutability, and security."
-                data-tech="React, Node.js, MongoDB, Solidity, IPFS, Blockchain"
-                data-image="Photo/optimized/Mockup/VOTEMAI.png"
-                data-demo-url="https://votemai-kis6zaqh7-zxinnattapats-projects.vercel.app/"
-              >
-                <div class="ios-project-image bg-votemai">
-                  <img src="Photo/optimized/Mockup/VOTEMAI.png" alt="VOTEMAI" width="800" height="600" loading="lazy">
-                </div>
-                <div class="ios-project-overlay">
-                  <p class="ios-project-kicker playfair-400">VOTEMAI™</p>
-                  <h3 class="ios-project-heading playfair-400">Blockchain Voting</h3>
-                  <p class="ios-project-summary">Solidity + IPFS on MERN. Transparent elections</p>
-                </div>
-              </div>
+          <div
+            class="ios-project-card project-card-clickable"
+            role="button"
+            tabindex="0"
+            aria-label="View Hiring Platform details"
+            data-project="homema"
+            data-page-url="projects/homema.html?embed=1"
+            data-title="Hiring Platform"
+            data-subtitle="HOMEMA®"
+            data-description="Connects users with technicians via CRUD + API. A modern hiring platform bridging service seekers and skilled technicians."
+            data-tech="React, Node.js, Express, REST API, PostgreSQL"
+            data-image="Photo/optimized/Mockup/HOMEMA.png"
+            data-demo-url="https://homema.onrender.com/"
+          >
+            <div class="ios-project-image bg-homema">
+              <img src="Photo/optimized/Mockup/HOMEMA.png" alt="HOMEMA" width="800" height="600" loading="lazy">
             </div>
+            <div class="ios-project-overlay">
+              <p class="ios-project-kicker playfair-400">HOMEMA®</p>
+              <h3 class="ios-project-heading playfair-400">Hiring Platform</h3>
+              <p class="ios-project-summary">Connects users with technicians via CRUD + API</p>
+            </div>
+          </div>
 
-            <div class="carousel-slide">
-              <div
-                class="ios-project-card project-card-clickable"
-                role="button"
-                tabindex="0"
-                aria-label="View Dev Blog Platform details"
-                data-aos="fade-up"
-                data-aos-delay="150"
-                data-project="olaf"
-                data-page-url="projects/olaf.html?embed=1"
-                data-title="Dev Blog Platform"
-                data-subtitle="OLAF"
-                data-description="Built with Django + React. A personal tech journal for developers to share technical journeys and project insights."
-                data-tech="Django, Python, React, Markdown"
-                data-image="Photo/optimized/Mockup/OLAF.png"
-                data-demo-url="https://olafs.netlify.app/feed"
-              >
-                <div class="ios-project-image bg-olaf">
-                  <img src="Photo/optimized/Mockup/OLAF.png" alt="OLAF" width="800" height="600" loading="lazy">
-                </div>
-                <div class="ios-project-overlay">
-                  <p class="ios-project-kicker playfair-400">OLAF</p>
-                  <h3 class="ios-project-heading playfair-400">Dev Blog Platform</h3>
-                  <p class="ios-project-summary">Built with Django + React. Personal tech journal</p>
-                </div>
-              </div>
+          <div
+            class="ios-project-card project-card-clickable"
+            role="button"
+            tabindex="0"
+            aria-label="View Blockchain Voting details"
+            data-project="votemai"
+            data-page-url="projects/votemai.html?embed=1"
+            data-title="Blockchain Voting"
+            data-subtitle="VOTEMAI™"
+            data-description="Solidity + IPFS on MERN. A decentralized voting platform ensuring transparency, immutability, and security."
+            data-tech="React, Node.js, MongoDB, Solidity, IPFS, Blockchain"
+            data-image="Photo/optimized/Mockup/VOTEMAI.png"
+            data-demo-url="https://votemai-kis6zaqh7-zxinnattapats-projects.vercel.app/"
+          >
+            <div class="ios-project-image bg-votemai">
+              <img src="Photo/optimized/Mockup/VOTEMAI.png" alt="VOTEMAI" width="800" height="600" loading="lazy">
+            </div>
+            <div class="ios-project-overlay">
+              <p class="ios-project-kicker playfair-400">VOTEMAI™</p>
+              <h3 class="ios-project-heading playfair-400">Blockchain Voting</h3>
+              <p class="ios-project-summary">Solidity + IPFS on MERN. Transparent elections</p>
+            </div>
+          </div>
+
+          <div
+            class="ios-project-card project-card-clickable"
+            role="button"
+            tabindex="0"
+            aria-label="View Dev Blog Platform details"
+            data-project="olaf"
+            data-page-url="projects/olaf.html?embed=1"
+            data-title="Dev Blog Platform"
+            data-subtitle="OLAF"
+            data-description="Built with Django + React. A personal tech journal for developers to share technical journeys and project insights."
+            data-tech="Django, Python, React, Markdown"
+            data-image="Photo/optimized/Mockup/OLAF.png"
+            data-demo-url="https://olafs.netlify.app/feed"
+          >
+            <div class="ios-project-image bg-olaf">
+              <img src="Photo/optimized/Mockup/OLAF.png" alt="OLAF" width="800" height="600" loading="lazy">
+            </div>
+            <div class="ios-project-overlay">
+              <p class="ios-project-kicker playfair-400">OLAF</p>
+              <h3 class="ios-project-heading playfair-400">Dev Blog Platform</h3>
+              <p class="ios-project-summary">Built with Django + React. Personal tech journal</p>
             </div>
           </div>
         </div>

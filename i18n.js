@@ -16,14 +16,11 @@ const translations = {
       developer: "A Software Developer",
       location: "Based in",
       thailand: "Thailand",
-      education: "B.Sc. in Computer and Information Science — Faculty of Applied Science"
+      education: "B.Sc. in Computer and Information Science — Faculty of Applied Science",
+      lead: "Software Developer based in Thailand."
     },
     profile: {
-      title: "PROFILE",
-      airdrop: "AirDrop",
-      myProfile: "MY PROFILE",
-      decline: "Decline",
-      accept: "Accept"
+      title: "PROFILE"
     },
     about: {
       title: "About Me",
@@ -141,7 +138,7 @@ const translations = {
       }
     },
     visual: {
-      title: "Projects",
+      title: "PROJECTS",
       description: "A curated selection of my featured projects. Each work blends elegant design, smart functionality, and seamless user experiences."
     },
     modal: {
@@ -215,14 +212,11 @@ const translations = {
       developer: "ซอฟต์แวร์ดีเวลลอปเปอร์",
       location: "ที่ทำงานอยู่ใน",
       thailand: "ประเทศไทย",
-      education: "วท.บ. วิทยาการคอมพิวเตอร์และสารสนเทศ — คณะวิทยาศาสตร์ประยุกต์"
+      education: "วท.บ. วิทยาการคอมพิวเตอร์และสารสนเทศ — คณะวิทยาศาสตร์ประยุกต์",
+      lead: "ซอฟต์แวร์ดีเวลลอปเปอร์ ประจำอยู่ที่ประเทศไทย"
     },
     profile: {
-      title: "โปรไฟล์",
-      airdrop: "AirDrop",
-      myProfile: "โปรไฟล์ของฉัน",
-      decline: "ปฏิเสธ",
-      accept: "ยอมรับ"
+      title: "โปรไฟล์"
     },
     about: {
       title: "เกี่ยวกับผม",
@@ -419,14 +413,11 @@ const translations = {
       developer: "ソフトウェア開発者",
       location: "活動拠点は",
       thailand: "タイ",
-      education: "応用科学部 コンピュータ・情報科学 学士"
+      education: "応用科学部 コンピュータ・情報科学 学士",
+      lead: "タイを拠点とするソフトウェア開発者。"
     },
     profile: {
-      title: "プロフィール",
-      airdrop: "AirDrop",
-      myProfile: "マイプロフィール",
-      decline: "拒否",
-      accept: "承認"
+      title: "プロフィール"
     },
     about: {
       title: "私について",
@@ -590,14 +581,11 @@ const translations = {
       developer: "一名软件开发者",
       location: "常驻",
       thailand: "泰国",
-      education: "计算机与信息科学学士 — 应用科学学院"
+      education: "计算机与信息科学学士 — 应用科学学院",
+      lead: "常驻泰国的软件开发者。"
     },
     profile: {
-      title: "个人简介",
-      airdrop: "AirDrop",
-      myProfile: "我的资料",
-      decline: "拒绝",
-      accept: "接受"
+      title: "个人简介"
     },
     about: {
       title: "关于我",
@@ -761,14 +749,11 @@ const translations = {
       developer: "Ein Softwareentwickler",
       location: "mit Standort in",
       thailand: "Thailand",
-      education: "B.Sc. in Informatik und Informationswissenschaft — Fakultät für Angewandte Wissenschaften"
+      education: "B.Sc. in Informatik und Informationswissenschaft — Fakultät für Angewandte Wissenschaften",
+      lead: "Softwareentwickler mit Standort in Thailand."
     },
     profile: {
-      title: "PROFIL",
-      airdrop: "AirDrop",
-      myProfile: "MEIN PROFIL",
-      decline: "Ablehnen",
-      accept: "Annehmen"
+      title: "PROFIL"
     },
     about: {
       title: "Über mich",
@@ -932,14 +917,11 @@ const translations = {
       developer: "소프트웨어 개발자",
       location: "활동 기반은",
       thailand: "태국",
-      education: "컴퓨터 및 정보과학 학사 — 응용과학부"
+      education: "컴퓨터 및 정보과학 학사 — 응용과학부",
+      lead: "태국을 기반으로 한 소프트웨어 개발자."
     },
     profile: {
-      title: "프로필",
-      airdrop: "AirDrop",
-      myProfile: "내 프로필",
-      decline: "거절",
-      accept: "수락"
+      title: "프로필"
     },
     about: {
       title: "소개",
