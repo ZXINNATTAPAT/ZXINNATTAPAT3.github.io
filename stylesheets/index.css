@@ -1718,162 +1718,40 @@ body.menu-open {
 
 /* Footer */
 .footer-modern {
-  font-family: "Playfair Display", serif;
-  font-weight: 400;
-  background: #a30000;
-  border-top: 0;
-  padding: 74px 0 40px;
+  background: #ffffff;
+  border-top: 1px solid rgba(28, 28, 28, 0.08);
+  padding: 1.15rem 6vw 1.35rem;
+  color: rgba(28, 28, 28, 0.52);
 }
 
-.footer-main {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
-  padding-bottom: 38px;
-}
-
-.footer-brand {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.footer-brand-name {
-  position: relative;
-  display: inline-block;
-  font-family: "Parisienne", cursive;
-  font-weight: 400;
-  color: #ffffff;
-  font-size: clamp(3.1rem, 6vw, 5.4rem);
-  line-height: 0.9;
-  letter-spacing: 0;
-  text-shadow:
-    0 4px 18px rgba(99, 0, 0, 0.3),
-    0 0 1px rgba(255, 255, 255, 0.2);
-}
-
-.footer-brand-name::before {
-  content: "";
-  position: absolute;
-  inset: -18px -22px -14px -18px;
-  background:
-    radial-gradient(circle at 20% 24%, rgba(163, 0, 0, 0.9) 0%, rgba(163, 0, 0, 0.72) 52%, rgba(163, 0, 0, 0.22) 76%, transparent 92%);
-  filter: blur(12px);
-  z-index: -1;
-  pointer-events: none;
-}
-
-.footer-brand-copy {
-  font-family: "Playfair Display", serif;
-  font-weight: 400;
-  color: rgba(255, 255, 255, 0.86);
-  font-size: 0.95rem;
-  line-height: 1.6;
-  text-shadow: 0 1px 10px rgba(88, 0, 0, 0.18);
-}
-
-.footer-social-panel {
-  padding-top: 6px;
-}
-
-.footer-social-panel .hero-social-buttons {
-  justify-content: flex-start;
-  gap: 10px;
-}
-
-.footer-social-panel .hero-social-buttons .social-button {
-  width: 44px;
-  height: 44px;
-  box-shadow:
-    0 10px 20px rgba(64, 0, 0, 0.18),
-    0 3px 8px rgba(0, 0, 0, 0.08);
-}
-
-.footer-social-panel .hero-social-buttons .social-button:hover {
-  transform: translateY(-3px);
-}
-
-.footer-social-panel .hero-social-buttons svg,
-.footer-social-panel .hero-social-buttons img {
-  width: 20px;
-  height: 20px;
-}
-
-.footer-heading {
-  font-family: "Playfair Display", serif;
-  font-weight: 400;
-  font-size: 0.95rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: #ffffff;
-  margin-bottom: 0.75rem;
-}
-
-.footer-links {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-
-.footer-links a {
-  font-family: "Playfair Display", serif;
-  font-weight: 400;
-  text-decoration: none;
-  color: rgba(255, 255, 255, 0.82);
-  font-size: 0.95rem;
-  transition: color 0.2s ease, transform 0.2s ease;
-}
-
-.footer-links a:hover {
-  color: #ffffff;
-  transform: translateX(2px);
-}
-
-.footer-bottom {
-  font-family: "Playfair Display", serif;
-  font-weight: 400;
+.footer-minimal {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  gap: 1rem;
-  padding-top: 30px;
-  color: rgba(255, 255, 255, 0.9);
+  gap: 0.65rem 1.25rem;
 }
 
-.footer-bottom-links {
-  font-family: "Playfair Display", serif;
-  font-weight: 400;
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
-  color: rgba(255, 255, 255, 0.76);
-  font-size: 0.9rem;
+.footer-copy {
+  margin: 0;
+  font-family: system-ui, "Anuphan", sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.01em;
+  line-height: 1.5;
 }
 
-.footer-bottom-links a {
+.footer-top {
+  font-family: system-ui, "Anuphan", sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   text-decoration: none;
   color: inherit;
-  transition: color 0.2s ease;
 }
 
-.footer-bottom-links a:hover {
-  color: #ffffff;
-}
-
-@media (max-width: 576px) {
-  .footer-modern {
-    padding: 58px 0 30px;
-  }
-
-  .footer-brand {
-    align-items: flex-start;
-  }
-
-  .footer-social-panel .hero-social-buttons {
-    justify-content: flex-start;
-  }
+.footer-top:hover,
+.footer-top:focus-visible {
+  color: #1c1c1c;
 }
 
 /* Workflow Automation */
@@ -3060,6 +2938,58 @@ body.menu-open {
   color: #2c2c2c;
 }
 /* Minimal Contact Section Style */
+.contact-email-section {
+  background: #f8f8ff;
+  padding: clamp(4.5rem, 10vw, 7.5rem) 6vw clamp(5rem, 12vw, 8.5rem);
+  text-align: center;
+}
+
+.contact-email-kicker {
+  margin: 0 0 1.35rem;
+  font-family: system-ui, "Anuphan", sans-serif;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(95, 95, 108, 0.74);
+}
+
+.contact-email-mark {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+  font-family: "DM Serif Display", "DM Serif Fallback", "Times New Roman", Times, serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: clamp(2.15rem, 8.6vw, 7.4rem);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: #1c1c1c;
+  text-decoration: none;
+}
+
+.contact-email-mark span {
+  display: block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.contact-email-mark:hover,
+.contact-email-mark:focus-visible {
+  color: #1c1c1c;
+  opacity: 0.48;
+}
+
+.contact-email-social {
+  margin-top: clamp(1.6rem, 3.5vw, 2.4rem);
+}
+
+.contact-email-social .hero-social-buttons {
+  justify-content: center;
+}
+
 #contact .contact-info-minimal {
   display: flex;
   flex-direction: column;
