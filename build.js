@@ -115,6 +115,12 @@ const STATIC_PAGES = [
       '{{canonicalUrl}}': `${BASE_URL}/ko.html`,
       '{{localeFonts}}': localeFontLinks('ko')
     }
+  },
+  {
+    template: path.join(TEMPLATE_DIR, 'other-projects.template.html'),
+    output: path.join(__dirname, 'other-projects.html'),
+    label: 'other-projects.html',
+    replacements: {}
   }
 ];
 const BUILD_PAGES_ONLY = process.argv.includes('--pages-only');
@@ -461,6 +467,12 @@ function updateSitemap(articles, projects) {
       lastmod: new Date().toISOString().split('T')[0],
       changefreq: 'weekly',
       priority: '0.8'
+    },
+    {
+      loc: `${BASE_URL}/other-projects.html`,
+      lastmod: new Date().toISOString().split('T')[0],
+      changefreq: 'monthly',
+      priority: '0.6'
     }
   ];
 

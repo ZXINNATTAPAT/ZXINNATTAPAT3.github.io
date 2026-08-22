@@ -13,6 +13,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://nattazxin.com/other-projects.html</loc>
+    <lastmod>2026-08-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://nattazxin.com/articles/cs-kmutnb-student-life-review.html</loc>
     <lastmod>2026-08-02</lastmod>
     <changefreq>monthly</changefreq>
@@ -37,14 +43,32 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://nattazxin.com/projects/coffee-shop-web-application.html</loc>
+    <lastmod>2022-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://nattazxin.com/projects/homema.html</loc>
     <lastmod>2025-01-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://nattazxin.com/projects/numerical-methods-calculator.html</loc>
+    <lastmod>2022-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://nattazxin.com/projects/olaf.html</loc>
     <lastmod>2025-01-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://nattazxin.com/projects/point-of-sale-web-application.html</loc>
+    <lastmod>2022-05-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Other Projects | Nattapat Phungphugdee</title>
+  <meta
+    name="description"
+    content="An archive of selected early web-development projects by Nattapat Phungphugdee."
+  />
+  <meta name="author" content="Nattapat Phungphugdee" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://nattazxin.com/other-projects.html" />
+  <link rel="icon" href="./Photo/optimized/Logo.png" type="image/png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Anuphan:wght@400;500;600&family=DM+Serif+Display&family=Playfair+Display:wght@400;500&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+  />
+  <link rel="stylesheet" href="./stylesheets/index.css?v=25" />
+  <link rel="stylesheet" href="./stylesheets/fontsex.css" />
+
+  <style>
+    body {
+      margin: 0;
+      background: #f8f8ff;
+      color: #1c1c1c;
+      font-family: system-ui, "Anuphan", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .other-projects-main {
+      min-height: 78vh;
+      padding: clamp(4rem, 9vw, 7rem) 6vw clamp(5rem, 10vw, 8rem);
+    }
+
+    .other-projects-shell {
+      width: min(100%, 920px);
+      margin: 0 auto;
+    }
+
+    .other-projects-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: clamp(2.75rem, 6vw, 4.5rem);
+      color: rgba(54, 54, 62, 0.65);
+      font-size: 0.78rem;
+      font-weight: 550;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .other-projects-back:hover,
+    .other-projects-back:focus-visible {
+      color: #1c1c1c;
+    }
+
+    .other-projects-header {
+      padding-bottom: clamp(1.6rem, 3vw, 2.25rem);
+      border-bottom: 1px solid rgba(28, 28, 28, 0.13);
+    }
+
+    .other-projects-kicker {
+      display: block;
+      margin-bottom: 0.8rem;
+      color: rgba(74, 74, 86, 0.52);
+      font-size: 0.7rem;
+      font-weight: 650;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .other-projects-title {
+      margin: 0;
+      font-family: "DM Serif Display", "Times New Roman", serif;
+      font-size: clamp(3rem, 8vw, 6.25rem);
+      font-weight: 400;
+      line-height: 0.92;
+      letter-spacing: -0.035em;
+    }
+
+    .other-projects-intro {
+      max-width: 38rem;
+      margin: 1.25rem 0 0;
+      color: rgba(74, 74, 86, 0.68);
+      font-size: clamp(0.92rem, 1.5vw, 1.05rem);
+      line-height: 1.75;
+    }
+
+    .other-projects-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .other-project {
+      display: grid;
+      grid-template-columns: 3rem minmax(0, 1fr) auto;
+      gap: clamp(1rem, 3vw, 2rem);
+      align-items: start;
+      padding: clamp(1.7rem, 4vw, 2.5rem) 0;
+      border-bottom: 1px solid rgba(28, 28, 28, 0.1);
+    }
+
+    .other-project-number {
+      padding-top: 0.35rem;
+      color: rgba(74, 74, 86, 0.42);
+      font-family: "Playfair Display", serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+    }
+
+    .other-project-title {
+      margin: 0 0 0.5rem;
+      font-family: "DM Serif Display", "Times New Roman", serif;
+      font-size: clamp(1.45rem, 3vw, 2rem);
+      font-weight: 400;
+      letter-spacing: -0.025em;
+    }
+
+    .other-project-title a {
+      color: #1c1c1c;
+      text-decoration: none;
+    }
+
+    .other-project-meta {
+      margin: 0 0 0.8rem;
+      color: rgba(74, 74, 86, 0.48);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    .other-project-summary {
+      max-width: 39rem;
+      margin: 0;
+      color: rgba(74, 74, 86, 0.7);
+      font-size: 0.88rem;
+      line-height: 1.7;
+    }
+
+    .other-project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem 0.8rem;
+      margin-top: 1rem;
+      color: rgba(74, 74, 86, 0.48);
+      font-size: 0.7rem;
+      letter-spacing: 0.04em;
+    }
+
+    .other-project-arrow {
+      display: grid;
+      place-items: center;
+      width: 2.25rem;
+      height: 2.25rem;
+      border: 1px solid rgba(28, 28, 28, 0.12);
+      border-radius: 50%;
+      color: rgba(28, 28, 28, 0.62);
+      text-decoration: none;
+      transition: transform 0.22s ease, background-color 0.22s ease, color 0.22s ease;
+    }
+
+    .other-project:hover .other-project-arrow {
+      background: #1c1c1c;
+      color: #ffffff;
+      transform: translate(2px, -2px);
+    }
+
+    @media (max-width: 640px) {
+      .other-project {
+        grid-template-columns: 1.8rem minmax(0, 1fr);
+      }
+
+      .other-project-arrow {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- @include ../components/index/navigation.html -->
+
+  <main class="other-projects-main">
+    <div class="other-projects-shell">
+      <a class="other-projects-back" href="./index.html#portfolio">← Selected Projects</a>
+
+      <header class="other-projects-header">
+        <span class="other-projects-kicker">Project Archive</span>
+        <h1 class="other-projects-title">OTHER PROJECTS</h1>
+        <p class="other-projects-intro">
+          Early full-stack and frontend experiments that helped shape how I approach
+          product flows, data, and practical interfaces today.
+        </p>
+      </header>
+
+      <ol class="other-projects-list">
+        <li class="other-project">
+          <span class="other-project-number">01</span>
+          <div>
+            <p class="other-project-meta">Oct — Nov 2022</p>
+            <h2 class="other-project-title">
+              <a href="./projects/numerical-methods-calculator.html">Numerical Methods Calculator</a>
+            </h2>
+            <p class="other-project-summary">
+              A React application for exploring numerical-method calculations through
+              structured inputs and readable results.
+            </p>
+            <div class="other-project-tags">
+              <span>React</span><span>Bootstrap</span><span>Math.js</span>
+            </div>
+          </div>
+          <a
+            class="other-project-arrow"
+            href="./projects/numerical-methods-calculator.html"
+            aria-label="View Numerical Methods Calculator"
+          >↗</a>
+        </li>
+
+        <li class="other-project">
+          <span class="other-project-number">02</span>
+          <div>
+            <p class="other-project-meta">May — Jun 2022</p>
+            <h2 class="other-project-title">
+              <a href="./projects/point-of-sale-web-application.html">Point of Sale Web Application</a>
+            </h2>
+            <p class="other-project-summary">
+              A full-stack sales system with CRUD workflows, MySQL persistence,
+              and a Chart.js performance dashboard.
+            </p>
+            <div class="other-project-tags">
+              <span>React</span><span>MySQL</span><span>Chart.js</span>
+            </div>
+          </div>
+          <a
+            class="other-project-arrow"
+            href="./projects/point-of-sale-web-application.html"
+            aria-label="View Point of Sale Web Application"
+          >↗</a>
+        </li>
+
+        <li class="other-project">
+          <span class="other-project-number">03</span>
+          <div>
+            <p class="other-project-meta">Mar — Apr 2022</p>
+            <h2 class="other-project-title">
+              <a href="./projects/coffee-shop-web-application.html">Coffee Shop Web Application</a>
+            </h2>
+            <p class="other-project-summary">
+              An ordering and payment experience with customer accounts, cart management,
+              and persistent sales data.
+            </p>
+            <div class="other-project-tags">
+              <span>React</span><span>Material UI</span><span>MySQL</span>
+            </div>
+          </div>
+          <a
+            class="other-project-arrow"
+            href="./projects/coffee-shop-web-application.html"
+            aria-label="View Coffee Shop Web Application"
+          >↗</a>
+        </li>
+      </ol>
+    </div>
+  </main>
+
+  <!-- @include ../components/index/footer.html -->
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    defer
+  ></script>
+</body>
+</html>

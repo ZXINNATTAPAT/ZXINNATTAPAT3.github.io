@@ -153,6 +153,8 @@ const translations = {
     },
     experience: {
       title: "EXPERIENCE & INTERNSHIP",
+      titleLead: "My",
+      titleRest: "Experience",
       description: "My professional journey from internship to full-time developer, building real-world solutions and growing with each opportunity.",
       hint: "Click a widget to view details"
     },
@@ -354,6 +356,8 @@ const translations = {
     },
     experience: {
       title: "ประสบการณ์และการฝึกงาน",
+      titleLead: "ประสบการณ์",
+      titleRest: "การทำงาน",
       description: "เส้นทางการทำงานของผมตั้งแต่ฝึกงานจนถึงนักพัฒนาเต็มเวลา พร้อมการเติบโตจากงานจริงในแต่ละโอกาส",
       hint: "กดที่วิดเจ็ตเพื่อดูรายละเอียด"
     },
@@ -522,6 +526,8 @@ const translations = {
     },
     experience: {
       title: "経験とインターンシップ",
+      titleLead: "私の",
+      titleRest: "経験",
       description: "インターンからフルタイム開発者まで、実務を通じて成長してきたプロフェッショナルの歩みです。",
       hint: "ウィジェットをクリックして詳細を見る"
     },
@@ -690,6 +696,8 @@ const translations = {
     },
     experience: {
       title: "经验与实习",
+      titleLead: "我的",
+      titleRest: "经历",
       description: "从实习到全职开发者的成长路径，在每一次真实项目中持续进步。",
       hint: "点击卡片查看详情"
     },
@@ -858,6 +866,8 @@ const translations = {
     },
     experience: {
       title: "ERFAHRUNG & PRAKTIKUM",
+      titleLead: "Meine",
+      titleRest: "Erfahrung",
       description: "Mein beruflicher Weg vom Praktikum bis zur Vollzeit-Entwicklung, mit Wachstum durch reale Projekte.",
       hint: "Klicke auf ein Widget, um Details zu sehen"
     },
@@ -1026,6 +1036,8 @@ const translations = {
     },
     experience: {
       title: "경력 및 인턴십",
+      titleLead: "나의",
+      titleRest: "경력",
       description: "인턴에서 풀타임 개발자로 성장해 온 과정과 실제 프로젝트를 통한 발전 기록입니다.",
       hint: "위젯을 눌러 상세 정보를 확인하세요"
     },
