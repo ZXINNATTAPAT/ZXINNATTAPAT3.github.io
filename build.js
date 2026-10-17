@@ -463,6 +463,12 @@ function updateSitemap(articles, projects) {
       priority: '1.0'
     },
     {
+      loc: `${BASE_URL}/links/`,
+      lastmod: new Date().toISOString().split('T')[0],
+      changefreq: 'monthly',
+      priority: '0.6'
+    },
+    {
       loc: `${BASE_URL}/blog.html`,
       lastmod: new Date().toISOString().split('T')[0],
       changefreq: 'weekly',
