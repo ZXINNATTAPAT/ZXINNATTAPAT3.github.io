@@ -49,7 +49,8 @@
     var wordmark = root.querySelector('.hero-artist-wordmark');
     var given = root.querySelector('.hero-artist-wordmark-given');
     var family = root.querySelector('.hero-artist-wordmark-family');
-    var wordParts = [given, family].filter(Boolean);
+    var handle = root.querySelector('.hero-artist-handle');
+    var wordParts = [given, family, handle].filter(Boolean);
     var targets = [lead, wordmark, actions].filter(Boolean);
 
     if (!hasGsap || !targets.length) {
@@ -77,6 +78,7 @@
       if (wordmark) tl.to(wordmark, { autoAlpha: 1, duration: 0.2 }, '-=0.25');
       if (given) tl.to(given, { autoAlpha: 1, duration: 0.55 }, '-=0.05');
       if (family) tl.to(family, { autoAlpha: 1, duration: 0.55 }, '-=0.28');
+      if (handle) tl.to(handle, { autoAlpha: 1, duration: 0.45 }, '-=0.2');
       if (actions) tl.to(actions, { autoAlpha: 1, y: 0, duration: 0.5 }, '-=0.2');
 
       return function () {

@@ -6,6 +6,7 @@ author: "Nattapat Phungphugdee"
 tags: ["Next.js", "React", "Web Development", "Tutorial"]
 image: "Photo/optimized/Logo.png"
 slug: "nextjs-beginner-guide"
+hidden: true
 ---
 
 # เริ่มต้นพัฒนาเว็บด้วย Next.js

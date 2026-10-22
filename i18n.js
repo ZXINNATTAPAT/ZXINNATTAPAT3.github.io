@@ -166,9 +166,6 @@ const translations = {
       titleRest: "Experience",
       description: "My professional journey from internship to full-time developer, building real-world solutions and growing with each opportunity.",
       hint: "Click a widget to view details",
-      alive: {
-        remoteNote: "(Remote, May – Sep 2026)"
-      },
       koa: {
         program: "Work and Travel, USA",
         concurrent: "Concurrent with remote role at Business ALive",
@@ -387,9 +384,6 @@ const translations = {
       titleRest: "การทำงาน",
       description: "เส้นทางการทำงานของผมตั้งแต่ฝึกงานจนถึงนักพัฒนาเต็มเวลา พร้อมการเติบโตจากงานจริงในแต่ละโอกาส",
       hint: "กดที่วิดเจ็ตเพื่อดูรายละเอียด",
-      alive: {
-        remoteNote: "(Remote, พ.ค. – ก.ย. 2026)"
-      },
       koa: {
         program: "Work and Travel, สหรัฐฯ",
         concurrent: "ทำควบคู่กับงาน remote ที่ Business ALive",
@@ -575,9 +569,6 @@ const translations = {
       titleRest: "経験",
       description: "インターンからフルタイム開発者まで、実務を通じて成長してきたプロフェッショナルの歩みです。",
       hint: "ウィジェットをクリックして詳細を見る",
-      alive: {
-        remoteNote: "（リモート、2026年5月–9月）"
-      },
       koa: {
         program: "Work and Travel（米国）",
         concurrent: "Business ALive のリモート業務と同時期",
@@ -763,9 +754,6 @@ const translations = {
       titleRest: "经历",
       description: "从实习到全职开发者的成长路径，在每一次真实项目中持续进步。",
       hint: "点击卡片查看详情",
-      alive: {
-        remoteNote: "（远程，2026年5月–9月）"
-      },
       koa: {
         program: "Work and Travel（美国）",
         concurrent: "与 Business ALive 的远程工作同期进行",
@@ -951,9 +939,6 @@ const translations = {
       titleRest: "Erfahrung",
       description: "Mein beruflicher Weg vom Praktikum bis zur Vollzeit-Entwicklung, mit Wachstum durch reale Projekte.",
       hint: "Klicke auf ein Widget, um Details zu sehen",
-      alive: {
-        remoteNote: "(Remote, Mai – Sep 2026)"
-      },
       koa: {
         program: "Work and Travel, USA",
         concurrent: "Parallel zur Remote-Rolle bei Business ALive",
@@ -1139,9 +1124,6 @@ const translations = {
       titleRest: "경력",
       description: "인턴에서 풀타임 개발자로 성장해 온 과정과 실제 프로젝트를 통한 발전 기록입니다.",
       hint: "위젯을 눌러 상세 정보를 확인하세요",
-      alive: {
-        remoteNote: "(원격, 2026년 5월–9월)"
-      },
       koa: {
         program: "Work and Travel, 미국",
         concurrent: "Business ALive 원격 업무와 병행",

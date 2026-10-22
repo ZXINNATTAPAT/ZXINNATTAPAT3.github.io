@@ -6,6 +6,7 @@ author: "Nattapat Phungphugdee"
 tags: ["Clean Code", "Best Practices", "Programming", "Software Engineering"]
 image: "Photo/optimized/Logo.png"
 slug: "clean-code-techniques"
+hidden: true
 ---
 
 # เทคนิคการเขียนโค้ดที่ Clean และ Maintainable

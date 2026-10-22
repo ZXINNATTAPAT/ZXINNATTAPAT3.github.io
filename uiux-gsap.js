@@ -1,131 +1,24 @@
 /**
- * UI/UX gallery: 3-row diagonal conveyor that covers the stage.
+ * UI/UX gallery: a CSS marquee on wide screens, a snap row on small screens.
+ * The loop is two identical copies translated by half the track, so it does
+ * not depend on measuring card widths.
  */
 (function () {
   'use strict';
 
-  var ROW_COUNT = 5;
-  var SPEEDS = [36, 48, 40, 44, 32];
+  var ROW_COUNT = 4;
+  var DURATIONS = [52, 68, 58, 74];
 
-  function waitForGsap(fn, attempt) {
-    attempt = attempt || 0;
-    if (typeof gsap !== 'undefined') {
-      fn(true);
-      return;
-    }
-    if (attempt > 80) {
-      fn(false);
-      return;
-    }
-    setTimeout(function () {
-      waitForGsap(fn, attempt + 1);
-    }, 50);
+  function isCompactGallery() {
+    return window.matchMedia('(max-width: 1024px)').matches;
   }
 
   function prefersReducedMotion() {
-    return (
-      window.matchMedia &&
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    );
-  }
-
-  function isCompactGallery() {
-    var queryMatch =
-      window.matchMedia && window.matchMedia('(max-width: 1024px)').matches;
-    return queryMatch || window.innerWidth <= 1024;
-  }
-
-  function collapseToOriginalCards(board) {
-    var cards = Array.from(board.querySelectorAll('.uiux-drag-card'));
-    var seen = {};
-    var unique = [];
-
-    cards.forEach(function (card) {
-      var image = card.querySelector('img');
-      var key = image
-        ? image.getAttribute('src') || image.getAttribute('alt') || ''
-        : '';
-      if (!key || seen[key]) return;
-      seen[key] = true;
-      unique.push(card.cloneNode(true));
-    });
-
-    if (!unique.length) {
-      unique = cards.slice(0, 6).map(function (card) {
-        return card.cloneNode(true);
-      });
-    }
-
-    board.classList.remove('is-tiled');
-    board.style.transform = '';
-    board.style.removeProperty('--uiux-cover-scale');
-    board.innerHTML = '';
-    unique.forEach(function (card) {
-      card.removeAttribute('style');
-      card.querySelectorAll('img').forEach(function (image) {
-        image.draggable = false;
-      });
-      board.appendChild(card);
-    });
-  }
-
-  function setupCompactRow(section, board) {
-    var shell = section.querySelector('.uiux-tilt-stage');
-    var cards = Array.from(board.querySelectorAll('.uiux-drag-card'));
-    if (!shell || !cards.length) return;
-
-    var rafId = 0;
-
-    function cardCenter(card) {
-      return card.offsetLeft + card.offsetWidth / 2;
-    }
-
-    function updateCards() {
-      var shellCenter = shell.scrollLeft + shell.clientWidth / 2;
-      var maxDistance = Math.max(shell.clientWidth * 0.42, 1);
-      var nearest = cards[0];
-      var nearestDistance = Infinity;
-
-      cards.forEach(function (card) {
-        var distance = Math.abs(cardCenter(card) - shellCenter);
-        var progress = Math.min(distance / maxDistance, 1);
-        card.style.setProperty('--uiux-card-scale', (1 - progress * 0.18).toFixed(3));
-        card.style.setProperty('--uiux-card-blur', (progress * 3.2).toFixed(2) + 'px');
-        card.style.setProperty('--uiux-card-z', String(Math.round((1 - progress) * 10) + 1));
-        if (distance < nearestDistance) {
-          nearestDistance = distance;
-          nearest = card;
-        }
-      });
-
-      cards.forEach(function (card) {
-        var isActive = card === nearest;
-        card.classList.toggle('is-active', isActive);
-        if (isActive) {
-          card.style.setProperty('--uiux-card-scale', '1.03');
-          card.style.setProperty('--uiux-card-blur', '0px');
-          card.style.setProperty('--uiux-card-z', '18');
-        }
-      });
-    }
-
-    function scheduleUpdate() {
-      if (rafId) return;
-      rafId = window.requestAnimationFrame(function () {
-        rafId = 0;
-        updateCards();
-      });
-    }
-
-    shell.addEventListener('scroll', scheduleUpdate, { passive: true });
-    window.addEventListener('resize', scheduleUpdate);
-    whenImagesReady(board, updateCards);
-    updateCards();
+    return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   }
 
   function whenImagesReady(root, callback) {
-    var images = Array.from(root.querySelectorAll('img'));
-    var pending = images.filter(function (image) {
+    var pending = Array.from(root.querySelectorAll('img')).filter(function (image) {
       return !image.complete;
     });
     if (!pending.length) {
@@ -143,215 +36,192 @@
     });
   }
 
-  function measureLoopWidth(track) {
-    var cards = Array.from(track.children);
-    if (cards.length < 2) return 0;
-    var half = Math.floor(cards.length / 3);
-    var styles = window.getComputedStyle(track);
-    var gap = parseFloat(styles.columnGap || styles.gap) || 0;
-    var width = 0;
-    for (var i = 0; i < half; i += 1) {
-      width += cards[i].offsetWidth + gap;
-    }
-    return width;
+  function prepareCard(card, hidden) {
+    var clone = card.cloneNode(true);
+    clone.removeAttribute('style');
+    if (hidden) clone.setAttribute('aria-hidden', 'true');
+    clone.querySelectorAll('img').forEach(function (image) {
+      image.draggable = false;
+      image.loading = 'eager';
+    });
+    return clone;
   }
 
-  function buildRows(board) {
-    var source = Array.from(board.querySelectorAll(':scope > .uiux-drag-card'));
-    if (source.length < 2) return [];
+  function applyCoverScale(section, board) {
+    var stage = section.querySelector('.uiux-tilt-stage');
+    if (!stage) return;
+    var thickness = board.scrollHeight;
+    if (thickness < 8) return;
+    var needed = (stage.clientWidth + stage.clientHeight) / Math.SQRT2;
+    var scale = (needed / thickness) * 1.04;
+    scale = Math.min(Math.max(scale, 1.2), 2.8);
+    board.style.setProperty('--uiux-cover-scale', scale.toFixed(3));
+  }
 
-    var rows = [];
+  function buildHalf(sequence, hideAll) {
+    var half = document.createElement('div');
+    half.className = 'uiux-tilt-half';
+    sequence.forEach(function (card) {
+      half.appendChild(prepareCard(card, hideAll));
+    });
+    return half;
+  }
+
+  function buildRows(board, originals) {
     board.innerHTML = '';
+    board.classList.toggle('is-static', prefersReducedMotion());
 
     for (var r = 0; r < ROW_COUNT; r += 1) {
       var row = document.createElement('div');
       row.className = 'uiux-tilt-row';
       var track = document.createElement('div');
       track.className = 'uiux-tilt-track';
-      var offset = r % source.length;
-      var sequence = source.slice(offset).concat(source.slice(0, offset));
-      var copies = sequence.concat(sequence).concat(sequence);
-      copies.forEach(function (card) {
-        track.appendChild(card.cloneNode(true));
-      });
+      track.style.setProperty('--uiux-duration', DURATIONS[r % DURATIONS.length] + 's');
+
+      var offset = r % originals.length;
+      var sequence = originals.slice(offset).concat(originals.slice(0, offset));
+      var first = buildHalf(sequence, r > 0);
+      var second = buildHalf(sequence, true);
+      track.appendChild(first);
+      track.appendChild(second);
+
       row.appendChild(track);
       board.appendChild(row);
-      rows.push(row);
     }
 
     board.classList.add('is-tiled');
-    return rows;
+  }
+
+  function updateCompactCards(shell, cards) {
+    if (!shell || !cards.length) return;
+    var shellCenter = shell.scrollLeft + shell.clientWidth / 2;
+    var maxDistance = Math.max(shell.clientWidth * 0.55, 1);
+    var nearest = cards[0];
+    var nearestDistance = Infinity;
+
+    cards.forEach(function (card) {
+      var center = card.offsetLeft + card.offsetWidth / 2;
+      var distance = Math.abs(center - shellCenter);
+      var progress = Math.min(distance / maxDistance, 1);
+      card.style.setProperty('--uiux-card-scale', (1 - progress * 0.06).toFixed(3));
+      card.style.setProperty('--uiux-card-z', String(Math.round((1 - progress) * 8) + 1));
+      if (distance < nearestDistance) {
+        nearestDistance = distance;
+        nearest = card;
+      }
+    });
+
+    cards.forEach(function (card) {
+      card.classList.toggle('is-active', card === nearest);
+    });
+  }
+
+  function bindCompact(section, board, signal) {
+    var shell = section.querySelector('.uiux-tilt-stage');
+    var cards = Array.from(board.querySelectorAll('.uiux-drag-card'));
+    if (!shell || !cards.length) return;
+
+    var rafId = 0;
+    function schedule() {
+      if (rafId) return;
+      rafId = window.requestAnimationFrame(function () {
+        rafId = 0;
+        updateCompactCards(shell, cards);
+      });
+    }
+
+    shell.addEventListener('scroll', schedule, { passive: true, signal: signal });
+    window.addEventListener('resize', schedule, { signal: signal });
+    whenImagesReady(board, function () {
+      updateCompactCards(shell, cards);
+    });
+    updateCompactCards(shell, cards);
+  }
+
+  function mount(section, board, originals) {
+    if (section._uiuxAbort) section._uiuxAbort.abort();
+    var abort = new AbortController();
+    section._uiuxAbort = abort;
+
+    board.classList.remove('is-tiled', 'is-static');
+    board.style.removeProperty('--uiux-cover-scale');
+    board.innerHTML = '';
+
+    if (isCompactGallery()) {
+      section.classList.add('is-uiux-static');
+      originals.forEach(function (card) {
+        board.appendChild(prepareCard(card, false));
+      });
+      bindCompact(section, board, abort.signal);
+      return;
+    }
+
+    section.classList.remove('is-uiux-static');
+    buildRows(board, originals);
+    applyCoverScale(section, board);
+    whenImagesReady(board, function () {
+      applyCoverScale(section, board);
+    });
   }
 
   function initUiuxGallery() {
     var section = document.getElementById('uiux-projects');
-    if (!section || section.dataset.uiuxReady === '1') return;
-
-    var board = section.querySelector('[data-uiux-tilt-board]');
-    if (!board) return;
+    var board = section && section.querySelector('[data-uiux-tilt-board]');
+    if (!section || !board || section.dataset.uiuxReady === '1') return;
 
     section.dataset.uiuxReady = '1';
-
-    if (isCompactGallery()) {
-      section.classList.add('is-uiux-static');
-      collapseToOriginalCards(board);
-      section.classList.add('is-uiux-gsap-ready');
-      setupCompactRow(section, board);
-      return;
-    }
-
-    var rows = buildRows(board);
-    var cards = Array.from(board.querySelectorAll('.uiux-drag-card'));
-    if (!cards.length) return;
-
-    var stage = section.querySelector('.uiux-tilt-stage');
-
-    function applyCoverScale() {
-      if (!stage || !board) return;
-      var thickness = board.scrollHeight;
-      if (thickness < 8) return;
-      var needed = (stage.clientWidth + stage.clientHeight) / Math.SQRT2;
-      var scale = (needed / thickness) * 1.12;
-      board.style.setProperty('--uiux-cover-scale', scale.toFixed(3));
-    }
-
-    cards.forEach(function (card) {
-      card.querySelectorAll('img').forEach(function (image) {
-        image.draggable = false;
-      });
+    var originals = Array.from(board.querySelectorAll(':scope > .uiux-drag-card')).map(function (card) {
+      return card.cloneNode(true);
     });
+    if (originals.length < 2) return;
 
-    applyCoverScale();
-    whenImagesReady(board, applyCoverScale);
+    var mode = isCompactGallery() ? 'compact' : 'wide';
+    mount(section, board, originals);
 
-    var coverResizeTimer = 0;
+    var compactQuery = window.matchMedia('(max-width: 1024px)');
+    if (compactQuery.addEventListener) {
+      compactQuery.addEventListener('change', function () {
+        var next = compactQuery.matches ? 'compact' : 'wide';
+        if (next === mode) return;
+        mode = next;
+        mount(section, board, originals);
+      });
+    }
+
+    var resizeTimer = 0;
     window.addEventListener('resize', function () {
-      window.clearTimeout(coverResizeTimer);
-      coverResizeTimer = window.setTimeout(applyCoverScale, 160);
-    });
-
-    waitForGsap(function (hasGsap) {
-      if (!hasGsap) return;
-
-      var reduceMotion = prefersReducedMotion();
-      section.classList.add('is-uiux-gsap-ready');
-      if (typeof ScrollTrigger !== 'undefined') {
-        gsap.registerPlugin(ScrollTrigger);
-      }
-
-      if (!reduceMotion) {
-        gsap.set(cards, { autoAlpha: 0, y: 28, scale: 0.94 });
-        gsap.to(cards, {
-          autoAlpha: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.7,
-          stagger: { each: 0.035, from: 'start' },
-          ease: 'power3.out',
-          scrollTrigger:
-            typeof ScrollTrigger !== 'undefined'
-              ? {
-                  trigger: section,
-                  start: 'top 80%',
-                  toggleActions: 'play none none none',
-                  invalidateOnRefresh: true,
-                }
-              : undefined,
-        });
-      }
-
-      var marqueeTweens = [];
-
-      function killMarquees() {
-        marqueeTweens.forEach(function (tween) {
-          tween.kill();
-        });
-        marqueeTweens = [];
-      }
-
-      function startMarquees() {
-        killMarquees();
-        applyCoverScale();
-        if (reduceMotion) return;
-
-        rows.forEach(function (row, index) {
-          var track = row.querySelector('.uiux-tilt-track');
-          if (!track) return;
-          var loopWidth = measureLoopWidth(track);
-          if (loopWidth < 8) return;
-
-          var goingLeft = index % 2 === 0;
-          gsap.set(track, { x: goingLeft ? 0 : -loopWidth });
-          var tween = gsap.to(track, {
-            x: goingLeft ? -loopWidth : 0,
-            duration: loopWidth / SPEEDS[index % SPEEDS.length],
-            ease: 'none',
-            repeat: -1,
-          });
-          row._uiuxMarquee = tween;
-          marqueeTweens.push(tween);
-        });
-      }
-
-      whenImagesReady(board, function () {
-        startMarquees();
-        if (typeof ScrollTrigger !== 'undefined') {
-          ScrollTrigger.refresh();
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(function () {
+        var next = isCompactGallery() ? 'compact' : 'wide';
+        if (next !== mode) {
+          mode = next;
+          mount(section, board, originals);
+          return;
         }
-      });
-
-      var resizeTimer = 0;
-      window.addEventListener('resize', function () {
-        window.clearTimeout(resizeTimer);
-        resizeTimer = window.setTimeout(startMarquees, 180);
-      });
-
-      document.addEventListener('visibilitychange', function () {
-        var paused = document.hidden;
-        marqueeTweens.forEach(function (tween) {
-          if (paused) tween.pause();
-          else tween.resume();
-        });
-      });
-
-      if (!reduceMotion) {
-        cards.forEach(function (card) {
-          card.addEventListener('pointerenter', function () {
-            var row = card.closest('.uiux-tilt-row');
-            if (row && row._uiuxMarquee) row._uiuxMarquee.pause();
-            gsap.to(card, {
-              y: -10,
-              scale: 1.06,
-              duration: 0.35,
-              ease: 'power2.out',
-              overwrite: 'auto',
-            });
-          });
-          card.addEventListener('pointerleave', function () {
-            var row = card.closest('.uiux-tilt-row');
-            if (row && row._uiuxMarquee && !document.hidden) {
-              row._uiuxMarquee.resume();
-            }
-            gsap.to(card, {
-              y: 0,
-              scale: 1,
-              duration: 0.4,
-              ease: 'power2.out',
-              overwrite: 'auto',
-            });
-          });
-        });
-      }
+        if (next === 'wide') applyCoverScale(section, board);
+      }, 180);
     });
-  }
 
-  function boot() {
-    initUiuxGallery();
+    function syncPause() {
+      section.classList.toggle(
+        'is-uiux-paused',
+        document.hidden || section.dataset.uiuxOffscreen === '1'
+      );
+    }
+
+    document.addEventListener('visibilitychange', syncPause);
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function (entries) {
+        section.dataset.uiuxOffscreen = entries[0].isIntersecting ? '0' : '1';
+        syncPause();
+      }, { rootMargin: '120px' });
+      observer.observe(section);
+    }
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', boot);
+    document.addEventListener('DOMContentLoaded', initUiuxGallery);
   } else {
-    boot();
+    initUiuxGallery();
   }
 })();

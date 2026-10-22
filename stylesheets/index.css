@@ -5542,18 +5542,65 @@ textarea.form-control-minimal:focus {
   margin-top: 0.45rem;
 }
 
+.experience-min-points {
+  list-style: none;
+  max-width: 650px;
+  margin: 0.85rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.experience-min-points li {
+  position: relative;
+  padding-left: 0.9rem;
+  font-family: system-ui, "Anuphan", sans-serif;
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: rgba(74, 74, 86, 0.7);
+}
+
+.experience-min-points li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 4px;
+  height: 4px;
+  border-radius: 1px;
+  background: rgba(28, 28, 28, 0.45);
+}
+
 .experience-min-highlight {
   color: #1c1c1c;
   font-weight: 650;
 }
 
 .experience-min-stack {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.28rem 0.4rem;
   margin-top: 0.65rem;
   font-family: system-ui, "Anuphan", sans-serif;
   font-size: 0.7rem;
   font-weight: 500;
   letter-spacing: 0.04em;
   color: rgba(74, 74, 86, 0.48);
+}
+
+.experience-min-stack-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.32rem;
+}
+
+.experience-min-stack-item img {
+  width: 0.95rem;
+  height: 0.95rem;
+  flex: 0 0 auto;
+  object-fit: contain;
 }
 
 @media (max-width: 720px) {
@@ -7298,6 +7345,30 @@ section.container-fluid {
   box-shadow: none;
 }
 
+h1.hero-artist-wordmark .hero-artist-wordmark-family-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: max-content;
+  max-width: 100%;
+}
+
+.hero-artist-handle {
+  margin-top: 0.35rem;
+  font-family: "DM Serif Display", "Times New Roman", Times, serif;
+  font-size: clamp(0.85rem, 1.5vw, 1.05rem);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  color: rgba(28, 28, 28, 0.62);
+  text-decoration: none;
+}
+
+.hero-artist-handle:hover,
+.hero-artist-handle:focus-visible {
+  color: #a30000;
+}
+
 h1.hero-artist-wordmark {
   display: flex;
   flex-direction: column;
@@ -7321,6 +7392,44 @@ h1.hero-artist-wordmark span {
   flex: 0 0 auto;
 }
 
+h1.hero-artist-wordmark .hero-artist-wordmark-given,
+h1.hero-artist-wordmark .hero-artist-wordmark-family {
+  background-color: #1c1c1c;
+  background-image: linear-gradient(
+    105deg,
+    #1c1c1c 0%,
+    #1c1c1c 42%,
+    #9a9a9a 47%,
+    #ffffff 50%,
+    #9a9a9a 53%,
+    #1c1c1c 58%,
+    #1c1c1c 100%
+  );
+  background-size: 240% 100%;
+  background-repeat: no-repeat;
+  background-position: 100% 50%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: hero-wordmark-shine 5.6s ease-in-out 1.15s infinite;
+}
+
+h1.hero-artist-wordmark .hero-artist-wordmark-family {
+  animation-delay: 1.55s;
+}
+
+@keyframes hero-wordmark-shine {
+  0% {
+    background-position: 100% 50%;
+  }
+  36% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 @media screen and (min-width: 768px) {
   .hero-artist-lead {
     font-size: 15px;
@@ -7338,7 +7447,7 @@ h1.hero-artist-wordmark span {
   h1.hero-artist-wordmark {
     flex-direction: row;
     flex-wrap: nowrap;
-    align-items: baseline;
+    align-items: flex-start;
     justify-content: center;
     gap: 0.22em;
     font-size: clamp(3.4rem, 6.6vw, 7.4rem) !important;
@@ -7356,6 +7465,14 @@ h1.hero-artist-wordmark span {
   .hero-artist-wordmark span {
     opacity: 1 !important;
     transform: none !important;
+  }
+
+  h1.hero-artist-wordmark .hero-artist-wordmark-given,
+  h1.hero-artist-wordmark .hero-artist-wordmark-family {
+    animation: none;
+    background-image: none;
+    -webkit-text-fill-color: #1c1c1c;
+    color: #1c1c1c;
   }
 }
 
@@ -8251,7 +8368,43 @@ html[lang="ko"] .hero-artist-link {
   display: flex;
   gap: clamp(0.85rem, 1.5vw, 1.25rem);
   width: max-content;
-  will-change: transform;
+}
+
+.uiux-tilt-board.is-tiled .uiux-tilt-track {
+  gap: 0;
+}
+
+.uiux-tilt-half {
+  display: flex;
+  flex: none;
+  gap: clamp(0.85rem, 1.5vw, 1.25rem);
+  padding-right: clamp(0.85rem, 1.5vw, 1.25rem);
+}
+
+.uiux-tilt-board.is-tiled .uiux-drag-card {
+  flex: 0 0 clamp(168px, 16vw, 240px);
+  width: clamp(168px, 16vw, 240px);
+}
+
+.uiux-tilt-board.is-tiled:not(.is-static) .uiux-tilt-track {
+  animation: uiux-marquee var(--uiux-duration, 52s) linear infinite;
+}
+
+.uiux-tilt-board.is-tiled .uiux-tilt-row:nth-child(even) .uiux-tilt-track {
+  animation-direction: reverse;
+}
+
+.is-uiux-paused .uiux-tilt-track {
+  animation-play-state: paused;
+}
+
+@keyframes uiux-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
 }
 
 .uiux-drag-card {
@@ -8259,7 +8412,6 @@ html[lang="ko"] .hero-artist-link {
   flex-shrink: 0;
   position: relative;
   z-index: 1;
-  will-change: transform;
 }
 
 .uiux-tilt-board:not(.is-tiled) .uiux-drag-card:nth-child(odd) {
@@ -8354,7 +8506,7 @@ html[lang="ko"] .hero-artist-link {
     margin: 0;
     padding:
       0.35rem
-      max(1rem, calc((100% - min(45vw, 420px)) / 2))
+      max(1rem, calc(50vw - min(45vw, 420px) / 2))
       1rem;
     transform: none;
   }
@@ -8378,19 +8530,14 @@ html[lang="ko"] .hero-artist-link {
     flex: 0 0 min(45vw, 420px);
     width: min(45vw, 420px);
     max-width: min(45vw, 420px);
-    transform: scale(var(--uiux-card-scale, 0.9));
-    filter: blur(var(--uiux-card-blur, 0px));
+    transform: scale(var(--uiux-card-scale, 0.96));
     z-index: var(--uiux-card-z, 1);
-    will-change: transform, filter;
     scroll-snap-align: center;
-    transition:
-      transform 0.3s cubic-bezier(0.22, 0.7, 0.2, 1),
-      filter 0.28s ease-out;
+    transition: transform 0.3s cubic-bezier(0.22, 0.7, 0.2, 1);
   }
 
   .uiux-drag-card.is-active {
-    transform: scale(1.03);
-    filter: none;
+    transform: none;
   }
 
   .uiux-drag-footnote {
@@ -8412,7 +8559,7 @@ html[lang="ko"] .hero-artist-link {
     gap: 0.95rem;
     padding:
       0.35rem
-      max(0.85rem, calc((100% - min(78vw, 320px)) / 2))
+      max(0.85rem, calc(50vw - min(78vw, 320px) / 2))
       1rem;
   }
 
@@ -8441,7 +8588,7 @@ html[lang="ko"] .hero-artist-link {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .uiux-drag-card {
-    will-change: auto;
+  .uiux-tilt-track {
+    animation: none !important;
   }
 }
