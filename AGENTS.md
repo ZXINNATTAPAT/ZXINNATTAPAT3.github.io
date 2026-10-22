@@ -30,9 +30,10 @@ server** (the server is not defined in `package.json`; pick any).
   date-based diffs even with no content change (e.g. `<lastmod>` in `sitemap.xml` and the
   human-readable dates in article pages come from the current date). Review/`git checkout`
   such incidental diffs before committing so you only commit intended content changes.
-- **Article/project URLs use the front-matter `slug`, not the `.md` filename.** For
-  example `articles/example-1.md` builds to whatever `slug:` it declares (e.g.
-  `articles/nextjs-beginner-guide.html`), so the source filename may not match the output.
+- **Article/project URLs use the front-matter `slug`, not the `.md` filename.**
+  Source files are named to match their slug (for example `articles/nextjs-beginner-guide.md`
+  builds to `articles/nextjs-beginner-guide.html`). If `slug:` differs from the filename,
+  the published URL follows `slug:`.
 - There are no automated tests or linters configured; verification is manual (build + open
   pages in a browser).
 - `package-lock.json` is gitignored, so installs resolve against the `^` ranges in

@@ -20,7 +20,11 @@ const translations = {
       lead: "Software Developer based in Thailand."
     },
     profile: {
-      title: "PROFILE"
+      title: "PROFILE",
+      photosLabel: "Profile photos",
+      shuffleHint: "Drag to shuffle",
+      prevPhoto: "Previous photo",
+      nextPhoto: "Next photo"
     },
     about: {
       title: "About Me",
@@ -218,7 +222,11 @@ const translations = {
       lead: "ซอฟต์แวร์ดีเวลลอปเปอร์ ประจำอยู่ที่ประเทศไทย"
     },
     profile: {
-      title: "โปรไฟล์"
+      title: "โปรไฟล์",
+      photosLabel: "รูปโปรไฟล์",
+      shuffleHint: "ลากการ์ดเพื่อสับดูรูป",
+      prevPhoto: "รูปก่อนหน้า",
+      nextPhoto: "รูปถัดไป"
     },
     about: {
       title: "เกี่ยวกับผม",
@@ -421,7 +429,11 @@ const translations = {
       lead: "タイを拠点とするソフトウェア開発者。"
     },
     profile: {
-      title: "プロフィール"
+      title: "プロフィール",
+      photosLabel: "プロフィール写真",
+      shuffleHint: "ドラッグしてカードをめくる",
+      prevPhoto: "前の写真",
+      nextPhoto: "次の写真"
     },
     about: {
       title: "私について",
@@ -591,7 +603,11 @@ const translations = {
       lead: "常驻泰国的软件开发者。"
     },
     profile: {
-      title: "个人简介"
+      title: "个人简介",
+      photosLabel: "个人照片",
+      shuffleHint: "拖动卡片翻看照片",
+      prevPhoto: "上一张",
+      nextPhoto: "下一张"
     },
     about: {
       title: "关于我",
@@ -761,7 +777,11 @@ const translations = {
       lead: "Softwareentwickler mit Standort in Thailand."
     },
     profile: {
-      title: "PROFIL"
+      title: "PROFIL",
+      photosLabel: "Profilfotos",
+      shuffleHint: "Ziehen, um die Fotos zu mischen",
+      prevPhoto: "Vorheriges Foto",
+      nextPhoto: "Nächstes Foto"
     },
     about: {
       title: "Über mich",
@@ -931,7 +951,11 @@ const translations = {
       lead: "태국을 기반으로 한 소프트웨어 개발자."
     },
     profile: {
-      title: "프로필"
+      title: "프로필",
+      photosLabel: "프로필 사진",
+      shuffleHint: "카드를 밀어 사진을 넘기세요",
+      prevPhoto: "이전 사진",
+      nextPhoto: "다음 사진"
     },
     about: {
       title: "소개",

@@ -113,7 +113,7 @@
 
   <!-- Critical: font utilities + main layout; below-fold sheets deferred -->
   <link rel="stylesheet" href="./stylesheets/fontsex.css" />
-  <link rel="stylesheet" href="./stylesheets/index.css?v=25" />
+  <link rel="stylesheet" href="./stylesheets/index.css?v=33" />
   <!-- Non-critical CSS deferred -->
   <link rel="stylesheet" href="./stylesheets/cardblock2.css" media="print" onload="this.media='all'" />
   <noscript><link rel="stylesheet" href="./stylesheets/cardblock2.css" /></noscript>
@@ -206,7 +206,10 @@
     }
 
     html[lang="th"] .nav-link-ux,
-    html[lang="th"] .mobile-nav-link {
+    html[lang="th"] .nav-dropdown-link,
+    html[lang="th"] .mobile-nav-link,
+    html[lang="th"] .nav-lang-trigger,
+    html[lang="th"] .mobile-lang-options button {
       font-family: "Anuphan", "Noto Sans Thai", system-ui, sans-serif !important;
       font-size: 0.95rem;
       font-weight: 600;
@@ -303,7 +306,10 @@
     }
 
     html[lang="ja"] .nav-link-ux,
-    html[lang="ja"] .mobile-nav-link {
+    html[lang="ja"] .nav-dropdown-link,
+    html[lang="ja"] .mobile-nav-link,
+    html[lang="ja"] .nav-lang-trigger,
+    html[lang="ja"] .mobile-lang-options button {
       font-family: "Noto Sans JP", system-ui, sans-serif !important;
       font-weight: 600;
       text-transform: none !important;
@@ -375,7 +381,10 @@
     }
 
     html[lang="zh"] .nav-link-ux,
-    html[lang="zh"] .mobile-nav-link {
+    html[lang="zh"] .nav-dropdown-link,
+    html[lang="zh"] .mobile-nav-link,
+    html[lang="zh"] .nav-lang-trigger,
+    html[lang="zh"] .mobile-lang-options button {
       font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif !important;
       font-weight: 600;
       text-transform: none !important;
@@ -447,7 +456,10 @@
     }
 
     html[lang="ko"] .nav-link-ux,
-    html[lang="ko"] .mobile-nav-link {
+    html[lang="ko"] .nav-dropdown-link,
+    html[lang="ko"] .mobile-nav-link,
+    html[lang="ko"] .nav-lang-trigger,
+    html[lang="ko"] .mobile-lang-options button {
       font-family: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif !important;
       font-weight: 600;
       text-transform: none !important;
@@ -542,7 +554,8 @@
   <script src="experience-gsap.js?v=4" defer></script>
   <script src="uiux-gsap.js?v=9" defer></script>
   <script src="projects-gsap.js?v=2" defer></script>
-  <script src="hero-gsap.js?v=7" defer></script>
+  <script src="hero-gsap.js?v=8" defer></script>
+  <script src="profile-cards.js?v=2" defer></script>
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
@@ -588,15 +601,14 @@
       <div class="primary-nav-links d-none d-lg-flex">
         <a href="#home" class="nav-link-ux text-decoration-none" data-i18n="nav.home">Home</a>
         <a href="#profile" class="nav-link-ux text-decoration-none" data-i18n="nav.profile">Profile</a>
-        <a href="#experience" class="nav-link-ux text-decoration-none" data-i18n="nav.experience">Experience</a>
         <a href="#portfolio" class="nav-link-ux text-decoration-none" data-i18n="nav.portfolio">Portfolio</a>
-        <a href="#certificates" class="nav-link-ux text-decoration-none d-none d-md-inline-flex" data-i18n="nav.certificates">Certificates</a>
+        <a href="#experience" class="nav-link-ux text-decoration-none" data-i18n="nav.experience">Experience</a>
+        <a href="#certificates" class="nav-link-ux text-decoration-none" data-i18n="nav.certificates">Certificates</a>
         <a href="blog.html" class="nav-link-ux text-decoration-none" data-i18n="nav.blog">Blog</a>
       </div>
       <div class="d-flex align-items-center gap-2">
-        <div class="nav-language-control d-none d-md-inline-flex">
-          <label for="langSelect" class="visually-hidden">Select language</label>
-          <select id="langSelect" class="nav-lang-select" aria-label="Select language">
+        <div class="nav-lang d-none d-md-inline-flex" data-lang-menu>
+          <select id="langSelect" class="nav-lang-native" aria-hidden="true" tabindex="-1">
             <option value="en">EN</option>
             <option value="th">TH</option>
             <option value="ja">JP</option>
@@ -604,11 +616,20 @@
             <option value="de">DE</option>
             <option value="ko">KO</option>
           </select>
+          <button type="button" class="nav-lang-trigger" data-lang-trigger aria-haspopup="listbox" aria-expanded="false" aria-controls="langMenu" aria-label="Select language">
+            <span data-lang-current>EN</span>
+            <i class="fas fa-chevron-down nav-caret" aria-hidden="true"></i>
+          </button>
+          <div class="nav-lang-menu" id="langMenu" data-lang-panel role="listbox" aria-label="Select language" hidden>
+            <button type="button" class="nav-lang-option" role="option" data-lang="en"><span>EN</span><small>English</small></button>
+            <button type="button" class="nav-lang-option" role="option" data-lang="th"><span>TH</span><small>ไทย</small></button>
+            <button type="button" class="nav-lang-option" role="option" data-lang="ja"><span>JP</span><small>日本語</small></button>
+            <button type="button" class="nav-lang-option" role="option" data-lang="zh"><span>CN</span><small>中文</small></button>
+            <button type="button" class="nav-lang-option" role="option" data-lang="de"><span>DE</span><small>Deutsch</small></button>
+            <button type="button" class="nav-lang-option" role="option" data-lang="ko"><span>KO</span><small>한국어</small></button>
+          </div>
         </div>
-        <a href="#contact" class="nav-link-ux nav-cta text-decoration-none d-none d-md-inline-flex">
-          <span data-i18n="nav.contact">Contact</span>
-          <i class="fas fa-arrow-right"></i>
-        </a>
+        <a href="#contact" class="nav-link-ux text-decoration-none d-none d-md-inline-flex" data-i18n="nav.contact">Contact</a>
         <!-- Mobile Menu Toggle -->
         <button class="mobile-menu-toggle d-lg-none" id="mobileMenuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
           <span class="hamburger-line"></span>
@@ -622,13 +643,13 @@
       <div class="mobile-menu-content">
         <a href="#home" class="mobile-nav-link" onclick="closeMobileMenu()" data-i18n="nav.home">Home</a>
         <a href="#profile" class="mobile-nav-link" onclick="closeMobileMenu()" data-i18n="nav.profile">Profile</a>
-        <a href="#experience" class="mobile-nav-link" onclick="closeMobileMenu()" data-i18n="nav.experience">Experience</a>
         <a href="#portfolio" class="mobile-nav-link" onclick="closeMobileMenu()" data-i18n="nav.portfolio">Portfolio</a>
+        <a href="#experience" class="mobile-nav-link" onclick="closeMobileMenu()" data-i18n="nav.experience">Experience</a>
         <a href="#certificates" class="mobile-nav-link" onclick="closeMobileMenu()" data-i18n="nav.certificates">Certificates</a>
         <a href="blog.html" class="mobile-nav-link" onclick="closeMobileMenu()" data-i18n="nav.blog">Blog</a>
-        <div class="mobile-lang-control">
+        <div class="mobile-lang-control" data-lang-menu>
           <span class="mobile-lang-label" data-i18n="nav.language">Language</span>
-          <select id="mobileLangSelect" class="mobile-lang-select" aria-label="Select language">
+          <select id="mobileLangSelect" class="nav-lang-native" aria-hidden="true" tabindex="-1">
             <option value="en">EN</option>
             <option value="th">TH</option>
             <option value="ja">JP</option>
@@ -636,31 +657,93 @@
             <option value="de">DE</option>
             <option value="ko">KO</option>
           </select>
+          <div class="mobile-lang-options" role="listbox" aria-label="Select language">
+            <button type="button" data-lang="en">EN</button>
+            <button type="button" data-lang="th">TH</button>
+            <button type="button" data-lang="ja">JP</button>
+            <button type="button" data-lang="zh">CN</button>
+            <button type="button" data-lang="de">DE</button>
+            <button type="button" data-lang="ko">KO</button>
+          </div>
         </div>
-        <a href="#contact" class="mobile-nav-link mobile-nav-cta" onclick="closeMobileMenu()">
-          <span data-i18n="nav.contact">Contact</span>
-          <i class="fas fa-arrow-right"></i>
-        </a>
+        <a href="#contact" class="mobile-nav-link" onclick="closeMobileMenu()" data-i18n="nav.contact">Contact</a>
       </div>
     </div>
   </nav>
   <div class="scroll-progress" role="presentation" aria-hidden="true"></div>
-  <!-- Hero Section — editorial intro -->
+  <script>
+    (function () {
+      function closeLangMenu(menu) {
+        var trigger = menu.querySelector('[data-lang-trigger]');
+        var panel = menu.querySelector('[data-lang-panel]');
+        menu.classList.remove('is-open');
+        if (trigger) trigger.setAttribute('aria-expanded', 'false');
+        if (panel) panel.hidden = true;
+      }
+
+      function renderLangMenus() {
+        document.querySelectorAll('[data-lang-menu]').forEach(function (menu) {
+          var select = menu.querySelector('select');
+          if (!select) return;
+          var current = menu.querySelector('[data-lang-current]');
+          var selected = select.options[select.selectedIndex];
+          if (current && selected) current.textContent = selected.textContent;
+          menu.querySelectorAll('[data-lang]').forEach(function (button) {
+            var active = button.getAttribute('data-lang') === select.value;
+            button.classList.toggle('is-active', active);
+            button.setAttribute('aria-selected', active ? 'true' : 'false');
+          });
+        });
+      }
+
+      document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('[data-lang-menu]').forEach(function (menu) {
+          var select = menu.querySelector('select');
+          var trigger = menu.querySelector('[data-lang-trigger]');
+          var panel = menu.querySelector('[data-lang-panel]');
+          if (!select) return;
+
+          if (trigger && panel) {
+            trigger.addEventListener('click', function (event) {
+              event.stopPropagation();
+              var open = !menu.classList.contains('is-open');
+              document.querySelectorAll('[data-lang-menu].is-open').forEach(closeLangMenu);
+              if (open) {
+                menu.classList.add('is-open');
+                trigger.setAttribute('aria-expanded', 'true');
+                panel.hidden = false;
+              }
+            });
+          }
+
+          menu.querySelectorAll('[data-lang]').forEach(function (button) {
+            button.addEventListener('click', function () {
+              select.value = button.getAttribute('data-lang');
+              select.dispatchEvent(new Event('change', { bubbles: true }));
+              closeLangMenu(menu);
+            });
+          });
+        });
+
+        document.addEventListener('click', function (event) {
+          document.querySelectorAll('[data-lang-menu].is-open').forEach(function (menu) {
+            if (!menu.contains(event.target)) closeLangMenu(menu);
+          });
+        });
+
+        document.addEventListener('keydown', function (event) {
+          if (event.key !== 'Escape') return;
+          document.querySelectorAll('[data-lang-menu].is-open').forEach(closeLangMenu);
+        });
+
+        renderLangMenus();
+      });
+
+      window.addEventListener('i18n:updated', renderLangMenus);
+    })();
+  </script>
+  <!-- Hero Section — centered title -->
   <header id="home" class="hero-artist">
-    <figure class="hero-artist-figure">
-      <picture>
-        <source srcset="Photo/optimized/portrait-nattapat.webp" type="image/webp" />
-        <img
-          src="Photo/optimized/portrait-nattapat.jpg"
-          alt="Nattapat Phungphugdee"
-          width="1920"
-          height="1440"
-          decoding="async"
-          fetchpriority="high"
-          loading="eager"
-        />
-      </picture>
-    </figure>
     <div class="hero-artist-stage">
       <p class="hero-artist-lead" data-i18n="hero.lead">
         Software Developer based in Thailand.
@@ -669,22 +752,19 @@
         <span class="hero-artist-wordmark-given">NATTAPAT</span>
         <span class="hero-artist-wordmark-family">PHUNGPHUGDEE</span>
       </h1>
+      <div class="hero-artist-actions">
+        <a href="https://www.linkedin.com/in/nattapat2002/" class="hero-artist-link" target="_blank" rel="noopener noreferrer">
+          <span data-i18n="about.letsWork">Let's Work together</span>
+          <span class="hero-artist-arrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
     </div>
   </header>
-  <div class="hero-artist-actions">
-    <a href="https://www.linkedin.com/in/nattapat2002/" class="hero-artist-link" target="_blank" rel="noopener noreferrer">
-      <span data-i18n="about.letsWork">Let's Work together</span>
-    </a>
-    <a href="https://www.linkedin.com/in/nattapat2002/" class="hero-artist-link" target="_blank" rel="noopener noreferrer">
-      <span data-i18n="about.resume">Resume</span>
-    </a>
-  </div>
   <noscript>
     <style>
       .hero-artist-lead,
       .hero-artist-actions,
-      .hero-artist-wordmark,
-      .hero-artist-figure { opacity: 1 !important; }
+      .hero-artist-wordmark { opacity: 1 !important; }
     </style>
   </noscript>
 </div>
@@ -700,27 +780,100 @@
     });
   </script>
   <!-- About Me -->
-  <section id="profile" class="container-fluid mt-5" style="background-color: #f8f8ff; padding-top: 4rem; padding-bottom: 3rem;">
+  <section id="profile" class="container-fluid" style="background-color: #f8f8ff; padding-top: 4.5rem; padding-bottom: 3rem;">
     <div class="container" data-aos="fade-up" data-aos-delay="100">
+      <h2 class="dm-serif-display-regular profile-section-title" data-i18n="profile.title">PROFILE</h2>
       <div class="row gy-5 align-items-center profile-hero-row">
-        <div class="col-12 col-md-5 text-center text-md-start profile-title-column" data-aos="fade-right">
-          <div class="profile-title-stack">
-            <h1 class="playfair-400 sh-x responsive-profile" data-i18n="profile.title">PROFILE</h1>
-            <h1 class="playfair-400 sh-x responsive-profile" style="
-                  color: transparent;
-                  -webkit-text-stroke: 1.5px #2c2c2c;
-                  text-transform: uppercase;
-                " data-i18n="profile.title">
-              PROFILE
-            </h1>
-            <h1 class="playfair-400 sh-x responsive-profile" data-i18n="profile.title">PROFILE</h1>
-            <h1 class="playfair-400 sh-x responsive-profile" style="
-                  color: transparent;
-                  -webkit-text-stroke: 1.5px #2c2c2c;
-                  text-transform: uppercase;
-                " data-i18n="profile.title">
-              PROFILE
-            </h1>
+        <div class="col-12 col-md-5 profile-portrait-column" data-aos="fade-right">
+          <div class="profile-card-deck" data-profile-deck>
+            <span id="profile-deck-label" class="visually-hidden" data-i18n="profile.photosLabel">Profile photos</span>
+            <div
+              class="profile-card-stage"
+            >
+              <div
+                class="profile-card-stack"
+                tabindex="0"
+                role="group"
+                aria-labelledby="profile-deck-label"
+              >
+                <figure class="profile-card is-top" data-card data-index="0">
+                  <picture>
+                    <source srcset="Photo/optimized/profile-golden-gate.webp" type="image/webp" />
+                    <img
+                      src="Photo/optimized/profile-golden-gate.jpg"
+                      alt="Nattapat at the Golden Gate Bridge"
+                      width="1575"
+                      height="2800"
+                      decoding="async"
+                      loading="lazy"
+                      draggable="false"
+                      style="object-position: center 62%;"
+                    />
+                  </picture>
+                </figure>
+                <figure class="profile-card" data-card data-index="1">
+                  <picture>
+                    <source srcset="Photo/optimized/portrait-nattapat.webp" type="image/webp" />
+                    <img
+                      src="Photo/optimized/portrait-nattapat.jpg"
+                      alt="Nattapat Phungphugdee"
+                      width="1920"
+                      height="1440"
+                      decoding="async"
+                      loading="lazy"
+                      draggable="false"
+                      style="object-position: center 42%;"
+                    />
+                  </picture>
+                </figure>
+                <figure class="profile-card" data-card data-index="2">
+                  <picture>
+                    <source srcset="Photo/optimized/profile-portrait.webp" type="image/webp" />
+                    <img
+                      src="Photo/optimized/profile-portrait.jpg"
+                      alt="Nattapat portrait"
+                      width="1440"
+                      height="1920"
+                      decoding="async"
+                      loading="lazy"
+                      draggable="false"
+                      style="object-position: center 40%;"
+                    />
+                  </picture>
+                </figure>
+                <figure class="profile-card" data-card data-index="3">
+                  <picture>
+                    <source srcset="Photo/optimized/profile-stone-outlook.webp" type="image/webp" />
+                    <img
+                      src="Photo/optimized/profile-stone-outlook.jpg"
+                      alt="Nattapat sitting in a stone overlook"
+                      width="768"
+                      height="1024"
+                      decoding="async"
+                      loading="lazy"
+                      draggable="false"
+                      style="object-position: center 62%;"
+                    />
+                  </picture>
+                </figure>
+              </div>
+            </div>
+            <div class="profile-card-bar">
+              <button type="button" class="profile-card-btn" data-deck-prev>
+                <i class="fas fa-chevron-left" aria-hidden="true"></i>
+                <span class="visually-hidden" data-i18n="profile.prevPhoto">Previous photo</span>
+              </button>
+              <div class="profile-card-dots" data-deck-dots></div>
+              <button type="button" class="profile-card-btn" data-deck-next>
+                <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                <span class="visually-hidden" data-i18n="profile.nextPhoto">Next photo</span>
+              </button>
+            </div>
+            <p class="profile-card-hint playfair-400">
+              <span data-deck-count>1 / 4</span>
+              <span data-i18n="profile.shuffleHint">Drag to shuffle</span>
+            </p>
+            <p class="visually-hidden" aria-live="polite" data-deck-status>1 / 4</p>
           </div>
         </div>
         <div class="col-12 col-md-7" data-aos="fade-left" data-aos-delay="80">
@@ -1218,6 +1371,38 @@
               task-based development environment.
             </p>
             <span class="experience-min-stack">Next.js · NestJS</span>
+          </div>
+        </li>
+
+        <li class="experience-min-role-item">
+          <time class="experience-min-dates" datetime="2026-05">May — Sep 2026</time>
+          <span class="experience-min-timeline" aria-hidden="true">
+            <span class="experience-min-marker"></span>
+          </span>
+          <div class="experience-min-copy">
+            <h3 class="experience-min-role">Housekeeper</h3>
+            <a
+              class="experience-min-company-link"
+              href="https://koa.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit the Kampgrounds of America website"
+            >
+              <span
+                class="experience-min-logo-icon experience-min-logo-icon--koa"
+                aria-hidden="true"
+              >
+                KOA
+              </span>
+              <span class="experience-min-company">Kampgrounds of America</span>
+              <span class="experience-min-link-arrow" aria-hidden="true">↗</span>
+            </a>
+            <p class="experience-min-description">
+              Joined the U.S. Summer Work Travel program in Hill City, South Dakota,
+              <strong class="experience-min-highlight">while continuing software development remotely</strong>.
+              Worked with guests in a multicultural campground and built customer-service experience.
+            </p>
+            <span class="experience-min-stack">Customer service · English</span>
           </div>
         </li>
 
@@ -1893,6 +2078,7 @@
       const navBar = document.querySelector('nav.sticky-top');
       const navLinks = document.querySelectorAll('.nav-link-ux');
 
+      const profileLink = document.querySelector('.nav-link-ux[href="#profile"]');
       const navTargets = Array.from(navLinks)
         .map(link => {
           const href = link.getAttribute('href');
@@ -1902,6 +2088,11 @@
           return { link, target };
         })
         .filter(Boolean);
+
+      ['experience', 'portfolio', 'certificates'].forEach(id => {
+        const target = document.getElementById(id);
+        if (target && profileLink) navTargets.push({ link: profileLink, target });
+      });
 
       const updateProgress = () => {
         if (!progressBar) return;
@@ -2305,7 +2496,7 @@
       
       // Make closeMobileMenu available globally for onclick handlers
       window.closeMobileMenu = closeMobileMenu;
-      
+
       // Update active nav link on scroll
       function updateActiveNavLink() {
         const sections = document.querySelectorAll('section[id], header[id]');
@@ -2320,10 +2511,12 @@
           }
         });
         
+        const currentNav = current;
+
         navLinks.forEach(function(link) {
           link.classList.remove('active');
-          if (link.getAttribute('href') === '#' + current || 
-              (current === 'home' && link.getAttribute('href') === '#home')) {
+          if (link.getAttribute('href') === '#' + currentNav ||
+              (currentNav === 'home' && link.getAttribute('href') === '#home')) {
             link.classList.add('active');
           }
         });

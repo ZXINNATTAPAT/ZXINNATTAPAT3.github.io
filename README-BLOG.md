@@ -57,8 +57,8 @@ npm run watch
 ## 📝 ตัวอย่างบทความ
 
 ดูตัวอย่างได้ที่:
-- `articles/example-1.md`
-- `articles/example-2.md`
+- `articles/nextjs-beginner-guide.md`
+- `articles/clean-code-techniques.md`
 
 ## 🎨 Customize Templates
 

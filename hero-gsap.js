@@ -1,5 +1,5 @@
 /**
- * Editorial hero: portrait first, then lead + wordmark.
+ * Centered hero: lead, wordmark, then actions.
  */
 (function () {
   'use strict';
@@ -45,13 +45,12 @@
     if (!root) return;
 
     var lead = root.querySelector('.hero-artist-lead');
-    var actions = document.querySelector('.hero-artist-actions');
+    var actions = root.querySelector('.hero-artist-actions');
     var wordmark = root.querySelector('.hero-artist-wordmark');
-    var figure = root.querySelector('.hero-artist-figure');
     var given = root.querySelector('.hero-artist-wordmark-given');
     var family = root.querySelector('.hero-artist-wordmark-family');
     var wordParts = [given, family].filter(Boolean);
-    var targets = [figure, lead, wordmark, actions].filter(Boolean);
+    var targets = [lead, wordmark, actions].filter(Boolean);
 
     if (!hasGsap || !targets.length) {
       showStatic(root);
@@ -67,19 +66,18 @@
     });
 
     mm.add('(prefers-reduced-motion: no-preference)', function () {
-      gsap.set([figure, lead, actions].filter(Boolean), { autoAlpha: 0, y: 28 });
+      gsap.set([lead, actions].filter(Boolean), { autoAlpha: 0, y: 22 });
       gsap.set(wordmark, { autoAlpha: 0 });
       if (wordParts.length) {
         gsap.set(wordParts, { autoAlpha: 0 });
       }
 
       var tl = gsap.timeline({ defaults: { ease: 'power2.out' } });
-      if (figure) tl.to(figure, { autoAlpha: 1, y: 0, duration: 0.9 });
-      if (lead) tl.to(lead, { autoAlpha: 1, y: 0, duration: 0.65 }, '-=0.4');
-      if (wordmark) tl.to(wordmark, { autoAlpha: 1, duration: 0.2 }, '-=0.2');
+      if (lead) tl.to(lead, { autoAlpha: 1, y: 0, duration: 0.6 });
+      if (wordmark) tl.to(wordmark, { autoAlpha: 1, duration: 0.2 }, '-=0.25');
       if (given) tl.to(given, { autoAlpha: 1, duration: 0.55 }, '-=0.05');
       if (family) tl.to(family, { autoAlpha: 1, duration: 0.55 }, '-=0.28');
-      if (actions) tl.to(actions, { autoAlpha: 1, y: 0, duration: 0.55 }, '-=0.2');
+      if (actions) tl.to(actions, { autoAlpha: 1, y: 0, duration: 0.5 }, '-=0.2');
 
       return function () {
         tl.kill();

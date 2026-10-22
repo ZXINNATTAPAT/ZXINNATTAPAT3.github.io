@@ -113,7 +113,7 @@
 
   <!-- Critical: font utilities + main layout; below-fold sheets deferred -->
   <link rel="stylesheet" href="./stylesheets/fontsex.css" />
-  <link rel="stylesheet" href="./stylesheets/index.css?v=25" />
+  <link rel="stylesheet" href="./stylesheets/index.css?v=33" />
   <!-- Non-critical CSS deferred -->
   <link rel="stylesheet" href="./stylesheets/cardblock2.css" media="print" onload="this.media='all'" />
   <noscript><link rel="stylesheet" href="./stylesheets/cardblock2.css" /></noscript>
@@ -206,7 +206,10 @@
     }
 
     html[lang="th"] .nav-link-ux,
-    html[lang="th"] .mobile-nav-link {
+    html[lang="th"] .nav-dropdown-link,
+    html[lang="th"] .mobile-nav-link,
+    html[lang="th"] .nav-lang-trigger,
+    html[lang="th"] .mobile-lang-options button {
       font-family: "Anuphan", "Noto Sans Thai", system-ui, sans-serif !important;
       font-size: 0.95rem;
       font-weight: 600;
@@ -303,7 +306,10 @@
     }
 
     html[lang="ja"] .nav-link-ux,
-    html[lang="ja"] .mobile-nav-link {
+    html[lang="ja"] .nav-dropdown-link,
+    html[lang="ja"] .mobile-nav-link,
+    html[lang="ja"] .nav-lang-trigger,
+    html[lang="ja"] .mobile-lang-options button {
       font-family: "Noto Sans JP", system-ui, sans-serif !important;
       font-weight: 600;
       text-transform: none !important;
@@ -375,7 +381,10 @@
     }
 
     html[lang="zh"] .nav-link-ux,
-    html[lang="zh"] .mobile-nav-link {
+    html[lang="zh"] .nav-dropdown-link,
+    html[lang="zh"] .mobile-nav-link,
+    html[lang="zh"] .nav-lang-trigger,
+    html[lang="zh"] .mobile-lang-options button {
       font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif !important;
       font-weight: 600;
       text-transform: none !important;
@@ -447,7 +456,10 @@
     }
 
     html[lang="ko"] .nav-link-ux,
-    html[lang="ko"] .mobile-nav-link {
+    html[lang="ko"] .nav-dropdown-link,
+    html[lang="ko"] .mobile-nav-link,
+    html[lang="ko"] .nav-lang-trigger,
+    html[lang="ko"] .mobile-lang-options button {
       font-family: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif !important;
       font-weight: 600;
       text-transform: none !important;
@@ -542,7 +554,8 @@
   <script src="experience-gsap.js?v=4" defer></script>
   <script src="uiux-gsap.js?v=9" defer></script>
   <script src="projects-gsap.js?v=2" defer></script>
-  <script src="hero-gsap.js?v=7" defer></script>
+  <script src="hero-gsap.js?v=8" defer></script>
+  <script src="profile-cards.js?v=2" defer></script>
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
@@ -688,6 +701,7 @@
       const navBar = document.querySelector('nav.sticky-top');
       const navLinks = document.querySelectorAll('.nav-link-ux');
 
+      const profileLink = document.querySelector('.nav-link-ux[href="#profile"]');
       const navTargets = Array.from(navLinks)
         .map(link => {
           const href = link.getAttribute('href');
@@ -697,6 +711,11 @@
           return { link, target };
         })
         .filter(Boolean);
+
+      ['experience', 'portfolio', 'certificates'].forEach(id => {
+        const target = document.getElementById(id);
+        if (target && profileLink) navTargets.push({ link: profileLink, target });
+      });
 
       const updateProgress = () => {
         if (!progressBar) return;
@@ -1100,7 +1119,7 @@
       
       // Make closeMobileMenu available globally for onclick handlers
       window.closeMobileMenu = closeMobileMenu;
-      
+
       // Update active nav link on scroll
       function updateActiveNavLink() {
         const sections = document.querySelectorAll('section[id], header[id]');
@@ -1115,10 +1134,12 @@
           }
         });
         
+        const currentNav = current;
+
         navLinks.forEach(function(link) {
           link.classList.remove('active');
-          if (link.getAttribute('href') === '#' + current || 
-              (current === 'home' && link.getAttribute('href') === '#home')) {
+          if (link.getAttribute('href') === '#' + currentNav ||
+              (currentNav === 'home' && link.getAttribute('href') === '#home')) {
             link.classList.add('active');
           }
         });

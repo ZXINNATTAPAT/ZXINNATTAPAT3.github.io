@@ -205,15 +205,14 @@
       <div class="primary-nav-links d-none d-lg-flex">
         <a href="#home" class="nav-link-ux text-decoration-none" data-i18n="nav.home">Home</a>
         <a href="#profile" class="nav-link-ux text-decoration-none" data-i18n="nav.profile">Profile</a>
-        <a href="#experience" class="nav-link-ux text-decoration-none" data-i18n="nav.experience">Experience</a>
         <a href="#portfolio" class="nav-link-ux text-decoration-none" data-i18n="nav.portfolio">Portfolio</a>
-        <a href="#certificates" class="nav-link-ux text-decoration-none d-none d-md-inline-flex" data-i18n="nav.certificates">Certificates</a>
+        <a href="#experience" class="nav-link-ux text-decoration-none" data-i18n="nav.experience">Experience</a>
+        <a href="#certificates" class="nav-link-ux text-decoration-none" data-i18n="nav.certificates">Certificates</a>
         <a href="blog.html" class="nav-link-ux text-decoration-none" data-i18n="nav.blog">Blog</a>
       </div>
       <div class="d-flex align-items-center gap-2">
-        <div class="nav-language-control d-none d-md-inline-flex">
-          <label for="langSelect" class="visually-hidden">Select language</label>
-          <select id="langSelect" class="nav-lang-select" aria-label="Select language">
+        <div class="nav-lang d-none d-md-inline-flex" data-lang-menu>
+          <select id="langSelect" class="nav-lang-native" aria-hidden="true" tabindex="-1">
             <option value="en">EN</option>
             <option value="th">TH</option>
             <option value="ja">JP</option>
@@ -221,11 +220,20 @@
             <option value="de">DE</option>
             <option value="ko">KO</option>
           </select>
+          <button type="button" class="nav-lang-trigger" data-lang-trigger aria-haspopup="listbox" aria-expanded="false" aria-controls="langMenu" aria-label="Select language">
+            <span data-lang-current>EN</span>
+            <i class="fas fa-chevron-down nav-caret" aria-hidden="true"></i>
+          </button>
+          <div class="nav-lang-menu" id="langMenu" data-lang-panel role="listbox" aria-label="Select language" hidden>
+            <button type="button" class="nav-lang-option" role="option" data-lang="en"><span>EN</span><small>English</small></button>
+            <button type="button" class="nav-lang-option" role="option" data-lang="th"><span>TH</span><small>ไทย</small></button>
+            <button type="button" class="nav-lang-option" role="option" data-lang="ja"><span>JP</span><small>日本語</small></button>
+            <button type="button" class="nav-lang-option" role="option" data-lang="zh"><span>CN</span><small>中文</small></button>
+            <button type="button" class="nav-lang-option" role="option" data-lang="de"><span>DE</span><small>Deutsch</small></button>
+            <button type="button" class="nav-lang-option" role="option" data-lang="ko"><span>KO</span><small>한국어</small></button>
+          </div>
         </div>
-        <a href="#contact" class="nav-link-ux nav-cta text-decoration-none d-none d-md-inline-flex">
-          <span data-i18n="nav.contact">Contact</span>
-          <i class="fas fa-arrow-right"></i>
-        </a>
+        <a href="#contact" class="nav-link-ux text-decoration-none d-none d-md-inline-flex" data-i18n="nav.contact">Contact</a>
         <!-- Mobile Menu Toggle -->
         <button class="mobile-menu-toggle d-lg-none" id="mobileMenuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
           <span class="hamburger-line"></span>
@@ -239,13 +247,13 @@
       <div class="mobile-menu-content">
         <a href="#home" class="mobile-nav-link" onclick="closeMobileMenu()" data-i18n="nav.home">Home</a>
         <a href="#profile" class="mobile-nav-link" onclick="closeMobileMenu()" data-i18n="nav.profile">Profile</a>
-        <a href="#experience" class="mobile-nav-link" onclick="closeMobileMenu()" data-i18n="nav.experience">Experience</a>
         <a href="#portfolio" class="mobile-nav-link" onclick="closeMobileMenu()" data-i18n="nav.portfolio">Portfolio</a>
+        <a href="#experience" class="mobile-nav-link" onclick="closeMobileMenu()" data-i18n="nav.experience">Experience</a>
         <a href="#certificates" class="mobile-nav-link" onclick="closeMobileMenu()" data-i18n="nav.certificates">Certificates</a>
         <a href="blog.html" class="mobile-nav-link" onclick="closeMobileMenu()" data-i18n="nav.blog">Blog</a>
-        <div class="mobile-lang-control">
+        <div class="mobile-lang-control" data-lang-menu>
           <span class="mobile-lang-label" data-i18n="nav.language">Language</span>
-          <select id="mobileLangSelect" class="mobile-lang-select" aria-label="Select language">
+          <select id="mobileLangSelect" class="nav-lang-native" aria-hidden="true" tabindex="-1">
             <option value="en">EN</option>
             <option value="th">TH</option>
             <option value="ja">JP</option>
@@ -253,15 +261,91 @@
             <option value="de">DE</option>
             <option value="ko">KO</option>
           </select>
+          <div class="mobile-lang-options" role="listbox" aria-label="Select language">
+            <button type="button" data-lang="en">EN</button>
+            <button type="button" data-lang="th">TH</button>
+            <button type="button" data-lang="ja">JP</button>
+            <button type="button" data-lang="zh">CN</button>
+            <button type="button" data-lang="de">DE</button>
+            <button type="button" data-lang="ko">KO</button>
+          </div>
         </div>
-        <a href="#contact" class="mobile-nav-link mobile-nav-cta" onclick="closeMobileMenu()">
-          <span data-i18n="nav.contact">Contact</span>
-          <i class="fas fa-arrow-right"></i>
-        </a>
+        <a href="#contact" class="mobile-nav-link" onclick="closeMobileMenu()" data-i18n="nav.contact">Contact</a>
       </div>
     </div>
   </nav>
   <div class="scroll-progress" role="presentation" aria-hidden="true"></div>
+  <script>
+    (function () {
+      function closeLangMenu(menu) {
+        var trigger = menu.querySelector('[data-lang-trigger]');
+        var panel = menu.querySelector('[data-lang-panel]');
+        menu.classList.remove('is-open');
+        if (trigger) trigger.setAttribute('aria-expanded', 'false');
+        if (panel) panel.hidden = true;
+      }
+
+      function renderLangMenus() {
+        document.querySelectorAll('[data-lang-menu]').forEach(function (menu) {
+          var select = menu.querySelector('select');
+          if (!select) return;
+          var current = menu.querySelector('[data-lang-current]');
+          var selected = select.options[select.selectedIndex];
+          if (current && selected) current.textContent = selected.textContent;
+          menu.querySelectorAll('[data-lang]').forEach(function (button) {
+            var active = button.getAttribute('data-lang') === select.value;
+            button.classList.toggle('is-active', active);
+            button.setAttribute('aria-selected', active ? 'true' : 'false');
+          });
+        });
+      }
+
+      document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('[data-lang-menu]').forEach(function (menu) {
+          var select = menu.querySelector('select');
+          var trigger = menu.querySelector('[data-lang-trigger]');
+          var panel = menu.querySelector('[data-lang-panel]');
+          if (!select) return;
+
+          if (trigger && panel) {
+            trigger.addEventListener('click', function (event) {
+              event.stopPropagation();
+              var open = !menu.classList.contains('is-open');
+              document.querySelectorAll('[data-lang-menu].is-open').forEach(closeLangMenu);
+              if (open) {
+                menu.classList.add('is-open');
+                trigger.setAttribute('aria-expanded', 'true');
+                panel.hidden = false;
+              }
+            });
+          }
+
+          menu.querySelectorAll('[data-lang]').forEach(function (button) {
+            button.addEventListener('click', function () {
+              select.value = button.getAttribute('data-lang');
+              select.dispatchEvent(new Event('change', { bubbles: true }));
+              closeLangMenu(menu);
+            });
+          });
+        });
+
+        document.addEventListener('click', function (event) {
+          document.querySelectorAll('[data-lang-menu].is-open').forEach(function (menu) {
+            if (!menu.contains(event.target)) closeLangMenu(menu);
+          });
+        });
+
+        document.addEventListener('keydown', function (event) {
+          if (event.key !== 'Escape') return;
+          document.querySelectorAll('[data-lang-menu].is-open').forEach(closeLangMenu);
+        });
+
+        renderLangMenus();
+      });
+
+      window.addEventListener('i18n:updated', renderLangMenus);
+    })();
+  </script>
 
   <main class="other-projects-main">
     <div class="other-projects-shell">

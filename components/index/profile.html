@@ -1,25 +1,98 @@
 <!-- About Me -->
-  <section id="profile" class="container-fluid mt-5" style="background-color: #f8f8ff; padding-top: 4rem; padding-bottom: 3rem;">
+  <section id="profile" class="container-fluid" style="background-color: #f8f8ff; padding-top: 4.5rem; padding-bottom: 3rem;">
     <div class="container" data-aos="fade-up" data-aos-delay="100">
+      <h2 class="dm-serif-display-regular profile-section-title" data-i18n="profile.title">PROFILE</h2>
       <div class="row gy-5 align-items-center profile-hero-row">
-        <div class="col-12 col-md-5 text-center text-md-start profile-title-column" data-aos="fade-right">
-          <div class="profile-title-stack">
-            <h1 class="playfair-400 sh-x responsive-profile" data-i18n="profile.title">PROFILE</h1>
-            <h1 class="playfair-400 sh-x responsive-profile" style="
-                  color: transparent;
-                  -webkit-text-stroke: 1.5px #2c2c2c;
-                  text-transform: uppercase;
-                " data-i18n="profile.title">
-              PROFILE
-            </h1>
-            <h1 class="playfair-400 sh-x responsive-profile" data-i18n="profile.title">PROFILE</h1>
-            <h1 class="playfair-400 sh-x responsive-profile" style="
-                  color: transparent;
-                  -webkit-text-stroke: 1.5px #2c2c2c;
-                  text-transform: uppercase;
-                " data-i18n="profile.title">
-              PROFILE
-            </h1>
+        <div class="col-12 col-md-5 profile-portrait-column" data-aos="fade-right">
+          <div class="profile-card-deck" data-profile-deck>
+            <span id="profile-deck-label" class="visually-hidden" data-i18n="profile.photosLabel">Profile photos</span>
+            <div
+              class="profile-card-stage"
+            >
+              <div
+                class="profile-card-stack"
+                tabindex="0"
+                role="group"
+                aria-labelledby="profile-deck-label"
+              >
+                <figure class="profile-card is-top" data-card data-index="0">
+                  <picture>
+                    <source srcset="Photo/optimized/profile-golden-gate.webp" type="image/webp" />
+                    <img
+                      src="Photo/optimized/profile-golden-gate.jpg"
+                      alt="Nattapat at the Golden Gate Bridge"
+                      width="1575"
+                      height="2800"
+                      decoding="async"
+                      loading="lazy"
+                      draggable="false"
+                      style="object-position: center 62%;"
+                    />
+                  </picture>
+                </figure>
+                <figure class="profile-card" data-card data-index="1">
+                  <picture>
+                    <source srcset="Photo/optimized/portrait-nattapat.webp" type="image/webp" />
+                    <img
+                      src="Photo/optimized/portrait-nattapat.jpg"
+                      alt="Nattapat Phungphugdee"
+                      width="1920"
+                      height="1440"
+                      decoding="async"
+                      loading="lazy"
+                      draggable="false"
+                      style="object-position: center 42%;"
+                    />
+                  </picture>
+                </figure>
+                <figure class="profile-card" data-card data-index="2">
+                  <picture>
+                    <source srcset="Photo/optimized/profile-portrait.webp" type="image/webp" />
+                    <img
+                      src="Photo/optimized/profile-portrait.jpg"
+                      alt="Nattapat portrait"
+                      width="1440"
+                      height="1920"
+                      decoding="async"
+                      loading="lazy"
+                      draggable="false"
+                      style="object-position: center 40%;"
+                    />
+                  </picture>
+                </figure>
+                <figure class="profile-card" data-card data-index="3">
+                  <picture>
+                    <source srcset="Photo/optimized/profile-stone-outlook.webp" type="image/webp" />
+                    <img
+                      src="Photo/optimized/profile-stone-outlook.jpg"
+                      alt="Nattapat sitting in a stone overlook"
+                      width="768"
+                      height="1024"
+                      decoding="async"
+                      loading="lazy"
+                      draggable="false"
+                      style="object-position: center 62%;"
+                    />
+                  </picture>
+                </figure>
+              </div>
+            </div>
+            <div class="profile-card-bar">
+              <button type="button" class="profile-card-btn" data-deck-prev>
+                <i class="fas fa-chevron-left" aria-hidden="true"></i>
+                <span class="visually-hidden" data-i18n="profile.prevPhoto">Previous photo</span>
+              </button>
+              <div class="profile-card-dots" data-deck-dots></div>
+              <button type="button" class="profile-card-btn" data-deck-next>
+                <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                <span class="visually-hidden" data-i18n="profile.nextPhoto">Next photo</span>
+              </button>
+            </div>
+            <p class="profile-card-hint playfair-400">
+              <span data-deck-count>1 / 4</span>
+              <span data-i18n="profile.shuffleHint">Drag to shuffle</span>
+            </p>
+            <p class="visually-hidden" aria-live="polite" data-deck-status>1 / 4</p>
           </div>
         </div>
         <div class="col-12 col-md-7" data-aos="fade-left" data-aos-delay="80">
