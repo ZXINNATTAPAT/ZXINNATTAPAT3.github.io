@@ -5510,6 +5510,25 @@ textarea.form-control-minimal:focus {
   color: rgba(44, 44, 50, 0.66);
 }
 
+.experience-min-kicker,
+.experience-min-overlap {
+  margin: 0.4rem 0 0;
+  font-family: system-ui, "Anuphan", sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+  color: rgba(74, 74, 86, 0.62);
+}
+
+.experience-min-concurrent {
+  margin: 0.28rem 0 0;
+  max-width: 650px;
+  font-family: system-ui, "Anuphan", sans-serif;
+  font-size: 0.82rem;
+  font-weight: 650;
+  line-height: 1.5;
+  color: #1c1c1c;
+}
+
 .experience-min-description {
   max-width: 650px;
   margin: 0.85rem 0 0;
@@ -5517,6 +5536,10 @@ textarea.form-control-minimal:focus {
   font-size: 0.88rem;
   line-height: 1.7;
   color: rgba(74, 74, 86, 0.7);
+}
+
+.experience-min-description + .experience-min-description {
+  margin-top: 0.45rem;
 }
 
 .experience-min-highlight {

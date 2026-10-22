@@ -165,7 +165,16 @@ const translations = {
       titleLead: "My",
       titleRest: "Experience",
       description: "My professional journey from internship to full-time developer, building real-world solutions and growing with each opportunity.",
-      hint: "Click a widget to view details"
+      hint: "Click a widget to view details",
+      alive: {
+        remoteNote: "(Remote, May – Sep 2026)"
+      },
+      koa: {
+        program: "Work and Travel, USA",
+        concurrent: "Concurrent with remote role at Business ALive",
+        body: "Joined the U.S. Work and Travel program while continuing my Software Developer role at Business ALive remotely, balancing full-time hospitality shifts with client deliverables across time zones.",
+        skills: "Strengthened English communication, time management and adaptability in a fast-paced, multicultural team."
+      }
     },
     extracurricular: {
       title: "EXTRACURRICULAR & COMMUNITY"
@@ -377,7 +386,16 @@ const translations = {
       titleLead: "ประสบการณ์",
       titleRest: "การทำงาน",
       description: "เส้นทางการทำงานของผมตั้งแต่ฝึกงานจนถึงนักพัฒนาเต็มเวลา พร้อมการเติบโตจากงานจริงในแต่ละโอกาส",
-      hint: "กดที่วิดเจ็ตเพื่อดูรายละเอียด"
+      hint: "กดที่วิดเจ็ตเพื่อดูรายละเอียด",
+      alive: {
+        remoteNote: "(Remote, พ.ค. – ก.ย. 2026)"
+      },
+      koa: {
+        program: "Work and Travel, สหรัฐฯ",
+        concurrent: "ทำควบคู่กับงาน remote ที่ Business ALive",
+        body: "เข้าร่วมโครงการ Work and Travel ที่สหรัฐฯ ควบคู่กับทำงาน Software Developer ให้ Business ALive แบบ remote บริหารเวลาระหว่างกะงานบริการเต็มเวลากับการส่งงานให้ลูกค้าข้ามเขตเวลา",
+        skills: "พัฒนาทักษะการสื่อสารภาษาอังกฤษ การบริหารเวลา และการปรับตัว ในทีมที่ทำงานเร็วและมีคนจากหลายวัฒนธรรม"
+      }
     },
     extracurricular: {
       title: "กิจกรรมนอกหลักสูตรและชุมชน"
@@ -556,7 +574,16 @@ const translations = {
       titleLead: "私の",
       titleRest: "経験",
       description: "インターンからフルタイム開発者まで、実務を通じて成長してきたプロフェッショナルの歩みです。",
-      hint: "ウィジェットをクリックして詳細を見る"
+      hint: "ウィジェットをクリックして詳細を見る",
+      alive: {
+        remoteNote: "（リモート、2026年5月–9月）"
+      },
+      koa: {
+        program: "Work and Travel（米国）",
+        concurrent: "Business ALive のリモート業務と同時期",
+        body: "米国の Work and Travel プログラムに参加しながら、Business ALive の Software Developer をリモートで続け、フルタイムの接客シフトとタイムゾーンをまたぐ顧客納品を両立しました。",
+        skills: "多文化でテンポの速いチームの中で、英語でのコミュニケーション、時間管理、適応力を高めました。"
+      }
     },
     extracurricular: {
       title: "課外活動とコミュニティ"
@@ -735,7 +762,16 @@ const translations = {
       titleLead: "我的",
       titleRest: "经历",
       description: "从实习到全职开发者的成长路径，在每一次真实项目中持续进步。",
-      hint: "点击卡片查看详情"
+      hint: "点击卡片查看详情",
+      alive: {
+        remoteNote: "（远程，2026年5月–9月）"
+      },
+      koa: {
+        program: "Work and Travel（美国）",
+        concurrent: "与 Business ALive 的远程工作同期进行",
+        body: "参加美国 Work and Travel 项目的同时，继续以远程方式担任 Business ALive 的 Software Developer，在全职服务业班次与跨时区的客户交付之间安排时间。",
+        skills: "在节奏快、成员来自多种文化的团队中，加强了英语沟通、时间管理与适应能力。"
+      }
     },
     extracurricular: {
       title: "课外活动与社区"
@@ -914,7 +950,16 @@ const translations = {
       titleLead: "Meine",
       titleRest: "Erfahrung",
       description: "Mein beruflicher Weg vom Praktikum bis zur Vollzeit-Entwicklung, mit Wachstum durch reale Projekte.",
-      hint: "Klicke auf ein Widget, um Details zu sehen"
+      hint: "Klicke auf ein Widget, um Details zu sehen",
+      alive: {
+        remoteNote: "(Remote, Mai – Sep 2026)"
+      },
+      koa: {
+        program: "Work and Travel, USA",
+        concurrent: "Parallel zur Remote-Rolle bei Business ALive",
+        body: "Nahm am U.S. Work and Travel-Programm teil und führte parallel die Software-Developer-Rolle bei Business ALive remote weiter, mit Vollzeit-Schichten im Gastgewerbe und Kundenlieferungen über Zeitzonen hinweg.",
+        skills: "Englischkommunikation, Zeitmanagement und Anpassungsfähigkeit in einem schnellen, multikulturellen Team gestärkt."
+      }
     },
     extracurricular: {
       title: "AUSSERSCHULISCHE AKTIVITÄTEN & COMMUNITY"
@@ -1093,7 +1138,16 @@ const translations = {
       titleLead: "나의",
       titleRest: "경력",
       description: "인턴에서 풀타임 개발자로 성장해 온 과정과 실제 프로젝트를 통한 발전 기록입니다.",
-      hint: "위젯을 눌러 상세 정보를 확인하세요"
+      hint: "위젯을 눌러 상세 정보를 확인하세요",
+      alive: {
+        remoteNote: "(원격, 2026년 5월–9월)"
+      },
+      koa: {
+        program: "Work and Travel, 미국",
+        concurrent: "Business ALive 원격 업무와 병행",
+        body: "미국 Work and Travel 프로그램에 참여하면서 Business ALive의 Software Developer 역할을 원격으로 이어 갔고, 풀타임 서비스 근무와 시차를 넘는 고객 납품을 함께 맞췄습니다.",
+        skills: "빠르고 다문화적인 팀에서 영어 커뮤니케이션, 시간 관리, 적응력을 키웠습니다."
+      }
     },
     extracurricular: {
       title: "비교과 활동 및 커뮤니티"
