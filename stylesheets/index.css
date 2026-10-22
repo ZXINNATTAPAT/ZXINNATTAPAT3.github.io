@@ -7266,18 +7266,6 @@ section.container-fluid {
   transition: color 0.2s ease;
 }
 
-.hero-artist-arrow {
-  display: inline;
-  width: auto;
-  height: auto;
-  border-radius: 0;
-  background: transparent;
-  color: inherit;
-  font-size: 0.9em;
-  line-height: 1;
-  transition: transform 0.2s ease;
-}
-
 .hero-artist-link:hover,
 .hero-artist-link:focus-visible {
   border-color: transparent;
@@ -7285,11 +7273,6 @@ section.container-fluid {
   color: #a30000;
   transform: none;
   box-shadow: none;
-}
-
-.hero-artist-link:hover .hero-artist-arrow,
-.hero-artist-link:focus-visible .hero-artist-arrow {
-  transform: translate(2px, -2px);
 }
 
 h1.hero-artist-wordmark {

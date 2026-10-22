@@ -140,7 +140,7 @@
     });
     document.querySelector('nav').setAttribute('aria-label', translations[lang].intro);
     selector.setAttribute('aria-label', translations[lang].language);
-    const home = { en: '/', th: '/th.html', ja: '/ja.html', zh: '/zh.html', de: '/', ko: '/ko.html' }[lang];
+    const home = { en: '/', th: '/th.html', ja: '/ja.html', zh: '/zh.html', de: '/de.html', ko: '/ko.html' }[lang];
     document.querySelectorAll('a[href="/"], a[data-home-link]').forEach(link => {
       link.dataset.homeLink = 'true';
       link.href = home;

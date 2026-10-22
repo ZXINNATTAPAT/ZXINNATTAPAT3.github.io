@@ -117,6 +117,19 @@ const STATIC_PAGES = [
     }
   },
   {
+    template: path.join(TEMPLATE_DIR, 'index.template.html'),
+    output: path.join(__dirname, 'de.html'),
+    label: 'de.html',
+    replacements: {
+      '{{htmlLang}}': 'de',
+      '{{dataI18nLangAttr}}': ' data-i18n-lang="de"',
+      '{{pageUrl}}': `${BASE_URL}/de.html`,
+      '{{ogLocale}}': 'de_DE',
+      '{{canonicalUrl}}': `${BASE_URL}/de.html`,
+      '{{localeFonts}}': localeFontLinks('de')
+    }
+  },
+  {
     template: path.join(TEMPLATE_DIR, 'other-projects.template.html'),
     output: path.join(__dirname, 'other-projects.html'),
     label: 'other-projects.html',

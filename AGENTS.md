@@ -13,7 +13,7 @@ There is exactly one product with two parts: a **Node build step** and a **stati
 server** (the server is not defined in `package.json`; pick any).
 
 - Build (one-shot): `npm run build` — compiles `templates/` + `components/` into the
-  locale pages (`index.html`, `th.html`, `ja.html`, `zh.html`, `ko.html`), renders
+  locale pages (`index.html`, `th.html`, `ja.html`, `zh.html`, `de.html`, `ko.html`), renders
   `articles/*.md` and `projects/*.md` to HTML, regenerates `blog.html`, and updates
   `sitemap.xml`. See other scripts in `package.json` (`build:index`, `watch`, `dev`,
   `optimize-images`, `build:all`).

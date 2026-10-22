@@ -1158,6 +1158,7 @@ const seoLanguagePages = {
   th: 'th.html',
   ja: 'ja.html',
   zh: 'zh.html',
+  de: 'de.html',
   ko: 'ko.html'
 };
 
