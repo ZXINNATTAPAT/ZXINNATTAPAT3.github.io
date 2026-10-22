@@ -908,7 +908,7 @@
                   <h4 class="playfair-400 mb-2" style="font-size: 13px; color: #666;" data-i18n="education.kmutnb.achievements">Achievements</h4>
                   <div class="mb-3">
                     <strong class="playfair-400" style="font-size: 13px;" data-i18n="education.kmutnb.scienceDay">Science Exhibition Day 2025</strong><br/>
-                    <small class="playfair-400" style="color: #888; font-size: 12px;" data-i18n="education.kmutnb.goldAward">🥇 Gold Award Winner - Asset Management System for ECT Central Office</small>
+                    <small class="edu-award playfair-400" data-i18n="education.kmutnb.goldAward">🥇 Gold Award Winner - Asset Management System for ECT Central Office</small>
                   </div>
                   <h4 class="playfair-400 mb-2" style="font-size: 13px; color: #666;" data-i18n="education.kmutnb.coursework">Key Coursework</h4>
                   <div class="d-flex flex-wrap gap-2">
@@ -927,28 +927,34 @@
                   </div>
                 </div>
               </div>
-              <!-- Wat Suthiwararam -->
-              <div class="edu-item mb-4">
-                <div class="edu-item-head">
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/0/03/Wat_Suthiwararam_School_Crest.png"
-                    alt="Wat Suthiwararam Logo" class="edu-logo img-fluid" width="48" height="48" loading="lazy" decoding="async" />
-                  <div class="flex-grow-1">
-                    <strong class="playfair-400">Wat Suthiwararam School</strong><br />
-                    <small class="edu-year playfair-400">2015 - 2021</small>
+              <details class="edu-earlier">
+                <summary class="edu-earlier-summary">
+                  <span class="edu-earlier-toggle" data-i18n="education.earlier.toggle">See more</span>
+                  <span class="edu-earlier-line">Wat Suthiwararam · Sarasas Pittaya</span>
+                </summary>
+                <div class="edu-earlier-body">
+                  <div class="edu-item mb-3">
+                    <div class="edu-item-head">
+                      <img src="https://upload.wikimedia.org/wikipedia/commons/0/03/Wat_Suthiwararam_School_Crest.png"
+                        alt="Wat Suthiwararam Logo" class="edu-logo img-fluid" width="48" height="48" loading="lazy" decoding="async" />
+                      <div class="flex-grow-1">
+                        <strong class="playfair-400">Wat Suthiwararam School</strong><br />
+                        <small class="edu-year playfair-400">2015 - 2021</small>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="edu-item">
+                    <div class="edu-item-head">
+                      <img src="https://www.ssps.ac.th/wp-content/uploads/2024/08/%E0%B8%94%E0%B8%B5%E0%B9%84%E0%B8%8B%E0%B8%99%E0%B9%8C%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%A2%E0%B8%B1%E0%B8%87%E0%B9%84%E0%B8%A1%E0%B9%88%E0%B9%84%E0%B8%94%E0%B9%89%E0%B8%95%E0%B8%B1%E0%B9%89%E0%B8%87%E0%B8%8A%E0%B8%B7%E0%B9%88%E0%B8%AD-1024x724.png"
+                        alt="Sarasas Pittaya Logo" class="edu-logo img-fluid" width="48" height="48" loading="lazy" decoding="async" style="border-radius: 50%; object-fit: cover;" />
+                      <div class="flex-grow-1">
+                        <strong class="playfair-400">Sarasas Pittaya School</strong><br />
+                        <small class="edu-year playfair-400" data-i18n="education.sarasas.year">2009 - 2015 (Elementary)</small>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <!-- Sarasas Pittaya School -->
-              <div class="edu-item mb-2">
-                <div class="edu-item-head">
-                  <img src="https://www.ssps.ac.th/wp-content/uploads/2024/08/%E0%B8%94%E0%B8%B5%E0%B9%84%E0%B8%8B%E0%B8%99%E0%B9%8C%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%A2%E0%B8%B1%E0%B8%87%E0%B9%84%E0%B8%A1%E0%B9%88%E0%B9%84%E0%B8%94%E0%B9%89%E0%B8%95%E0%B8%B1%E0%B9%89%E0%B8%87%E0%B8%8A%E0%B8%B7%E0%B9%88%E0%B8%AD-1024x724.png"
-                    alt="Sarasas Pittaya Logo" class="edu-logo img-fluid" width="48" height="48" loading="lazy" decoding="async" style="border-radius: 50%; object-fit: cover;" />
-                  <div class="flex-grow-1">
-                    <strong class="playfair-400">Sarasas Pittaya School</strong><br />
-                    <small class="edu-year playfair-400" data-i18n="education.sarasas.year">2009 - 2015 (Elementary)</small>
-                  </div>
-                </div>
-              </div>
+              </details>
             </div>
           </div>
         </div>
@@ -1055,9 +1061,10 @@
           <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gitlab/gitlab-original.svg" alt="GitLab" class="app-icon-img" width="48" height="48" loading="lazy"></div>
           <div class="app-name">GitLab</div>
         </div>
-        <div class="app-item" data-tooltip="Solidity">
+        <div class="app-item" data-tooltip="Used in the votemai project" data-i18n-tooltip="skills.solidityNote">
           <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/solidity/solidity-original.svg" alt="Solidity" class="app-icon-img" width="48" height="48" loading="lazy"></div>
           <div class="app-name">Solidity</div>
+          <span class="app-skill-note" data-i18n="skills.solidityNote">Used in the votemai project</span>
         </div>
         <div class="app-item" data-tooltip="MinIO">
           <div class="app-icon"><img src="https://cdn.simpleicons.org/minio/C72E49" alt="MinIO" class="app-icon-img" width="48" height="48" loading="lazy"></div>
@@ -1236,7 +1243,7 @@
             <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/solidity/solidity-original.svg" alt="Solidity" width="48" height="48" loading="lazy" decoding="async"></div>
             <div class="skill-card-info">
               <div class="skill-card-name">Solidity</div>
-              <div class="skill-card-level">Intermediate</div>
+              <div class="skill-card-level" data-i18n="skills.solidityNote">Used in the votemai project</div>
             </div>
           </div>
           <!-- MinIO -->
@@ -1490,12 +1497,12 @@
           </div>
         </article>
 
-        <article class="cloud-platform-card cloud-platform-hostiger" aria-label="Hostiger">
+        <article class="cloud-platform-card cloud-platform-hostinger" aria-label="Hostinger">
           <div class="cloud-platform-brand">
             <span class="cloud-platform-mark">
-              <img src="https://www.google.com/s2/favicons?sz=128&domain=hostiger.com" alt="Hostiger" width="48" height="48" loading="lazy" decoding="async" />
+              <img src="https://www.google.com/s2/favicons?sz=128&domain=hostinger.com" alt="Hostinger" width="48" height="48" loading="lazy" decoding="async" />
             </span>
-            <span class="cloud-platform-name">Hostiger</span>
+            <span class="cloud-platform-name">Hostinger</span>
           </div>
         </article>
 
@@ -1587,9 +1594,9 @@
             data-description="Solidity + IPFS on MERN. A decentralized voting platform ensuring transparency, immutability, and security."
             data-tech="React, Node.js, MongoDB, Solidity, IPFS, Blockchain"
             data-image="Photo/optimized/Mockup/VOTEMAI.png"
-            data-demo-url="https://votemai-kis6zaqh7-zxinnattapats-projects.vercel.app/"
           >
             <div class="ios-project-image bg-votemai">
+              <span class="project-status-badge" data-i18n="visual.updating">Updating</span>
               <img src="Photo/optimized/Mockup/VOTEMAI.png" alt="VOTEMAI" width="800" height="600" loading="lazy">
             </div>
             <div class="ios-project-overlay">
@@ -1908,41 +1915,11 @@
         </svg>
         <span>LinkedIn</span>
       </a>
-      <a href="https://www.facebook.com/aomzinboy/" class="social-button facebook" aria-label="Facebook Profile" target="_blank" rel="noopener noreferrer">
-        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 310 310" xml:space="preserve">
-          <g id="XMLID_834_">
-            <path id="XMLID_835_" d="M81.703,165.106h33.981V305c0,2.762,2.238,5,5,5h57.616c2.762,0,5-2.238,5-5V165.765h39.064 c2.54,0,4.677-1.906,4.967-4.429l5.933-51.502c0.163-1.417-0.286-2.836-1.234-3.899c-0.949-1.064-2.307-1.673-3.732-1.673h-44.996 V71.978c0-9.732,5.24-14.667,15.576-14.667c1.473,0,29.42,0,29.42,0c2.762,0,5-2.239,5-5V5.037c0-2.762-2.238-5-5-5h-40.545 C187.467,0.023,186.832,0,185.896,0c-7.035,0-31.488,1.381-50.804,19.151c-21.402,19.692-18.427,43.27-17.716,47.358v37.752H81.703 c-2.762,0-5,2.238-5,5v50.844C76.703,162.867,78.941,165.106,81.703,165.106z"></path>
-          </g>
-        </svg>
-        <span>Facebook</span>
-      </a>
-      <a href="https://www.instagram.com/nattazxin/" class="social-button instagram" aria-label="Instagram Profile" target="_blank" rel="noopener noreferrer">
-        <svg width="800px" height="800px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-          <g id="Page-1" stroke="none" stroke-width="1">
-            <g id="Dribbble-Light-Preview" transform="translate(-340.000000, -7439.000000)">
-              <g id="icons" transform="translate(56.000000, 160.000000)">
-                <path d="M289.869652,7279.12273 C288.241769,7279.19618 286.830805,7279.5942 285.691486,7280.72871 C284.548187,7281.86918 284.155147,7283.28558 284.081514,7284.89653 C284.035742,7285.90201 283.768077,7293.49818 284.544207,7295.49028 C285.067597,7296.83422 286.098457,7297.86749 287.454694,7298.39256 C288.087538,7298.63872 288.809936,7298.80547 289.869652,7298.85411 C298.730467,7299.25511 302.015089,7299.03674 303.400182,7295.49028 C303.645956,7294.859 303.815113,7294.1374 303.86188,7293.08031 C304.26686,7284.19677 303.796207,7282.27117 302.251908,7280.72871 C301.027016,7279.50685 299.5862,7278.67508 289.869652,7279.12273 M289.951245,7297.06748 C288.981083,7297.0238 288.454707,7296.86201 288.103459,7296.72603 C287.219865,7296.3826 286.556174,7295.72155 286.214876,7294.84312 C285.623823,7293.32944 285.819846,7286.14023 285.872583,7284.97693 C285.924325,7283.83745 286.155174,7282.79624 286.959165,7281.99226 C287.954203,7280.99968 289.239792,7280.51332 297.993144,7280.90837 C299.135448,7280.95998 300.179243,7281.19026 300.985224,7281.99226 C301.980262,7282.98483 302.473801,7284.28014 302.071806,7292.99991 C302.028024,7293.96767 301.865833,7294.49274 301.729513,7294.84312 C300.829003,7297.15085 298.757333,7297.47145 289.951245,7297.06748 M298.089663,7283.68956 C298.089663,7284.34665 298.623998,7284.88065 299.283709,7284.88065 C299.943419,7284.88065 300.47875,7284.34665 300.47875,7283.68956 C300.47875,7283.03248 299.943419,7282.49847 299.283709,7282.49847 C298.623998,7282.49847 298.089663,7283.03248 298.089663,7283.68956 M288.862673,7288.98792 C288.862673,7291.80286 291.150266,7294.08479 293.972194,7294.08479 C296.794123,7294.08479 299.081716,7291.80286 299.081716,7288.98792 C299.081716,7286.17298 296.794123,7283.89205 293.972194,7283.89205 C291.150266,7283.89205 288.862673,7286.17298 288.862673,7288.98792 M290.655732,7288.98792 C290.655732,7287.16159 292.140329,7285.67967 293.972194,7285.67967 C295.80406,7285.67967 297.288657,7287.16159 297.288657,7288.98792 C297.288657,7290.81525 295.80406,7292.29716 293.972194,7292.29716 C292.140329,7292.29716 290.655732,7290.81525 290.655732,7288.98792" id="instagram-[#167]"></path>
-              </g>
-            </g>
-          </g>
-        </svg>
-        <span>Instagram</span>
-      </a>
       <a href="https://medium.com/@bigboyzin88/about" class="social-button medium" aria-label="Medium Profile" target="_blank" rel="noopener noreferrer">
         <svg width="800px" height="800px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"></path>
         </svg>
         <span>Medium</span>
-      </a>
-      <a href="https://www.tiktok.com/@nattazxin" class="social-button tiktok" aria-label="TikTok Profile" target="_blank" rel="noopener noreferrer">
-        <img src="Photo/optimized/Icon/TikTok_Icon_Black_Circle.png" alt="TikTok" width="48" height="48" loading="lazy">
-        <span>TikTok</span>
-      </a>
-      <a href="https://www.youtube.com/@NATTAZXIN" class="social-button youtube" aria-label="YouTube Channel" target="_blank" rel="noopener noreferrer">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-          <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path>
-        </svg>
-        <span>YouTube</span>
       </a>
     </div>
   </div>
@@ -1950,8 +1927,25 @@
   <!-- Footer -->
 <footer id="footer" class="footer-modern">
   <div class="footer-minimal">
+    <nav class="footer-social" aria-label="More profiles">
+      <a href="https://www.tiktok.com/@nattazxin" aria-label="TikTok Profile" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 3c.4 2.6 1.9 4.4 4.5 4.7v3.1c-1.5 0-2.9-.5-4.1-1.3v6.7c0 3.4-2.7 6.1-6.2 6.1S2.5 19.6 2.5 16.2c0-3.3 2.6-6 5.9-6.1v3.2c-1.6.1-2.8 1.4-2.8 3 0 1.6 1.3 2.9 3 2.9s3-1.3 3-2.9V3h2.9z"/></svg>
+      </a>
+      <a href="https://www.lemon8-app.com/@u2fsdgvkx19pota3y2heweb1" aria-label="Lemon8 Profile" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.2 4.1c-.8 1.3-2 2-3.4 2.1 1.6 1 2.6 2.7 2.6 4.6 0 3-2.4 5.4-5.4 5.4S3.6 13.8 3.6 10.8c0-2.2 1.3-4.1 3.2-5 .2-1.5 1-2.7 2.2-3.5 1.1 1.2 2.6 1.6 4 1.2.6.3 1.4.5 2.2.6zM16.8 3.2c.7.2 1.3.7 1.6 1.4-.8.2-1.5 0-2.1-.5.1-.3.3-.6.5-.9z"/></svg>
+      </a>
+      <a href="https://www.facebook.com/aomzinboy/" aria-label="Facebook Profile" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 8.5V6.8c0-.7.5-1 1.2-1H17V3h-2.1C12.2 3 11 4.4 11 6.6v1.9H9v2.8h2V21h3.5v-9.7h2.3l.4-2.8h-2.7z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/nattazxin/" aria-label="Instagram Profile" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3h8a5 5 0 0 1 5 5v8a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5V8a5 5 0 0 1 5-5zm8 2H8a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3V8a3 3 0 0 0-3-3zm-4 3.2A3.8 3.8 0 1 1 8.2 12 3.8 3.8 0 0 1 12 8.2zm0 2A1.8 1.8 0 1 0 13.8 12 1.8 1.8 0 0 0 12 10.2zM17.2 6.6a1 1 0 1 1-1 1 1 1 0 0 1 1-1z"/></svg>
+      </a>
+      <a href="https://www.youtube.com/@NATTAZXIN" aria-label="YouTube Channel" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23 12.2s0-3.2-.4-4.6a3 3 0 0 0-2.1-2.1C18.9 5 12 5 12 5s-6.9 0-8.5.5a3 3 0 0 0-2.1 2.1C1 9 1 12.2 1 12.2s0 3.2.4 4.6a3 3 0 0 0 2.1 2.1C5.1 19.4 12 19.4 12 19.4s6.9 0 8.5-.5a3 3 0 0 0 2.1-2.1c.4-1.4.4-4.6.4-4.6zM9.8 15.5v-6.6l6.2 3.3z"/></svg>
+      </a>
+    </nav>
     <p class="footer-copy" data-i18n="footer.copyright">
-      © 2025 Nattapat Phungphugdee. All rights reserved.
+      © 2026 Nattapat Phungphugdee. All rights reserved.
     </p>
     <a class="footer-top" href="#home" data-i18n="footer.backToTop">Back to top</a>
   </div>

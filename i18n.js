@@ -50,12 +50,16 @@ const translations = {
       },
       sarasas: {
         year: "2009 - 2015 (Elementary)"
+      },
+      earlier: {
+        toggle: "See more"
       }
     },
     skills: {
       title: "Tech Stack",
       listAll: "List all skills",
-      coreHint: "Yellow star = Core skills"
+      coreHint: "Yellow star = Core skills",
+      solidityNote: "Used in the votemai project"
     },
     cloud: {
       kicker: "Deployment Picks",
@@ -143,7 +147,8 @@ const translations = {
     },
     visual: {
       title: "PROJECTS",
-      description: "A curated selection of my featured projects. Each work blends elegant design, smart functionality, and seamless user experiences."
+      description: "A curated selection of my featured projects. Each work blends elegant design, smart functionality, and seamless user experiences.",
+      updating: "Updating"
     },
     modal: {
       technologies: "Technologies",
@@ -197,7 +202,7 @@ const translations = {
       contactHeading: "Contact",
       contactEmail: "Email",
       contactLabel: "Contact",
-      copyright: "© 2025 Nattapat Phungphugdee. All rights reserved.",
+      copyright: "© 2026 Nattapat Phungphugdee. All rights reserved.",
       backToTop: "Back to top",
       hireMe: "Hire me"
     }
@@ -255,12 +260,16 @@ const translations = {
       },
       sarasas: {
         year: "2009 - 2015 (ประถมศึกษา)"
+      },
+      earlier: {
+        toggle: "ดูเพิ่มเติม"
       }
     },
     skills: {
       title: "Tech Stack",
       listAll: "สกิลทั้งหมด",
-      coreHint: "ดาวสีเหลือง = Core Skills"
+      coreHint: "ดาวสีเหลือง = Core Skills",
+      solidityNote: "ใช้ในโปรเจกต์ votemai"
     },
     cloud: {
       kicker: "Deployment Picks",
@@ -350,7 +359,8 @@ const translations = {
     },
     visual: {
       title: "ผลงานเด่น",
-      description: "คัดสรรโปรเจกต์เด่นที่ผสมผสานงานออกแบบ ฟังก์ชันที่ใช้งานจริง และประสบการณ์ใช้งานที่ลื่นไหล"
+      description: "คัดสรรโปรเจกต์เด่นที่ผสมผสานงานออกแบบ ฟังก์ชันที่ใช้งานจริง และประสบการณ์ใช้งานที่ลื่นไหล",
+      updating: "กำลังปรับปรุงบางอย่าง"
     },
     modal: {
       technologies: "เทคโนโลยี",
@@ -404,7 +414,7 @@ const translations = {
       contactHeading: "ติดต่อ",
       contactEmail: "อีเมล",
       contactLabel: "ติดต่อ",
-      copyright: "© 2025 Nattapat Phungphugdee. สงวนลิขสิทธิ์",
+      copyright: "© 2026 Nattapat Phungphugdee. สงวนลิขสิทธิ์",
       backToTop: "กลับไปด้านบน",
       hireMe: "จ้างงานผม"
     }
@@ -462,12 +472,16 @@ const translations = {
       },
       sarasas: {
         year: "2009 - 2015 (小学校)"
+      },
+      earlier: {
+        toggle: "もっと見る"
       }
     },
     skills: {
       title: "Tech Stack",
       listAll: "全スキル",
-      coreHint: "黄色の星 = コアスキル"
+      coreHint: "黄色の星 = コアスキル",
+      solidityNote: "votemai プロジェクトで使用"
     },
     cloud: {
       kicker: "Deployment Picks",
@@ -524,7 +538,8 @@ const translations = {
     },
     visual: {
       title: "ビジュアルハイライト",
-      description: "代表的なプロジェクトを厳選して紹介。デザイン、機能性、シームレスなUXを融合しています。"
+      description: "代表的なプロジェクトを厳選して紹介。デザイン、機能性、シームレスなUXを融合しています。",
+      updating: "一部を調整中"
     },
     modal: {
       technologies: "使用技術",
@@ -578,7 +593,7 @@ const translations = {
       contactHeading: "お問い合わせ",
       contactEmail: "メール",
       contactLabel: "お問い合わせ",
-      copyright: "© 2025 Nattapat Phungphugdee. All rights reserved.",
+      copyright: "© 2026 Nattapat Phungphugdee. All rights reserved.",
       backToTop: "上に戻る",
       hireMe: "相談する"
     }
@@ -636,12 +651,16 @@ const translations = {
       },
       sarasas: {
         year: "2009 - 2015（小学）"
+      },
+      earlier: {
+        toggle: "查看更多"
       }
     },
     skills: {
       title: "Tech Stack",
       listAll: "全部技能",
-      coreHint: "黄色星标 = 核心技能"
+      coreHint: "黄色星标 = 核心技能",
+      solidityNote: "用于 votemai 项目"
     },
     cloud: {
       kicker: "Deployment Picks",
@@ -698,7 +717,8 @@ const translations = {
     },
     visual: {
       title: "视觉精选",
-      description: "精选代表项目，融合优雅设计、实用功能与流畅的用户体验。"
+      description: "精选代表项目，融合优雅设计、实用功能与流畅的用户体验。",
+      updating: "部分内容调整中"
     },
     modal: {
       technologies: "技术栈",
@@ -752,7 +772,7 @@ const translations = {
       contactHeading: "联系",
       contactEmail: "邮箱",
       contactLabel: "联系",
-      copyright: "© 2025 Nattapat Phungphugdee. 保留所有权利。",
+      copyright: "© 2026 Nattapat Phungphugdee. 保留所有权利。",
       backToTop: "回到顶部",
       hireMe: "合作咨询"
     }
@@ -810,12 +830,16 @@ const translations = {
       },
       sarasas: {
         year: "2009 - 2015 (Grundschule)"
+      },
+      earlier: {
+        toggle: "Mehr anzeigen"
       }
     },
     skills: {
       title: "Tech Stack",
       listAll: "Alle Skills",
-      coreHint: "Gelber Stern = Core Skills"
+      coreHint: "Gelber Stern = Core Skills",
+      solidityNote: "Im Projekt votemai eingesetzt"
     },
     cloud: {
       kicker: "Deployment Picks",
@@ -872,7 +896,8 @@ const translations = {
     },
     visual: {
       title: "Projekte",
-      description: "Eine kuratierte Auswahl meiner wichtigsten Projekte – mit elegantem Design, smarten Funktionen und nahtloser User Experience."
+      description: "Eine kuratierte Auswahl meiner wichtigsten Projekte – mit elegantem Design, smarten Funktionen und nahtloser User Experience.",
+      updating: "Wird überarbeitet"
     },
     modal: {
       technologies: "Technologien",
@@ -926,7 +951,7 @@ const translations = {
       contactHeading: "Kontakt",
       contactEmail: "E-Mail",
       contactLabel: "Kontakt",
-      copyright: "© 2025 Nattapat Phungphugdee. Alle Rechte vorbehalten.",
+      copyright: "© 2026 Nattapat Phungphugdee. Alle Rechte vorbehalten.",
       backToTop: "Nach oben",
       hireMe: "Mit mir arbeiten"
     }
@@ -984,12 +1009,16 @@ const translations = {
       },
       sarasas: {
         year: "2009 - 2015 (초등학교)"
+      },
+      earlier: {
+        toggle: "더 보기"
       }
     },
     skills: {
       title: "Tech Stack",
       listAll: "전체 스킬",
-      coreHint: "노란 별 = 코어 스킬"
+      coreHint: "노란 별 = 코어 스킬",
+      solidityNote: "votemai 프로젝트에서 사용"
     },
     cloud: {
       kicker: "Deployment Picks",
@@ -1046,7 +1075,8 @@ const translations = {
     },
     visual: {
       title: "비주얼 하이라이트",
-      description: "대표 프로젝트를 엄선해 소개합니다. 세련된 디자인, 실용적인 기능, 매끄러운 사용자 경험을 함께 담았습니다."
+      description: "대표 프로젝트를 엄선해 소개합니다. 세련된 디자인, 실용적인 기능, 매끄러운 사용자 경험을 함께 담았습니다.",
+      updating: "일부 개선 중"
     },
     modal: {
       technologies: "기술 스택",
@@ -1100,7 +1130,7 @@ const translations = {
       contactHeading: "연락처",
       contactEmail: "이메일",
       contactLabel: "연락처",
-      copyright: "© 2025 Nattapat Phungphugdee. 모든 권리 보유.",
+      copyright: "© 2026 Nattapat Phungphugdee. 모든 권리 보유.",
       backToTop: "맨 위로",
       hireMe: "협업 문의"
     }
@@ -1242,6 +1272,11 @@ function updateLanguage() {
   document.querySelectorAll('[data-i18n-html]').forEach((element) => {
     const key = element.getAttribute('data-i18n-html');
     element.innerHTML = translate(key);
+  });
+
+  document.querySelectorAll('[data-i18n-tooltip]').forEach((element) => {
+    const key = element.getAttribute('data-i18n-tooltip');
+    element.setAttribute('data-tooltip', translate(key));
   });
 
   syncLanguageSelectors();

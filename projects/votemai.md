@@ -27,6 +27,6 @@ image: "Photo/optimized/Mockup/VOTEMAI.png"
 
 The system bridges the gap between complex blockchain logic and end-user simplicity, providing a familiar web interface while maintaining strong cryptographic guarantees under the hood.
 
-### Links
-
-*   **Live Demo**: [https://votemai-kis6zaqh7-zxinnattapats-projects.vercel.app/](https://votemai-kis6zaqh7-zxinnattapats-projects.vercel.app/)
+<!-- Live demo paused while services are being moved.
+https://votemai-kis6zaqh7-zxinnattapats-projects.vercel.app/
+-->
