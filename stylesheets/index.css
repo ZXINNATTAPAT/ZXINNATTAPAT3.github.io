@@ -7467,6 +7467,18 @@ section.container-fluid {
   --ios-tab-art: url("../Photo/optimized/tab-profile.png");
 }
 
+.ios-tab-art-portfolio {
+  --ios-tab-art: url("../Photo/optimized/tab-portfolio.png");
+}
+
+.ios-tab-art-experience {
+  --ios-tab-art: url("../Photo/optimized/tab-experience.png");
+}
+
+.ios-tab-art-certificates {
+  --ios-tab-art: url("../Photo/optimized/tab-certificates.png");
+}
+
 .ios-tab.is-active {
   color: #1c1c1c;
   background: rgba(255, 255, 255, 0.96);
