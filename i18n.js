@@ -59,7 +59,13 @@ const translations = {
       title: "Tech Stack",
       listAll: "List all skills",
       coreHint: "Yellow star = Core skills",
-      solidityNote: "Used in the votemai project"
+      reactCore: "React · Core skill",
+      nextCore: "Next.js · Core skill",
+      typescriptCore: "TypeScript · Core skill",
+      nodeCore: "Node.js · Core skill",
+      postgresCore: "PostgreSQL · Core skill",
+      solidityNote: "Used in the votemai project",
+      solidityTooltip: "Solidity · Used in the votemai project"
     },
     cloud: {
       kicker: "Deployment Picks",
@@ -275,7 +281,13 @@ const translations = {
       title: "Tech Stack",
       listAll: "สกิลทั้งหมด",
       coreHint: "ดาวสีเหลือง = Core Skills",
-      solidityNote: "ใช้ในโปรเจกต์ votemai"
+      reactCore: "React · สกิลหลัก",
+      nextCore: "Next.js · สกิลหลัก",
+      typescriptCore: "TypeScript · สกิลหลัก",
+      nodeCore: "Node.js · สกิลหลัก",
+      postgresCore: "PostgreSQL · สกิลหลัก",
+      solidityNote: "ใช้ในโปรเจกต์ votemai",
+      solidityTooltip: "Solidity · ใช้ในโปรเจกต์ votemai"
     },
     cloud: {
       kicker: "Deployment Picks",
@@ -493,7 +505,13 @@ const translations = {
       title: "Tech Stack",
       listAll: "全スキル",
       coreHint: "黄色の星 = コアスキル",
-      solidityNote: "votemai プロジェクトで使用"
+      reactCore: "React · コアスキル",
+      nextCore: "Next.js · コアスキル",
+      typescriptCore: "TypeScript · コアスキル",
+      nodeCore: "Node.js · コアスキル",
+      postgresCore: "PostgreSQL · コアスキル",
+      solidityNote: "votemai プロジェクトで使用",
+      solidityTooltip: "Solidity · votemai プロジェクトで使用"
     },
     cloud: {
       kicker: "Deployment Picks",
@@ -678,7 +696,13 @@ const translations = {
       title: "Tech Stack",
       listAll: "全部技能",
       coreHint: "黄色星标 = 核心技能",
-      solidityNote: "用于 votemai 项目"
+      reactCore: "React · 核心技能",
+      nextCore: "Next.js · 核心技能",
+      typescriptCore: "TypeScript · 核心技能",
+      nodeCore: "Node.js · 核心技能",
+      postgresCore: "PostgreSQL · 核心技能",
+      solidityNote: "用于 votemai 项目",
+      solidityTooltip: "Solidity · 用于 votemai 项目"
     },
     cloud: {
       kicker: "Deployment Picks",
@@ -863,7 +887,13 @@ const translations = {
       title: "Tech Stack",
       listAll: "Alle Skills",
       coreHint: "Gelber Stern = Core Skills",
-      solidityNote: "Im Projekt votemai eingesetzt"
+      reactCore: "React · Core Skill",
+      nextCore: "Next.js · Core Skill",
+      typescriptCore: "TypeScript · Core Skill",
+      nodeCore: "Node.js · Core Skill",
+      postgresCore: "PostgreSQL · Core Skill",
+      solidityNote: "Im Projekt votemai eingesetzt",
+      solidityTooltip: "Solidity · Im Projekt votemai eingesetzt"
     },
     cloud: {
       kicker: "Deployment Picks",
@@ -1048,7 +1078,13 @@ const translations = {
       title: "Tech Stack",
       listAll: "전체 스킬",
       coreHint: "노란 별 = 코어 스킬",
-      solidityNote: "votemai 프로젝트에서 사용"
+      reactCore: "React · 코어 스킬",
+      nextCore: "Next.js · 코어 스킬",
+      typescriptCore: "TypeScript · 코어 스킬",
+      nodeCore: "Node.js · 코어 스킬",
+      postgresCore: "PostgreSQL · 코어 스킬",
+      solidityNote: "votemai 프로젝트에서 사용",
+      solidityTooltip: "Solidity · votemai 프로젝트에서 사용"
     },
     cloud: {
       kicker: "Deployment Picks",

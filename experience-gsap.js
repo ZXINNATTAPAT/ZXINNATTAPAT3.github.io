@@ -36,6 +36,7 @@
 
     section.dataset.gsapReady = '1';
     section.classList.add('is-experience-gsap-ready');
+    bindExperienceMore(section);
 
     if (!hasGsap || prefersReducedMotion()) return;
 
@@ -68,6 +69,26 @@
       { autoAlpha: 1, y: 0, duration: 0.58, stagger: 0.12 },
       titleBits.length ? '-=0.28' : 0
     );
+  }
+
+  function bindExperienceMore(section) {
+    var button = section.querySelector('.experience-min-more');
+    if (!button || button.dataset.bound === '1') return;
+
+    var copy = button.closest('.experience-min-copy');
+    var extras = copy ? copy.querySelectorAll('.experience-min-extra') : [];
+    button.dataset.bound = '1';
+
+    button.addEventListener('click', function () {
+      var open = button.getAttribute('aria-expanded') === 'true';
+      button.setAttribute('aria-expanded', open ? 'false' : 'true');
+      extras.forEach(function (item) {
+        item.hidden = open;
+      });
+      if (typeof ScrollTrigger !== 'undefined') {
+        ScrollTrigger.refresh();
+      }
+    });
   }
 
   function boot() {

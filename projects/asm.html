@@ -785,6 +785,12 @@
 
   <!-- Contact Section -->
 <section id="contact" class="contact-email-section" aria-labelledby="contact-heading">
+  <video class="bg-video" autoplay muted loop playsinline preload="none"
+         poster="/assets/bg-poster.webp" aria-hidden="true">
+    <source src="/assets/bg.webm" type="video/webm">
+    <source src="/assets/bg.mp4" type="video/mp4">
+  </video>
+  <div class="bg-overlay" aria-hidden="true"></div>
   <h2 id="contact-heading" class="contact-email-kicker" data-i18n="contact.title">
     Get in Touch
   </h2>
@@ -852,6 +858,29 @@
       </a>
     </div>
   </div>
+  <script>
+    (function () {
+      var v = document.querySelector('.contact-email-section .bg-video');
+      if (!v) return;
+      var c = navigator.connection;
+      var saveData = c && (c.saveData || /2g/.test(c.effectiveType || ''));
+      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (saveData || reduceMotion) {
+        v.remove();
+        return;
+      }
+      new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) {
+            var play = v.play();
+            if (play && play.catch) play.catch(function () {});
+          } else {
+            v.pause();
+          }
+        });
+      }).observe(v);
+    })();
+  </script>
 </section>
   <!-- Footer -->
 <footer id="footer" class="footer-modern">

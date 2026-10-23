@@ -955,11 +955,16 @@ sh-x2{
 .profile-section-title {
   margin: 0 0 1.75rem;
   color: #1c1c1c;
-  font-size: clamp(2.4rem, 6vw, 4.25rem);
+  font-size: clamp(1.68rem, 4.2vw, 2.975rem);
   font-weight: 400;
   letter-spacing: -0.03em;
   line-height: 1;
   text-align: left;
+}
+
+#profile > .container {
+  width: min(calc(920px + var(--bs-gutter-x, 1.5rem)), calc(88vw + var(--bs-gutter-x, 1.5rem)));
+  max-width: calc(920px + var(--bs-gutter-x, 1.5rem));
 }
 
 .profile-portrait-column {
@@ -3066,8 +3071,9 @@ body.menu-open {
   align-items: flex-start;
 }
 
-#profile .profile-skills-block .skills-core-hint {
-  justify-content: flex-start;
+#profile .profile-skills-block .skills-core-hint,
+#profile .profile-skills-block .app-skill-note {
+  display: none;
 }
 
 #profile .profile-skills-block .app-dock-wrapper {
@@ -3078,56 +3084,58 @@ body.menu-open {
   grid-template-columns: repeat(6, minmax(0, 1fr));
   width: 100%;
   max-width: 100%;
-  gap: 12px;
+  gap: 12px 0;
   padding: 0;
+  justify-content: stretch;
 }
 
 #profile .profile-skills-block .app-dock > .app-item {
   grid-column: auto;
+  justify-self: stretch;
 }
 
 #profile .profile-skills-block .app-icon {
-  width: min(100%, 60px);
-  border-radius: 16px;
+  width: min(100%, 44px);
+  margin-inline: auto;
+  border-radius: 12px;
   box-shadow:
-    0 6px 14px rgba(86, 77, 67, 0.11),
-    0 2px 5px rgba(86, 77, 67, 0.05),
+    0 4px 10px rgba(86, 77, 67, 0.1),
+    0 1px 3px rgba(86, 77, 67, 0.05),
     inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
 #profile .profile-skills-block .app-icon::before {
-  top: 4px;
-  left: 5px;
-  right: 5px;
+  top: 3px;
+  left: 4px;
+  right: 4px;
 }
 
 #profile .profile-skills-block .app-icon-img {
   width: 58%;
   height: 58%;
-  border-radius: 6px;
-  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.12));
+  border-radius: 4px;
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.12));
 }
 
 #profile .profile-skills-block .app-core-badge {
-  top: 5px;
-  right: 5px;
-  width: 16px;
-  height: 16px;
+  top: 3px;
+  right: 3px;
+  width: 12px;
+  height: 12px;
 }
 
 #profile .profile-skills-block .app-core-badge i {
-  font-size: 0.44rem;
+  font-size: 0.36rem;
 }
 
 @media (max-width: 575px) {
   #profile .profile-skills-block .app-dock {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 8px;
+    gap: 10px 0;
   }
 
   #profile .profile-skills-block .app-icon {
-    width: min(100%, 50px);
-    border-radius: 13px;
+    width: min(100%, 36px);
+    border-radius: 10px;
   }
 }
 
@@ -3384,9 +3392,44 @@ body.menu-open {
 }
 /* Minimal Contact Section Style */
 .contact-email-section {
-  background: #f8f8ff;
-  padding: clamp(4.5rem, 10vw, 7.5rem) 6vw clamp(5rem, 12vw, 8.5rem);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  width: min(920px, calc(100% - 2.5rem));
+  margin: 0 auto 1.5rem;
+  border-radius: 28px;
+  background: #1a242e url(/assets/bg-poster.webp) center / cover no-repeat;
+  padding: clamp(4.5rem, 10vw, 7.5rem) clamp(1.25rem, 4vw, 2.5rem) clamp(5rem, 12vw, 8.5rem);
   text-align: center;
+}
+
+.contact-email-section .bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.contact-email-section .bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.contact-email-section > :not(.bg-video):not(.bg-overlay) {
+  position: relative;
+  z-index: 2;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-email-section .bg-video {
+    display: none;
+  }
 }
 
 .contact-email-kicker {
@@ -3396,7 +3439,7 @@ body.menu-open {
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(95, 95, 108, 0.74);
+  color: rgba(255, 255, 255, 0.82);
 }
 
 .contact-email-mark {
@@ -3408,11 +3451,12 @@ body.menu-open {
   font-family: "DM Serif Display", "DM Serif Fallback", "Times New Roman", Times, serif;
   font-weight: 400;
   font-style: normal;
-  font-size: clamp(2.15rem, 8.6vw, 7.4rem);
+  font-size: clamp(1.505rem, 6.02vw, 5.18rem);
   line-height: 0.95;
   letter-spacing: -0.04em;
-  color: #1c1c1c;
+  color: #fff;
   text-decoration: none;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.35);
 }
 
 .contact-email-mark span {
@@ -3423,8 +3467,8 @@ body.menu-open {
 
 .contact-email-mark:hover,
 .contact-email-mark:focus-visible {
-  color: #1c1c1c;
-  opacity: 0.48;
+  color: #fff;
+  opacity: 0.78;
 }
 
 .contact-email-social {
@@ -5333,7 +5377,7 @@ textarea.form-control-minimal:focus {
   padding-bottom: 1.25rem;
   border-bottom: 1px solid rgba(28, 28, 28, 0.12);
   text-align: left;
-  font-size: clamp(2.15rem, 4.5vw, 3.65rem);
+  font-size: clamp(1.505rem, 3.15vw, 2.555rem);
   font-weight: 400;
   line-height: 0.98;
   letter-spacing: -0.025em;
@@ -5570,6 +5614,47 @@ textarea.form-control-minimal:focus {
   height: 4px;
   border-radius: 1px;
   background: rgba(28, 28, 28, 0.45);
+}
+
+.experience-min-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0.55rem 0 0 0.9rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  font-family: system-ui, "Anuphan", sans-serif;
+  font-size: 0.82rem;
+  font-weight: 650;
+  line-height: 1.4;
+  color: #1c1c1c;
+}
+
+.experience-min-more::after {
+  content: "";
+  width: 0.36rem;
+  height: 0.36rem;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: translateY(-1px) rotate(45deg);
+}
+
+.experience-min-more[aria-expanded="true"]::after {
+  transform: translateY(1px) rotate(225deg);
+}
+
+.experience-min-more .experience-min-less-label {
+  display: none;
+}
+
+.experience-min-more[aria-expanded="true"] .experience-min-more-label {
+  display: none;
+}
+
+.experience-min-more[aria-expanded="true"] .experience-min-less-label {
+  display: inline;
 }
 
 .experience-min-highlight {
@@ -7141,6 +7226,8 @@ section.container-fluid {
 
   section#profile.container-fluid > .container {
     padding-top: 2rem !important;
+    width: min(920px, calc(88vw + 2rem));
+    max-width: calc(920px + 2rem);
   }
 
   /* Skills section mobile spacing */
@@ -7293,9 +7380,169 @@ section.container-fluid {
   text-align: center;
 }
 
+.primary-nav .primary-nav-links,
+.mobile-menu-content > a.mobile-nav-link:not([href="#contact"]) {
+  display: none !important;
+}
+
+.ios-tabbar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 40;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+  padding: 0 16px calc(14px + env(safe-area-inset-bottom, 0px));
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+.ios-tabbar-bar {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.5);
+  border: 0.5px solid rgba(255, 255, 255, 0.82);
+  box-shadow:
+    0 14px 36px rgba(28, 28, 28, 0.12),
+    0 1px 0 rgba(255, 255, 255, 0.85) inset,
+    0 0 0 0.5px rgba(28, 28, 28, 0.05);
+  backdrop-filter: blur(22px) saturate(180%);
+  -webkit-backdrop-filter: blur(22px) saturate(180%);
+}
+
+.ios-tab {
+  pointer-events: auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  flex: 0 0 52px;
+  border-radius: 18px;
+  color: rgba(60, 60, 67, 0.62);
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.62);
+  border: 0.5px solid rgba(255, 255, 255, 0.86);
+  box-shadow:
+    0 10px 24px rgba(28, 28, 28, 0.1),
+    0 1px 0 rgba(255, 255, 255, 0.85) inset;
+  backdrop-filter: blur(22px) saturate(180%);
+  -webkit-backdrop-filter: blur(22px) saturate(180%);
+}
+
+.ios-tab svg {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+}
+
+.ios-tab-art {
+  width: 30px;
+  height: 30px;
+  background-color: currentColor;
+  -webkit-mask-image: var(--ios-tab-art);
+  mask-image: var(--ios-tab-art);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+.ios-tab-art-home {
+  --ios-tab-art: url("../Photo/optimized/tab-home.png");
+}
+
+.ios-tab-art-profile {
+  --ios-tab-art: url("../Photo/optimized/tab-profile.png");
+}
+
+.ios-tab.is-active {
+  color: #1c1c1c;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow:
+    0 12px 26px rgba(28, 28, 28, 0.14),
+    0 1px 0 rgba(255, 255, 255, 0.9) inset;
+}
+
+.ios-tab:focus-visible {
+  outline: 2px solid #1c1c1c;
+  outline-offset: 3px;
+}
+
+.ios-tab::after {
+  content: attr(data-hint);
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 12px);
+  transform: translate(-50%, 6px);
+  opacity: 0;
+  padding: 0.42rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(28, 28, 28, 0.92);
+  color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, system-ui, "Anuphan", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  box-shadow: 0 8px 18px rgba(17, 17, 20, 0.16);
+  pointer-events: none;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+  z-index: 2;
+}
+
+.ios-tab:hover::after,
+.ios-tab:focus-visible::after,
+.ios-tabbar.is-hinting .ios-tab.is-active::after {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ios-tab::after {
+    transition: none;
+  }
+}
+
+.footer-modern {
+  padding-bottom: calc(1.35rem + 92px + env(safe-area-inset-bottom, 0px));
+}
+
+@media (max-width: 420px) {
+  .ios-tabbar-bar {
+    gap: 6px;
+    padding: 6px;
+    border-radius: 24px;
+  }
+
+  .ios-tab {
+    width: 44px;
+    height: 44px;
+    flex-basis: 44px;
+    border-radius: 15px;
+  }
+
+  .ios-tab-art {
+    width: 26px;
+    height: 26px;
+  }
+}
+
 .hero-artist-lead {
   font-family: "Playfair Display", "Times New Roman", Times, serif;
-  font-size: clamp(14px, 2.4vw, 16px);
+  font-size: clamp(9.8px, 1.68vw, 11.2px);
   font-weight: 400;
   letter-spacing: 0.04em;
   line-height: 1.5 !important;
@@ -7325,7 +7572,7 @@ section.container-fluid {
   border-radius: 0;
   background: transparent;
   font-family: "Playfair Display", "Times New Roman", Times, serif;
-  font-size: 1rem;
+  font-size: 0.7rem;
   font-weight: 400;
   letter-spacing: 0.01em;
   color: #1c1c1c;
@@ -7356,7 +7603,7 @@ h1.hero-artist-wordmark .hero-artist-wordmark-family-wrap {
 .hero-artist-handle {
   margin-top: 0.35rem;
   font-family: "DM Serif Display", "Times New Roman", Times, serif;
-  font-size: clamp(0.85rem, 1.5vw, 1.05rem);
+  font-size: clamp(0.595rem, 1.05vw, 0.735rem);
   font-weight: 400;
   letter-spacing: 0.01em;
   line-height: 1;
@@ -7377,7 +7624,7 @@ h1.hero-artist-wordmark {
   font-family: "DM Serif Display", "DM Serif Fallback", "Times New Roman", Times, serif;
   font-weight: 400 !important;
   font-style: normal;
-  font-size: clamp(2.6rem, 12vw, 4.6rem) !important;
+  font-size: clamp(1.82rem, 8.4vw, 3.22rem) !important;
   line-height: 0.92 !important;
   letter-spacing: -0.035em !important;
   color: #1c1c1c;
@@ -7432,7 +7679,7 @@ h1.hero-artist-wordmark .hero-artist-wordmark-family {
 
 @media screen and (min-width: 768px) {
   .hero-artist-lead {
-    font-size: 15px;
+    font-size: 10.5px;
     letter-spacing: 0.06em;
   }
 
@@ -7441,7 +7688,7 @@ h1.hero-artist-wordmark .hero-artist-wordmark-family {
   }
 
   .hero-artist-link {
-    font-size: 1.05rem;
+    font-size: 0.735rem;
   }
 
   h1.hero-artist-wordmark {
@@ -7450,7 +7697,7 @@ h1.hero-artist-wordmark .hero-artist-wordmark-family {
     align-items: flex-start;
     justify-content: center;
     gap: 0.22em;
-    font-size: clamp(3.4rem, 6.6vw, 7.4rem) !important;
+    font-size: clamp(2.38rem, 4.62vw, 5.18rem) !important;
     letter-spacing: -0.04em !important;
     line-height: 0.92 !important;
     margin-top: 0.7rem;
@@ -7826,7 +8073,7 @@ html[lang="ko"] .hero-artist-link {
 .uiux-slider-title {
   margin: 0;
   color: #232327;
-  font-size: clamp(2.25rem, 5vw, 4.15rem);
+  font-size: clamp(1.575rem, 3.5vw, 2.905rem);
   line-height: 0.98;
 }
 
@@ -8177,7 +8424,7 @@ html[lang="ko"] .hero-artist-link {
   }
 
   .uiux-slider-title {
-    font-size: clamp(2rem, 10vw, 3rem);
+    font-size: clamp(1.4rem, 7vw, 2.1rem);
   }
 
   .uiux-slider-description {
@@ -8302,7 +8549,7 @@ html[lang="ko"] .hero-artist-link {
 .uiux-drag-title {
   margin: 0;
   color: #232327;
-  font-size: clamp(2.25rem, 5vw, 4.2rem);
+  font-size: clamp(1.575rem, 3.5vw, 2.94rem);
   line-height: 0.98;
 }
 
@@ -8547,7 +8794,7 @@ html[lang="ko"] .hero-artist-link {
 
 @media (max-width: 767px) {
   .uiux-drag-title {
-    font-size: clamp(2rem, 10vw, 3rem);
+    font-size: clamp(1.4rem, 7vw, 2.1rem);
   }
 
   .uiux-drag-description {

@@ -114,7 +114,7 @@
 
   <!-- Critical: font utilities + main layout; below-fold sheets deferred -->
   <link rel="stylesheet" href="./stylesheets/fontsex.css" />
-  <link rel="stylesheet" href="./stylesheets/index.css?v=44" />
+  <link rel="stylesheet" href="./stylesheets/index.css?v=63" />
   <!-- Non-critical CSS deferred -->
   <link rel="stylesheet" href="./stylesheets/cardblock2.css" media="print" onload="this.media='all'" />
   <noscript><link rel="stylesheet" href="./stylesheets/cardblock2.css" /></noscript>
@@ -552,7 +552,7 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js" defer></script>
   <script src="cloud-platforms-gsap.js?v=6" defer></script>
-  <script src="experience-gsap.js?v=4" defer></script>
+  <script src="experience-gsap.js?v=6" defer></script>
   <script src="uiux-gsap.js?v=11" defer></script>
   <script src="projects-gsap.js?v=2" defer></script>
   <script src="hero-gsap.js?v=9" defer></script>
@@ -763,6 +763,34 @@
       </div>
     </div>
   </header>
+  <nav class="ios-tabbar" aria-label="Sections">
+    <div class="ios-tabbar-bar">
+    <a class="ios-tab is-active" href="#home" aria-current="page">
+      <span class="ios-tab-art ios-tab-art-home" aria-hidden="true"></span>
+      <span class="visually-hidden" data-i18n="nav.home">Home</span>
+    </a>
+    <a class="ios-tab" href="#profile">
+      <span class="ios-tab-art ios-tab-art-profile" aria-hidden="true"></span>
+      <span class="visually-hidden" data-i18n="nav.profile">Profile</span>
+    </a>
+    <a class="ios-tab" href="#portfolio">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 5.2h6.2v6.2H4.5V5.2Zm8.8 0h6.2v6.2h-6.2V5.2ZM4.5 14h6.2v6.2H4.5V14Zm8.8 0h6.2v6.2h-6.2V14Z"/></svg>
+      <span class="visually-hidden" data-i18n="nav.portfolio">Portfolio</span>
+    </a>
+    <a class="ios-tab" href="#experience">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.2 6.4V5.2A1.2 1.2 0 0 1 10.4 4h3.2a1.2 1.2 0 0 1 1.2 1.2v1.2h3.6A1.6 1.6 0 0 1 20 8v9.2a1.6 1.6 0 0 1-1.6 1.6H5.6A1.6 1.6 0 0 1 4 17.2V8a1.6 1.6 0 0 1 1.6-1.6h3.6Zm1.4-1.2v1.2h2.8V5.2h-2.8ZM4.8 11.2h14.4v.4c0 1.5-2.6 2.6-6.2 2.6h-2c-3.6 0-6.2-1.1-6.2-2.6v-.4Z"/></svg>
+      <span class="visually-hidden" data-i18n="nav.experience">Experience</span>
+    </a>
+    <a class="ios-tab" href="#certificates">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.4 3.2h11.2A1.2 1.2 0 0 1 18.8 4.4v8.8H5.2V4.4a1.2 1.2 0 0 1 1.2-1.2Zm1.6 2.6h7.8v1.3H8V5.8Zm0 2.6h7.8v1.3H8V8.4ZM12 13.4l2.1 3.4 1.5-1 .9 2.5-2.3-.7L12 20l-2.2-2.4-2.3.7.9-2.5 1.5 1L12 13.4Z"/></svg>
+      <span class="visually-hidden" data-i18n="nav.certificates">Certificates</span>
+    </a>
+    <a class="ios-tab" href="blog.html">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.2 3.4h8.1L18.8 8v12.2a1 1 0 0 1-1 1H6.2a1 1 0 0 1-1-1V4.4a1 1 0 0 1 1-1Zm7.2 1.4V8.6h3.6M8.2 11.4h7.6v1.3H8.2v-1.3Zm0 2.8h7.6v1.3H8.2v-1.3Z"/></svg>
+      <span class="visually-hidden" data-i18n="nav.blog">Blog</span>
+    </a>
+    </div>
+  </nav>
   <noscript>
     <style>
       .hero-artist-lead,
@@ -772,6 +800,83 @@
   </noscript>
 </div>
 
+  <script>
+    (function () {
+      var bar = document.querySelector('.ios-tabbar');
+      if (!bar) return;
+      if (bar.parentElement !== document.body) document.body.appendChild(bar);
+      var tabs = Array.prototype.slice.call(bar.querySelectorAll('.ios-tab'));
+
+      var hintTimer = null;
+
+      function labelOf(tab) {
+        var label = tab.querySelector('[data-i18n]');
+        return label ? label.textContent.trim() : '';
+      }
+
+      function refreshHints() {
+        tabs.forEach(function (tab) {
+          tab.setAttribute('data-hint', labelOf(tab));
+        });
+      }
+
+      function showHint() {
+        refreshHints();
+        bar.classList.add('is-hinting');
+        clearTimeout(hintTimer);
+        hintTimer = setTimeout(function () {
+          bar.classList.remove('is-hinting');
+        }, 1400);
+      }
+
+      function select(tab) {
+        if (!tab) return;
+        tabs.forEach(function (item) {
+          var on = item === tab;
+          item.classList.toggle('is-active', on);
+          if (on) item.setAttribute('aria-current', 'page');
+          else item.removeAttribute('aria-current');
+        });
+      }
+
+      function sectionFor(tab) {
+        var href = tab.getAttribute('href') || '';
+        if (href.charAt(0) !== '#') return null;
+        return document.querySelector(href);
+      }
+
+      function sync() {
+        var marker = 96;
+        var current = null;
+        var best = -Infinity;
+        tabs.forEach(function (tab) {
+          var section = sectionFor(tab);
+          if (!section) return;
+          var top = section.getBoundingClientRect().top;
+          if (top <= marker + 12 && top > best) {
+            best = top;
+            current = tab;
+          }
+        });
+        select(current || tabs[0]);
+      }
+
+      tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          if ((tab.getAttribute('href') || '').charAt(0) === '#') select(tab);
+        });
+      });
+
+      window.addEventListener('scroll', function () {
+        sync();
+        showHint();
+      }, { passive: true });
+      window.addEventListener('hashchange', sync);
+      window.addEventListener('i18n:updated', refreshHints);
+      refreshHints();
+      sync();
+    })();
+  </script>
   <script>
     // Toggle sticky-open for skill folders
     document.addEventListener('DOMContentLoaded', function () {
@@ -972,14 +1077,14 @@
   </div>
   <div class="app-dock-wrapper my-0">
       <div class="app-dock" aria-label="Skills marquee">
-        <div class="app-item" data-tooltip="React">
+        <div class="app-item" data-tooltip="React · Core skill" data-i18n-tooltip="skills.reactCore">
           <div class="app-icon">
             <span class="app-core-badge" aria-hidden="true"><i class="fas fa-star"></i></span>
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" class="app-icon-img" width="48" height="48" loading="lazy">
           </div>
           <div class="app-name">React</div>
         </div>
-        <div class="app-item" data-tooltip="Next.js">
+        <div class="app-item" data-tooltip="Next.js · Core skill" data-i18n-tooltip="skills.nextCore">
           <div class="app-icon">
             <span class="app-core-badge" aria-hidden="true"><i class="fas fa-star"></i></span>
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js" class="app-icon-img" width="48" height="48" loading="lazy">
@@ -998,7 +1103,7 @@
           <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" class="app-icon-img" width="48" height="48" loading="lazy"></div>
           <div class="app-name">JavaScript</div>
         </div>
-        <div class="app-item" data-tooltip="TypeScript">
+        <div class="app-item" data-tooltip="TypeScript · Core skill" data-i18n-tooltip="skills.typescriptCore">
           <div class="app-icon">
             <span class="app-core-badge" aria-hidden="true"><i class="fas fa-star"></i></span>
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript" class="app-icon-img" width="48" height="48" loading="lazy">
@@ -1009,7 +1114,7 @@
           <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind CSS" class="app-icon-img" width="48" height="48" loading="lazy"></div>
           <div class="app-name">Tailwind CSS</div>
         </div>
-        <div class="app-item" data-tooltip="Node.js">
+        <div class="app-item" data-tooltip="Node.js · Core skill" data-i18n-tooltip="skills.nodeCore">
           <div class="app-icon">
             <span class="app-core-badge" aria-hidden="true"><i class="fas fa-star"></i></span>
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" class="app-icon-img" width="48" height="48" loading="lazy">
@@ -1040,7 +1145,7 @@
           <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" class="app-icon-img" width="48" height="48" loading="lazy"></div>
           <div class="app-name">GitHub</div>
         </div>
-        <div class="app-item" data-tooltip="PostgreSQL">
+        <div class="app-item" data-tooltip="PostgreSQL · Core skill" data-i18n-tooltip="skills.postgresCore">
           <div class="app-icon">
             <span class="app-core-badge" aria-hidden="true"><i class="fas fa-star"></i></span>
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" class="app-icon-img" width="48" height="48" loading="lazy">
@@ -1063,14 +1168,25 @@
           <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gitlab/gitlab-original.svg" alt="GitLab" class="app-icon-img" width="48" height="48" loading="lazy"></div>
           <div class="app-name">GitLab</div>
         </div>
-        <div class="app-item" data-tooltip="Used in the votemai project" data-i18n-tooltip="skills.solidityNote">
+        <div class="app-item" data-tooltip="Solidity · Used in the votemai project" data-i18n-tooltip="skills.solidityTooltip">
           <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/solidity/solidity-original.svg" alt="Solidity" class="app-icon-img" width="48" height="48" loading="lazy"></div>
           <div class="app-name">Solidity</div>
-          <span class="app-skill-note" data-i18n="skills.solidityNote">Used in the votemai project</span>
         </div>
         <div class="app-item" data-tooltip="MinIO">
           <div class="app-icon"><img src="https://cdn.simpleicons.org/minio/C72E49" alt="MinIO" class="app-icon-img" width="48" height="48" loading="lazy"></div>
           <div class="app-name">MinIO</div>
+        </div>
+        <div class="app-item" data-tooltip="Notion">
+          <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/notion/notion-original.svg" alt="Notion" class="app-icon-img" width="48" height="48" loading="lazy"></div>
+          <div class="app-name">Notion</div>
+        </div>
+        <div class="app-item" data-tooltip="Cursor">
+          <div class="app-icon"><img src="https://cdn.simpleicons.org/cursor/111111" alt="Cursor" class="app-icon-img" width="48" height="48" loading="lazy"></div>
+          <div class="app-name">Cursor</div>
+        </div>
+        <div class="app-item" data-tooltip="Codex">
+          <div class="app-icon"><img src="https://api.iconify.design/devicon/codex.svg" alt="Codex" class="app-icon-img" width="48" height="48" loading="lazy"></div>
+          <div class="app-name">Codex</div>
         </div>
       </div>
     </div>
@@ -1256,6 +1372,30 @@
               <div class="skill-card-level">Intermediate</div>
             </div>
           </div>
+          <!-- Notion -->
+          <div class="skill-card">
+            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/notion/notion-original.svg" alt="Notion" width="48" height="48" loading="lazy" decoding="async"></div>
+            <div class="skill-card-info">
+              <div class="skill-card-name">Notion</div>
+              <div class="skill-card-level">Intermediate</div>
+            </div>
+          </div>
+          <!-- Cursor -->
+          <div class="skill-card">
+            <div class="skill-card-icon"><img src="https://cdn.simpleicons.org/cursor/111111" alt="Cursor" width="48" height="48" loading="lazy" decoding="async"></div>
+            <div class="skill-card-info">
+              <div class="skill-card-name">Cursor</div>
+              <div class="skill-card-level">Intermediate</div>
+            </div>
+          </div>
+          <!-- Codex -->
+          <div class="skill-card">
+            <div class="skill-card-icon"><img src="https://api.iconify.design/devicon/codex.svg" alt="Codex" width="48" height="48" loading="lazy" decoding="async"></div>
+            <div class="skill-card-info">
+              <div class="skill-card-name">Codex</div>
+              <div class="skill-card-level">Intermediate</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -1341,10 +1481,17 @@
               <span class="experience-min-link-arrow" aria-hidden="true">↗</span>
             </a>
             <ul class="experience-min-points">
-              <li>Develop and maintain a document management system for a Thai government agency, migrating legacy MAF data to a new ERP platform across a Next.js public site and NestJS + .NET APIs.</li>
-              <li>Audited and repaired document categorization for 3,251 legacy files, fixing category mappings, uncategorized files and duplicate document codes so records display and search correctly.</li>
-              <li>Work directly with the client to gather requirements, report findings and plan production deployment, including server and network coordination.</li>
+              <li>Develop and maintain document management systems for Thai government agencies, spanning a Next.js public portal and NestJS + .NET APIs, across 3–4 concurrent projects.</li>
+              <li>Designed and built the portal's UI/UX directly in code with MUI and Tailwind, from layout to responsive, production-ready pages, refined with the client through each iteration.</li>
+              <li>Migrated legacy data to a new ERP and audited 3,251 documents, fixing category mappings and removing 900+ duplicate or unused records so files display and search correctly.</li>
+              <li>Cut load time by ~50% on a data-heavy API by adding pagination and a searchable dropdown.</li>
+              <li class="experience-min-extra" hidden>Worked directly with the client to gather requirements, present progress (10+ sessions) and plan production deployment, including server and network coordination.</li>
+              <li class="experience-min-extra" hidden>Troubleshot GitLab CI/CD and Docker deployments with the DevOps team and helped bring a long-delayed project to client sign-off.</li>
             </ul>
+            <button type="button" class="experience-min-more" aria-expanded="false">
+              <span class="experience-min-more-label">See more</span>
+              <span class="experience-min-less-label">See less</span>
+            </button>
             <span class="experience-min-stack">
               <span class="experience-min-stack-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="" width="16" height="16" loading="lazy" decoding="async" />Next.js</span>
               <span class="experience-min-stack-sep" aria-hidden="true">·</span>
@@ -1555,7 +1702,7 @@
     <div class="container-fluid portfolio-visual-shell" style="padding-top: 3rem; padding-bottom: 3rem;">
       <div class="text-center mb-5 px-3">
         <h2 class="dm-serif-display-regular mb-3"
-          style="font-size: clamp(32px, 6vw, 64px); color: #1d1d1f; font-weight: 400; letter-spacing: 0.04em; text-transform: uppercase;">
+          style="font-size: clamp(22.4px, 4.2vw, 44.8px); color: #1d1d1f; font-weight: 400; letter-spacing: 0.04em; text-transform: uppercase;">
           <span data-i18n="visual.title">PROJECTS</span>
         </h2>
         <p class="text-muted mx-auto" style="max-width: 680px; font-size: 17px; line-height: 1.6; color: #6b6b6b" data-i18n="visual.description">
@@ -1798,7 +1945,7 @@
     <div class="container" data-aos="fade-up" style="max-width: 920px;">
       <h2 class="mb-2 playfair-400" style="
             color: #2c2c2c;
-            font-size: clamp(24px, 4vw, 36px);
+            font-size: clamp(16.8px, 2.8vw, 25.2px);
             font-weight: 500;
           " data-i18n="certificates.title">
         Browse My Achievements
@@ -1917,6 +2064,12 @@
   <!-- content-creator.html paused for now -->
   <!-- Contact Section -->
 <section id="contact" class="contact-email-section" aria-labelledby="contact-heading">
+  <video class="bg-video" autoplay muted loop playsinline preload="none"
+         poster="/assets/bg-poster.webp" aria-hidden="true">
+    <source src="/assets/bg.webm" type="video/webm">
+    <source src="/assets/bg.mp4" type="video/mp4">
+  </video>
+  <div class="bg-overlay" aria-hidden="true"></div>
   <h2 id="contact-heading" class="contact-email-kicker" data-i18n="contact.title">
     Get in Touch
   </h2>
@@ -1954,6 +2107,29 @@
       </a>
     </div>
   </div>
+  <script>
+    (function () {
+      var v = document.querySelector('.contact-email-section .bg-video');
+      if (!v) return;
+      var c = navigator.connection;
+      var saveData = c && (c.saveData || /2g/.test(c.effectiveType || ''));
+      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (saveData || reduceMotion) {
+        v.remove();
+        return;
+      }
+      new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) {
+            var play = v.play();
+            if (play && play.catch) play.catch(function () {});
+          } else {
+            v.pause();
+          }
+        });
+      }).observe(v);
+    })();
+  </script>
 </section>
   <!-- Footer -->
 <footer id="footer" class="footer-modern">
@@ -2626,7 +2802,7 @@
     }
   </script>
 
-  <script src="i18n.js" defer></script>
+  <script src="i18n.js?v=55" defer></script>
 
   <script>
     // Defer Google Analytics until after load so it does not compete with LCP fonts
