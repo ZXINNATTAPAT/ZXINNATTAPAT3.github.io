@@ -21,6 +21,6 @@
   "devDependencies": {
     "marked": "^11.1.1",
     "front-matter": "^4.0.2",
-    "sharp": "^0.33.0"
+    "sharp": "^0.35.5"
   }
 }
