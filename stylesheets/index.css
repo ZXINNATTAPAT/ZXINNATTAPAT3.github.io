@@ -7854,9 +7854,20 @@ html[lang="ko"] .hero-artist-link {
 }
 
 /* Cloud Platforms — luxury logo strip */
-.cloud-platforms-section {
-  background: #f8f8ff;
+.cloud-platforms-section.container-fluid {
+  width: 100%;
+  max-width: none;
+  margin: 0;
   padding: 0 0 3.5rem;
+  background: #f8f8ff;
+}
+
+.cloud-platforms-section > .container {
+  width: min(920px, calc(100% - 12vw));
+  max-width: 920px;
+  margin-inline: auto;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .cloud-platforms-shell {
@@ -8013,6 +8024,12 @@ html[lang="ko"] .hero-artist-link {
 
   .cloud-platform-card:nth-child(3)::before,
   .cloud-platform-card:nth-child(6)::before {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .cloud-platforms-section {
     display: none;
   }
 }

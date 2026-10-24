@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Guestbook — Nattapat Phungphugdee</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@400;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./stylesheets/guestbook.css?v=11">
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+</head>
+<body class="guestbook-page">
+  <main class="guestbook-wrap">
+    <a class="guestbook-back" href="index.html">← Home</a>
+    <h1 class="gb-hero"><span>The wall remembers</span></h1>
+    <section class="gb-board" aria-label="Guestbook">
+      <button type="button" class="gb-note gb-note--lined gb-compose" id="gb-open">
+        <span class="gb-clip gb-clip--silver" aria-hidden="true">
+          <svg viewBox="0 0 32 56" fill="none"><path d="M21 12c0-4.4-3-7.5-7-7.5S7 7.6 7 12v24.5c0 6.4 4.3 11 9.6 11s9.6-4.6 9.6-11V17.2c0-3.5-2.3-6-5.4-6s-5.4 2.5-5.4 6v17.6" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/></svg>
+        </span>
+        <span class="gb-compose-placeholder">Write something nice...</span>
+        <span class="gb-compose-foot">
+          <span class="gb-compose-count">0 / 500</span>
+          <span class="gb-pin">Pin it</span>
+        </span>
+        <span class="gb-pencil" aria-hidden="true">
+          <svg viewBox="0 0 74 16" fill="none">
+            <path d="M2 8h52" stroke="#f0b429" stroke-width="7" stroke-linecap="round"/>
+            <path d="M50 4.5 68 8 50 11.5" fill="#f4d27a"/>
+            <path d="M66 8h6" stroke="#2a2a2a" stroke-width="2" stroke-linecap="round"/>
+            <path d="M8 5v6" stroke="#e15b64" stroke-width="2"/>
+          </svg>
+        </span>
+      </button>
+      <div id="guestbook"></div>
+    </section>
+  </main>
+
+  <dialog id="gb-dialog" class="gb-dialog">
+    <div class="gb-dialog-head">
+      <p>ฝากข้อความ</p>
+      <button type="button" class="gb-dialog-close" id="gb-close" aria-label="ปิด">×</button>
+    </div>
+    <form id="gb-form">
+      <input name="name" maxlength="50" placeholder="ชื่อ" required>
+      <textarea name="message" maxlength="500" placeholder="ฝากข้อความ" required></textarea>
+      <div class="cf-turnstile" data-sitekey="0x4AAAAAAFjeaYC9GR4VCB5j"></div>
+      <div class="gb-form-foot">
+        <span id="gb-count">0 / 500</span>
+        <button type="submit">Pin it</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script>
+    const API = "https://api.nattazxin.com";
+    const PAPERS = ["lined", "blue", "lilac", "mint", "lined", "yellow"];
+    const CLIPS = ["silver", "blue", "gold", "purple", "pink", "red"];
+    const CLIP_SVG = '<svg viewBox="0 0 32 56" fill="none"><path d="M21 12c0-4.4-3-7.5-7-7.5S7 7.6 7 12v24.5c0 6.4 4.3 11 9.6 11s9.6-4.6 9.6-11V17.2c0-3.5-2.3-6-5.4-6s-5.4 2.5-5.4 6v17.6" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/></svg>';
+    const dialog = document.getElementById("gb-dialog");
+    const form = document.getElementById("gb-form");
+    const messageField = form.querySelector("textarea");
+    const count = document.getElementById("gb-count");
+
+    function formatDate(value) {
+      const date = new Date(value);
+      if (Number.isNaN(date.getTime())) return "";
+      const lang = document.documentElement.lang || "en";
+      return date.toLocaleDateString(lang === "en" ? "en-US" : lang, {
+        month: "short",
+        day: "2-digit",
+        year: "numeric",
+      });
+    }
+
+    function renderEntry(entry, index) {
+      const n = Number(entry.id) || index;
+      const article = document.createElement("article");
+      article.className = "gb-note gb-note--" + PAPERS[n % PAPERS.length];
+      const clip = document.createElement("span");
+      clip.className = "gb-clip gb-clip--" + CLIPS[n % CLIPS.length];
+      clip.setAttribute("aria-hidden", "true");
+      clip.innerHTML = CLIP_SVG;
+      const message = document.createElement("p");
+      message.className = "gb-message";
+      message.textContent = entry.message || "";
+      const name = document.createElement("p");
+      name.className = "gb-name";
+      name.textContent = entry.name || "";
+      article.append(clip, message, name);
+      const label = formatDate(entry.created_at);
+      if (label) {
+        const time = document.createElement("time");
+        time.className = "gb-date";
+        time.dateTime = entry.created_at || "";
+        time.textContent = label;
+        article.append(time);
+      }
+      return article;
+    }
+
+    async function loadEntries() {
+      const box = document.getElementById("guestbook");
+      if (!box) return;
+      try {
+        const res = await fetch(`${API}/entries`);
+        if (!res.ok) return;
+        const entries = await res.json();
+        box.replaceChildren();
+        if (!Array.isArray(entries)) return;
+        entries.forEach((entry, index) => box.append(renderEntry(entry, index)));
+      } catch (_) {}
+    }
+
+    document.getElementById("gb-open").addEventListener("click", () => dialog.showModal());
+    document.getElementById("gb-close").addEventListener("click", () => dialog.close());
+    messageField.addEventListener("input", () => {
+      count.textContent = messageField.value.length + " / 500";
+    });
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const f = new FormData(form);
+      try {
+        const res = await fetch(`${API}/entries`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name: f.get("name"),
+            message: f.get("message"),
+            token: f.get("cf-turnstile-response"),
+          }),
+        });
+        const data = await res.json();
+        if (!res.ok) return alert(data.error || "ส่งไม่สำเร็จ");
+        form.reset();
+        count.textContent = "0 / 500";
+        if (window.turnstile) turnstile.reset();
+        dialog.close();
+        loadEntries();
+      } catch (_) {
+        alert("ส่งไม่สำเร็จ");
+      }
+    });
+    loadEntries();
+  </script>
+</body>
+</html>
