@@ -1,11 +1,16 @@
 # AGENTS.md
 
+File map for edits: [README.md](README.md). Read that before changing pages.
+The guestbook API is the sibling folder `../guestbook-api` (Cloudflare Worker + D1).
+It is not part of this static site's git repo.
+
 ## Cursor Cloud specific instructions
 
 This repository is a **static portfolio website + Markdown-driven blog** for Nattapat
-Phungphugdee, deployed to GitHub Pages (`nattazxin.com`). There is **no backend, no
-database, and no test/lint suite**. The only build tool is Node.js via `build.js`
+Phungphugdee, deployed to GitHub Pages (`nattazxin.com`). This repo has **no test/lint
+suite**. The only build tool is Node.js via `build.js`
 (dependencies: `marked`, `front-matter`, `sharp`).
+Guestbook posts go to `https://api.nattazxin.com`, implemented in `../guestbook-api`.
 
 ### Services / how to run
 
