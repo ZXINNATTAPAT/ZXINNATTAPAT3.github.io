@@ -8,12 +8,15 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@400;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./stylesheets/guestbook.css?v=11">
+  <link rel="stylesheet" href="./stylesheets/guestbook.css?v=12">
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body class="guestbook-page">
   <main class="guestbook-wrap">
-    <a class="guestbook-back" href="index.html">← Home</a>
+    <div class="gb-top">
+      <a class="guestbook-back" href="index.html">← Home</a>
+      <button type="button" class="gb-admin" id="gb-admin">จัดการ</button>
+    </div>
     <h1 class="gb-hero"><span>The wall remembers</span></h1>
     <section class="gb-board" aria-label="Guestbook">
       <button type="button" class="gb-note gb-note--lined gb-compose" id="gb-open">
@@ -44,9 +47,9 @@
       <button type="button" class="gb-dialog-close" id="gb-close" aria-label="ปิด">×</button>
     </div>
     <form id="gb-form">
-      <input name="name" maxlength="50" placeholder="ชื่อ" required>
-      <textarea name="message" maxlength="500" placeholder="ฝากข้อความ" required></textarea>
-      <div class="cf-turnstile" data-sitekey="0x4AAAAAAFjeaYC9GR4VCB5j"></div>
+      <input name="name" minlength="2" maxlength="50" placeholder="ชื่อ" required>
+      <textarea name="message" minlength="2" maxlength="500" placeholder="ฝากข้อความ" required></textarea>
+      <div id="gb-turnstile"></div>
       <div class="gb-form-foot">
         <span id="gb-count">0 / 500</span>
         <button type="submit">Pin it</button>
@@ -56,6 +59,18 @@
 
   <script>
     const API = "https://api.nattazxin.com";
+    const SITEKEY = "0x4AAAAAAFjeaYC9GR4VCB5j";
+    let widgetId = null;
+    let adminToken = "";
+
+    function ensureTurnstile() {
+      if (widgetId !== null) return;
+      if (!window.turnstile) {
+        setTimeout(ensureTurnstile, 200);
+        return;
+      }
+      widgetId = turnstile.render("#gb-turnstile", { sitekey: SITEKEY });
+    }
     const PAPERS = ["lined", "blue", "lilac", "mint", "lined", "yellow"];
     const CLIPS = ["silver", "blue", "gold", "purple", "pink", "red"];
     const CLIP_SVG = '<svg viewBox="0 0 32 56" fill="none"><path d="M21 12c0-4.4-3-7.5-7-7.5S7 7.6 7 12v24.5c0 6.4 4.3 11 9.6 11s9.6-4.6 9.6-11V17.2c0-3.5-2.3-6-5.4-6s-5.4 2.5-5.4 6v17.6" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/></svg>';
@@ -98,7 +113,29 @@
         time.textContent = label;
         article.append(time);
       }
+      if (adminToken && entry.id) {
+        const hide = document.createElement("button");
+        hide.type = "button";
+        hide.className = "gb-hide";
+        hide.textContent = "ซ่อน";
+        hide.addEventListener("click", () => hideEntry(entry.id));
+        article.append(hide);
+      }
       return article;
+    }
+
+    async function hideEntry(id) {
+      try {
+        const res = await fetch(`${API}/entries/${id}/hide`, {
+          method: "POST",
+          headers: { Authorization: `Bearer ${adminToken}` },
+        });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok) return alert(data.error || "ซ่อนไม่สำเร็จ");
+        loadEntries();
+      } catch (_) {
+        alert("ซ่อนไม่สำเร็จ");
+      }
     }
 
     async function loadEntries() {
@@ -114,7 +151,34 @@
       } catch (_) {}
     }
 
-    document.getElementById("gb-open").addEventListener("click", () => dialog.showModal());
+    document.getElementById("gb-admin").addEventListener("click", async () => {
+      const button = document.getElementById("gb-admin");
+      if (adminToken) {
+        adminToken = "";
+        button.textContent = "จัดการ";
+        loadEntries();
+        return;
+      }
+      const token = prompt("รหัสแอดมิน");
+      if (!token) return;
+      try {
+        const res = await fetch(`${API}/admin/check`, {
+          method: "POST",
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok) return alert(data.error || "เข้าจัดการไม่สำเร็จ");
+        adminToken = token;
+        button.textContent = "ปิดการจัดการ";
+        loadEntries();
+      } catch (_) {
+        alert("เข้าจัดการไม่สำเร็จ");
+      }
+    });
+    document.getElementById("gb-open").addEventListener("click", () => {
+      dialog.showModal();
+      ensureTurnstile();
+    });
     document.getElementById("gb-close").addEventListener("click", () => dialog.close());
     messageField.addEventListener("input", () => {
       count.textContent = messageField.value.length + " / 500";
@@ -123,6 +187,11 @@
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
       const f = new FormData(form);
+      const token = widgetId !== null && window.turnstile ? turnstile.getResponse(widgetId) : "";
+      if (!token) {
+        alert("กรุณายืนยันว่าไม่ใช่บอทก่อนส่ง");
+        return;
+      }
       try {
         const res = await fetch(`${API}/entries`, {
           method: "POST",
@@ -130,14 +199,17 @@
           body: JSON.stringify({
             name: f.get("name"),
             message: f.get("message"),
-            token: f.get("cf-turnstile-response"),
+            token,
           }),
         });
         const data = await res.json();
-        if (!res.ok) return alert(data.error || "ส่งไม่สำเร็จ");
+        if (!res.ok) {
+          const detail = Array.isArray(data.codes) && data.codes.length ? " (" + data.codes.join(", ") + ")" : "";
+          return alert((data.error || "ส่งไม่สำเร็จ") + detail);
+        }
         form.reset();
         count.textContent = "0 / 500";
-        if (window.turnstile) turnstile.reset();
+        if (window.turnstile && widgetId !== null) turnstile.reset(widgetId);
         dialog.close();
         loadEntries();
       } catch (_) {

@@ -173,12 +173,35 @@
   padding: 1.15rem 0 3rem;
 }
 
+.gb-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.85rem;
+}
+
 .guestbook-back {
   display: inline-block;
-  margin-bottom: 0.85rem;
   color: rgba(28, 28, 28, 0.62);
   text-decoration: none;
   font-size: 0.92rem;
+}
+
+.gb-admin,
+.gb-hide {
+  border: 0;
+  background: transparent;
+  color: rgba(28, 28, 28, 0.45);
+  font: inherit;
+  font-size: 0.78rem;
+  cursor: pointer;
+}
+
+.gb-hide {
+  position: absolute;
+  right: 0.65rem;
+  bottom: 0.45rem;
 }
 
 .gb-hero {
