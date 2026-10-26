@@ -57,7 +57,7 @@ npm run dev            # watch แล้ว build ใหม่ ไม่ได�
 
 สคริปต์และ CSS ที่ลิงก์ด้วย `?v=` ต้องขึ้นเลขใน `templates/index.template.html`
 แล้ว build ใหม่ ไม่งั้นเบราว์เซอร์ยังใช้ไฟล์เก่า
-ตอนนี้เช่น `stylesheets/min/index.css?v=71`, `i18n.min.js?v=58`, `hero-gsap.min.js?v=10`
+ตอนนี้เช่น `stylesheets/min/index.css?v=72`, `i18n.min.js?v=58`, `hero-gsap.min.js?v=10`
 
 Build อาจเปลี่ยนวันที่ใน `sitemap.xml` และหน้าบทความแม้เนื้อหาไม่เปลี่ยน
 อย่า commit ส่วนต่างแค่นั้น
