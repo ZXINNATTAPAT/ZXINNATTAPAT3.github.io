@@ -1407,7 +1407,19 @@ function toggleLanguage() {
 window.toggleLanguage = toggleLanguage;
 window.setLanguage = setLanguage;
 
+function syncContactFooterCover() {
+  var section = document.querySelector('.contact-email-section');
+  var footer = section && section.nextElementSibling;
+  if (!section || !footer || !footer.classList.contains('footer-modern')) return;
+  var height = footer.offsetHeight + 'px';
+  section.style.setProperty('--footer-cover', height);
+  footer.style.setProperty('--footer-cover', height);
+}
+
 document.addEventListener('DOMContentLoaded', function () {
   bindLanguageSelectors();
   updateLanguage();
+  syncContactFooterCover();
+  window.addEventListener('resize', syncContactFooterCover);
+  window.addEventListener('i18n:updated', syncContactFooterCover);
 });

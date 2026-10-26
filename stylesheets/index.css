@@ -3395,11 +3395,13 @@ body.menu-open {
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  width: min(920px, calc(100% - 2.5rem));
-  margin: 0 auto 1.5rem;
-  border-radius: 28px;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  border-radius: 0;
+  --footer-cover: calc(3.7rem + 92px);
   background: #1a242e url(/assets/bg-poster.webp) center / cover no-repeat;
-  padding: clamp(4.5rem, 10vw, 7.5rem) clamp(1.25rem, 4vw, 2.5rem) clamp(5rem, 12vw, 8.5rem);
+  padding: clamp(4.5rem, 10vw, 7.5rem) clamp(1.25rem, 4vw, 2.5rem) calc(clamp(5rem, 12vw, 8.5rem) + var(--footer-cover));
   text-align: center;
 }
 
@@ -3409,6 +3411,7 @@ body.menu-open {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   z-index: 0;
   pointer-events: none;
 }
@@ -3477,6 +3480,32 @@ body.menu-open {
 
 .contact-email-social .hero-social-buttons {
   justify-content: center;
+}
+
+.contact-email-section + .footer-modern {
+  --footer-cover: calc(3.7rem + 92px);
+  position: relative;
+  z-index: 2;
+  margin-top: calc(-1 * var(--footer-cover));
+  background: transparent;
+  border-top: 0;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.contact-email-section + .footer-modern .footer-top:hover,
+.contact-email-section + .footer-modern .footer-top:focus-visible,
+.contact-email-section + .footer-modern .footer-social a:hover,
+.contact-email-section + .footer-modern .footer-social a:focus-visible {
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  section.contact-email-section {
+    width: 100%;
+    max-width: none;
+    margin: 0 !important;
+    border-radius: 0;
+  }
 }
 
 #contact .contact-info-minimal {

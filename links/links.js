@@ -4,7 +4,7 @@
   "en": {
     "language": "Language",
     "role": "SOFTWARE DEVELOPER · THAILAND",
-    "heading": "Let's connect",
+    "heading": "@nattazxin",
     "intro": "My contacts, work, and stories.",
     "introMore": "Get to know me through the links below.",
     "work": "Let's work together",
@@ -25,7 +25,7 @@
   "th": {
     "language": "ภาษา",
     "role": "นักพัฒนาซอฟต์แวร์ · ประเทศไทย",
-    "heading": "ช่องทางการติดต่อ",
+    "heading": "@nattazxin",
     "intro": "ช่องทางติดต่อ ผลงาน และเรื่องราวของผม",
     "introMore": "เลือกทำความรู้จักกันได้จากลิงก์ด้านล่าง",
     "work": "มาร่วมงานกัน",
@@ -46,7 +46,7 @@
   "ja": {
     "language": "言語",
     "role": "ソフトウェア開発者 · タイ",
-    "heading": "つながりましょう",
+    "heading": "@nattazxin",
     "intro": "連絡先、作品、日々のストーリー。",
     "introMore": "下のリンクから、私についてご覧ください。",
     "work": "一緒に仕事をしましょう",
@@ -67,7 +67,7 @@
   "zh": {
     "language": "语言",
     "role": "软件开发者 · 泰国",
-    "heading": "认识一下吧",
+    "heading": "@nattazxin",
     "intro": "我的联系方式、作品与生活故事。",
     "introMore": "通过以下链接了解我。",
     "work": "一起合作吧",
@@ -88,7 +88,7 @@
   "de": {
     "language": "Sprache",
     "role": "SOFTWAREENTWICKLER · THAILAND",
-    "heading": "Vernetzen wir uns",
+    "heading": "@nattazxin",
     "intro": "Kontakt, Projekte und Geschichten.",
     "introMore": "Lerne mich über die Links unten kennen.",
     "work": "Zusammenarbeiten",
@@ -109,7 +109,7 @@
   "ko": {
     "language": "언어",
     "role": "소프트웨어 개발자 · 태국",
-    "heading": "함께 소통해요",
+    "heading": "@nattazxin",
     "intro": "연락처, 작업물, 그리고 저의 이야기.",
     "introMore": "아래 링크에서 저를 만나보세요.",
     "work": "함께 일해요",
@@ -138,7 +138,8 @@
     document.querySelectorAll('[data-link-i18n]').forEach(element => {
       element.textContent = translations[lang][element.dataset.linkI18n];
     });
-    document.querySelector('nav').setAttribute('aria-label', translations[lang].intro);
+    document.querySelector('nav.links-nav').setAttribute('aria-label', translations[lang].intro);
+    document.querySelector('nav.social-icons').setAttribute('aria-label', translations[lang].elsewhere);
     selector.setAttribute('aria-label', translations[lang].language);
     const home = { en: '/', th: '/th.html', ja: '/ja.html', zh: '/zh.html', de: '/de.html', ko: '/ko.html' }[lang];
     document.querySelectorAll('a[href="/"], a[data-home-link]').forEach(link => {
