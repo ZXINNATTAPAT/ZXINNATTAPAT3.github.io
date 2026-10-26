@@ -20,19 +20,7 @@
     "social3": "A little of everyday life",
     "social4": "Stories & things I learn",
     "social5": "Short videos",
-    "social6": "Videos & more",
-    "clipsLabel": "SHORT CLIPS",
-    "clipCsTitle": "CS student life",
-    "clipCsNote": "Year 1 to year 3",
-    "clipGitTitle": "Teamwork & Git",
-    "clipGitNote": "First project with friends",
-    "clipTwTitle": "Tailwind vs Bootstrap",
-    "clipTwNote": "First time trying Tailwind",
-    "clipArticle": "Read the article",
-    "clipPlay": "Play clip",
-    "clipPause": "Pause clip",
-    "clipPrev": "Previous clip",
-    "clipNext": "Next clip"
+    "social6": "Videos & more"
   },
   "th": {
     "language": "ภาษา",
@@ -53,19 +41,7 @@
     "social3": "เรื่องราวในชีวิตประจำวัน",
     "social4": "เรื่องเล่าและสิ่งที่ได้เรียนรู้",
     "social5": "วิดีโอสั้น",
-    "social6": "วิดีโอและเรื่องราวอื่น ๆ",
-    "clipsLabel": "คลิปสั้น",
-    "clipCsTitle": "ชีวิตวิทย์คอม มจพ",
-    "clipCsNote": "ปี 1 ถึงปี 3",
-    "clipGitTitle": "ทีมเวิร์กกับ Git",
-    "clipGitNote": "โปรเจกต์แรกกับเพื่อน",
-    "clipTwTitle": "Tailwind กับ Bootstrap",
-    "clipTwNote": "ลอง Tailwind ครั้งแรก",
-    "clipArticle": "อ่านบทความ",
-    "clipPlay": "เล่นคลิป",
-    "clipPause": "หยุดคลิป",
-    "clipPrev": "คลิปก่อนหน้า",
-    "clipNext": "คลิปถัดไป"
+    "social6": "วิดีโอและเรื่องราวอื่น ๆ"
   },
   "ja": {
     "language": "言語",
@@ -86,19 +62,7 @@
     "social3": "日々の暮らし",
     "social4": "ストーリーと学び",
     "social5": "ショート動画",
-    "social6": "動画など",
-    "clipsLabel": "ショートクリップ",
-    "clipCsTitle": "CS学生生活",
-    "clipCsNote": "1年生から3年生まで",
-    "clipGitTitle": "チームと Git",
-    "clipGitNote": "友達との初めての課題",
-    "clipTwTitle": "Tailwind と Bootstrap",
-    "clipTwNote": "Tailwind を初めて試した話",
-    "clipArticle": "記事を読む",
-    "clipPlay": "クリップを再生",
-    "clipPause": "一時停止",
-    "clipPrev": "前のクリップ",
-    "clipNext": "次のクリップ"
+    "social6": "動画など"
   },
   "zh": {
     "language": "语言",
@@ -119,19 +83,7 @@
     "social3": "日常生活片段",
     "social4": "故事与学习心得",
     "social5": "短视频",
-    "social6": "视频与更多内容",
-    "clipsLabel": "短片",
-    "clipCsTitle": "计算机学生活",
-    "clipCsNote": "大一到大三",
-    "clipGitTitle": "团队合作与 Git",
-    "clipGitNote": "和朋友的第一个项目",
-    "clipTwTitle": "Tailwind 与 Bootstrap",
-    "clipTwNote": "第一次尝试 Tailwind",
-    "clipArticle": "阅读文章",
-    "clipPlay": "播放短片",
-    "clipPause": "暂停",
-    "clipPrev": "上一段",
-    "clipNext": "下一段"
+    "social6": "视频与更多内容"
   },
   "de": {
     "language": "Sprache",
@@ -152,19 +104,7 @@
     "social3": "Einblicke in meinen Alltag",
     "social4": "Geschichten und Erkenntnisse",
     "social5": "Kurzvideos",
-    "social6": "Videos & mehr",
-    "clipsLabel": "KURZE CLIPS",
-    "clipCsTitle": "CS-Studentenleben",
-    "clipCsNote": "Jahr 1 bis Jahr 3",
-    "clipGitTitle": "Teamarbeit & Git",
-    "clipGitNote": "Erstes Projekt mit Freunden",
-    "clipTwTitle": "Tailwind vs Bootstrap",
-    "clipTwNote": "Tailwind zum ersten Mal",
-    "clipArticle": "Artikel lesen",
-    "clipPlay": "Clip abspielen",
-    "clipPause": "Pause",
-    "clipPrev": "Vorheriger Clip",
-    "clipNext": "Nächster Clip"
+    "social6": "Videos & mehr"
   },
   "ko": {
     "language": "언어",
@@ -185,37 +125,19 @@
     "social3": "소소한 일상",
     "social4": "이야기와 배운 것들",
     "social5": "짧은 영상",
-    "social6": "영상과 더 많은 이야기",
-    "clipsLabel": "짧은 클립",
-    "clipCsTitle": "컴퓨터 학과 생활",
-    "clipCsNote": "1학년부터 3학년까지",
-    "clipGitTitle": "팀워크와 Git",
-    "clipGitNote": "친구들과의 첫 프로젝트",
-    "clipTwTitle": "Tailwind와 Bootstrap",
-    "clipTwNote": "Tailwind를 처음 써 본 이야기",
-    "clipArticle": "글 읽기",
-    "clipPlay": "클립 재생",
-    "clipPause": "일시정지",
-    "clipPrev": "이전 클립",
-    "clipNext": "다음 클립"
+    "social6": "영상과 더 많은 이야기"
   }
 };
   const selector = document.getElementById('links-language');
-  const fonts = { ja: 'Noto Sans JP', zh: 'Noto Sans SC', ko: 'Noto Sans KR' };
   const aliases = { jp: 'ja', cn: 'zh', kr: 'ko' };
   function applyLanguage(value) {
     const lang = translations[value] ? value : 'en';
     document.documentElement.lang = lang;
     selector.value = lang;
     document.querySelectorAll('[data-link-i18n]').forEach(element => {
-      element.textContent = translations[lang][element.dataset.linkI18n];
+      const text = translations[lang][element.dataset.linkI18n];
+      if (text) element.textContent = text;
     });
-    document.querySelectorAll('[data-link-i18n-aria]').forEach(element => {
-      if (element.classList.contains('clip-play')) return;
-      const label = translations[lang][element.dataset.linkI18nAria];
-      if (label) element.setAttribute('aria-label', label);
-    });
-    document.querySelectorAll('.clip').forEach(syncClipLabel);
     document.querySelector('nav.links-nav').setAttribute('aria-label', translations[lang].intro);
     document.querySelector('nav.social-icons').setAttribute('aria-label', translations[lang].elsewhere);
     selector.setAttribute('aria-label', translations[lang].language);
@@ -224,111 +146,11 @@
       link.dataset.homeLink = 'true';
       link.href = home;
     });
-    if (fonts[lang] && !document.getElementById('font-' + lang)) {
-      const stylesheet = document.createElement('link');
-      stylesheet.id = 'font-' + lang;
-      stylesheet.rel = 'stylesheet';
-      stylesheet.href = 'https://fonts.googleapis.com/css2?family=' + encodeURIComponent(fonts[lang]) + ':wght@400;500;600;700&display=swap';
-      document.head.appendChild(stylesheet);
-    }
     try { localStorage.setItem('language', lang); } catch (_) { /* Language switching still works without storage. */ }
   }
   let saved = 'th';
   try { saved = localStorage.getItem('language') || saved; } catch (_) { /* Use the page default. */ }
   saved = saved.toLowerCase();
-  function syncClipLabel(clip) {
-    const button = clip.querySelector('.clip-play');
-    if (!button) return;
-    const lang = translations[selector.value] ? selector.value : 'en';
-    const key = clip.classList.contains('is-playing') ? 'clipPause' : 'clipPlay';
-    button.setAttribute('aria-label', translations[lang][key]);
-  }
-
-  function stopClip(clip) {
-    const video = clip.querySelector('video');
-    if (!video) return;
-    video.pause();
-    video.controls = false;
-    clip.classList.remove('is-playing');
-    syncClipLabel(clip);
-  }
-
-  const track = document.querySelector('.clip-track');
-  const clips = [...document.querySelectorAll('.clip')];
-  const dots = [...document.querySelectorAll('.clip-dot')];
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  function clipIndex() {
-    const left = track.scrollLeft;
-    let closest = 0;
-    let best = Infinity;
-    clips.forEach((clip, i) => {
-      const distance = Math.abs(clip.offsetLeft - left);
-      if (distance < best) {
-        best = distance;
-        closest = i;
-      }
-    });
-    return closest;
-  }
-
-  function goToClip(index) {
-    const nextIndex = Math.max(0, Math.min(clips.length - 1, index));
-    track.scrollTo({ left: clips[nextIndex].offsetLeft, behavior: reduceMotion ? 'auto' : 'smooth' });
-  }
-
-  function syncSlider() {
-    const index = clipIndex();
-    dots.forEach((dot, i) => {
-      const active = i === index;
-      dot.classList.toggle('is-active', active);
-      dot.setAttribute('aria-selected', active ? 'true' : 'false');
-    });
-    clips.forEach((clip, i) => {
-      if (i !== index) stopClip(clip);
-    });
-  }
-
-  clips.forEach(clip => {
-    const video = clip.querySelector('video');
-    const button = clip.querySelector('.clip-play');
-    if (!video || !button) return;
-
-    button.addEventListener('click', async () => {
-      clips.forEach(other => {
-        if (other !== clip) stopClip(other);
-      });
-      video.controls = true;
-      video.muted = false;
-      clip.classList.add('is-playing');
-      syncClipLabel(clip);
-      try {
-        await video.play();
-      } catch (_) {
-        video.muted = true;
-        await video.play().catch(() => {});
-      }
-    });
-
-    video.addEventListener('ended', () => stopClip(clip));
-  });
-
-  dots.forEach((dot, index) => dot.addEventListener('click', () => goToClip(index)));
-  if (track) {
-    track.addEventListener('keydown', event => {
-      if (event.key === 'ArrowRight') { event.preventDefault(); goToClip(clipIndex() + 1); }
-      if (event.key === 'ArrowLeft') { event.preventDefault(); goToClip(clipIndex() - 1); }
-    });
-    let scrollTimer = 0;
-    const onSlide = () => {
-      window.clearTimeout(scrollTimer);
-      scrollTimer = window.setTimeout(syncSlider, 80);
-    };
-    track.addEventListener('scroll', onSlide, { passive: true });
-    track.addEventListener('scrollend', syncSlider);
-    syncSlider();
-  }
-
   applyLanguage(aliases[saved] || saved);
   selector.addEventListener('change', () => applyLanguage(selector.value));
 })();

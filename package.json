@@ -19,8 +19,9 @@
   "author": "Nattapat Phungphugdee",
   "license": "MIT",
   "devDependencies": {
-    "marked": "^11.1.1",
+    "esbuild": "^0.28.2",
     "front-matter": "^4.0.2",
+    "marked": "^11.1.1",
     "sharp": "^0.35.5"
   }
 }

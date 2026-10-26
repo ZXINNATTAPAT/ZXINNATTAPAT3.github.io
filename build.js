@@ -3,6 +3,13 @@ const path = require('path');
 const { marked } = require('marked');
 const matter = require('front-matter');
 
+let esbuild = null;
+try {
+  esbuild = require('esbuild');
+} catch (e) {
+  // esbuild is installed with npm; minify is skipped if it is missing
+}
+
 // Try to load sharp for image optimization (optional)
 let sharp = null;
 try {
@@ -821,7 +828,7 @@ function getDefaultTemplate() {
   <meta name="description" content="{{description}}">
   <meta name="author" content="{{author}}">
   <link rel="canonical" href="{{canonical}}">
-  <link rel="stylesheet" href="../stylesheets/index.css">
+  <link rel="stylesheet" href="../stylesheets/min/index.css">
   <style>
     .article-container { max-width: 800px; margin: 0 auto; padding: 2rem; }
     .article-header { margin-bottom: 2rem; }
@@ -864,7 +871,7 @@ function getDefaultBlogIndexTemplate() {
   <title>บทความ | Nattapat Phungphugdee</title>
   <meta name="description" content="บทความเกี่ยวกับการพัฒนาเว็บ, เทคโนโลยี, และประสบการณ์การทำงาน">
   <link rel="canonical" href="https://nattazxin.com/blog.html">
-  <link rel="stylesheet" href="stylesheets/index.css">
+  <link rel="stylesheet" href="stylesheets/min/index.css">
   <style>
     .blog-container { max-width: 1000px; margin: 0 auto; padding: 2rem; }
     .blog-header { text-align: center; margin-bottom: 3rem; }
@@ -896,7 +903,56 @@ function getDefaultBlogIndexTemplate() {
 }
 
 // Main build function
+function rebaseMinCssUrls(css) {
+  return css.replace(/url\((['"]?)(?!data:|https?:|\/|#)([^'")]+)\1\)/g, (match, quote, target) => {
+    if (target.startsWith('../')) {
+      return `url(${quote}../${target}${quote})`;
+    }
+    if (!target.startsWith('.')) {
+      return `url(${quote}../${target}${quote})`;
+    }
+    return match;
+  });
+}
+
+function minifyAssets() {
+  if (!esbuild) {
+    console.warn('⚠️  ข้าม minify เพราะยังไม่มี esbuild');
+    return;
+  }
+
+  const cssDir = path.join(__dirname, 'stylesheets');
+  const minDir = path.join(cssDir, 'min');
+  fs.mkdirSync(minDir, { recursive: true });
+
+  for (const name of ['index.css', 'fontsex.css', 'guestbook.css', 'links.css', 'skeleton.css']) {
+    const source = fs.readFileSync(path.join(cssDir, name), 'utf8');
+    const result = esbuild.transformSync(source, { loader: 'css', minify: true, legalComments: 'none' });
+    fs.writeFileSync(path.join(minDir, name), rebaseMinCssUrls(result.code));
+  }
+
+  const scripts = [
+    ['i18n.js', 'i18n.min.js'],
+    ['cloud-platforms-gsap.js', 'cloud-platforms-gsap.min.js'],
+    ['experience-gsap.js', 'experience-gsap.min.js'],
+    ['uiux-gsap.js', 'uiux-gsap.min.js'],
+    ['projects-gsap.js', 'projects-gsap.min.js'],
+    ['hero-gsap.js', 'hero-gsap.min.js'],
+    ['profile-cards.js', 'profile-cards.min.js'],
+    ['links/links.js', 'links/links.min.js']
+  ];
+
+  for (const [src, dest] of scripts) {
+    const source = fs.readFileSync(path.join(__dirname, src), 'utf8');
+    const result = esbuild.transformSync(source, { loader: 'js', minify: true, legalComments: 'none' });
+    fs.writeFileSync(path.join(__dirname, dest), result.code);
+  }
+
+  console.log('🗜️  minify CSS/JS ฝั่งเราแล้ว');
+}
+
 function build() {
+  minifyAssets();
   const startTime = Date.now();
   console.log('🚀 เริ่ม build...');
 

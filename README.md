@@ -26,7 +26,6 @@
 | ติดต่อ / ฟุตเตอร์ | `components/index/contact.html`, `components/index/footer.html` |
 | ป๊อปอัปโปรเจกต์ | มาร์กอัป `components/index/project-modal.html` สคริปต์อยู่ใน `templates/index.template.html` |
 | หน้าลิงก์รวม (`/links/`) | `links/index.html`, `links/links.js`, `stylesheets/links.css` |
-| คลิปสั้นบนหน้าลิงก์ | สไลด์การ์ดใน `links/index.html` ไฟล์วิดีโออยู่ที่ `links/clips/*.webm` |
 | บทความใหม่ | สร้าง `articles/<slug>.md` แล้ว `npm run build` |
 | หน้ารายละเอียดโปรเจกต์ | แก้ `projects/<slug>.md` แล้ว `npm run build` |
 | head, ฟอนต์, ลำดับสคริปต์, cache `?v=` | `templates/index.template.html` |
@@ -58,7 +57,7 @@ npm run dev            # watch แล้ว build ใหม่ ไม่ได�
 
 สคริปต์และ CSS ที่ลิงก์ด้วย `?v=` ต้องขึ้นเลขใน `templates/index.template.html`
 แล้ว build ใหม่ ไม่งั้นเบราว์เซอร์ยังใช้ไฟล์เก่า
-ตอนนี้เช่น `stylesheets/index.css?v=67`, `i18n.js?v=55`, `hero-gsap.js?v=9`
+ตอนนี้เช่น `stylesheets/min/index.css?v=71`, `i18n.min.js?v=58`, `hero-gsap.min.js?v=10`
 
 Build อาจเปลี่ยนวันที่ใน `sitemap.xml` และหน้าบทความแม้เนื้อหาไม่เปลี่ยน
 อย่า commit ส่วนต่างแค่นั้น
@@ -121,11 +120,11 @@ HTML ใส่ข้อความอังกฤษไว้เป็นค่
 | `stylesheets/fontsex.css` | ฟอนต์และ fallback กันตัวหนังสือกระโดด |
 | `stylesheets/guestbook.css` | ประตูสมุดเยี่ยมและหน้า `guestbook.html` |
 | `stylesheets/links.css` | หน้า `/links/` |
-| `stylesheets/contact.css` | ปุ่มโซเชียลในส่วนติดต่อ |
-| `stylesheets/buttonprofile.css` | ปุ่มโปรไฟล์ |
-| `stylesheets/cardblock2.css` | การ์ดบล็อกเก่า |
-| `stylesheets/cardslide.css` | สไลด์โชว์เก่า |
-| `stylesheets/baseblock.css` | การ์ด `.baseBlock` |
+| `stylesheets/contact.css` | ไม่ได้ลิงก์แล้ว คลาสปุ่มโซเชียลเก่าไม่มีในหน้า |
+| `stylesheets/buttonprofile.css` | ไม่ได้ลิงก์แล้ว |
+| `stylesheets/cardblock2.css` | ไม่ได้ลิงก์แล้ว |
+| `stylesheets/cardslide.css` | ไม่ได้ลิงก์แล้ว |
+| `stylesheets/baseblock.css` | ไม่ได้ลิงก์แล้ว |
 | `stylesheets/skeleton.css` | หน้าโหลดของหน้ารายละเอียดโปรเจกต์ |
 
 แอนิเมชัน GSAP อยู่คนละไฟล์กับ HTML และถูกโหลดจากเทมเพลต
@@ -137,7 +136,9 @@ HTML ใส่ข้อความอังกฤษไว้เป็นค่
 - `projects-gsap.js` — สายพานโปรเจกต์เด่น
 - `uiux-gsap.js` — แกลเลอรีเอียง
 
-ไลบรารีภายนอกโหลดจาก CDN ในเทมเพลต: Bootstrap, AOS, GSAP 3.12.7 + ScrollTrigger, Font Awesome 5, Google Fonts
+ไลบรารี Bootstrap 5.3.3, AOS 2.3.1, GSAP 3.12.7 + ScrollTrigger และ Font Awesome 5 อยู่ใน `vendor/`
+Google Fonts ยังโหลดจาก Google หนึ่งชุดต่อหน้า
+`npm run build` minify CSS ไปที่ `stylesheets/min/` และเขียน `.min.js` คู่กับสคริปต์เดิม
 
 ## บทความและโปรเจกต์
 
@@ -176,7 +177,7 @@ URL ใช้ฟิลด์ `slug` ถ้าไม่ใส่ slug จะใ�
 แก้ไฟล์เหล่านี้ตรง ๆ ไม่ต้องรัน `build.js`
 
 - `guestbook.html` — ฟอร์ม โน้ตบนผนัง และปุ่มแอดมิน เรียก `https://api.nattazxin.com` มี Turnstile
-- `links/index.html` + `links/links.js` + `stylesheets/links.css` — หน้าลิงก์รวม คลิปอยู่ใน `links/clips/` เป็น webm ไม่ได้ฝัง TikTok
+- `links/index.html` + `links/links.js` + `stylesheets/links.css` — หน้าลิงก์รวม ไอคอนโซเชียลและการ์ดติดต่อ
 - `articles/git-amend-guide.html`
 - `robots.txt`
 
@@ -197,7 +198,7 @@ API อยู่คนละโฟลเดอร์ ไม่ได้อยู
 
 ## ไฟล์ที่พักไว้ ยังไม่โผล่บนหน้า
 
-- `components/index/content-creator.html` — ส่วน TikTok บนหน้าแรกยังถูกพักไว้ สไตล์เก่าอยู่ใน `stylesheets/index.css` ใต้ `#content-creator` คลิปที่ย้ายไปหน้าลิงก์แล้วอยู่ที่ `links/clips/`
+- `components/index/content-creator.html` — ส่วน TikTok บนหน้าแรกยังถูกพักไว้ สไตล์เก่าอยู่ใน `stylesheets/index.css` ใต้ `#content-creator`
 - `components/index/automation-tools.html` — ไม่มีใคร include
 - `components/index/loading-screen.html` — ใช้ในเทมเพลตหน้ารายละเอียดโปรเจกต์ หน้าแรกเอาออกแล้ว
 - บล็อก Tawk.to ใน `templates/index.template.html` ถูกคอมเมนต์ไว้

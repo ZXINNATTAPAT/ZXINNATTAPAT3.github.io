@@ -77,13 +77,17 @@
 
     var copy = button.closest('.experience-min-copy');
     var extras = copy ? copy.querySelectorAll('.experience-min-extra') : [];
+    var moreLabel = button.querySelector('.experience-min-more-label');
+    var lessLabel = button.querySelector('.experience-min-less-label');
     button.dataset.bound = '1';
 
     button.addEventListener('click', function () {
-      var open = button.getAttribute('aria-expanded') === 'true';
-      button.setAttribute('aria-expanded', open ? 'false' : 'true');
+      var open = button.getAttribute('aria-expanded') !== 'true';
+      button.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (moreLabel) moreLabel.hidden = open;
+      if (lessLabel) lessLabel.hidden = !open;
       extras.forEach(function (item) {
-        item.hidden = open;
+        item.hidden = !open;
       });
       if (typeof ScrollTrigger !== 'undefined') {
         ScrollTrigger.refresh();

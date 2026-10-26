@@ -8,7 +8,7 @@
   </title>
   <link rel="icon" href="Photo/optimized/Logo.png" type="image/png">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta http-equiv="Permissions-Policy" content="accelerometer=(), gyroscope=(), magnetometer=(), payment=(), usb=(), interest-cohort=()" />
+  <meta http-equiv="Permissions-Policy" content="accelerometer=(), gyroscope=(), magnetometer=(), payment=(), usb=()" />
   <meta name="description"
     content="Hi there! I'm Nattapat Phungphugdee — a Full Stack Developer specializing in Next.js, React, and backend engineering. Computer Science graduate from King Mongkut's University of Technology North Bangkok (KMUTNB). Currently working as a Software Developer, passionate about clean code, practical design, and building meaningful digital experiences. Experienced in full stack development, software architecture, and modern web technologies." />
   <meta name="keywords"
@@ -57,9 +57,6 @@
   <link rel="alternate" hreflang="ko" href="https://nattazxin.com/ko.html" />
   <link rel="alternate" hreflang="x-default" href="https://nattazxin.com/" />
 
-
-  <!-- Favicon -->
-  <link rel="icon" href="Photo/optimized/Logo.png" type="image/png" />
 
   <!-- Schema.org JSON-LD -->
   <script type="application/ld+json">
@@ -112,22 +109,11 @@
       }
     </script>
 
-  <!-- Critical: font utilities + main layout; below-fold sheets deferred -->
-  <link rel="stylesheet" href="./stylesheets/fontsex.css" />
-  <link rel="stylesheet" href="./stylesheets/index.css?v=67" />
-  <!-- Non-critical CSS deferred -->
-  <link rel="stylesheet" href="./stylesheets/cardblock2.css" media="print" onload="this.media='all'" />
-  <noscript><link rel="stylesheet" href="./stylesheets/cardblock2.css" /></noscript>
-  <link rel="stylesheet" href="./stylesheets/cardslide.css" media="print" onload="this.media='all'" />
-  <noscript><link rel="stylesheet" href="./stylesheets/cardslide.css" /></noscript>
-  <link rel="stylesheet" href="./stylesheets/contact.css" media="print" onload="this.media='all'" />
-  <noscript><link rel="stylesheet" href="./stylesheets/contact.css" /></noscript>
-  <link rel="stylesheet" href="./stylesheets/guestbook.css?v=7" media="print" onload="this.media='all'" />
-  <noscript><link rel="stylesheet" href="./stylesheets/guestbook.css?v=7" /></noscript>
-  <link rel="stylesheet" href="./stylesheets/buttonprofile.css" media="print" onload="this.media='all'" />
-  <noscript><link rel="stylesheet" href="./stylesheets/buttonprofile.css" /></noscript>
-  <link rel="stylesheet" href="./stylesheets/baseblock.css" media="print" onload="this.media='all'" />
-  <noscript><link rel="stylesheet" href="./stylesheets/baseblock.css" /></noscript>
+  <!-- Critical: font utilities + main layout; guestbook door deferred -->
+  <link rel="stylesheet" href="./stylesheets/min/fontsex.css?v=1" />
+  <link rel="stylesheet" href="./stylesheets/min/index.css?v=71" />
+  <link rel="stylesheet" href="./stylesheets/min/guestbook.css?v=8" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="./stylesheets/min/guestbook.css?v=8" /></noscript>
 
   <!-- Smooth Transitions -->
   <style>
@@ -526,11 +512,6 @@
     }
 
   </style>
-  <!-- Animation & UI Libraries -->
-  <link rel="stylesheet" href="https://unpkg.com/transition-style" media="print" onload="this.media='all'" />
-  <noscript><link rel="stylesheet" href="https://unpkg.com/transition-style" /></noscript>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" media="print" onload="this.media='all'" />
-  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" /></noscript>
   <!-- Fonts: hero critical + deferred section/locale fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -542,31 +523,24 @@
   <noscript><link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" /></noscript>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <!-- Font Awesome: critical for hero CTA icons (avoids icon pop-in CLS) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-    integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous" />
+  <link rel="stylesheet" href="./vendor/fontawesome/css/all.min.css" />
   <!-- Bootstrap: critical layout CSS — deferred load caused large CLS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="./vendor/bootstrap/bootstrap.min.css" rel="stylesheet" />
   <!-- AOS Animation -->
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" media="print" onload="this.media='all'" />
-  <noscript><link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" /></noscript>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+  <link href="./vendor/aos/aos.css" rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript><link href="./vendor/aos/aos.css" rel="stylesheet" /></noscript>
+  <script src="./vendor/aos/aos.js" defer></script>
   <!-- GSAP -->
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js" defer></script>
-  <script src="cloud-platforms-gsap.js?v=6" defer></script>
-  <script src="experience-gsap.js?v=6" defer></script>
-  <script src="uiux-gsap.js?v=11" defer></script>
-  <script src="projects-gsap.js?v=2" defer></script>
-  <script src="hero-gsap.js?v=9" defer></script>
-  <script src="profile-cards.js?v=2" defer></script>
+  <script src="./vendor/gsap/gsap.min.js" defer></script>
+  <script src="./vendor/gsap/ScrollTrigger.min.js" defer></script>
+  <script src="cloud-platforms-gsap.min.js?v=7" defer></script>
+  <script src="experience-gsap.min.js?v=8" defer></script>
+  <script src="uiux-gsap.min.js?v=12" defer></script>
+  <script src="projects-gsap.min.js?v=3" defer></script>
+  <script src="hero-gsap.min.js?v=10" defer></script>
+  <script src="profile-cards.min.js?v=3" defer></script>
   <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous" defer></script>
-  <!-- Geo-location Tags -->
-  <meta name="geo.region" content="TH" />
-  <meta name="geo.placename" content="Bangkok, Thailand" />
-  
+  <script src="./vendor/bootstrap/bootstrap.bundle.min.js" defer></script>
 </head>
 <!-- Tawk.to paused
 <script type="text/javascript">
@@ -597,9 +571,9 @@
   <nav class="sticky-top backdrop-blur-custom primary-nav">
     <div class="container-fluid d-flex justify-content-between align-items-center navbar-padding">
       <a href="#home" class="text-decoration-none brand-link">
-        <h5 class="dm-serif-display-regular m-2" style="color: #2c2c2c; font-size: 20px">
+        <span class="dm-serif-display-regular m-2 d-inline-block" style="color: #2c2c2c; font-size: 20px">
           NATTAPAT
-        </h5>
+        </span>
       </a>
       <div class="primary-nav-links d-none d-lg-flex">
         <a href="#home" class="nav-link-ux text-decoration-none" data-i18n="nav.home">Home</a>
@@ -1071,377 +1045,238 @@
           <!-- Tech Stack -->
 <div class="profile-block profile-skills-block h-100">
   <div class="skills-heading-copy mb-3">
-    <h3 class="profile-heading playfair-400 mb-2" data-i18n="skills.title">Tech Stack</h3>
-    <p class="skills-core-hint mb-0">
-      <span class="skills-core-hint-badge" aria-hidden="true"><i class="fas fa-star"></i></span>
-      <span data-i18n="skills.coreHint">Yellow star = Core skills</span>
-    </p>
+    <h3 class="profile-heading playfair-400 mb-0" data-i18n="skills.title">Tech Stack</h3>
   </div>
   <div class="app-dock-wrapper my-0">
-      <div class="app-dock" aria-label="Skills marquee">
-        <div class="app-item" data-tooltip="React · Core skill" data-i18n-tooltip="skills.reactCore">
-          <div class="app-icon">
-            <span class="app-core-badge" aria-hidden="true"><i class="fas fa-star"></i></span>
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" class="app-icon-img" width="48" height="48" loading="lazy">
-          </div>
-          <div class="app-name">React</div>
-        </div>
-        <div class="app-item" data-tooltip="Next.js · Core skill" data-i18n-tooltip="skills.nextCore">
-          <div class="app-icon">
-            <span class="app-core-badge" aria-hidden="true"><i class="fas fa-star"></i></span>
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js" class="app-icon-img" width="48" height="48" loading="lazy">
-          </div>
-          <div class="app-name">Next.js</div>
-        </div>
-        <div class="app-item" data-tooltip="Angular">
-          <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg" alt="Angular" class="app-icon-img" width="48" height="48" loading="lazy"></div>
-          <div class="app-name">Angular</div>
-        </div>
-        <div class="app-item" data-tooltip="Vue.js">
-          <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" alt="Vue.js" class="app-icon-img" width="48" height="48" loading="lazy"></div>
-          <div class="app-name">Vue.js</div>
-        </div>
-        <div class="app-item" data-tooltip="JavaScript">
-          <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" class="app-icon-img" width="48" height="48" loading="lazy"></div>
-          <div class="app-name">JavaScript</div>
-        </div>
-        <div class="app-item" data-tooltip="TypeScript · Core skill" data-i18n-tooltip="skills.typescriptCore">
-          <div class="app-icon">
-            <span class="app-core-badge" aria-hidden="true"><i class="fas fa-star"></i></span>
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript" class="app-icon-img" width="48" height="48" loading="lazy">
-          </div>
-          <div class="app-name">TypeScript</div>
-        </div>
-        <div class="app-item" data-tooltip="Tailwind CSS">
-          <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind CSS" class="app-icon-img" width="48" height="48" loading="lazy"></div>
-          <div class="app-name">Tailwind CSS</div>
-        </div>
-        <div class="app-item" data-tooltip="Node.js · Core skill" data-i18n-tooltip="skills.nodeCore">
-          <div class="app-icon">
-            <span class="app-core-badge" aria-hidden="true"><i class="fas fa-star"></i></span>
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" class="app-icon-img" width="48" height="48" loading="lazy">
-          </div>
-          <div class="app-name">Node.js</div>
-        </div>
-        <div class="app-item" data-tooltip="Python">
-          <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" class="app-icon-img" width="48" height="48" loading="lazy"></div>
-          <div class="app-name">Python</div>
-        </div>
-        <div class="app-item" data-tooltip="Django">
-          <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" alt="Django" class="app-icon-img" width="48" height="48" loading="lazy"></div>
-          <div class="app-name">Django</div>
-        </div>
-        <div class="app-item" data-tooltip="C#">
-          <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#" class="app-icon-img" width="48" height="48" loading="lazy"></div>
-          <div class="app-name">C#</div>
-        </div>
-        <div class="app-item" data-tooltip="Docker">
-          <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" class="app-icon-img" width="48" height="48" loading="lazy"></div>
-          <div class="app-name">Docker</div>
-        </div>
-        <div class="app-item" data-tooltip="Git">
-          <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" class="app-icon-img" width="48" height="48" loading="lazy"></div>
-          <div class="app-name">Git</div>
-        </div>
-        <div class="app-item" data-tooltip="GitHub">
-          <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" class="app-icon-img" width="48" height="48" loading="lazy"></div>
-          <div class="app-name">GitHub</div>
-        </div>
-        <div class="app-item" data-tooltip="PostgreSQL · Core skill" data-i18n-tooltip="skills.postgresCore">
-          <div class="app-icon">
-            <span class="app-core-badge" aria-hidden="true"><i class="fas fa-star"></i></span>
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" class="app-icon-img" width="48" height="48" loading="lazy">
-          </div>
-          <div class="app-name">PostgreSQL</div>
-        </div>
-        <div class="app-item" data-tooltip="MySQL">
-          <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" class="app-icon-img" width="48" height="48" loading="lazy"></div>
-          <div class="app-name">MySQL</div>
-        </div>
-        <div class="app-item" data-tooltip="MongoDB">
-          <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" class="app-icon-img" width="48" height="48" loading="lazy"></div>
-          <div class="app-name">MongoDB</div>
-        </div>
-        <div class="app-item" data-tooltip="SQL Server">
-          <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg" alt="SQL Server" class="app-icon-img" width="48" height="48" loading="lazy"></div>
-          <div class="app-name">SQL Server</div>
-        </div>
-        <div class="app-item" data-tooltip="GitLab">
-          <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gitlab/gitlab-original.svg" alt="GitLab" class="app-icon-img" width="48" height="48" loading="lazy"></div>
-          <div class="app-name">GitLab</div>
-        </div>
-        <div class="app-item" data-tooltip="Solidity · Used in the votemai project" data-i18n-tooltip="skills.solidityTooltip">
-          <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/solidity/solidity-original.svg" alt="Solidity" class="app-icon-img" width="48" height="48" loading="lazy"></div>
-          <div class="app-name">Solidity</div>
-        </div>
-        <div class="app-item" data-tooltip="MinIO">
-          <div class="app-icon"><img src="https://cdn.simpleicons.org/minio/C72E49" alt="MinIO" class="app-icon-img" width="48" height="48" loading="lazy"></div>
-          <div class="app-name">MinIO</div>
-        </div>
-        <div class="app-item" data-tooltip="Notion">
-          <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/notion/notion-original.svg" alt="Notion" class="app-icon-img" width="48" height="48" loading="lazy"></div>
-          <div class="app-name">Notion</div>
-        </div>
-        <div class="app-item" data-tooltip="Cursor">
-          <div class="app-icon"><img src="https://cdn.simpleicons.org/cursor/111111" alt="Cursor" class="app-icon-img" width="48" height="48" loading="lazy"></div>
-          <div class="app-name">Cursor</div>
-        </div>
-        <div class="app-item" data-tooltip="Codex">
-          <div class="app-icon"><img src="https://api.iconify.design/devicon/codex.svg" alt="Codex" class="app-icon-img" width="48" height="48" loading="lazy"></div>
-          <div class="app-name">Codex</div>
-        </div>
+    <div class="app-dock" aria-label="Tech stack">
+      <div class="app-item" data-skill-group="frontend" data-tooltip="React">
+        <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="" aria-hidden="true" class="app-icon-img" width="48" height="48" loading="lazy" decoding="async"></div>
+        <div class="app-name">React</div>
       </div>
-    </div>
-</div>
-
-<!-- All Skills Modal -->
-  <div id="skillsModal" class="skills-modal" style="display: none;">
-    <div class="skills-modal-overlay"></div>
-    <div class="skills-modal-content">
-      <div class="skills-modal-header">
-        <h3 class="playfair-400 mb-0" data-i18n="skills.title">Tech Stack</h3>
-        <button class="skills-modal-close" id="closeSkillsModal" aria-label="Close modal">
-          <i class="fas fa-times"></i>
-        </button>
+      <div class="app-item" data-skill-group="frontend" data-tooltip="Next.js">
+        <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="" aria-hidden="true" class="app-icon-img" width="48" height="48" loading="lazy" decoding="async"></div>
+        <div class="app-name">Next.js</div>
       </div>
-      <div class="skills-modal-body">
-        <div class="skills-grid">
-          <!-- React -->
-          <div class="skill-card">
-            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" width="48" height="48" loading="lazy" decoding="async"></div>
-            <div class="skill-card-info">
-              <div class="skill-card-name">React</div>
-              <div class="skill-card-level">Advanced</div>
-            </div>
-          </div>
-          <!-- Next.js -->
-          <div class="skill-card">
-            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js" width="48" height="48" loading="lazy" decoding="async"></div>
-            <div class="skill-card-info">
-              <div class="skill-card-name">Next.js</div>
-              <div class="skill-card-level">Intermediate</div>
-            </div>
-          </div>
-          <!-- Angular -->
-          <div class="skill-card">
-            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg" alt="Angular" width="48" height="48" loading="lazy" decoding="async"></div>
-            <div class="skill-card-info">
-              <div class="skill-card-name">Angular</div>
-              <div class="skill-card-level">Intermediate</div>
-            </div>
-          </div>
-          <!-- Vue.js -->
-          <div class="skill-card">
-            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" alt="Vue.js" width="48" height="48" loading="lazy" decoding="async"></div>
-            <div class="skill-card-info">
-              <div class="skill-card-name">Vue.js</div>
-              <div class="skill-card-level">Intermediate</div>
-            </div>
-          </div>
-          <!-- JavaScript -->
-          <div class="skill-card">
-            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" width="48" height="48" loading="lazy" decoding="async"></div>
-            <div class="skill-card-info">
-              <div class="skill-card-name">JavaScript</div>
-              <div class="skill-card-level">Advanced</div>
-            </div>
-          </div>
-          <!-- TypeScript -->
-          <div class="skill-card">
-            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript" width="48" height="48" loading="lazy" decoding="async"></div>
-            <div class="skill-card-info">
-              <div class="skill-card-name">TypeScript</div>
-              <div class="skill-card-level">Advanced</div>
-            </div>
-          </div>
-          <!-- Tailwind CSS -->
-          <div class="skill-card">
-            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind CSS" width="48" height="48" loading="lazy" decoding="async"></div>
-            <div class="skill-card-info">
-              <div class="skill-card-name">Tailwind CSS</div>
-              <div class="skill-card-level">Intermediate</div>
-            </div>
-          </div>
-          <!-- Node.js -->
-          <div class="skill-card">
-            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" width="48" height="48" loading="lazy" decoding="async"></div>
-            <div class="skill-card-info">
-              <div class="skill-card-name">Node.js</div>
-              <div class="skill-card-level">Intermediate</div>
-            </div>
-          </div>
-          <!-- Python -->
-          <div class="skill-card">
-            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" width="48" height="48" loading="lazy" decoding="async"></div>
-            <div class="skill-card-info">
-              <div class="skill-card-name">Python</div>
-              <div class="skill-card-level">Intermediate</div>
-            </div>
-          </div>
-          <!-- Django -->
-          <div class="skill-card">
-            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" alt="Django" width="48" height="48" loading="lazy" decoding="async"></div>
-            <div class="skill-card-info">
-              <div class="skill-card-name">Django</div>
-              <div class="skill-card-level">Intermediate</div>
-            </div>
-          </div>
-          <!-- C# -->
-          <div class="skill-card">
-            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#" width="48" height="48" loading="lazy" decoding="async"></div>
-            <div class="skill-card-info">
-              <div class="skill-card-name">C#</div>
-              <div class="skill-card-level">Intermediate</div>
-            </div>
-          </div>
-          <!-- Docker -->
-          <div class="skill-card">
-            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" width="48" height="48" loading="lazy" decoding="async"></div>
-            <div class="skill-card-info">
-              <div class="skill-card-name">Docker</div>
-              <div class="skill-card-level">Intermediate</div>
-            </div>
-          </div>
-          <!-- Git -->
-          <div class="skill-card">
-            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" width="48" height="48" loading="lazy" decoding="async"></div>
-            <div class="skill-card-info">
-              <div class="skill-card-name">Git</div>
-              <div class="skill-card-level">Advanced</div>
-            </div>
-          </div>
-          <!-- GitHub -->
-          <div class="skill-card">
-            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" width="48" height="48" loading="lazy" decoding="async"></div>
-            <div class="skill-card-info">
-              <div class="skill-card-name">GitHub</div>
-              <div class="skill-card-level">Advanced</div>
-            </div>
-          </div>
-          <!-- PostgreSQL -->
-          <div class="skill-card">
-            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" width="48" height="48" loading="lazy" decoding="async"></div>
-            <div class="skill-card-info">
-              <div class="skill-card-name">PostgreSQL</div>
-              <div class="skill-card-level">Intermediate</div>
-            </div>
-          </div>
-          <!-- MySQL -->
-          <div class="skill-card">
-            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" width="48" height="48" loading="lazy" decoding="async"></div>
-            <div class="skill-card-info">
-              <div class="skill-card-name">MySQL</div>
-              <div class="skill-card-level">Advanced</div>
-            </div>
-          </div>
-          <!-- MongoDB -->
-          <div class="skill-card">
-            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" width="48" height="48" loading="lazy" decoding="async"></div>
-            <div class="skill-card-info">
-              <div class="skill-card-name">MongoDB</div>
-              <div class="skill-card-level">Intermediate</div>
-            </div>
-          </div>
-          <!-- SQL Server -->
-          <div class="skill-card">
-            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg" alt="SQL Server" width="48" height="48" loading="lazy" decoding="async"></div>
-            <div class="skill-card-info">
-              <div class="skill-card-name">SQL Server</div>
-              <div class="skill-card-level">Advanced</div>
-            </div>
-          </div>
-          <!-- GitLab -->
-          <div class="skill-card">
-            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gitlab/gitlab-original.svg" alt="GitLab" width="48" height="48" loading="lazy" decoding="async"></div>
-            <div class="skill-card-info">
-              <div class="skill-card-name">GitLab</div>
-              <div class="skill-card-level">Intermediate</div>
-            </div>
-          </div>
-          <!-- Solidity -->
-          <div class="skill-card">
-            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/solidity/solidity-original.svg" alt="Solidity" width="48" height="48" loading="lazy" decoding="async"></div>
-            <div class="skill-card-info">
-              <div class="skill-card-name">Solidity</div>
-              <div class="skill-card-level" data-i18n="skills.solidityNote">Used in the votemai project</div>
-            </div>
-          </div>
-          <!-- MinIO -->
-          <div class="skill-card">
-            <div class="skill-card-icon"><img src="https://cdn.simpleicons.org/minio/C72E49" alt="MinIO" width="48" height="48" loading="lazy" decoding="async"></div>
-            <div class="skill-card-info">
-              <div class="skill-card-name">MinIO</div>
-              <div class="skill-card-level">Intermediate</div>
-            </div>
-          </div>
-          <!-- Notion -->
-          <div class="skill-card">
-            <div class="skill-card-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/notion/notion-original.svg" alt="Notion" width="48" height="48" loading="lazy" decoding="async"></div>
-            <div class="skill-card-info">
-              <div class="skill-card-name">Notion</div>
-              <div class="skill-card-level">Intermediate</div>
-            </div>
-          </div>
-          <!-- Cursor -->
-          <div class="skill-card">
-            <div class="skill-card-icon"><img src="https://cdn.simpleicons.org/cursor/111111" alt="Cursor" width="48" height="48" loading="lazy" decoding="async"></div>
-            <div class="skill-card-info">
-              <div class="skill-card-name">Cursor</div>
-              <div class="skill-card-level">Intermediate</div>
-            </div>
-          </div>
-          <!-- Codex -->
-          <div class="skill-card">
-            <div class="skill-card-icon"><img src="https://api.iconify.design/devicon/codex.svg" alt="Codex" width="48" height="48" loading="lazy" decoding="async"></div>
-            <div class="skill-card-info">
-              <div class="skill-card-name">Codex</div>
-              <div class="skill-card-level">Intermediate</div>
-            </div>
-          </div>
-        </div>
+      <div class="app-item" data-skill-group="frontend" data-tooltip="Angular">
+        <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg" alt="" aria-hidden="true" class="app-icon-img" width="48" height="48" loading="lazy" decoding="async"></div>
+        <div class="app-name">Angular</div>
+      </div>
+      <div class="app-item" data-skill-group="frontend" data-tooltip="Vue.js">
+        <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" alt="" aria-hidden="true" class="app-icon-img" width="48" height="48" loading="lazy" decoding="async"></div>
+        <div class="app-name">Vue.js</div>
+      </div>
+      <div class="app-item" data-skill-group="frontend" data-tooltip="JavaScript">
+        <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="" aria-hidden="true" class="app-icon-img" width="48" height="48" loading="lazy" decoding="async"></div>
+        <div class="app-name">JavaScript</div>
+      </div>
+      <div class="app-item" data-skill-group="frontend" data-tooltip="TypeScript">
+        <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="" aria-hidden="true" class="app-icon-img" width="48" height="48" loading="lazy" decoding="async"></div>
+        <div class="app-name">TypeScript</div>
+      </div>
+      <div class="app-item" data-skill-group="frontend" data-tooltip="Tailwind CSS">
+        <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" alt="" aria-hidden="true" class="app-icon-img" width="48" height="48" loading="lazy" decoding="async"></div>
+        <div class="app-name">Tailwind CSS</div>
+      </div>
+      <div class="app-item" data-skill-group="backend" data-tooltip="Node.js">
+        <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="" aria-hidden="true" class="app-icon-img" width="48" height="48" loading="lazy" decoding="async"></div>
+        <div class="app-name">Node.js</div>
+      </div>
+      <div class="app-item" data-skill-group="backend" data-tooltip="Python">
+        <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="" aria-hidden="true" class="app-icon-img" width="48" height="48" loading="lazy" decoding="async"></div>
+        <div class="app-name">Python</div>
+      </div>
+      <div class="app-item" data-skill-group="backend" data-tooltip="Django">
+        <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" alt="" aria-hidden="true" class="app-icon-img" width="48" height="48" loading="lazy" decoding="async"></div>
+        <div class="app-name">Django</div>
+      </div>
+      <div class="app-item" data-skill-group="backend" data-tooltip="C#">
+        <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="" aria-hidden="true" class="app-icon-img" width="48" height="48" loading="lazy" decoding="async"></div>
+        <div class="app-name">C#</div>
+      </div>
+      <div class="app-item" data-skill-group="tools" data-tooltip="Docker">
+        <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="" aria-hidden="true" class="app-icon-img" width="48" height="48" loading="lazy" decoding="async"></div>
+        <div class="app-name">Docker</div>
+      </div>
+      <div class="app-item" data-skill-group="tools" data-tooltip="Git">
+        <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="" aria-hidden="true" class="app-icon-img" width="48" height="48" loading="lazy" decoding="async"></div>
+        <div class="app-name">Git</div>
+      </div>
+      <div class="app-item" data-skill-group="tools" data-tooltip="GitHub">
+        <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="" aria-hidden="true" class="app-icon-img" width="48" height="48" loading="lazy" decoding="async"></div>
+        <div class="app-name">GitHub</div>
+      </div>
+      <div class="app-item" data-skill-group="backend" data-tooltip="PostgreSQL">
+        <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="" aria-hidden="true" class="app-icon-img" width="48" height="48" loading="lazy" decoding="async"></div>
+        <div class="app-name">PostgreSQL</div>
+      </div>
+      <div class="app-item" data-skill-group="backend" data-tooltip="MySQL">
+        <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="" aria-hidden="true" class="app-icon-img" width="48" height="48" loading="lazy" decoding="async"></div>
+        <div class="app-name">MySQL</div>
+      </div>
+      <div class="app-item" data-skill-group="backend" data-tooltip="MongoDB">
+        <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="" aria-hidden="true" class="app-icon-img" width="48" height="48" loading="lazy" decoding="async"></div>
+        <div class="app-name">MongoDB</div>
+      </div>
+      <div class="app-item" data-skill-group="backend" data-tooltip="SQL Server">
+        <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg" alt="" aria-hidden="true" class="app-icon-img" width="48" height="48" loading="lazy" decoding="async"></div>
+        <div class="app-name">SQL Server</div>
+      </div>
+      <div class="app-item" data-skill-group="tools" data-tooltip="GitLab">
+        <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gitlab/gitlab-original.svg" alt="" aria-hidden="true" class="app-icon-img" width="48" height="48" loading="lazy" decoding="async"></div>
+        <div class="app-name">GitLab</div>
+      </div>
+      <div class="app-item" data-skill-group="backend" data-tooltip="Solidity">
+        <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/solidity/solidity-original.svg" alt="" aria-hidden="true" class="app-icon-img" width="48" height="48" loading="lazy" decoding="async"></div>
+        <div class="app-name">Solidity</div>
+      </div>
+      <div class="app-item" data-skill-group="tools" data-tooltip="MinIO">
+        <div class="app-icon"><img src="https://cdn.simpleicons.org/minio/C72E49" alt="" aria-hidden="true" class="app-icon-img" width="48" height="48" loading="lazy" decoding="async"></div>
+        <div class="app-name">MinIO</div>
+      </div>
+      <div class="app-item" data-skill-group="tools" data-tooltip="Notion">
+        <div class="app-icon"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/notion/notion-original.svg" alt="" aria-hidden="true" class="app-icon-img" width="48" height="48" loading="lazy" decoding="async"></div>
+        <div class="app-name">Notion</div>
+      </div>
+      <div class="app-item" data-skill-group="tools" data-tooltip="Cursor">
+        <div class="app-icon"><img src="https://cdn.simpleicons.org/cursor/111111" alt="" aria-hidden="true" class="app-icon-img" width="48" height="48" loading="lazy" decoding="async"></div>
+        <div class="app-name">Cursor</div>
+      </div>
+      <div class="app-item" data-skill-group="tools" data-tooltip="Codex">
+        <div class="app-icon"><img src="https://api.iconify.design/devicon/codex.svg" alt="" aria-hidden="true" class="app-icon-img" width="48" height="48" loading="lazy" decoding="async"></div>
+        <div class="app-name">Codex</div>
       </div>
     </div>
   </div>
+  <p id="skill-filter-label" class="visually-hidden" data-i18n="skills.filterLabel">Filter skills</p>
+  <div class="skill-filters" role="group" aria-labelledby="skill-filter-label">
+    <button type="button" class="skill-filter is-active" data-skill-filter="all" aria-pressed="true" data-i18n="skills.filterAll">All</button>
+    <button type="button" class="skill-filter" data-skill-filter="frontend" aria-pressed="false" data-i18n="skills.filterFrontend">Frontend</button>
+    <button type="button" class="skill-filter" data-skill-filter="backend" aria-pressed="false" data-i18n="skills.filterBackend">Backend</button>
+    <button type="button" class="skill-filter" data-skill-filter="tools" aria-pressed="false" data-i18n="skills.filterTools">Tools</button>
+  </div>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var root = document.querySelector('.profile-skills-block');
+    if (!root) return;
+    var dock = root.querySelector('.app-dock');
+    var items = Array.prototype.slice.call(root.querySelectorAll('.app-item'));
+    var filters = root.querySelectorAll('.skill-filter');
+    var motion = null;
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const modal = document.getElementById('skillsModal');
-      const btn = document.getElementById('showAllSkillsBtn');
-      const closeBtn = document.getElementById('closeSkillsModal');
-      const overlay = modal ? modal.querySelector('.skills-modal-overlay') : null;
+    function iconOf(item) {
+      return item.querySelector('.app-icon');
+    }
 
-      if (!modal || !closeBtn || !overlay) {
+    function reduced() {
+      return window.matchMedia('(prefers-reduced-motion: reduce)').matches || typeof gsap === 'undefined';
+    }
+
+    function clearMotionStyles() {
+      if (typeof gsap === 'undefined') return;
+      gsap.set(items.concat(items.map(iconOf)), { clearProps: 'transform,opacity,visibility' });
+    }
+
+    function stopMotion() {
+      if (motion) {
+        motion.kill();
+        motion = null;
+      }
+      clearMotionStyles();
+      if (dock) dock.classList.remove('is-filtering');
+    }
+
+    function showGroup(group) {
+      stopMotion();
+      var leaving = [];
+      var staying = [];
+      var entering = [];
+      items.forEach(function (item) {
+        var match = group === 'all' || item.getAttribute('data-skill-group') === group;
+        if (!item.hidden && !match) leaving.push(item);
+        else if (!item.hidden && match) staying.push(item);
+        else if (item.hidden && match) entering.push(item);
+      });
+
+      if (reduced() || (!leaving.length && !entering.length)) {
+        items.forEach(function (item) {
+          item.hidden = group !== 'all' && item.getAttribute('data-skill-group') !== group;
+        });
         return;
       }
 
-      function openModal() {
-        modal.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-        setTimeout(() => modal.classList.add('is-open'), 10);
-      }
+      var first = new Map();
+      staying.forEach(function (item) {
+        first.set(item, item.getBoundingClientRect());
+      });
 
-      function closeModal() {
-        modal.classList.remove('is-open');
-        setTimeout(() => {
-          modal.style.display = 'none';
-          document.body.style.overflow = '';
-        }, 300);
-      }
-
-      if (btn) {
-        btn.addEventListener('click', openModal);
-      }
-      closeBtn.addEventListener('click', closeModal);
-      overlay.addEventListener('click', closeModal);
-
-      // Close on Escape key
-      document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && modal.style.display === 'flex') {
-          closeModal();
+      dock.classList.add('is-filtering');
+      motion = gsap.timeline({
+        onComplete: function () {
+          dock.classList.remove('is-filtering');
+          clearMotionStyles();
+          motion = null;
         }
       });
+
+      if (leaving.length) {
+        motion.to(leaving.map(iconOf), {
+          autoAlpha: 0,
+          scale: 0.82,
+          duration: 0.22,
+          stagger: { amount: Math.min(0.12, leaving.length * 0.012) },
+          ease: 'power2.in'
+        });
+      }
+
+      motion.call(function () {
+        leaving.forEach(function (item) {
+          item.hidden = true;
+          gsap.set(iconOf(item), { clearProps: 'transform,opacity,visibility' });
+        });
+        entering.forEach(function (item) {
+          item.hidden = false;
+          gsap.set(iconOf(item), { autoAlpha: 0, scale: 0.82, y: 8 });
+        });
+        staying.forEach(function (item) {
+          var prev = first.get(item);
+          var next = item.getBoundingClientRect();
+          var dx = prev.left - next.left;
+          var dy = prev.top - next.top;
+          if (Math.abs(dx) > 0.5 || Math.abs(dy) > 0.5) {
+            gsap.set(item, { x: dx, y: dy });
+          }
+        });
+        if (staying.length) {
+          motion.to(staying, { x: 0, y: 0, duration: 0.46, ease: 'power3.out' });
+        }
+        if (entering.length) {
+          motion.to(entering.map(iconOf), {
+            autoAlpha: 1,
+            scale: 1,
+            y: 0,
+            duration: 0.4,
+            stagger: { each: 0.028, from: 'start' },
+            ease: 'power2.out'
+          }, staying.length ? '<' : undefined);
+        }
+      });
+    }
+
+    filters.forEach(function (button) {
+      button.addEventListener('click', function () {
+        if (button.getAttribute('aria-pressed') === 'true') return;
+        var group = button.getAttribute('data-skill-filter');
+        filters.forEach(function (item) {
+          var active = item === button;
+          item.classList.toggle('is-active', active);
+          item.setAttribute('aria-pressed', active ? 'true' : 'false');
+        });
+        showGroup(group);
+      });
     });
-  </script>
+  });
+</script>
         </div>
       </div>
     </div>
@@ -1492,26 +1327,26 @@
             </ul>
             <button type="button" class="experience-min-more" aria-expanded="false">
               <span class="experience-min-more-label">See more</span>
-              <span class="experience-min-less-label">See less</span>
+              <span class="experience-min-less-label" hidden>See less</span>
             </button>
             <span class="experience-min-stack">
-              <span class="experience-min-stack-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="" width="16" height="16" loading="lazy" decoding="async" />Next.js</span>
+              <span class="experience-min-stack-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="" aria-hidden="true" width="16" height="16" loading="lazy" decoding="async" />Next.js</span>
               <span class="experience-min-stack-sep" aria-hidden="true">·</span>
-              <span class="experience-min-stack-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="" width="16" height="16" loading="lazy" decoding="async" />React</span>
+              <span class="experience-min-stack-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="" aria-hidden="true" width="16" height="16" loading="lazy" decoding="async" />React</span>
               <span class="experience-min-stack-sep" aria-hidden="true">·</span>
-              <span class="experience-min-stack-item"><img src="https://cdn.simpleicons.org/nestjs/E0234E" alt="" width="16" height="16" loading="lazy" decoding="async" />NestJS</span>
+              <span class="experience-min-stack-item"><img src="https://cdn.simpleicons.org/nestjs/E0234E" alt="" aria-hidden="true" width="16" height="16" loading="lazy" decoding="async" />NestJS</span>
               <span class="experience-min-stack-sep" aria-hidden="true">·</span>
-              <span class="experience-min-stack-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dotnetcore/dotnetcore-original.svg" alt="" width="16" height="16" loading="lazy" decoding="async" />.NET</span>
+              <span class="experience-min-stack-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dotnetcore/dotnetcore-original.svg" alt="" aria-hidden="true" width="16" height="16" loading="lazy" decoding="async" />.NET</span>
               <span class="experience-min-stack-sep" aria-hidden="true">·</span>
-              <span class="experience-min-stack-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="" width="16" height="16" loading="lazy" decoding="async" />PostgreSQL</span>
+              <span class="experience-min-stack-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="" aria-hidden="true" width="16" height="16" loading="lazy" decoding="async" />PostgreSQL</span>
               <span class="experience-min-stack-sep" aria-hidden="true">·</span>
-              <span class="experience-min-stack-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="" width="16" height="16" loading="lazy" decoding="async" />Docker</span>
+              <span class="experience-min-stack-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="" aria-hidden="true" width="16" height="16" loading="lazy" decoding="async" />Docker</span>
               <span class="experience-min-stack-sep" aria-hidden="true">·</span>
-              <span class="experience-min-stack-item"><img src="./Photo/optimized/azure-devops.svg" alt="" width="16" height="16" loading="lazy" decoding="async" />Azure DevOps</span>
+              <span class="experience-min-stack-item"><img src="./Photo/optimized/azure-devops.svg" alt="" aria-hidden="true" width="16" height="16" loading="lazy" decoding="async" />Azure DevOps</span>
               <span class="experience-min-stack-sep" aria-hidden="true">·</span>
-              <span class="experience-min-stack-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gitlab/gitlab-original.svg" alt="" width="16" height="16" loading="lazy" decoding="async" />GitLab</span>
+              <span class="experience-min-stack-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gitlab/gitlab-original.svg" alt="" aria-hidden="true" width="16" height="16" loading="lazy" decoding="async" />GitLab</span>
               <span class="experience-min-stack-sep" aria-hidden="true">·</span>
-              <span class="experience-min-stack-item"><img src="https://cdn.simpleicons.org/termius" alt="" width="16" height="16" loading="lazy" decoding="async" />Termius</span>
+              <span class="experience-min-stack-item"><img src="https://cdn.simpleicons.org/termius" alt="" aria-hidden="true" width="16" height="16" loading="lazy" decoding="async" />Termius</span>
             </span>
           </div>
         </li>
@@ -1582,9 +1417,9 @@
               task-based development environment.
             </p>
             <span class="experience-min-stack">
-              <span class="experience-min-stack-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="" width="16" height="16" loading="lazy" decoding="async" />Next.js</span>
+              <span class="experience-min-stack-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="" aria-hidden="true" width="16" height="16" loading="lazy" decoding="async" />Next.js</span>
               <span class="experience-min-stack-sep" aria-hidden="true">·</span>
-              <span class="experience-min-stack-item"><img src="https://cdn.simpleicons.org/nestjs/E0234E" alt="" width="16" height="16" loading="lazy" decoding="async" />NestJS</span>
+              <span class="experience-min-stack-item"><img src="https://cdn.simpleicons.org/nestjs/E0234E" alt="" aria-hidden="true" width="16" height="16" loading="lazy" decoding="async" />NestJS</span>
             </span>
           </div>
         </li>
@@ -1617,9 +1452,9 @@
               tracking and data accessibility across departments.
             </p>
             <span class="experience-min-stack">
-              <span class="experience-min-stack-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="" width="16" height="16" loading="lazy" decoding="async" />C#</span>
+              <span class="experience-min-stack-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="" aria-hidden="true" width="16" height="16" loading="lazy" decoding="async" />C#</span>
               <span class="experience-min-stack-sep" aria-hidden="true">·</span>
-              <span class="experience-min-stack-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg" alt="" width="16" height="16" loading="lazy" decoding="async" />Microsoft SQL Server</span>
+              <span class="experience-min-stack-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg" alt="" aria-hidden="true" width="16" height="16" loading="lazy" decoding="async" />Microsoft SQL Server</span>
             </span>
           </div>
         </li>
@@ -1966,7 +1801,7 @@
           </div>
           <div class="certificate-content">
             <div class="certificate-title">
-              <h5 class="playfair-400 mb-1">Prompt Engineering with GitHub Copilot</h5>
+              <h3 class="playfair-400 mb-1">Prompt Engineering with GitHub Copilot</h3>
               <span class="badge rounded-pill tech-badge-minimal playfair-400">Verified</span>
             </div>
             <p class="certificate-meta"><i class="fas fa-graduation-cap me-2"></i>BorntoDev • Jun 2025</p>
@@ -1983,7 +1818,7 @@
           </div>
           <div class="certificate-content">
             <div class="certificate-title">
-              <h5 class="playfair-400 mb-1">Front End Development Libraries</h5>
+              <h3 class="playfair-400 mb-1">Front End Development Libraries</h3>
               <span class="badge rounded-pill tech-badge-minimal playfair-400">Verified</span>
             </div>
             <p class="certificate-meta"><i class="fas fa-graduation-cap me-2"></i>freeCodeCamp • Feb 2024</p>
@@ -2000,7 +1835,7 @@
           </div>
           <div class="certificate-content">
             <div class="certificate-title">
-              <h5 class="playfair-400 mb-1">Back End Development and APIs</h5>
+              <h3 class="playfair-400 mb-1">Back End Development and APIs</h3>
               <span class="badge rounded-pill tech-badge-minimal playfair-400">Verified</span>
             </div>
             <p class="certificate-meta"><i class="fas fa-graduation-cap me-2"></i>freeCodeCamp • Jan 2024</p>
@@ -2016,7 +1851,7 @@
           </div>
           <div class="certificate-content">
             <div class="certificate-title">
-              <h5 class="playfair-400 mb-1">React (Basic)</h5>
+              <h3 class="playfair-400 mb-1">React (Basic)</h3>
             </div>
             <p class="certificate-meta"><i class="fas fa-graduation-cap me-2"></i>HackerRank • Jan 2024</p>
             <p class="certificate-desc">
@@ -2037,14 +1872,14 @@
           </div>
           <div class="certificate-content">
             <div class="certificate-title">
-              <h5 class="playfair-400 mb-1">
+              <h3 class="playfair-400 mb-1">
                 <a
                   href="https://www.coursera.org/account/accomplishments/verify/PLK8VVXCBSMD"
                   target="_blank"
                   rel="noopener noreferrer"
                   style="color: inherit; text-decoration: none"
                 >Introduction to Generative AI</a>
-              </h5>
+              </h3>
               <span class="badge rounded-pill tech-badge-minimal playfair-400">Verified</span>
             </div>
             <p class="certificate-meta"><i class="fas fa-graduation-cap me-2"></i>Coursera • Nov 2022</p>
@@ -2829,7 +2664,7 @@
     }
   </script>
 
-  <script src="i18n.js?v=55" defer></script>
+  <script src="i18n.min.js?v=58" defer></script>
 
   <script>
     // Defer Google Analytics until after load so it does not compete with LCP fonts

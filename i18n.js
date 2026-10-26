@@ -65,7 +65,12 @@ const translations = {
       nodeCore: "Node.js · Core skill",
       postgresCore: "PostgreSQL · Core skill",
       solidityNote: "Used in the votemai project",
-      solidityTooltip: "Solidity · Used in the votemai project"
+      solidityTooltip: "Solidity · Used in the votemai project",
+      filterLabel: "Filter skills",
+      filterAll: "All",
+      filterFrontend: "Frontend",
+      filterBackend: "Backend",
+      filterTools: "Tools"
     },
     cloud: {
       kicker: "Deployment Picks",
@@ -287,7 +292,12 @@ const translations = {
       nodeCore: "Node.js · สกิลหลัก",
       postgresCore: "PostgreSQL · สกิลหลัก",
       solidityNote: "ใช้ในโปรเจกต์ votemai",
-      solidityTooltip: "Solidity · ใช้ในโปรเจกต์ votemai"
+      solidityTooltip: "Solidity · ใช้ในโปรเจกต์ votemai",
+      filterLabel: "กรองสกิล",
+      filterAll: "ทั้งหมด",
+      filterFrontend: "Frontend",
+      filterBackend: "Backend",
+      filterTools: "Tools"
     },
     cloud: {
       kicker: "Deployment Picks",
@@ -511,7 +521,12 @@ const translations = {
       nodeCore: "Node.js · コアスキル",
       postgresCore: "PostgreSQL · コアスキル",
       solidityNote: "votemai プロジェクトで使用",
-      solidityTooltip: "Solidity · votemai プロジェクトで使用"
+      solidityTooltip: "Solidity · votemai プロジェクトで使用",
+      filterLabel: "スキルを絞り込む",
+      filterAll: "すべて",
+      filterFrontend: "Frontend",
+      filterBackend: "Backend",
+      filterTools: "Tools"
     },
     cloud: {
       kicker: "Deployment Picks",
@@ -702,7 +717,12 @@ const translations = {
       nodeCore: "Node.js · 核心技能",
       postgresCore: "PostgreSQL · 核心技能",
       solidityNote: "用于 votemai 项目",
-      solidityTooltip: "Solidity · 用于 votemai 项目"
+      solidityTooltip: "Solidity · 用于 votemai 项目",
+      filterLabel: "筛选技术",
+      filterAll: "全部",
+      filterFrontend: "Frontend",
+      filterBackend: "Backend",
+      filterTools: "Tools"
     },
     cloud: {
       kicker: "Deployment Picks",
@@ -893,7 +913,12 @@ const translations = {
       nodeCore: "Node.js · Core Skill",
       postgresCore: "PostgreSQL · Core Skill",
       solidityNote: "Im Projekt votemai eingesetzt",
-      solidityTooltip: "Solidity · Im Projekt votemai eingesetzt"
+      solidityTooltip: "Solidity · Im Projekt votemai eingesetzt",
+      filterLabel: "Skills filtern",
+      filterAll: "Alle",
+      filterFrontend: "Frontend",
+      filterBackend: "Backend",
+      filterTools: "Tools"
     },
     cloud: {
       kicker: "Deployment Picks",
@@ -1084,7 +1109,12 @@ const translations = {
       nodeCore: "Node.js · 코어 스킬",
       postgresCore: "PostgreSQL · 코어 스킬",
       solidityNote: "votemai 프로젝트에서 사용",
-      solidityTooltip: "Solidity · votemai 프로젝트에서 사용"
+      solidityTooltip: "Solidity · votemai 프로젝트에서 사용",
+      filterLabel: "기술 필터",
+      filterAll: "전체",
+      filterFrontend: "Frontend",
+      filterBackend: "Backend",
+      filterTools: "Tools"
     },
     cloud: {
       kicker: "Deployment Picks",

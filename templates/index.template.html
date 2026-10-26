@@ -8,7 +8,7 @@
   </title>
   <link rel="icon" href="Photo/optimized/Logo.png" type="image/png">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta http-equiv="Permissions-Policy" content="accelerometer=(), gyroscope=(), magnetometer=(), payment=(), usb=(), interest-cohort=()" />
+  <meta http-equiv="Permissions-Policy" content="accelerometer=(), gyroscope=(), magnetometer=(), payment=(), usb=()" />
   <meta name="description"
     content="Hi there! I'm Nattapat Phungphugdee — a Full Stack Developer specializing in Next.js, React, and backend engineering. Computer Science graduate from King Mongkut's University of Technology North Bangkok (KMUTNB). Currently working as a Software Developer, passionate about clean code, practical design, and building meaningful digital experiences. Experienced in full stack development, software architecture, and modern web technologies." />
   <meta name="keywords"
@@ -57,9 +57,6 @@
   <link rel="alternate" hreflang="ko" href="https://nattazxin.com/ko.html" />
   <link rel="alternate" hreflang="x-default" href="https://nattazxin.com/" />
 
-
-  <!-- Favicon -->
-  <link rel="icon" href="Photo/optimized/Logo.png" type="image/png" />
 
   <!-- Schema.org JSON-LD -->
   <script type="application/ld+json">
@@ -112,22 +109,11 @@
       }
     </script>
 
-  <!-- Critical: font utilities + main layout; below-fold sheets deferred -->
-  <link rel="stylesheet" href="./stylesheets/fontsex.css" />
-  <link rel="stylesheet" href="./stylesheets/index.css?v=67" />
-  <!-- Non-critical CSS deferred -->
-  <link rel="stylesheet" href="./stylesheets/cardblock2.css" media="print" onload="this.media='all'" />
-  <noscript><link rel="stylesheet" href="./stylesheets/cardblock2.css" /></noscript>
-  <link rel="stylesheet" href="./stylesheets/cardslide.css" media="print" onload="this.media='all'" />
-  <noscript><link rel="stylesheet" href="./stylesheets/cardslide.css" /></noscript>
-  <link rel="stylesheet" href="./stylesheets/contact.css" media="print" onload="this.media='all'" />
-  <noscript><link rel="stylesheet" href="./stylesheets/contact.css" /></noscript>
-  <link rel="stylesheet" href="./stylesheets/guestbook.css?v=7" media="print" onload="this.media='all'" />
-  <noscript><link rel="stylesheet" href="./stylesheets/guestbook.css?v=7" /></noscript>
-  <link rel="stylesheet" href="./stylesheets/buttonprofile.css" media="print" onload="this.media='all'" />
-  <noscript><link rel="stylesheet" href="./stylesheets/buttonprofile.css" /></noscript>
-  <link rel="stylesheet" href="./stylesheets/baseblock.css" media="print" onload="this.media='all'" />
-  <noscript><link rel="stylesheet" href="./stylesheets/baseblock.css" /></noscript>
+  <!-- Critical: font utilities + main layout; guestbook door deferred -->
+  <link rel="stylesheet" href="./stylesheets/min/fontsex.css?v=1" />
+  <link rel="stylesheet" href="./stylesheets/min/index.css?v=71" />
+  <link rel="stylesheet" href="./stylesheets/min/guestbook.css?v=8" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="./stylesheets/min/guestbook.css?v=8" /></noscript>
 
   <!-- Smooth Transitions -->
   <style>
@@ -526,11 +512,6 @@
     }
 
   </style>
-  <!-- Animation & UI Libraries -->
-  <link rel="stylesheet" href="https://unpkg.com/transition-style" media="print" onload="this.media='all'" />
-  <noscript><link rel="stylesheet" href="https://unpkg.com/transition-style" /></noscript>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" media="print" onload="this.media='all'" />
-  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" /></noscript>
   <!-- Fonts: hero critical + deferred section/locale fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -542,31 +523,24 @@
   <noscript><link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" /></noscript>
   {{localeFonts}}
   <!-- Font Awesome: critical for hero CTA icons (avoids icon pop-in CLS) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-    integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous" />
+  <link rel="stylesheet" href="./vendor/fontawesome/css/all.min.css" />
   <!-- Bootstrap: critical layout CSS — deferred load caused large CLS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="./vendor/bootstrap/bootstrap.min.css" rel="stylesheet" />
   <!-- AOS Animation -->
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" media="print" onload="this.media='all'" />
-  <noscript><link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" /></noscript>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+  <link href="./vendor/aos/aos.css" rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript><link href="./vendor/aos/aos.css" rel="stylesheet" /></noscript>
+  <script src="./vendor/aos/aos.js" defer></script>
   <!-- GSAP -->
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js" defer></script>
-  <script src="cloud-platforms-gsap.js?v=6" defer></script>
-  <script src="experience-gsap.js?v=6" defer></script>
-  <script src="uiux-gsap.js?v=11" defer></script>
-  <script src="projects-gsap.js?v=2" defer></script>
-  <script src="hero-gsap.js?v=9" defer></script>
-  <script src="profile-cards.js?v=2" defer></script>
+  <script src="./vendor/gsap/gsap.min.js" defer></script>
+  <script src="./vendor/gsap/ScrollTrigger.min.js" defer></script>
+  <script src="cloud-platforms-gsap.min.js?v=7" defer></script>
+  <script src="experience-gsap.min.js?v=8" defer></script>
+  <script src="uiux-gsap.min.js?v=12" defer></script>
+  <script src="projects-gsap.min.js?v=3" defer></script>
+  <script src="hero-gsap.min.js?v=10" defer></script>
+  <script src="profile-cards.min.js?v=3" defer></script>
   <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous" defer></script>
-  <!-- Geo-location Tags -->
-  <meta name="geo.region" content="TH" />
-  <meta name="geo.placename" content="Bangkok, Thailand" />
-  
+  <script src="./vendor/bootstrap/bootstrap.bundle.min.js" defer></script>
 </head>
 <!-- Tawk.to paused
 <script type="text/javascript">
@@ -1228,7 +1202,7 @@
     }
   </script>
 
-  <script src="i18n.js?v=55" defer></script>
+  <script src="i18n.min.js?v=58" defer></script>
 
   <script>
     // Defer Google Analytics until after load so it does not compete with LCP fonts
