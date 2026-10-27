@@ -27,6 +27,7 @@ const translations = {
       nextPhoto: "Next photo"
     },
     about: {
+      creator: "Alongside software development, I also create content on TikTok as <strong>ออมบั๊ก (@nattazxin)</strong>.",
       title: "About Me",
       letsWork: "Let's Work together",
       resume: "Resume",
@@ -251,6 +252,7 @@ const translations = {
       nextPhoto: "รูปถัดไป"
     },
     about: {
+      creator: "นอกจากงานด้าน Software Development แล้ว ผมยังสร้างคอนเทนต์บน TikTok ในนาม <strong>ออมบั๊ก (@nattazxin)</strong>",
       title: "เกี่ยวกับผม",
       letsWork: "มาร่วมงานกัน",
       resume: "เรซูเม่",
@@ -480,6 +482,7 @@ const translations = {
       nextPhoto: "次の写真"
     },
     about: {
+      creator: "ソフトウェア開発に加えて、<strong>ออมบั๊ก (@nattazxin)</strong> としてTikTokでもコンテンツを発信しています。",
       title: "私について",
       letsWork: "一緒に働きましょう",
       resume: "履歴書",
@@ -676,6 +679,7 @@ const translations = {
       nextPhoto: "下一张"
     },
     about: {
+      creator: "除了软件开发，我也以 <strong>ออมบั๊ก (@nattazxin)</strong> 的名字在 TikTok 上创作内容。",
       title: "关于我",
       letsWork: "一起合作吧",
       resume: "简历",
@@ -872,6 +876,7 @@ const translations = {
       nextPhoto: "Nächstes Foto"
     },
     about: {
+      creator: "Neben der Softwareentwicklung erstelle ich auch Inhalte auf TikTok als <strong>ออมบั๊ก (@nattazxin)</strong>.",
       title: "Über mich",
       letsWork: "Lass uns zusammenarbeiten",
       resume: "Lebenslauf",
@@ -1068,6 +1073,7 @@ const translations = {
       nextPhoto: "다음 사진"
     },
     about: {
+      creator: "소프트웨어 개발 외에도 <strong>ออมบั๊ก (@nattazxin)</strong>라는 이름으로 TikTok 콘텐츠를 만들고 있습니다.",
       title: "소개",
       letsWork: "함께 일해요",
       resume: "이력서",
