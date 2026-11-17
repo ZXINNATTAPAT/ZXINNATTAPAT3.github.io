@@ -1859,6 +1859,7 @@ footer[id] {
 
 /* Mobile Menu Toggle Button */
 .mobile-menu-toggle {
+  position: relative;
   background: none;
   border: none;
   padding: 0.5rem;
@@ -1926,7 +1927,8 @@ footer[id] {
 .mobile-menu.active {
   opacity: 1;
   visibility: visible;
-  pointer-events: auto;
+  /* Let the bar (hamburger + theme) receive clicks; the panel itself still does. */
+  pointer-events: none;
 }
 
 .mobile-menu-content {
@@ -1947,6 +1949,7 @@ footer[id] {
 }
 
 .mobile-menu.active .mobile-menu-content {
+  pointer-events: auto;
   transform: translateY(0) scale(1);
 }
 

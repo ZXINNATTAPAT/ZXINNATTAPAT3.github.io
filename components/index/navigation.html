@@ -40,6 +40,31 @@
           </div>
         </div>
         <a href="links/" class="nav-link-ux text-decoration-none d-none d-md-inline-flex" data-i18n="nav.contact">Contact</a>
+        <button type="button" class="nz-theme-toggle" id="nz-theme-toggle" aria-label="Switch to light mode" title="Switch theme">
+  <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+  <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+</button>
+<script>
+  (function () {
+    var b = document.getElementById('nz-theme-toggle'), css = document.getElementById('dark-theme-css'),
+        meta = document.querySelector('meta[name="theme-color"]'), root = document.documentElement;
+    function apply(t) {
+      if (t !== 'light') t = 'dark';
+      if (css) css.disabled = t === 'light';
+      root.setAttribute('data-theme', t);
+      root.style.colorScheme = t === 'light' ? 'light' : 'dark';
+      root.style.backgroundColor = t === 'light' ? '#f8f8ff' : '#121214';
+      if (meta) meta.setAttribute('content', t === 'light' ? '#f8f8ff' : '#121214');
+      if (b) b.setAttribute('aria-label', t === 'light' ? 'Switch to dark mode' : 'Switch to light mode');
+      try { localStorage.setItem('nz-theme', t); } catch (e) {}
+      document.dispatchEvent(new CustomEvent('nz-themechange', { detail: t }));
+    }
+    apply(root.getAttribute('data-theme') || 'dark');
+    if (b) b.addEventListener('click', function () {
+      apply(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+    });
+  })();
+</script>
         <!-- Mobile Menu Toggle -->
         <button class="mobile-menu-toggle d-lg-none" id="mobileMenuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
           <span class="hamburger-line"></span>
