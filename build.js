@@ -932,13 +932,13 @@ function minifyAssets() {
   }
 
   const scripts = [
-    ['i18n.js', 'i18n.min.js'],
-    ['cloud-platforms-gsap.js', 'cloud-platforms-gsap.min.js'],
-    ['experience-gsap.js', 'experience-gsap.min.js'],
-    ['uiux-gsap.js', 'uiux-gsap.min.js'],
-    ['projects-gsap.js', 'projects-gsap.min.js'],
-    ['hero-gsap.js', 'hero-gsap.min.js'],
-    ['profile-cards.js', 'profile-cards.min.js'],
+    ['js/i18n.js', 'js/i18n.min.js'],
+    ['js/cloud-platforms-gsap.js', 'js/cloud-platforms-gsap.min.js'],
+    ['js/experience-gsap.js', 'js/experience-gsap.min.js'],
+    ['js/uiux-gsap.js', 'js/uiux-gsap.min.js'],
+    ['js/projects-gsap.js', 'js/projects-gsap.min.js'],
+    ['js/hero-gsap.js', 'js/hero-gsap.min.js'],
+    ['js/profile-cards.js', 'js/profile-cards.min.js'],
     ['links/links.js', 'links/links.min.js']
   ];
 

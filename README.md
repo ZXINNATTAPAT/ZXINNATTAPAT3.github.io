@@ -1,7 +1,7 @@
 # แผนที่ไฟล์ — nattazxin.com
 
 เว็บพอร์ตโฟลิโอของ Nattapat Phungphugdee (NATTAZXIN) เป็นไซต์ static บน GitHub Pages
-ที่ build ด้วย `build.js` ภาษาของหน้าแรกอยู่ใน `i18n.js`
+ที่ build ด้วย `build.js` ภาษาของหน้าแรกอยู่ใน `js/i18n.js`
 สมุดเยี่ยมมี API แยกที่โฟลเดอร์พี่น้อง `../guestbook-api` (Cloudflare Worker + D1)
 
 เปิดตารางนี้ก่อนแก้ แล้วค่อยลงไปที่ไฟล์ต้นทาง อย่าแก้ HTML ที่ build แล้ว
@@ -10,15 +10,15 @@
 
 | อยากแก้ | เปิดไฟล์นี้ |
 |---|---|
-| ข้อความบนหน้าแรก (ทุกภาษา) | `i18n.js` — คีย์ตรงกับ `data-i18n` ใน HTML |
+| ข้อความบนหน้าแรก (ทุกภาษา) | `js/i18n.js` — คีย์ตรงกับ `data-i18n` ใน HTML |
 | เมนู / เปลี่ยนภาษา | `components/index/navigation.html` |
-| Hero | `components/index/hero.html` + แอนิเมชัน `hero-gsap.js` |
-| โปรไฟล์ + กองรูป | `components/index/profile.html` + `profile-cards.js` |
+| Hero | `components/index/hero.html` + แอนิเมชัน `js/hero-gsap.js` |
+| โปรไฟล์ + กองรูป | `components/index/profile.html` + `js/profile-cards.js` |
 | ทักษะ (อยู่ในโปรไฟล์) | `components/index/skills.html` |
-| ประสบการณ์ | `components/index/experience.html` + `experience-gsap.js` |
-| Cloud & Hosting | `components/index/cloud-platforms.html` + `cloud-platforms-gsap.js` |
-| การ์ดโปรเจกต์เด่น (PROJECTS) | `components/index/visual-highlights.html` + สายพาน `projects-gsap.js` |
-| แกลเลอรี UI/UX (OLIF, Triple C) | `components/index/uiux-projects.html` + `uiux-gsap.js` |
+| ประสบการณ์ | `components/index/experience.html` + `js/experience-gsap.js` |
+| Cloud & Hosting | `components/index/cloud-platforms.html` + `js/cloud-platforms-gsap.js` |
+| การ์ดโปรเจกต์เด่น (PROJECTS) | `components/index/visual-highlights.html` + สายพาน `js/projects-gsap.js` |
+| แกลเลอรี UI/UX (OLIF, Triple C) | `components/index/uiux-projects.html` + `js/uiux-gsap.js` |
 | ใบประกาศ | `components/index/certificates.html` |
 | ประตูสมุดเยี่ยมบนหน้าแรก | `components/index/guestbook.html` |
 | หน้าสมุดเยี่ยมทั้งหน้า | `guestbook.html` + `stylesheets/guestbook.css` |
@@ -57,7 +57,7 @@ npm run dev            # watch แล้ว build ใหม่ ไม่ได�
 
 สคริปต์และ CSS ที่ลิงก์ด้วย `?v=` ต้องขึ้นเลขใน `templates/index.template.html`
 แล้ว build ใหม่ ไม่งั้นเบราว์เซอร์ยังใช้ไฟล์เก่า
-ตอนนี้เช่น `stylesheets/min/index.css?v=72`, `i18n.min.js?v=58`, `hero-gsap.min.js?v=10`
+ตอนนี้เช่น `stylesheets/min/index.css?v=72`, `js/i18n.min.js?v=60`, `js/hero-gsap.min.js?v=10`
 
 Build อาจเปลี่ยนวันที่ใน `sitemap.xml` และหน้าบทความแม้เนื้อหาไม่เปลี่ยน
 อย่า commit ส่วนต่างแค่นั้น
@@ -87,7 +87,7 @@ Build อาจเปลี่ยนวันที่ใน `sitemap.xml` แ�
 
 - เปิด/ปิด project modal
 - สถานะ nav ตอนเลื่อน
-- carousel ใน `#portfolio` (ของเก่า; สายพานจริงอยู่ที่ `projects-gsap.js`)
+- carousel ใน `#portfolio` (ของเก่า; สายพานจริงอยู่ที่ `js/projects-gsap.js`)
 - การ์ดใบประกาศ
 - เมนูมือถือ
 - เริ่ม AOS
@@ -99,18 +99,18 @@ Build อาจเปลี่ยนวันที่ใน `sitemap.xml` แ�
 
 ## ภาษา
 
-ข้อความที่ผู้ใช้เห็นบนหน้าแรกอยู่ใน `i18n.js` ก้อน `translations`
+ข้อความที่ผู้ใช้เห็นบนหน้าแรกอยู่ใน `js/i18n.js` ก้อน `translations`
 ภาษา: `en` `th` `ja` `zh` `de` `ko`
 คีย์ชั้นบน: `nav` `hero` `profile` `about` `education` `skills` `cloud` `creator`
 `automation` `visual` `modal` `portfolioList` `experience` `extracurricular`
 `certificates` `contact` `footer`
 
 HTML ใส่ข้อความอังกฤษไว้เป็นค่าเริ่มต้น และใส่ `data-i18n="hero.hi"`
-`i18n.js` สลับข้อความหลังโหลด และจำภาษาใน `localStorage` คีย์ `language`
+`js/i18n.js` สลับข้อความหลังโหลด และจำภาษาใน `localStorage` คีย์ `language`
 หน้า `/links/` ไม่ใช้ไฟล์นี้ มันมีก้อนแปลของตัวเองใน `links/links.js`
 แต่อ่านภาษาที่บันทึกไว้ก้อนเดียวกัน
 
-เพิ่มประโยคใหม่ต้องใส่ครบทุกภาษา แล้วขึ้น `?v=` ของ `i18n.js` ในเทมเพลต
+เพิ่มประโยคใหม่ต้องใส่ครบทุกภาษา แล้วขึ้น `?v=` ของ `js/i18n.js` ในเทมเพลต
 
 ## สไตล์และแอนิเมชัน
 
@@ -129,12 +129,12 @@ HTML ใส่ข้อความอังกฤษไว้เป็นค่
 
 แอนิเมชัน GSAP อยู่คนละไฟล์กับ HTML และถูกโหลดจากเทมเพลต
 
-- `hero-gsap.js` — hero
-- `profile-cards.js` — ลากรูปโปรไฟล์สลับใบ
-- `experience-gsap.js` — ประสบการณ์
-- `cloud-platforms-gsap.js` — cloud
-- `projects-gsap.js` — สายพานโปรเจกต์เด่น
-- `uiux-gsap.js` — แกลเลอรีเอียง
+- `js/hero-gsap.js` — hero
+- `js/profile-cards.js` — ลากรูปโปรไฟล์สลับใบ
+- `js/experience-gsap.js` — ประสบการณ์
+- `js/cloud-platforms-gsap.js` — cloud
+- `js/projects-gsap.js` — สายพานโปรเจกต์เด่น
+- `js/uiux-gsap.js` — แกลเลอรีเอียง
 
 ไลบรารี Bootstrap 5.3.3, AOS 2.3.1, GSAP 3.12.7 + ScrollTrigger และ Font Awesome 5 อยู่ใน `vendor/`
 Google Fonts ยังโหลดจาก Google หนึ่งชุดต่อหน้า
